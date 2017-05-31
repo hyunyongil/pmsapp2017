@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>온패널</title>
+    <script type="text/javascript" src="js/header.js"></script>
+</head>
+<body>
+
+<!-- page begin -->
+<div id="pointMallItemPurchase_page" data-role="page" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">ON포인트몰</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <!-- main start -->
+    <div role="main" class="ui-content">
+        <div class="padding15 bg_w box_shadow margin_b_15" style="background:#4087F1;padding:30px;">
+            <div style="text-align:center; font-size:90px;color:#80B4FF"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></div>
+            <div style="text-align:center; font-size:22px;color:#fFF; padding:20px 0 0 15px; font-weight:bold;">상품결제가 정상적으로<br> 처리되었습니다.</div>
+            <div class="clear"></div>
+        </div>
+        <div class="padding15 bg_w box_shadow margin_b_15">
+            <div class="box_title">발송안내</div>
+            <p style="font-size:14px;">*기프티쇼를 통한 현금부문은 결제하기시 회원정보에 입력된 회원님의 본인계좌로 다음주 화요일 오전중으로 이체됩니다.(온패널 가입한 회원명과 계좌주인명이 동일해야 현금이체 가능합니다)</p>
+        </div>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a"><a id="complete-pay-confirm" href="pointMallItemList.html" data-role="button" data-theme="b">확인</a></div>
+            <div class="ui-block-b"><a href="myPageUsed.html" data-role="button" data-theme="c">구매내역</a> </div>
+        </fieldset>
+    </div>
+    <!-- main end -->
+</div>
+<!-- page end -->
+<script type="text/javascript">
+    //<![CDATA[
+    try{
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+        }
+        function alertCallback(){
+        }
+    }
+    catch(e) { }
+    //]]>
+
+    $(document).one('pageinit', '#pointMallItemPurchase_page', function () {
+        var page = {
+            "dom": $(this),
+            "id": $(this).attr("id")
+        };
+        page.dom.bind('onStart', function (event, data, prevPageId) {
+
+            $('#complete-pay-confirm').click(function(e){
+                e.preventDefault();
+                window.location.href = 'pointMallItemList.html?data_seq=' + gup('data_seq');
+            });
+        });
+    });
+
+</script>
+</body>
+</html>

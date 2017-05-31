@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>온패널</title>
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <script type="text/javascript" src="js/header.js"></script>
+</head>
+<body>
+<!-- page begin -->
+<div id="findMemberId_page" data-role="page" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed" data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">아이디 찾기</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+    </div>
+    <!-- header end -->
+
+    <!-- content begin -->
+    <div data-role="content" class="jqm-content">
+        <div class="bg_w box_shadow">
+            <div class="box_title">아이디를 분실하셨나요?</div>
+            <div class="padding15">
+                <input type="hidden" name="check_mobile_num" id="check_mobile_num" value="N"/>
+                <input type="hidden" name="mobile_code" id="mobile_code" value=""/>
+                <ul class="form_ul">
+                    <li class="first_li li_phone_auth">
+                        <input type="number" name="frm_mobile_num" id="frm_mobile_num" value="" maxlength="20" style="" placeholder="휴대폰"/>
+                        <a id="clickMobileCode" href="javascript:;" data-role="button" data-theme="b" style="position:absolute;top:0;right:0;width:27%;">인증</a>
+                    </li>
+                    <li>
+                        <input type="text" name="frm_number_auth_code" id="frm_number_auth_code" maxlength="6" value="" placeholder="인증번호"/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="find_btns">
+            <a href="javascript:;" id="clickFindAction" class="a_btn_ok">확인</a>
+            <a href="javascript:;" id="clickFindBack" class="a_btn_back">돌아가기</a>
+        </div>
+    </div>
+    <!-- content end -->
+
+    <script src="js/findMemberId.js"></script>
+</div>
+<!-- page end -->
+<script type="text/javascript">
+//<![CDATA[
+try{
+    document.addEventListener("deviceready", onDeviceReady, false);       
+    function onDeviceReady() {           
+    //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+    }       
+    function alertCallback(){
+    }
+}
+catch(e) { }       
+//]]>
+</script>
+</body>
+</html>

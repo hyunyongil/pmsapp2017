@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>이벤트</title>
+    <script type="text/javascript" src="js/header.js"></script>
+</head>
+<body>
+
+<style>
+    .ui-btn-inner {padding:0.8em 20px;}
+    .ui-collapsible-content img{max-width:100%;}
+</style>
+
+<!-- page begin -->
+<div id="event_page" data-role="page" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">이벤트</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <!-- content begin -->
+    <div data-role="content" class="jqm-content">
+        <div id="list" data-role="collapsible-set" data-corners="false" data-theme="c" data-content-theme="d"  style="margin:0px;" class="bic_icon bg_w box_shadow ">
+        </div>
+        <!--<div class="ui-grid-solo notice-more">-->
+        <!--<div class="ui-block-a">-->
+        <!--<a href="#" class="more_list"><img src="images/moreList.png"></a>-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+    <!-- content end -->
+
+    <script src="js/event.js"></script>
+</div>
+<!-- page end -->
+<script type="text/javascript">
+    //<![CDATA[
+    try{
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+        }
+        function alertCallback(){
+        }
+    }
+    catch(e) { }
+
+
+
+    //]]>
+</script>
+</body>
+</html>

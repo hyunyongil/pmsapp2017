@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>온패널</title>
+    <script type="text/javascript" src="js/header.js"></script>
+</head>
+<body>
+
+<!-- page begin -->
+<div id="more_page" data-role="page" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">더보기</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <!-- content begin -->
+    <div data-role="content" class="jqm-content" style="padding:0px;">
+        <div class="moreContent">
+            <ul>
+                <li><a href="poll.html" data-ajax="false"><img src="images/siteMap_03.png"></a></li>
+                <li><a href="firstPoll.html" data-ajax="false"><img src="images/siteMap_04.png"></a></li>
+                <li><a href="powerPanel.html" data-ajax="false"><img src="images/siteMap_05.png"></a></li>
+                <li><a href="myPageUserInfo.html" data-ajax="false"><img src="images/siteMap_07.png"></a></li>
+                <li><a href="myPageSubtraction.html" data-ajax="false"><img src="images/siteMap_08.png"></a></li>
+                <li><a href="myConfig.html" data-ajax="false"><img src="images/siteMap_09.png"></a></li>
+                <li><a href="contact.html" data-ajax="false"><img src="images/siteMap_10.png"></a></li>
+                <li><a href="signUpTerms.html" data-ajax="false"><img src="images/siteMap_11.png"></a></li>
+                <li><a href="notice.html" data-ajax="false"><img src="images/siteMap_12.png"></a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- content end -->
+
+    <!-- footer begin -->
+    <div data-role="footer" data-position="fixed" jms-data-role="load" jms-data-page="footer.html" jms-data-value="more"></div>
+    <!-- footer end -->
+
+    <script src="js/home.js"></script>
+</div>
+<!-- page end -->
+<script type="text/javascript">
+//<![CDATA[
+try{
+    document.addEventListener("deviceready", onDeviceReady, false);       
+    function onDeviceReady() {           
+    //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+    }       
+    function alertCallback(){
+    }
+}
+catch(e) { }       
+//]]>
+</script>
+</body>
+</html>

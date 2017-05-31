@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>온패널</title>
+    <script src="js/header.js"></script>
+
+    <script src="js/common-poll.js"></script>
+    <script src="js/DOM.js"></script>
+    <script src="js/poll.js"></script>
+    <script src="js/onpanel.join.mobile.js"></script>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        var joinSurvey = new Join;
+        var survey = new Object;
+
+
+        $(document).delegate("body", "pageinit", function() {
+
+            joinSurvey.surveySeq = gup("surveySeq");
+            joinSurvey.imgUrl = "";
+            survey.imgUrl = "";
+            joinSurvey.cssUrl = "";
+            joinSurvey.isMode = gup("isMode");
+            joinSurvey.limit_type = gup("limit_type");
+            joinSurvey.surveyLinkId = "";
+
+            if(joinSurvey.isMode) {
+                $("#footer").hide();
+            }
+
+            joinSurvey.init();
+        });
+
+        /*
+
+         $(document).bind( "pagebeforechange", function( e, data ) {
+
+         joinSurvey.surveySeq = gup("surveySeq");
+         joinSurvey.imgUrl = "";
+         survey.imgUrl = "";
+         joinSurvey.cssUrl = "";
+         joinSurvey.isMode = "";
+         joinSurvey.limit_type = "";
+         joinSurvey.surveyLinkId = "";
+
+         joinSurvey.init();
+         });
+
+         $(document).delegate("body", "pageinit", function() {
+         joinSurvey.surveySeq = gup("surveySeq");
+         joinSurvey.imgUrl = "";
+         survey.imgUrl = "";
+         joinSurvey.cssUrl = "";
+         joinSurvey.isMode = "";
+         joinSurvey.limit_type = "";
+         joinSurvey.surveyLinkId = "";
+
+         joinSurvey.init();
+         });
+
+         $(document).on("pageshow", function() {
+         var joinSurvey = new Join;
+         var survey = new Object;
+         joinSurvey.surveySeq = gup("surveySeq");
+         joinSurvey.imgUrl = "";
+         survey.imgUrl = "";
+         joinSurvey.cssUrl = "";
+         joinSurvey.isMode = "";
+         joinSurvey.limit_type = "";
+         joinSurvey.surveyLinkId = "";
+
+         joinSurvey.init();
+         });
+         $( document ).ready( function(){
+         joinSurvey.surveySeq = gup("surveySeq");
+         joinSurvey.imgUrl = "";
+         survey.imgUrl = "";
+         joinSurvey.cssUrl = "";
+         joinSurvey.isMode = "";
+         joinSurvey.limit_type = "";
+         joinSurvey.surveyLinkId = "";
+
+         joinSurvey.init();
+         });
+         */
+
+
+
+        function shuffle( array ) {
+            for(var j, x, i = array.length; i; j = parseInt(Math.random() * i), x = array[--i], array[i] = array[j], array[j] = x);
+            return true;
+        }
+
+        function end( array ) {
+            var last_elm, key;
+
+            if (array.constructor === Array){
+                last_elm = array[(array.length-1)];
+            } else {
+                for (key in array){
+                    last_elm = array[key];
+                }
+            }
+
+            return last_elm;
+        }
+        //]]>
+    </script>
+</head>
+<body>
+
+
+<style>
+
+.poll_bottom_btn{text-align:center;}
+/*.poll_bottom_btn.poll_nav_btn{overflow:hidden;}*/
+/*.poll_bottom_btn.poll_nav_btn a{float:left;}*/
+.poll_bottom_btn.poll_nav_btn a{display:inline-block;width:20%;}
+.n01_box_btn1{background-color:#ffffff;border:1px solid #bcbcbc;color:#333333 !important;padding:10px 40px;font-weight:normal !important;}
+.n01_box_btn2{background-color:#989898;border:1px solid #6e6e6e;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;}
+.n01_box_btn3{background-color:#242424;border:1px solid #0b0b0b;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;}
+.n01_box_btn4{background-color:#ece22e;border:1px solid #a59e1c;color:#333333 !important;padding:10px 40px;font-weight:normal !important;}
+.n01_box_btn5{background-color:#8dbd3f;border:1px solid #6e9332;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;}
+.n01_box_btn6{background-color:#27863c;border:1px solid #0f5a1f;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;}
+.n01_box_btn7{background-color:#468e74;border:1px solid #0f5a1f;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;}
+.n01_box_btn8{background-color:#53a1cc;border:1px solid #106899;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;}
+.n01_box_btn9{background-color:#4669a1;border:1px solid #233c63;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;}
+.n01_box_btn10{background-color:#432e70;border:1px solid #24124c;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;}
+.n01_box_btn11{background-color:#672e5d;border:1px solid #471a3f;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;}
+.n01_box_btn12{background-color:#b12e7c;border:1px solid #7e1854;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;}
+.n01_box_btn13{background-color:#d6325c;border:1px solid #951d3c;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;}
+.n01_box_btn14{background-color:#e56530;border:1px solid #90350f;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;}
+.n01_box_btn15{background-color:#df3530;border:1px solid #7e0a06;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;}
+.n01_box_btn16{background-color:#7c3400;border:1px solid #3e1f09;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;}
+.n01_box_btn17{background-color:#635444;border:1px solid #352b20;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;}
+
+
+.n02_box_btn1{background-color:#ffffff;border:1px solid #bcbcbc;color:#333333 !important;padding:10px 40px;font-weight:normal !important;border-radius:5px;}
+.n02_box_btn2{background-color:#989898;border:1px solid #6e6e6e;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;border-radius:5px;}
+.n02_box_btn3{background-color:#242424;border:1px solid #0b0b0b;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;border-radius:5px;}
+.n02_box_btn4{background-color:#ece22e;border:1px solid #a59e1c;color:#333333 !important;padding:10px 40px;font-weight:normal !important;border-radius:5px;}
+.n02_box_btn5{background-color:#8dbd3f;border:1px solid #6e9332;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;border-radius:5px;}
+.n02_box_btn6{background-color:#27863c;border:1px solid #0f5a1f;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;border-radius:5px;}
+.n02_box_btn7{background-color:#468e74;border:1px solid #0f5a1f;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;border-radius:5px;}
+.n02_box_btn8{background-color:#53a1cc;border:1px solid #106899;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;border-radius:5px;}
+.n02_box_btn9{background-color:#4669a1;border:1px solid #233c63;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;border-radius:5px;}
+.n02_box_btn10{background-color:#432e70;border:1px solid #24124c;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;border-radius:5px;}
+.n02_box_btn11{background-color:#672e5d;border:1px solid #471a3f;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;border-radius:5px;}
+.n02_box_btn12{background-color:#b12e7c;border:1px solid #7e1854;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;border-radius:5px;}
+.n02_box_btn13{background-color:#d6325c;border:1px solid #951d3c;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;border-radius:5px;}
+.n02_box_btn14{background-color:#e56530;border:1px solid #90350f;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;border-radius:5px;}
+.n02_box_btn15{background-color:#df3530;border:1px solid #7e0a06;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;border-radius:5px;}
+.n02_box_btn16{background-color:#7c3400;border:1px solid #3e1f09;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;border-radius:5px;}
+.n02_box_btn17{background-color:#635444;border:1px solid #352b20;color:#ffffff !important;padding:10px 40px;font-weight:normal !important;border-radius:5px;}
+
+.poll_bottom_btn.poll_nav_btn a{display:inline-block;width:20%;padding:10px 18px;}
+.cover_title_text.style1_bg{background-color:#1561a9;padding:10px;border-radius:5px;}
+.cover_title_text.style1_bg strong{color:#fff !important;font-weight:normal;}
+.cover_title_text.style2_bg{background-color:#ffba00;padding:10px;border-radius:5px;}
+.cover_title_text.style2_bg strong{color:#000 !important;font-weight:normal;}
+.cover_title_text.style3_bg{padding:10px;border-radius:5px;}
+.cover_title_text.style3_bg strong{color:#0973b4 !important;font-weight:normal;}
+.cover_title_text.style4_bg{background-color:#000000;opacity:.5;padding:10px;border-radius:5px;}
+.cover_title_text.style4_bg strong{color:#fff !important;font-weight:normal;}
+.cover_title_text.style5_bg{background-color:#000000;opacity:.5;padding:10px;border-radius:5px;}
+.cover_title_text.style5_bg strong{color:#fff !important;font-weight:normal;}
+
+.poll_quest.style1_bg{background-color:#1561a9;color:#fff !important;font-weight:normal;}
+.poll_quest.style2_bg{background-color:#ffba00;color:#000 !important;font-weight:normal;}
+.poll_quest.style3_bg{background-color:#216677;color:#fff !important;font-weight:normal;}
+.poll_quest.style4_bg{background-color:#39858a;color:#fff !important;font-weight:normal;}
+.poll_quest.style5_bg{background-color:#2e2e2e;color:#fff !important;font-weight:normal;}
+</style>
+<!-- /page -->
+<div id="pollJoin" data-role="page" data-dom-cache="true" style="background-image:url(../images/test_bg.png); background-size:100% 100%">
+	<!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="push" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more">
+    </div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">설문조사</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <div data-role="content_poll" class="jqm-content" id="pollContent"></div>
+    <!-- header end -->
+
+    <!--<span class="ui-btn-right" id="progress_bar" style="top:16px;right:16px;"></span>-->
+
+
+
+</div>
+<!-- /page -->
+<script type="text/javascript">
+//<![CDATA[
+try{
+    document.addEventListener("deviceready", onDeviceReady, false);       
+    function onDeviceReady() {           
+    //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+    }       
+    function alertCallback(){
+    }
+}
+catch(e) { }       
+//]]>
+</script>
+</body>
+</html>
+
+

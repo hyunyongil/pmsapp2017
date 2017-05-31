@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>온패널</title>
+    <script type="text/javascript" src="js/header.js"></script>
+</head>
+<body>
+
+<!-- page begin -->
+<div id="myPageCart_page" data-role="page" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">마이페이지</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <!-- content begin -->
+    <div data-role="content" class="jqm-content" style="padding:0px;">
+        <div jms-data-role="load" jms-data-page="myPageNavBar.html" jms-data-value="cart"></div>
+
+        <div>
+            <div style="background:#CFD3D6; padding:10px;  border-top:2px solid #5F6670; margin-top:15px;">총결제금액 <b class="total_point" style="color:#09F">0</b> 원</div>
+
+            <ul id="list" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="delete"  style="margin:0px; border-radius:0px">
+            </ul>
+
+            <div id="templete" style="display: none">
+                <li class="item">
+                    <a href="#">
+                        <img class="image" src="images/unnamed.gif" width="100">
+                        <h2 class="title">제목 없음</h2>
+                        <p>구매가:<b class="point">0p</b> 수량:<b class="count">0개</b> 날짜:<b class="create_date">1951.01.01</b></p>
+                    </a>
+                    <a class="remove" href="#"></a>
+                </li>
+            </div>
+
+            <fieldset class="ui-grid">
+                <div class="ui-block">
+                    <a id="purchase" href="pointMallItemPurchase.html" style="display: none">
+                        <button type="submit" data-theme="b">결제</button>
+                    </a>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <!-- content end -->
+
+    <!-- footer begin -->
+    <div data-role="footer" data-position="fixed" jms-data-role="load" jms-data-page="footer.html" jms-data-value="my_page"></div>
+    <!-- footer end -->
+
+    <script src="js/myPageCart.js"></script>
+</div>
+<!-- page end -->
+<script type="text/javascript">
+//<![CDATA[
+try{
+    document.addEventListener("deviceready", onDeviceReady, false);       
+    function onDeviceReady() {           
+    //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+    }       
+    function alertCallback(){
+    }
+}
+catch(e) { }       
+//]]>
+</script>
+</body>
+</html>

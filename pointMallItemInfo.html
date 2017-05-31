@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>온패널</title>
+    <script type="text/javascript" src="js/header.js"></script>
+</head>
+
+<body>
+<!-- page begin -->
+<div id="pointMallItemInfo_page" data-role="page" class="wrap" data-dom-cache="false">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">온포인트몰</h1>
+        <a href="pointMallItemList.html" data-icon="back" class="ui-btn-left top_back_btn" data-ajax="false"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <!-- content begin -->
+    <div data-role="content" class="jqm-content" style="padding:0;">
+        <div class="po_title">
+            <ul>
+                <li class="item_changeStore"></li>
+                <li class="item_point"></li>
+            </ul>
+        </div>
+    	<div class="bg_w box_shadow margin_b_15">
+    		<div class="pointmall_detail_wrap">
+	            <div class="po_img"><img class="po_image" src="images/unnamed.gif" width="300" height="300"></div>
+                <div class="item_title"></div>
+	            <!--<div class="ui-grid-a po_num gift_wrap" style="margin-top:20px;border-top: 1px solid #DDDDDD;">
+	                <div class="ui-block-a" style="text-align:left">
+                        <span class="span_left_title">수량</span>
+	                </div>
+	                <div class="ui-block-b" style="text-align:right;">
+	                	<select name="po_count" id="po_count" data-mini="true" data-inline="true" data-corners="false" data-native-menu="false">
+	                        <option value="1">1개</option>
+	                        <option value="2">2개</option>
+	                        <option value="3">3개</option>
+	                        <option value="4">4개</option>
+	                        <option value="5">5개</option>
+	                        <option value="6">6개</option>
+	                        <option value="7">7개</option>
+	                        <option value="8">8개</option>
+	                        <option value="9">9개</option>
+	                        <option value="10">10개</option>
+	                    </select>
+	                </div>
+	            </div>-->
+				<input type="hidden" name="po_count" id="po_count" value="1" />
+	            <div class="ui-grid-a po_num" style="margin-top:20px;border-top: 1px solid #DDDDDD;">
+	                <div class="ui-block-a" style="text-align:left;width:30%;">
+                        <span class="span_left_title">구매자정보</span>
+                    </div>
+	                <div class="ui-block-b" style="text-align:right;width:70%;">
+                        <input type="text" name="mobile_num" id="mobile_num" value="" placeholder="휴대폰 입력" />
+                    </div>
+	            </div>
+	            <div class="ui-grid-a po_num bank_wrap">
+	                <div class="ui-block-a" style="text-align:left;width:30%;">
+                        <span class="span_left_title">은행명</span>
+                    </div>
+	                <div class="ui-block-b" style="text-align:right;width:70%;">
+                        <select name="bank_name" id="bank_name"  data-native-menu="false" data-corners="false">
+                            <option value="">은행명</option>
+                        </select>
+	                </div>
+	            </div>
+	            <div class="ui-grid-a po_num bank_wrap">
+	                <div class="ui-block-a" style="text-align:left;width:30%;">
+                        <span class="span_left_title">계좌번호</span>
+                    </div>
+	                <div class="ui-block-b" style="text-align:right;width:70%;">
+                        <input type="text" name="bank_account" id="bank_account" value="" placeholder="계좌번호" />
+                    </div>
+	            </div>
+                <div style="text-align:center;margin:10px 0 0 0;padding-bottom:10px;">
+                    <a class="purchase_btn" href="javascript:;" id="clickPurchase"></a>
+                </div>
+	            <div class="po_disc"></div>
+	        </div>
+    	</div>
+    </div>
+    <!-- content end -->
+
+    <script src="js/pointMallItemInfo.js"></script>
+</div>
+<!-- page end -->
+<script type="text/javascript">
+//<![CDATA[
+try{
+    document.addEventListener("deviceready", onDeviceReady, false);       
+    function onDeviceReady() {           
+    //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+    }       
+    function alertCallback(){
+    }
+}
+catch(e) { }       
+//]]>
+</script>
+</body>
+</html>

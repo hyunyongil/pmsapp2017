@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>온패널</title>
+    <script type="text/javascript" src="js/header.js"></script>
+    <script src="js/donation.js"></script>
+    <script>
+        readyDonation();
+    </script>
+</head>
+<body>
+<!-- page begin -->
+<div id="myPageUserInfo_page" data-role="page" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a"
+         jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed" data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">기부하기</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+
+    <!-- content begin -->
+    <div class="uinfo">
+        <div onclick="location.href='donation.html';" data-ajax="false" style="padding:10px 10px 25px 10px; border:1px solid #ddd; box-shadow:0px 0px 5px rgba(0,0,0,.5);" ><img src="images/m_img/donation_end_img.jpg" align="absmiddle" style="width:100%;margin-top:10px;"></div>
+    </div>
+	<div style="margin:0 auto;width:150px; height:40px; background:#0c4373; line-height:40px; color:#fff; font-size:15px; text-align:center;cursor:pointer;"  onclick="location.href='donation.html';" >기부완료</div>
+
+    <!-- content end -->
+
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    $(document).ready(function () {
+        var member_id = COMMON.storage.get("my_info_id");
+        var member_name = COMMON.storage.get("my_info_name");
+        $("#member_id_token").html(member_id);
+        $("#member_name_token").html(member_name);
+    });
+    try {
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+        }
+
+        function alertCallback() {
+        }
+    }
+    catch (e) {
+    }
+    //]]>
+</script>
+<!-- page end -->
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

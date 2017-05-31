@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>온패널</title>
+
+    <script src="js/header.js"></script>
+    <script src="js/pollList.js"></script>
+    <script>
+        readyPoll();
+    </script>
+</head>
+<body>
+
+<div data-role="page" id="poll_list" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">설문 참여</h1>
+        <a href="home.html" data-icon="back" class="ui-btn-left top_back_btn"  data-ajax="false"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content" style="padding:0;">
+        <div data-role="navbar" style="display:none;">
+            <ul class="topNavbar">
+                <li><a href="poll.html"  data-ajax="false" class="ui-btn-active" id="poll_survey_ing">진행중인 설문</a></li>
+                <!--<li><a href="#" class="end_list" id="poll_survey_end">종료된 설문</a></li>-->
+            </ul>
+        </div>
+        <!-- /navbar -->
+
+        <div id="tabCss">
+        <style type="text/css">@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+			.poll_list  {border:0px solid #666; position:relative; font-family:Nanum Gothic;}
+			.poll_list  .poll_list_type_a {display:none;}
+			.poll_list .poll_list_type_b{width:100%; position:absolute; background:none; color:#4f8cea; font-size:20px; font-weight:bold; font-family:Nanum Gothic; top:7px;}
+				.poll_list .poll_list_type_a span, .poll_list .poll_list_type_b span{display:block; position:absolute; width:45%; height:30px; text-align:center; font-weight:normal; font-size:11px !important; line-height:45px; z-index:10; top:110px; right:30px;  padding:0; color:rgba(255,255,255,.7);}
+
+			.poll_list .plist_title{color:#444;}
+			.poll_list .poll_list_title {width:90%; position:absolute;  border:none;  color:#ea5532; font-size:20px; font-weight:bold; font-family:Nanum Gothic; top:20px;}
+				.poll_list_title.title_end {color:#666;}
+				.poll_list_title .plist_title_b{width:auto; font-size:16px; color:#333;margin-top:35px; font-weight:800; }
+				.poll_list_title .plist_update_b{float:left; margin-top:35px;  font-size:12px; font-weight:normal; line-height:20px;  margin-left:5px;  color:#bbb;}
+				.poll_list_title .plist_update{clear:both;   font-size:12px; font-weight:normal; line-height:20px;  margin-left:5px;  color:#bbb;}
+
+			.poll_list_title .plist_update{float:left;color:#ddd;}
+
+			.poll_list  .poll_list_count, .poll_list  .poll_list_point, .poll_list  .poll_list_time, .poll_list .poll_list_date  .poll_list_service {font-size:11px; letter-spacing:-1px !important;}
+			.poll_top50 {font-size:12px; letter-spacing:-1px !important; margin-top:-20px;}
+			.poll_list  .poll_list_count {width:20%; position:absolute; top:75px; border:none;}
+				.poll_list  .poll_list_count .poll_icon_red_question{width:;}
+			.poll_list  .poll_list_point {width:29%; position:absolute; top:75px;  left:24%;border:none;}
+				.poll_list  .poll_list_point span {border:none !important}
+			.poll_list  .poll_list_time {width:50%; position:absolute; top:105px; border:none;}
+			.poll_list  .poll_list_date {width:50%; position:absolute; top:130px; border:none;}
+			.poll_list  .poll_list_service {width:50%; position:absolute; top:155px; border:none;}
+				 .poll_icon_green_question {background:url(images/poll_survey_question.png) center center no-repeat /16px 16px;}
+				 .poll_icon_green_point{background:url(images/poll_survey_point.png) 0 0 no-repeat / 16px 16px;}
+				 .poll_icon_green_time{background:url(images/poll_survey_time.png) 0 0 no-repeat / 16px 16px;}
+
+			 .poll_icon_question, .poll_icon_point, .poll_icon_time, .poll_icon_cal, .poll_icon_service{-webkit-filter: grayscale(100%);}
+			 .poll_icon_red_question, .poll_icon_red_point, .poll_icon_red_time, .poll_icon_red_cal{-webkit-filter: grayscale(100%);}
+			
+
+			.poll_list  .poll_list_btn {position:relative;  margin:auto 0 auto; right:-53%; width:48%; border:none;} 
+				.poll_list  .poll_list_btn .ui-btn-text {text-shadow: 3px 3px 1px rgba(0,0,0,.2); }
+				.poll_list  .poll_list_btn .ui-btn-text img {width:30px; height:auto; vertical-align:middle; margin:0 0 0 -10px;}
+				.poll_list .ui-btn-up-e {height:140px; line-height:120px; background:#4f8cea;}
+				.poll_list .ui-btn-up-b {height:110px; line-height:100px; margin-top:45px; background:#ea5532;}
+				.poll_list .ui-btn-up-a {height:140px; line-height:120px; background:#444;}
+				.poll_list_btn .ui-btn-inner {right:0; margin-right:0;}
+
+/*
+			.topNavbar .ui-btn-active{background:none; border:none; color:#666;}
+			.topNavbar .ui-btn {border:none;}
+			.ui-btn-up-c {background:none;color:#bbb;}
+			.ui-btn-hover-c {background:none;color:#666;}
+			*/
+        </style>
+        </div>
+        <div class="poll-list padding15"  style="margin:0;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <div class="poll-more ui-grid-solo" style="display:none;">
+            <div class="ui-block-a"><a href="#" class="more_list"><img src="images/moreList.png"></a></div>
+        </div>
+    </div>
+
+</div>
+<!-- /page -->
+
+<script type="text/javascript">
+    //<![CDATA[
+    try{
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+        }
+        function alertCallback(){
+        }
+    }
+    catch(e) { }
+    //]]>
+</script>
+</body>
+</html>

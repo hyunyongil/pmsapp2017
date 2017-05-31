@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <title>회원탈퇴</title>
+<script type="text/javascript" src="js/header.js">
+</script><link rel="stylesheet" href="../lib/jquery.mobile/jquery.mobile-1.3.2.min.css">
+<link rel="stylesheet" href="../assets/css/jqm-demos.css">
+<link rel="stylesheet" href="../css/default.css">
+<link rel="stylesheet" href="../css/add_css.css">
+<link rel="stylesheet" href="../css/onpanel_dev.css">
+<link rel="stylesheet" href="../lib/graphicon/css/bootstrap.css">
+<script src="../lib/jsjws-3.0.2/ext/jsrsasign-4.1.4-all-min.js"></script>
+<script src="../lib/jsjws-3.0.2/ext/json-sans-eval-min.js"></script>
+<script src="../lib/jsjws-3.0.2/jws-3.0.min.js"></script>
+<script src="../lib/jquery/jquery-1.9.1.js"></script>
+<script src="../lib/jquery.mobile/jquery.mobile-1.3.2.min.js"></script>
+<script src="../lib/json2.js"></script>
+<script src="../lib/jms/jms.emulator.js"></script>
+<script src="../lib/jms/jms.util.js"></script>
+<script src="../lib/jms/jms.page.js"></script>
+<script src="../lib/iscroll.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/constants.js"></script>
+<script src="../js/rest.js"></script>
+<script src="../js/push.js"></script>
+<script src="../cordova.js"></script>
+<script src="../cordova_plugins.js"></script>
+</head>
+
+
+
+<body class="ui-mobile-viewport ui-overlay-c">
+<style>
+    .ui-body-c .ui-link,.ui-body-c .ui-link:visited, .ui-body-c .ui-link:hover{color:white !important;}
+    #member_id{text-align:left;font-size:14px;font-weight:normal;padding:0;color:white;}
+</style>
+<div id="login_page" data-role="page" class="login_container ui-page ui-body-c ui-page-header-fixed ui-page-active" data-url="login_page" tabindex="0" style="padding-top: 59px; min-height: 261px;">
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed" data-tap-toggle="false" data-transition="none" class="ui-header ui-bar-a ui-header-fixed" role="banner">
+        <h1 class="mainTopLogo ui-title" role="heading" aria-level="1">회원탈퇴</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn ui-btn ui-btn-up-a ui-shadow ui-btn-corner-all ui-btn-icon-left" data-rel="back" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="a"><span class="ui-btn-inner"><span class="ui-btn-text"></span><span class="ui-icon ui-icon-back ui-icon-shadow">&nbsp;</span></span></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn ui-btn ui-btn-up-a ui-shadow ui-btn-corner-all ui-btn-icon-left" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="a"><span class="ui-btn-inner"><span class="ui-btn-text"></span><span class="ui-icon ui-icon-back ui-icon-shadow">&nbsp;</span></span></a>
+    </div>
+    <!-- header end -->
+
+    <div class="member_out">
+		<div class="member_out_title">
+           탈퇴하실 회원은 아래의 주의사항을 숙직하시고, [탈퇴]버튼을 클릭해주세요.
+       </div>
+       <div class="member_out_box">
+       	<h2>주의사항</h2>
+        탈퇴하신 후, 3개월간 회원등록이 불가능합니다.<br/>
+탈퇴하시면 현재까지 적립된 포인트가 전부 소멸됩니다.<br/>
+탈퇴 후에는 가입하신 아이디로 다시 가입할 수 없으며 아이디와 데이터는 복구할 수 없습니다.<br/> 
+게시판형 서비스에 남아 있는 게시글은 탈퇴 후 삭제할 수 없습니다.<br/>
+       </div>
+       <div class="member_out_box">
+       	<h2>탈퇴이유</h2>
+        <ul>
+        	<li><input name="" type="radio" value="" />개인정보 유출이 우려되기 때문에</li>
+            <li><input name="" type="radio" value="" />앞으로 인터넷 이용을 못하게 되어서</li>
+            <li><input name="" type="radio" value="" />사이트 이용에 불편을 느껴서</li>
+            <li><input name="" type="radio" value="" />특별한 이유 없음</li>
+            <li><input name="" type="radio" value="" />기타<input name="" type="text" /></li>
+        </ul>
+       </div>
+       <div class="member_out_box">
+       	<h2>바라는 점</h2>
+        <textarea name="" cols="" rows=""></textarea>
+       </div>
+		<div class="next_btn"><a href="#" dclass="ui-link">탈퇴</a></div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>온패널</title>
+    <script src="js/header.js"></script>
+    <script type="text/javascript" src="js/rsea-tool.js"></script>
+    <script src="js/rest.js"></script>
+    <script src="js/common-poll.js"></script>
+    <script src="js/common-power.js"></script>
+    <script src="js/common-power-poll.js"></script>
+    <script src="js/powerPollCs.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            readyPowerPoll();
+
+            $('.top_back_btn').on('click',function (e) {
+                e.preventDefault();
+
+                try{
+                    document.addEventListener('deviceready', function() {
+                        navigator.notification.confirm("파워 설문을 종료하시겠습니까?", function(index) {
+                            if(index == 1) {
+                                location.href = 'powerPanel.html';
+                            }
+                        }, '확인',"확인,취소");
+
+                    }, true);
+                }
+                catch(e) {
+                    if(confirm("퍼스트 설문을 종료하시겠습니까?")) {
+                        location.href = 'powerPanel.html';
+                    }
+                }
+            });
+
+        })
+    </script>
+</head>
+<body>
+
+<div data-role="page" id="01_01" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">공무원 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서는 국가기관(서울특별시, 지식경제부 등)이나 공기업(한국조폐공사, 한국은행 등)에
+                    소속되어 근무 중 이십니까(경찰, 소방 포함하며 군인의 경우 군무원을 포함하여 하사이상)?
+                </div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="cs_yn" id="radio-choice-v-2a" value="Y">
+                            <label for="radio-choice-v-2a">예</label>
+                            <input type="radio" name="cs_yn" id="radio-choice-v-2b" value="N">
+                            <label for="radio-choice-v-2b">아니오</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a"><a href="powerPanel.html" rel="external">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_02" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_02" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">공무원 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서는 공무원패널에 선정되셨습니다. 다음 질문 사항에는 개인적인 내용이 포함되어 있습니다. 계속진행하시겠습니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="cs_continue_yn" id="radio-choice-v-2a" value="Y">
+                            <label for="radio-choice-v-2a">예</label>
+                            <input type="radio" name="cs_continue_yn" id="radio-choice-v-2b" value="N">
+                            <label for="radio-choice-v-2b">아니오</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_01" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_03" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_03" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">공무원 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하는 소속된 기관은 어디입니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="cs_organization" id="radio-choice-v-2a" value="national">
+                            <label for="radio-choice-v-2a">국가기관</label>
+                            <input type="radio" name="cs_organization" id="radio-choice-v-2b" value="area">
+                            <label for="radio-choice-v-2b">지방자치단체</label>
+                            <input type="radio" name="cs_organization" id="radio-choice-v-2c" value="edu">
+                            <label for="radio-choice-v-2c">교육기관</label>
+                            <input type="radio" name="cs_organization" id="radio-choice-v-2d" value="public">
+                            <label for="radio-choice-v-2d">공공기관</label>
+
+
+                            <input type="radio" name="cs_organization" id="radio-choice-v-2e" value="etc">
+                            <label for="radio-choice-v-2e" class="label-margin0">
+                                <div class="ui-grid-a">
+                                    <div class="ui-block-a" style="width:18%;line-height:36px;">
+                                        기타
+                                    </div>
+                                    <div class="ui-block-b" style="width:82%;">
+                                        <input type="text" name="cs_organ_etc" id="text-basic" value=""  style="padding: 0; height: 34px;" placeholder="기타선택시 입력" data-enter-reject>
+                                    </div>
+                                </div>
+                            </label>
+                            <!--
+                            <div>
+                                <input type="radio" name="cs_organization" id="radio-choice-v-2e" value="etc">
+                                <label for="radio-choice-v-2e" style="border-bottom:0px;" class="label-margin0">
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a" style="width:auto; line-height:36px; margin-right:15px"> 기타</div>
+                                    </div>
+                                </label>
+                                <div class="padding15">
+                                     <input type="text" name="cs_organ_etc" id="text-basic" value="" placeholder="기타선택시 입력" data-enter-reject>
+                                </div>
+                            </div>
+                            -->
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_02" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_04" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_04" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">공무원 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하의 소속된 국가기관이나 지방자치단체의 이름은 무엇입니까(예: 기획재정부, 국가보훈처, 국방부, 국세청, 기상청, 서울시청 등으로 기입하여 주십시오.)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+
+
+                            <div class="padding15">
+                                <input type="text" name="cs_organization_name" id="text-basic" value="">
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_03" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_05" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_05" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">공무원 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하의 직급은 무엇입니까? (아래의 직급표를 참고하여 답해주십시오.)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <form>
+                            <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                                <input type="radio" name="cs_level" id="radio-choice-v-2a" value="1">
+                                <label for="radio-choice-v-2a">1급 이상</label>
+                                <input type="radio" name="cs_level" id="radio-choice-v-2b" value="2">
+                                <label for="radio-choice-v-2b">2급</label>
+                                <input type="radio" name="cs_level" id="radio-choice-v-2c" value="3">
+                                <label for="radio-choice-v-2c">3급</label>
+                                <input type="radio" name="cs_level" id="radio-choice-v-2d" value="4">
+                                <label for="radio-choice-v-2d">4급</label>
+                                <input type="radio" name="cs_level" id="radio-choice-v-2e" value="5">
+                                <label for="radio-choice-v-2e">5급</label>
+                                <input type="radio" name="cs_level" id="radio-choice-v-2f" value="6">
+                                <label for="radio-choice-v-2f">6급</label>
+                                <input type="radio" name="cs_level" id="radio-choice-v-2g" value="7">
+                                <label for="radio-choice-v-2g">7급</label>
+                                <input type="radio" name="cs_level" id="radio-choice-v-2h" value="8">
+                                <label for="radio-choice-v-2h">8급</label>
+                                <input type="radio" name="cs_level" id="radio-choice-v-2i" value="9">
+                                <label for="radio-choice-v-2i">9급</label>
+
+                            </fieldset>
+                        </form>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_04" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_06" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_06" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">공무원 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 소속하신 기관에 근무하신지는 얼마나 되셨습니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="cs_year" id="radio-choice-v-2a" value="1">
+                            <label for="radio-choice-v-2a">1년 미만</label>
+                            <input type="radio" name="cs_year" id="radio-choice-v-2b" value="3">
+                            <label for="radio-choice-v-2b">1년 이상 ~3년 미만</label>
+                            <input type="radio" name="cs_year" id="radio-choice-v-2c" value="5">
+                            <label for="radio-choice-v-2c">3년 이상 ~ 5년 미만</label>
+                            <input type="radio" name="cs_year" id="radio-choice-v-2d" value="10">
+                            <label for="radio-choice-v-2d">5년 이상 ~ 10년 미만</label>
+                            <input type="radio" name="cs_year" id="radio-choice-v-2e" value="11">
+                            <label for="radio-choice-v-2e">10년 이상</label>
+
+
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_05" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_07" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_07" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">공무원 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서는 타 기관에서 FGI(표적집단면접) 또는 심층 인터뷰에 참가한 경험이 있으십니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="cs_other_fgi_yn" id="radio-choice-v-2a" value="Y">
+                            <label for="radio-choice-v-2a">예</label>
+                            <input type="radio" name="cs_other_fgi_yn" id="radio-choice-v-2b" value="N">
+                            <label for="radio-choice-v-2b">아니오</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_06" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_08" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_08" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">공무원 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서는 추후에 FGI(표적집단면접) 또는 심층 인터뷰에 참가할 의향이 있으십니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="cs_fgi_yn" id="radio-choice-v-2a" value="Y">
+                            <label for="radio-choice-v-2a">예</label>
+                            <input type="radio" name="cs_fgi_yn" id="radio-choice-v-2b" value="N">
+                            <label for="radio-choice-v-2b">아니오</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_07" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#power-complete" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+<style>
+    #power-complete .ui-panel-content-wrap{background-color:white;}
+</style>
+<!-- page complete -->
+<div data-role="page" id="power-complete" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">공무원 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <div class="end_sur_div"><div class="img_div"></div><p>파워패널 설문에 참여해 주셔서 대단히 감사합니다.</p></div>
+        <div class="etc_btn" onclick="location.href='home.html';" data-ajax="false">참여완료</div>
+    </div>
+
+
+</div>
+<!-- /page19 -->
+<script type="text/javascript">
+
+    $('.poll_a_list > form > fieldset > input').on('change',function(){
+        $(this).focus();
+        if($(this).next().find('input').length){
+            $(this).next().find('input').focus();
+        }
+    });
+
+    //<![CDATA[
+    try{
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+        }
+        function alertCallback(){
+        }
+    }
+    catch(e) { }
+    //]]>
+</script>
+</body>
+</html>

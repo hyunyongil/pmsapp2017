@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>온패널</title>
+    <script type="text/javascript" src="js/header.js"></script>
+</head>
+<body>
+<style>
+    #member_id {
+        padding: 10px;
+        display: block;
+        text-align: left;
+        font-weight: normal;
+        font-size: 1.05em;
+        color: #000;
+        min-height: 21px;
+    }
+
+    #member_name {
+        min-height: 21px;
+    }
+</style>
+<!-- page begin -->
+<div id="myPageUserInfo_page" data-role="page" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a"
+         jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed" data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">회원정보 수정</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+
+    <!-- content begin -->
+    <div class="uinfo">
+        <h1>회원정보 수정</h1>
+        <div class="tit_bar"></div>
+        <h2>
+            <b id="member_id_token"></b>(<font id="member_name_token"></font>)님 <a
+                href="certifyUserByMobileNew.html?returnUrl=myPageUserInfo.html" id="member_auth_chk" data-ajax="false"><span
+                class="glyphicon glyphicon-user span_text" aria-hidden="true">본인인증하기</span></a>
+        </h2>
+        <h3>
+            회원님의 소중한 개인정보 보호를 위해 <br>
+            회원정보가 외부로 노출되지 <br>
+            않도록 주의 해주세요<br>
+        </h3>
+
+        <ul class="upw">
+            <li>
+                <p>현재 비밀번호</p>
+                <input type="password" name="member_oldpw" id="member_oldpw" value=""  placeholder="현재 비밀번호를 입력 하세요.">
+            </li>
+            <li style="margin-top: 20px;">
+                <p>새 비밀번호</p>
+                <input type="password" name="member_pw1" id="member_pw1" value=""
+                       placeholder="비빌번호 변경시 새로운 비밀번호를 입력 하세요.">
+                <!--<span>비밀번호를 입력해주세요.</span>-->
+                <input type="password" name="member_pw2" id="member_pw2" value=""
+                       placeholder="비빌번호 변경시 새로운 비밀번호를 재입력 하세요.">
+                <!--<span>비밀번호가 일치 하지 않습니다.</span>-->
+            </li>
+        </ul>
+    </div>
+    <div class="uinfo">
+        <ul class="ucall">
+            <li>
+                <p>이메일</p>
+                <input type="text" name="frm_email_addr" id="frm_email_addr" value="" maxlength="100" placeholder="이메일"
+                       class="ui-input-text ui-body-c">
+                <!--<span>이메일 형식이 아닙니다.</span>-->
+                <p>연락처</p>
+                <input type="text" name="frm_mobile_num" id="frm_mobile_num" value="" maxlength="20" style=""
+                       class="ui-input-text ui-body-c" readonly="">
+            </li>
+        </ul>
+    </div>
+
+    <div class="send_btn">
+        <a href="#" data-ajax="false" id="save">
+            <button type="button" data-theme="b">정보수정</button>
+        </a>
+    </div>
+
+    <!-- content end -->
+
+    <script src="js/myPageUserInfo.js"></script>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    $(document).ready(function () {
+        var member_id = COMMON.storage.get("my_info_id");
+        var member_name = COMMON.storage.get("my_info_name");
+        $("#member_id_token").html(member_id);
+        $("#member_name_token").html(member_name);
+    });
+    try {
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+        }
+
+        function alertCallback() {
+        }
+    }
+    catch (e) {
+    }
+    //]]>
+</script>
+<!-- page end -->
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>온패널</title>
+    <script type="text/javascript" src="js/header.js"></script>
+</head>
+<body>
+
+<!-- page begin -->
+<div id="pointMall_page" data-role="page" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">ON포인트몰</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <!-- content begin -->
+    <div data-role="content" class="jqm-content" style="padding:0px;">
+        <div style="background:#626876; padding:10px;  border-top:2px solid #5F6670; margin-top:15px; color:#FFF"><b>BESTSELLERS</b></div>
+        <div id="best_seller" class="ui-grid-b">
+            <div id="best_seller_0" class="best_seller ui-block-a" style="display: none">
+                <a href="pointMallItemInfo.html?it_seq=9" data-ajax="false">
+                    <div class="ui-bar ui-body-d" style="height: 180px; border-top:none; text-align:center">
+                        <div><img class="image po_list_img" src="images/unnamed.gif"></div>
+                        <div class="sell_store"></div>
+                        <div class="name" style="font-size:16px; font-weight:bold"></div>
+                        <div>P:<b class="amount" style="color:#F30"></b></div>
+                    </div>
+                </a>
+            </div>
+            <div id="best_seller_1" class="best_seller ui-block-b" style="display: none">
+                <a href="pointMallItemInfo.html?it_seq=10" data-ajax="false">
+                    <div class="ui-bar ui-body-d" style="height: 180px; border-top:none; text-align:center">
+                        <div><img class="image po_list_img" src="images/unnamed.gif"></div>
+                        <div class="sell_store"></div>
+                        <div class="name" style="font-size:16px; font-weight:bold"></div>
+                        <div>P:<b class="amount" style="color:#F30"></b></div>
+                    </div>
+                </a>
+            </div>
+            <div id="best_seller_2" class="best_seller ui-block-c" style="display: none">
+                <a href="pointMallItemInfo.html" data-ajax="false">
+                    <div class="ui-bar ui-body-d" style="height: 180px; border-top:none; text-align:center">
+                        <div><img class="image po_list_img" src="images/unnamed.gif"></div>
+                        <div class="sell_store"></div>
+                        <div class="name" style="font-size:16px; font-weight:bold"></div>
+                        <div>P:<b class="amount" style="color:#F30"></b></div>
+                    </div>
+                </a>
+            </div>
+            <div id="best_seller_3" class="best_seller ui-block-a" style="display: none">
+                <a href="pointMallItemInfo.html" data-ajax="false">
+                    <div class="ui-bar ui-body-d" style="height: 180px; border-top:none; text-align:center">
+                        <div><img class="image po_list_img" src="images/unnamed.gif"></div>
+                        <div class="sell_store"></div>
+                        <div class="name" style="font-size:16px; font-weight:bold"></div>
+                        <div>P:<b class="amount" style="color:#F30"></b></div>
+                    </div>
+                </a>
+            </div>
+            <div id="best_seller_4" class="best_seller ui-block-b" style="display: none">
+                <a href="pointMallItemInfo.html" data-ajax="false">
+                    <div class="ui-bar ui-body-d" style="height: 180px; border-top:none; text-align:center">
+                        <div><img class="image po_list_img" src="images/unnamed.gif"></div>
+                        <div class="sell_store"></div>
+                        <div class="name" style="font-size:16px; font-weight:bold"></div>
+                        <div>P:<b class="amount" style="color:#F30"></b></div>
+                    </div>
+                </a>
+            </div>
+            <div id="best_seller_5" class="best_seller ui-block-c" style="display: none">
+                <a href="pointMallItemInfo.html" data-ajax="false">
+                    <div class="ui-bar ui-body-d" style="height: 180px; border-top:none; text-align:center">
+                        <div><img class="image po_list_img" src="images/unnamed.gif"></div>
+                        <div class="sell_store"></div>
+                        <div class="name" style="font-size:16px; font-weight:bold"></div>
+                        <div>P:<b class="amount" style="color:#F30"></b></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!-- /grid-c -->
+        <div style="background:#446EA6; padding:10px;  border-top:2px solid #5F6670; margin-top:15px; color:#FFF">상품 <b class="total" style="color:#FF0"></b>개</div>
+        <div class="ui-grid-b">
+            <div id="food" item_type="32" class="category ui-block-a">
+                <a href="pointMallItemList.html" data-ajax="false">
+                    <div class="ui-bar ui-body-d" style="height: 130px; border-top:none; text-align:center; background:#F6F1E8">
+                        <div><img src="images/pointmall01.png"></div>
+                        <div style="font-size:16px; font-weight:bold">음료&외식</div>
+                        <div><b class="count" style="color:#09F"></b>개</div>
+                    </div>
+                </a>
+            </div>
+            <div id="culture" item_type="31" class="category ui-block-b">
+                <a href="pointMallItemList.html" data-ajax="false">
+                    <div class="ui-bar ui-body-d" style="height: 130px; border-top:none; text-align:center; background:#EAEED0">
+                        <div><img src="images/pointmall02.png"></div>
+                        <div style="font-size:16px; font-weight:bold">생활&문화</div>
+                        <div><b class="count" style="color:#09F"></b>개</div>
+                    </div>
+                </a>
+            </div>
+            <div id="cash" item_type="3" class="category ui-block-c">
+                <a href="pointMallItemList.html" data-ajax="false">
+                    <div class="ui-bar ui-body-d" style="height: 130px; border-top:none; text-align:center; background:#E7EEF9">
+                        <div><img src="images/pointmall03.png"></div>
+                        <div style="font-size:16px; font-weight:bold">현금</div>
+                        <div><b class="count" style="color:#09F"></b>개</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!-- /grid-c -->
+    </div>
+    <!-- content end -->
+
+    <script src="js/pointMall.js"></script>
+</div>
+<!-- page end -->
+<script type="text/javascript">
+//<![CDATA[
+try{
+    document.addEventListener("deviceready", onDeviceReady, false);       
+    function onDeviceReady() {           
+    //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+    }       
+    function alertCallback(){
+    }
+}
+catch(e) { }       
+//]]>
+</script>
+</body>
+</html>

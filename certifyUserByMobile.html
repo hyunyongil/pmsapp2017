@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>온패널</title>
+    <script type="text/javascript" src="js/header.js"></script>
+</head>
+<body>
+
+<!-- page begin -->
+<div id="certifyUserByMobile_page" data-role="page" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">인증하기</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+    </div>
+    <!-- header end -->
+
+    <!-- content begin -->
+    <div data-role="content" class="jqm-content">
+    	<div class="padding15 bg_w box_shadow">
+    		<ul class="form_ul">
+    			<li class="first_li">    
+    				<input type="text" name="name" id="name" value="" placeholder="이름">				
+    			</li>
+    			<li>    
+                            <input type="text" name="birthday" id="birthday" value="" placeholder="생년월일 (예:'19700101')">
+    			</li>
+    			<li>    
+                        <fieldset data-role="controlgroup" data-mini="true" data-type="horizontal">
+                            <input name="gender" id="gender-a" type="radio" checked="checked" value="1">
+                            <label for="gender-a">남</label>
+                            <input name="gender" id="gender-b" type="radio" value="0">
+                            <label for="gender-b">여</label>
+                        </fieldset>	
+    			</li>
+    			<li>    
+                        <fieldset data-role="controlgroup" data-mini="true" data-type="horizontal">
+                            <input name="nation" id="nation-c" type="radio" checked="checked" value="1">
+                            <label for="nation-c">내국인</label>
+                            <input name="nation" id="nation-d" type="radio" value="2">
+                            <label for="nation-d">외국인</label>
+                        </fieldset>			
+    			</li>
+    			<li>    
+    				<div class="ui-grid-solo">
+                        <div class="ui-block-a">
+                            <select name="tel_com_cd" id="tel_com_cd" data-native-menu="false">
+                                <option value="01">SKT</option>
+                                <option value="02">KT</option>
+                                <option value="03">LGU+</option>
+                                <option value="04">알뜰폰SKT</option>
+                                <option value="05">알뜰폰KT</option>
+                                <option value="06">알뜰폰LGU+</option>
+                            </select>
+                        </div>
+                    </div>
+               </li>
+               <li>
+                    <div class="ui-grid-solo"  style="padding:0 5px">
+                        <div class="ui-block-a">
+                            <input type="text" name="mbphn_no" id="mbphn_no" value="" placeholder="핸드폰번호">
+                        </div>
+                    </div>
+                </li>
+               <li>
+                    <div class="ui-grid-solo">
+                        <div class="ui-block-a">
+                            <a href="#" id="request_cert_num" data-role="button" data-theme="b">인증번호 요청</a>
+                        </div>
+                    </div>			
+    			</li>
+    			<li>    
+    				<input type="text" name="cert_num" id="cert_num" value="" placeholder="인증번호">			
+    			</li>
+    		</ul>
+    	</div>
+        
+        <a href="#" data-ajax="false">
+            <button id="certify" type="button" data-theme="b" data-icon="check">확인</button>
+        </a>
+    </div>
+    <!-- content end -->
+
+    <script src="js/certifyUserByMobile.js"></script>
+</div>
+<!-- page end -->
+
+</body>
+</html>

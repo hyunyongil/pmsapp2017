@@ -1,0 +1,2104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>온패널</title>
+    <script src="js/header.js"></script>
+    <script type="text/javascript" src="js/rsea-tool.js"></script>
+    <script src="js/rest.js"></script>
+    <script src="js/common-poll.js"></script>
+    <script src="js/common-power.js"></script>
+    <script src="js/common-power-poll.js"></script>
+    <script src="js/powerPollLi.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            readyPowerPoll();
+
+            $('.top_back_btn').on('click',function (e) {
+                e.preventDefault();
+
+                try{
+                    document.addEventListener('deviceready', function() {
+                        navigator.notification.confirm("파워 설문을 종료하시겠습니까?", function(index) {
+                            if(index == 1) {
+                                location.href = 'powerPanel.html';
+                            }
+                        }, '확인',"확인,취소");
+
+                    }, true);
+                }
+                catch(e) {
+                    if(confirm("퍼스트 설문을 종료하시겠습니까?")) {
+                        location.href = 'powerPanel.html';
+                    }
+                }
+            });
+
+        })
+    </script>
+</head>
+<body>
+
+<div data-role="page" id="01_01" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 컴퓨터/인터넷을 어떤 목적으로 이용하는지 모두 선택하여 주십시오. (다중응답)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="checkbox" name="lf_internet_purpose" id="lf_internet_purpose_2" value="2"/>
+                            <label for="lf_internet_purpose_2">업무</label>
+                            <input type="checkbox" name="lf_internet_purpose" id="lf_internet_purpose_4" value="4"/>
+                            <label for="lf_internet_purpose_4">웹서핑/정보검색</label>
+                            <input type="checkbox" name="lf_internet_purpose" id="lf_internet_purpose_8" value="8"/>
+                            <label for="lf_internet_purpose_8">게임</label>
+                            <input type="checkbox" name="lf_internet_purpose" id="lf_internet_purpose_16" value="16"/>
+                            <label for="lf_internet_purpose_16">SNS(채팅, 블로그, 유투브 등)</label>
+                            <input type="checkbox" name="lf_internet_purpose" id="lf_internet_purpose_32" value="32"/>
+                            <label for="lf_internet_purpose_32">동영상 강의 시청</label>
+                            <input type="checkbox" name="lf_internet_purpose" id="lf_internet_purpose_64" value="64"/>
+                            <label for="lf_internet_purpose_64">TV나 영화 등 시청</label>
+                            <input type="checkbox" name="lf_internet_purpose" id="lf_internet_purpose_128" value="128"/>
+                            <label for="lf_internet_purpose_128">쇼핑</label>
+
+                            <input type="checkbox" name="lf_internet_purpose" id="lf_internet_purpose_256" value="256">
+                            <label for="lf_internet_purpose_256" class="label-margin0">
+                                <div class="ui-block-a" style="width:18%;line-height:36px;">
+                                    기타
+                                </div>
+                                <div class="ui-block-b" style="width:82%;">
+                                    <input type="text" name="lf_internet_purpose_memo" id="lf_internet_purpose_memo" value=""  style="padding: 0; height: 34px;" data-enter-reject>
+                                </div>
+                            </label>
+                            <!--
+                            <div>
+                                <input type="checkbox" name="lf_internet_purpose" id="lf_internet_purpose_256" value="256">
+                                <label for="lf_internet_purpose_256" class="label-margin0">
+
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a" style="width:auto; line-height:36px; margin-right:15px"> 기타</div>
+
+                                    </div>
+                                </label>
+
+                                <div class="padding15">
+                                        <input type="text" name="lf_internet_purpose_memo" id="lf_internet_purpose_memo" value="" data-enter-reject>
+                                </div>
+                            </div>
+                            -->
+
+                            <input type="checkbox" name="lf_internet_purpose" id="lf_internet_purpose_512" value="512"/>
+                            <label for="lf_internet_purpose_512">해당없음</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a"><a href="powerPanel.html" rel="external">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_02" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_02" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 주로 이용하시는 웹 브라우저를 모두 선택하여 주십시오. (다중응답)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="checkbox" name="lf_browser_type" id="lf_browser_type_2" value="2"/>
+                            <label for="lf_browser_type_2">익스플로러</label>
+                            <input type="checkbox" name="lf_browser_type" id="lf_browser_type_4" value="4"/>
+                            <label for="lf_browser_type_4">크롬</label>
+                            <input type="checkbox" name="lf_browser_type" id="lf_browser_type_8" value="8"/>
+                            <label for="lf_browser_type_8">파이어폭스</label>
+                            <input type="checkbox" name="lf_browser_type" id="lf_browser_type_16" value="16"/>
+                            <label for="lf_browser_type_16">오페라</label>
+                            <input type="checkbox" name="lf_browser_type" id="lf_browser_type_32" value="32"/>
+                            <label for="lf_browser_type_32">사파리</label>
+
+                            <input type="checkbox" name="lf_browser_type" id="lf_browser_type_64" value="64">
+                            <label for="lf_browser_type_64" class="label-margin0">
+                                <div class="ui-block-a" style="width:18%;line-height:36px;">
+                                    기타
+                                </div>
+                                <div class="ui-block-b" style="width:82%;">
+                                    <input type="text" name="lf_browser_type_memo" id="lf_browser_type_memo" value=""  style="padding: 0; height: 34px;" data-enter-reject>
+                                </div>
+                            </label>
+                            <!--
+                            <div>
+                                <input type="checkbox" name="lf_browser_type" id="lf_browser_type_64" value="64">
+                                <label for="lf_browser_type_64" class="label-margin0">
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a" style="width:auto; line-height:36px; margin-right:15px"> 기타</div>
+
+                                    </div>
+                                </label>
+
+                                <div class="padding15">
+                                        <input type="text" name="lf_browser_type_memo" id="lf_browser_type_memo" value="" data-enter-reject>
+                                </div>
+                            </div>
+                            -->
+
+                            <input type="checkbox" name="lf_browser_type" id="lf_browser_type_128" value="128"/>
+                            <label for="lf_browser_type_128">해당없음</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_01" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_03" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_03" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 선호하시는 게임 종류를 모두 선택하여 주십시오. (다중응답)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="checkbox" name="lf_game_type" id="lf_game_type_2" value="2"/>
+                            <label for="lf_game_type_2"> 롤플레잉</label>
+                            <input type="checkbox" name="lf_game_type" id="lf_game_type_4" value="4"/>
+                            <label for="lf_game_type_4">스프츠</label>
+                            <input type="checkbox" name="lf_game_type" id="lf_game_type_8" value="8"/>
+                            <label for="lf_game_type_8">슈팅</label>
+                            <input type="checkbox" name="lf_game_type" id="lf_game_type_16" value="16"/>
+                            <label for="lf_game_type_16">액션</label>
+                            <input type="checkbox" name="lf_game_type" id="lf_game_type_32" value="32"/>
+                            <label for="lf_game_type_32">시뮬레이션</label>
+                            <input type="checkbox" name="lf_game_type" id="lf_game_type_64" value="64"/>
+                            <label for="lf_game_type_64">아케이드</label>
+                            <input type="checkbox" name="lf_game_type" id="lf_game_type_128" value="128"/>
+                            <label for="lf_game_type_128">레이싱</label>
+                            <input type="checkbox" name="lf_game_type" id="lf_game_type_256" value="256"/>
+                            <label for="lf_game_type_256">어드벤처</label>
+
+                            <input type="checkbox" name="lf_game_type" id="lf_game_type_512" value="512">
+                            <label for="lf_game_type_512" class="label-margin0">
+                                <div class="ui-block-a" style="width:18%;line-height:36px;">
+                                    기타
+                                </div>
+                                <div class="ui-block-b" style="width:82%;">
+                                    <input type="text" name="lf_game_type_memo" id="lf_game_type_memo" value=""  style="padding: 0; height: 34px;" data-enter-reject>
+                                </div>
+                            </label>
+                            <!--
+                            <div>
+                                <input type="checkbox" name="lf_game_type" id="lf_game_type_512" value="512">
+                                <label for="lf_game_type_512" class="label-margin0">
+
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a" style="width:auto; line-height:36px; margin-right:15px"> 기타</div>
+
+                                    </div>
+                                </label>
+
+                                <div class="padding15">
+                                        <input type="text" name="lf_game_type_memo" id="lf_game_type_memo" value="" data-enter-reject>
+                                </div>
+                            </div>
+                            -->
+
+                            <input type="checkbox" name="lf_game_type" id="lf_game_type_1024" value="1024"/>
+                            <label for="lf_game_type_1024">해당없음</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_02" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_04" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_04" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하는 건강을 위해 규칙적으로 운동을 하십니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="lf_health_yn" id="radio-choice-v-2a" value="Y">
+                            <label for="radio-choice-v-2a">예</label>
+                            <input type="radio" name="lf_health_yn" id="radio-choice-v-2b" value="N">
+                            <label for="radio-choice-v-2b">아니오</label>
+
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_03" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_05" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_05" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 하시는 운동이 어떻게 되십니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+
+                            <input type="radio" name="lf_health_type" id="radio-choice-v-2a" value="weight">
+                            <label for="radio-choice-v-2a">무산소 운동</label>
+                            <input type="radio" name="lf_health_type" id="radio-choice-v-2b" value="run">
+                            <label for="radio-choice-v-2b">유산소 운동</label>
+                            <input type="radio" name="lf_health_type" id="radio-choice-v-2c" value="weightrun">
+                            <label for="radio-choice-v-2c">유산소 운동과 무산소 운동 병행</label>
+                            <input type="radio" name="lf_health_type" id="radio-choice-v-2d" value="nothing">
+                            <label for="radio-choice-v-2d">해당없음</label>
+
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_04" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_06" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_06" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하의 흡연여부는 어떻게 되십니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="lf_smoking" id="radio-choice-v-2a" value="past">
+                            <label for="radio-choice-v-2a">과거에 흡연/현재 금연 중</label>
+                            <input type="radio" name="lf_smoking" id="radio-choice-v-2b" value="ing">
+                            <label for="radio-choice-v-2b">현재 흡연중</label>
+                            <input type="radio" name="lf_smoking" id="radio-choice-v-2c" value="no">
+                            <label for="radio-choice-v-2c"> 비흡연</label>
+
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_05" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_07" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_07" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서는 금연하신지 몇 개월 되셨습니까?</div>
+                <div class="poll_a_list" style="margin-top:10px;">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <div class="ui-block-a" style="width:50%;"><input name="lf_nosmoking_month" id="number-pattern" type="number" pattern="[0-99]*" value=""></div>
+                            <div class="ui-block-b" style="width:auto; line-height:54px; margin-left:15px">
+                                개월
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_06" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_08" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_08" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서는 음주를 하십니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="lf_drinking" id="radio-choice-v-2a" value="Y">
+                            <label for="radio-choice-v-2a">예</label>
+                            <input type="radio" name="lf_drinking" id="radio-choice-v-2b" value="N">
+                            <label for="radio-choice-v-2b">아니오</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_07" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_09" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_09" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 선호하는 술의 종류를 모두 선택하여 주십시오. (다중응답)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="checkbox" name="lf_drinking_type" id="drinking_2" value="2"/>
+                            <label for="drinking_2"> 막걸리</label>
+                            <input type="checkbox" name="lf_drinking_type" id="drinking_4" value="4"/>
+                            <label for="drinking_4">청주</label>
+                            <input type="checkbox" name="lf_drinking_type" id="drinking_8" value="8"/>
+                            <label for="drinking_8">포도주</label>
+                            <input type="checkbox" name="lf_drinking_type" id="drinking_16" value="16"/>
+                            <label for="drinking_16">맥주</label>
+                            <input type="checkbox" name="lf_drinking_type" id="drinking_32" value="32"/>
+                            <label for="drinking_32">소주</label>
+                            <input type="checkbox" name="lf_drinking_type" id="drinking_64" value="64"/>
+                            <label for="drinking_64">꼬냑</label>
+                            <input type="checkbox" name="lf_drinking_type" id="drinking_128" value="128"/>
+                            <label for="drinking_128">고량주</label>
+                            <input type="checkbox" name="lf_drinking_type" id="drinking_256" value="256"/>
+                            <label for="drinking_256">위스키</label>
+                            <input type="checkbox" name="lf_drinking_type" id="drinking_512" value="512"/>
+                            <label for="drinking_512">보드카</label>
+
+                            <input type="checkbox" name="lf_drinking_type" id="drinking_1024" value="1024">
+                            <label for="drinking_1024" class="label-margin0">
+                                <div class="ui-block-a" style="width:18%;line-height:36px;">
+                                    기타
+                                </div>
+                                <div class="ui-block-b" style="width:82%;">
+                                    <input type="text" name="lf_drinking_type_memo" id="lf_drinking_type_memo" value=""  style="padding: 0; height: 34px;" data-enter-reject>
+                                </div>
+                            </label>
+                            <!--
+                            <div>
+                                <input type="checkbox" name="lf_drinking_type" id="drinking_1024" value="1024">
+                                <label for="drinking_1024" style="border-bottom:0px;" class="label-margin0">
+
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a" style="width:auto; line-height:36px; margin-right:15px"> 기타</div>
+
+                                    </div>
+                                </label>
+
+                                <div class="padding15">
+                                        <input type="text" name="lf_drinking_type_memo" id="lf_drinking_type_memo" value="" data-enter-reject>
+                                </div>
+                            </div>
+                            -->
+
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_08" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_10" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_10" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서는 최근 3년 이내에 해외 여행 경험이 있으십니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="lf_lecent_travel" id="radio-choice-v-2a" value="Y">
+                            <label for="radio-choice-v-2a">예</label>
+                            <input type="radio" name="lf_lecent_travel" id="radio-choice-v-2b" value="N">
+                            <label for="radio-choice-v-2b">아니오</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_09" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_11" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_11" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 최근 3년 이내에 해외여행 중 방문 했던 나라를 모두 선택하여 주십시오. (다중응답)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="checkbox" name="lf_travel_country" id="travel_2" value="2"/>
+                            <label for="travel_2"> 북아메리카(미국, 캐나다 등)</label>
+                            <input type="checkbox" name="lf_travel_country" id="travel_4" value="4"/>
+                            <label for="travel_4">남아메리카(아르헨티나, 칠레 등)</label>
+                            <input type="checkbox" name="lf_travel_country" id="travel_8" value="8"/>
+                            <label for="travel_8">동유럽(체코, 헝가리 등)</label>
+                            <input type="checkbox" name="lf_travel_country" id="travel_16" value="16"/>
+                            <label for="travel_16">서유럽(프랑스, 영국 등)</label>
+                            <input type="checkbox" name="lf_travel_country" id="travel_32" value="32"/>
+                            <label for="travel_32">아시아(러시아, 중국, 일본 등)</label>
+                            <input type="checkbox" name="lf_travel_country" id="travel_64" value="64"/>
+                            <label for="travel_64">동남아시아(인도, 태국, 필리핀 등)</label>
+                            <input type="checkbox" name="lf_travel_country" id="travel_128" value="128"/>
+                            <label for="travel_128">오세아니아(호주, 뉴질랜드 등)</label>
+                            <input type="checkbox" name="lf_travel_country" id="travel_256" value="256"/>
+                            <label for="travel_256">아프리카(가나, 가봉 등)</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_10" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_12" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_12" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 선호하시는 레저를 모두 선택하여 주십시오. (다중응답)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="checkbox" name="lf_leisure_type" id="lf_leisure_type_2" value="2"/>
+                            <label for="lf_leisure_type_2"> 등산</label>
+                            <input type="checkbox" name="lf_leisure_type" id="lf_leisure_type_4" value="4"/>
+                            <label for="lf_leisure_type_4">낚시</label>
+                            <input type="checkbox" name="lf_leisure_type" id="lf_leisure_type_8" value="8"/>
+                            <label for="lf_leisure_type_8">캠핑</label>
+                            <input type="checkbox" name="lf_leisure_type" id="lf_leisure_type_16" value="16"/>
+                            <label for="lf_leisure_type_16">골프</label>
+                            <input type="checkbox" name="lf_leisure_type" id="lf_leisure_type_32" value="32"/>
+                            <label for="lf_leisure_type_32">자전거</label>
+                            <input type="checkbox" name="lf_leisure_type" id="lf_leisure_type_64" value="64"/>
+                            <label for="lf_leisure_type_64">인라인,킥보드,스케이트</label>
+                            <input type="checkbox" name="lf_leisure_type" id="lf_leisure_type_128" value="128"/>
+                            <label for="lf_leisure_type_128">헬스</label>
+                            <input type="checkbox" name="lf_leisure_type" id="lf_leisure_type_256" value="256"/>
+                            <label for="lf_leisure_type_256">요가,다이어트,댄스</label>
+                            <input type="checkbox" name="lf_leisure_type" id="lf_leisure_type_512" value="512"/>
+                            <label for="lf_leisure_type_512">라켓스포츠(베드민턴, 테니스 등)</label>
+                            <input type="checkbox" name="lf_leisure_type" id="lf_leisure_type_1024" value="1024"/>
+                            <label for="lf_leisure_type_1024">구기스포츠(야구, 축구, 농구, 배구 등)</label>
+                            <input type="checkbox" name="lf_leisure_type" id="lf_leisure_type_2048" value="2048"/>
+                            <label for="lf_leisure_type_2048">육상스포츠(런닝, 마라톤 등)</label>
+                            <input type="checkbox" name="lf_leisure_type" id="lf_leisure_type_4096" value="4096"/>
+                            <label for="lf_leisure_type_4096">격투스포츠(복싱, 태권도 등)</label>
+                            <input type="checkbox" name="lf_leisure_type" id="lf_leisure_type_8192" value="8192"/>
+                            <label for="lf_leisure_type_8192">수영, 수상레저, 스킨스쿠버</label>
+                            <input type="checkbox" name="lf_leisure_type" id="lf_leisure_type_16384" value="16384"/>
+                            <label for="lf_leisure_type_16384">여행</label>
+
+                            <input type="checkbox" name="lf_leisure_type" id="lf_leisure_type_32768" value="32768">
+                            <label for="lf_leisure_type_32768" class="label-margin0">
+                                <div class="ui-block-a" style="width:18%;line-height:36px;">
+                                    기타
+                                </div>
+                                <div class="ui-block-b" style="width:82%;">
+                                    <input type="text" name="lf_leisure_type_memo" id="lf_leisure_type_memo" value=""  style="padding: 0; height: 34px;" data-enter-reject>
+                                </div>
+                            </label>
+                            <!--
+                            <div>
+                                <input type="checkbox" name="lf_leisure_type" id="lf_leisure_type_32768" value="32768">
+                                <label for="lf_leisure_type_32768" class="label-margin0">
+
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a" style="width:auto; line-height:36px; margin-right:15px"> 기타</div>
+
+                                    </div>
+                                </label>
+
+                                <div class="padding15">
+                                        <input type="text" name="lf_leisure_type_memo" id="lf_leisure_type_memo" value="" data-enter-reject>
+                                </div>
+                            </div>
+                            -->
+
+                            <input type="checkbox" name="lf_leisure_type" id="lf_leisure_type_65536" value="65536"/>
+                            <label for="lf_leisure_type_65536">해당없음</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_11" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_13" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+<div data-role="page" id="01_13" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서는 평소 즐겨보는 스포츠(직접관람, TV관람 등)를 모두 선택하여 주십시오. (다중응답)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="checkbox" name="lf_sport_view" id="lf_sport_view_2" value="2"/>
+                            <label for="lf_sport_view_2"> 골프</label>
+                            <input type="checkbox" name="lf_sport_view" id="lf_sport_view_4" value="4"/>
+                            <label for="lf_sport_view_4">야구</label>
+                            <input type="checkbox" name="lf_sport_view" id="lf_sport_view_8" value="8"/>
+                            <label for="lf_sport_view_8">축구</label>
+                            <input type="checkbox" name="lf_sport_view" id="lf_sport_view_16" value="16"/>
+                            <label for="lf_sport_view_16">농구</label>
+                            <input type="checkbox" name="lf_sport_view" id="lf_sport_view_32" value="32"/>
+                            <label for="lf_sport_view_32">배구</label>
+                            <input type="checkbox" name="lf_sport_view" id="lf_sport_view_64" value="64"/>
+                            <label for="lf_sport_view_64">볼링</label>
+                            <input type="checkbox" name="lf_sport_view" id="lf_sport_view_128" value="128"/>
+                            <label for="lf_sport_view_128">겨울스포츠(스키, 스노우보드 등)</label>
+                            <input type="checkbox" name="lf_sport_view" id="lf_sport_view_256" value="256"/>
+                            <label for="lf_sport_view_256">수상스포츠</label>
+                            <input type="checkbox" name="lf_sport_view" id="lf_sport_view_512" value="512"/>
+                            <label for="lf_sport_view_512">무예/격투기(UFC, 권투, 프로레스링 등)</label>
+                            <input type="checkbox" name="lf_sport_view" id="lf_sport_view_2048" value="1024"/>
+                            <label for="lf_sport_view_2048">테니스</label>
+                            <input type="checkbox" name="lf_sport_view" id="lf_sport_view_4096" value="4096"/>
+                            <label for="lf_sport_view_4096">당구</label>
+                            <input type="checkbox" name="lf_sport_view" id="lf_sport_view_8192" value="8192"/>
+                            <label for="lf_sport_view_8192">베드민턴</label>
+                            <input type="checkbox" name="lf_sport_view" id="lf_sport_view_16384" value="16384"/>
+                            <label for="lf_sport_view_16384">탁구</label>
+
+                            <input type="checkbox" name="lf_sport_view" id="lf_sport_view_32768" value="32768">
+                            <label for="lf_sport_view_32768" class="label-margin0">
+                                <div class="ui-block-a" style="width:18%;line-height:36px;">
+                                    기타
+                                </div>
+                                <div class="ui-block-b" style="width:82%;">
+                                    <input type="text" name="lf_sport_view_memo" id="lf_sport_view_memo" value=""  style="padding: 0; height: 34px;" data-enter-reject>
+                                </div>
+                            </label>
+                            <!--
+                            <div>
+                                <input type="checkbox" name="lf_sport_view" id="lf_sport_view_32768" value="32768">
+                                <label for="lf_sport_view_32768" class="label-margin0">
+
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a" style="width:auto; line-height:36px; margin-right:15px"> 기타</div>
+
+                                    </div>
+                                </label>
+
+                                <div class="padding15">
+                                        <input type="text" name="lf_sport_view_memo" id="lf_sport_view_memo" value="" data-enter-reject>
+                                </div>
+                            </div>
+                            -->
+
+                            <input type="checkbox" name="lf_sport_view" id="lf_sport_view_65536" value="65536"/>
+                            <label for="lf_sport_view_65536">해당없음</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_12" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_14" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_14" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서는 직접 참여하시는 스포츠 활동을 모두 선택하여 주십시오. (다중응답)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="checkbox" name="lf_sport_play" id="lf_sport_play_2" value="2"/>
+                            <label for="lf_sport_play_2"> 골프</label>
+                            <input type="checkbox" name="lf_sport_play" id="lf_sport_play_4" value="4"/>
+                            <label for="lf_sport_play_4">야구</label>
+                            <input type="checkbox" name="lf_sport_play" id="lf_sport_play_8" value="8"/>
+                            <label for="lf_sport_play_8">축구</label>
+                            <input type="checkbox" name="lf_sport_play" id="lf_sport_play_16" value="16"/>
+                            <label for="lf_sport_play_16">농구</label>
+                            <input type="checkbox" name="lf_sport_play" id="lf_sport_play_32" value="32"/>
+                            <label for="lf_sport_play_32">배구</label>
+                            <input type="checkbox" name="lf_sport_play" id="lf_sport_play_64" value="64"/>
+                            <label for="lf_sport_play_64">볼링</label>
+                            <input type="checkbox" name="lf_sport_play" id="lf_sport_play_128" value="128"/>
+                            <label for="lf_sport_play_128">겨울스포츠(스키, 스노우보드 등)</label>
+                            <input type="checkbox" name="lf_sport_play" id="lf_sport_play_256" value="256"/>
+                            <label for="lf_sport_play_256">수상스포츠</label>
+                            <input type="checkbox" name="lf_sport_play" id="lf_sport_play_512" value="512"/>
+                            <label for="lf_sport_play_512">무예/격투기(UFC, 권투, 프로레스링 등)</label>
+                            <input type="checkbox" name="lf_sport_play" id="lf_sport_play_1024" value="1024"/>
+                            <label for="lf_sport_play_1024">테니스</label>
+                            <input type="checkbox" name="lf_sport_play" id="lf_sport_play_2048" value="2048"/>
+                            <label for="lf_sport_play_2048">당구</label>
+                            <input type="checkbox" name="lf_sport_play" id="lf_sport_play_4096" value="4096"/>
+                            <label for="lf_sport_play_4096">베드민턴</label>
+                            <input type="checkbox" name="lf_sport_play" id="lf_sport_play_8192" value="8192"/>
+                            <label for="lf_sport_play_8192">탁구</label>
+
+                            <input type="checkbox" name="lf_sport_play" id="lf_sport_play_16384" value="16384">
+                            <label for="lf_sport_play_16384" class="label-margin0">
+                                <div class="ui-block-a" style="width:18%;line-height:36px;">
+                                    기타
+                                </div>
+                                <div class="ui-block-b" style="width:82%;">
+                                    <input type="text" name="lf_sport_play_memo" id="lf_sport_play_memo" value=""  style="padding: 0; height: 34px;" data-enter-reject>
+                                </div>
+                            </label>
+                            <!--
+                            <div>
+                                <input type="checkbox" name="lf_sport_play" id="lf_sport_play_16384" value="16384">
+                                <label for="lf_sport_play_16384" class="label-margin0">
+
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a" style="width:auto; line-height:36px; margin-right:15px"> 기타</div>
+
+                                    </div>
+                                </label>
+
+                                <div class="padding15">
+                                        <input type="text" name="lf_sport_play_memo" id="lf_sport_play_memo" value="" data-enter-reject>
+                                </div>
+                            </div>
+                            -->
+
+                            <input type="checkbox" name="lf_sport_play" id="lf_sport_play_32768" value="32768"/>
+                            <label for="lf_sport_play_32768">해당없음</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_13" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_15" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+<div data-role="page" id="01_15" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 선호하시는 공연의 종류를 모두 선택하여 주십시오. (다중응답)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="checkbox" name="lf_like_concert" id="lf_like_concert_2" value="2"/>
+                            <label for="lf_like_concert_2"> 뮤지컬</label>
+                            <input type="checkbox" name="lf_like_concert" id="lf_like_concert_4" value="4"/>
+                            <label for="lf_like_concert_4">오페라</label>
+                            <input type="checkbox" name="lf_like_concert" id="lf_like_concert_8" value="8"/>
+                            <label for="lf_like_concert_8">영화</label>
+                            <input type="checkbox" name="lf_like_concert" id="lf_like_concert_16" value="16"/>
+                            <label for="lf_like_concert_16">연극</label>
+                            <input type="checkbox" name="lf_like_concert" id="lf_like_concert_32" value="32"/>
+                            <label for="lf_like_concert_32">콘서트</label>
+                            <input type="checkbox" name="lf_like_concert" id="lf_like_concert_64" value="64"/>
+                            <label for="lf_like_concert_64">마술쇼</label>
+                            <input type="checkbox" name="lf_like_concert" id="lf_like_concert_128" value="128"/>
+                            <label for="lf_like_concert_128">전시회</label>
+                            <input type="checkbox" name="lf_like_concert" id="lf_like_concert_256" value="256"/>
+                            <label for="lf_like_concert_256">음악회/연주회</label>
+
+                            <input type="checkbox" name="lf_like_concert" id="lf_like_concert_512" value="512">
+                            <label for="lf_like_concert_512" class="label-margin0">
+                                <div class="ui-block-a" style="width:18%;line-height:36px;">
+                                    기타
+                                </div>
+                                <div class="ui-block-b" style="width:82%;">
+                                    <input type="text" name="lf_like_concert_memo" id="lf_like_concert_memo" value=""  style="padding: 0; height: 34px;" data-enter-reject>
+                                </div>
+                            </label>
+                            <!--
+                            <div>
+                                <input type="checkbox" name="lf_like_concert" id="lf_like_concert_512" value="512">
+                                <label for="lf_like_concert_512" class="label-margin0">
+
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a" style="width:auto; line-height:36px; margin-right:15px"> 기타</div>
+
+                                    </div>
+                                </label>
+
+                                <div class="padding15">
+                                        <input type="text" name="lf_like_concert_memo" id="lf_like_concert_memo" value="" data-enter-reject>
+                                </div>
+                            </div>
+                            -->
+
+                            <input type="checkbox" name="lf_like_concert" id="lf_like_concert_1024" value="1024"/>
+                            <label for="lf_like_concert_1024">해당없음</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_14" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_16" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_16" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 선호하시는 영화 장르를 모두 선택하여 주십시오. (다중응답)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_2" value="2"/>
+                            <label for="lf_like_movie_2"> 액션</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_4" value="4"/>
+                            <label for="lf_like_movie_4">어드벤처</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_8" value="8"/>
+                            <label for="lf_like_movie_8">느와르</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_16" value="16"/>
+                            <label for="lf_like_movie_16">웨스턴</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_32" value="32"/>
+                            <label for="lf_like_movie_32">범죄</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_64" value="64"/>
+                            <label for="lf_like_movie_64">무협</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_128" value="128"/>
+                            <label for="lf_like_movie_128">SF</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_256" value="256"/>
+                            <label for="lf_like_movie_256">스릴러</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_512" value="512"/>
+                            <label for="lf_like_movie_512">미스터리</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_1024" value="1024"/>
+                            <label for="lf_like_movie_1024">호러</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_2048" value="2048"/>
+                            <label for="lf_like_movie_2048">전쟁</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_4096" value="4096"/>
+                            <label for="lf_like_movie_4096">애니메이션</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_8192" value="8192"/>
+                            <label for="lf_like_movie_8192">코미디</label>
+
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_16384" value="16384"/>
+                            <label for="lf_like_movie_16384">멜로/로맨스</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_32768" value="32768"/>
+                            <label for="lf_like_movie_32768">드라마</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_65536" value="65536"/>
+                            <label for="lf_like_movie_65536">아동</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_131072" value="131072"/>
+                            <label for="lf_like_movie_131072">가족영화</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_262144" value="262144"/>
+                            <label for="lf_like_movie_262144">판타지</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_524288" value="524288"/>
+                            <label for="lf_like_movie_524288">다큐멘터리</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_1048576" value="1048576"/>
+                            <label for="lf_like_movie_1048576">시대극</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_2097152" value="2097152"/>
+                            <label for="lf_like_movie_2097152">에로</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_4194304" value="4194304"/>
+                            <label for="lf_like_movie_4194304">종교</label>
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_8388608" value="8388608"/>
+                            <label for="lf_like_movie_8388608">로드무비</label>
+
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_16777216" value="16777216">
+                            <label for="lf_like_movie_16777216" class="label-margin0">
+                                <div class="ui-block-a" style="width:18%;line-height:36px;">
+                                    기타
+                                </div>
+                                <div class="ui-block-b" style="width:82%;">
+                                    <input type="text" name="lf_like_movie_memo" id="lf_like_movie_memo" value=""  style="padding: 0; height: 34px;" data-enter-reject>
+                                </div>
+                            </label>
+                            <!--
+                            <div>
+                                <input type="checkbox" name="lf_like_movie" id="lf_like_movie_16777216" value="16777216">
+                                <label for="lf_like_movie_16777216" class="label-margin0">
+
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a" style="width:auto; line-height:36px; margin-right:15px"> 기타</div>
+
+                                    </div>
+                                </label>
+
+                                <div class="padding15">
+                                        <input type="text" name="lf_like_movie_memo" id="lf_like_movie_memo" value="" data-enter-reject>
+                                </div>
+                            </div>
+                            -->
+
+
+                            <input type="checkbox" name="lf_like_movie" id="lf_like_movie_33554432" value="33554432"/>
+                            <label for="lf_like_movie_33554432">해당없음</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_15" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_17" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_17" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 선호 하시는 음악 장르를 모두 선택하여 주십시오. (다중응답)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_2" value="2"/>
+                            <label for="lf_life_music_2"> 발라드</label>
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_4" value="4"/>
+                            <label for="lf_life_music_4">댄스</label>
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_8" value="8"/>
+                            <label for="lf_life_music_8">힙합</label>
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_16" value="16"/>
+                            <label for="lf_life_music_16">R&B</label>
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_32" value="32"/>
+                            <label for="lf_life_music_32">일렉트로닉</label>
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_64" value="64"/>
+                            <label for="lf_life_music_64">락/메탈</label>
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_128" value="128"/>
+                            <label for="lf_life_music_128">재즈</label>
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_256" value="256"/>
+                            <label for="lf_life_music_256">인디</label>
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_512" value="512"/>
+                            <label for="lf_life_music_512">트로트</label>
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_1024" value="1024"/>
+                            <label for="lf_life_music_1024">POP</label>
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_2048" value="2048"/>
+                            <label for="lf_life_music_2048">OST</label>
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_4096" value="4096"/>
+                            <label for="lf_life_music_4096">클래식</label>
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_8192" value="8192"/>
+                            <label for="lf_life_music_8192">월드뮤직</label>
+
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_16384" value="16384"/>
+                            <label for="lf_life_music_16384">CCM</label>
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_32768" value="32768"/>
+                            <label for="lf_life_music_32768">J-POP</label>
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_65536" value="65536"/>
+                            <label for="lf_life_music_65536">동요</label>
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_131072" value="131072"/>
+                            <label for="lf_life_music_131072">국악</label>
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_262144" value="262144"/>
+                            <label for="lf_life_music_262144">뉴에이지</label>
+
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_524288" value="524288">
+                            <label for="lf_life_music_524288" class="label-margin0">
+                                <div class="ui-block-a" style="width:18%;line-height:36px;">
+                                    기타
+                                </div>
+                                <div class="ui-block-b" style="width:82%;">
+                                    <input type="text" name="lf_life_music_memo" id="lf_life_music_memo" value=""  style="padding: 0; height: 34px;" data-enter-reject>
+                                </div>
+                            </label>
+                            <!--
+                            <div>
+                                <input type="checkbox" name="lf_life_music" id="lf_life_music_524288" value="524288">
+                                <label for="lf_life_music_524288" class="label-margin0">
+
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a" style="width:auto; line-height:36px; margin-right:15px"> 기타</div>
+
+                                    </div>
+                                </label>
+
+                                <div class="padding15">
+                                        <input type="text" name="lf_like_movie_memo" id="lf_like_movie_memo" value="" data-enter-reject>
+                                </div>
+                            </div>
+                            -->
+
+                            <input type="checkbox" name="lf_life_music" id="lf_life_music_1048576" value="1048576"/>
+                            <label for="lf_life_music_1048576">해당없음</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_16" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_18" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_18" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서는 다룰 줄 아는 악기를 모두 선택하여 주십시오. (다중응답)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_2" value="2"/>
+                            <label for="lf_instrument_2"> 어쿠스틱기타</label>
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_4" value="4"/>
+                            <label for="lf_instrument_4">클래식기타</label>
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_8" value="8"/>
+                            <label for="lf_instrument_8">일렉트릭기타</label>
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_16" value="16"/>
+                            <label for="lf_instrument_16">베이스기타</label>
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_32" value="32"/>
+                            <label for="lf_instrument_32">바이올린</label>
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_64" value="64"/>
+                            <label for="lf_instrument_64">비올라</label>
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_128" value="128"/>
+                            <label for="lf_instrument_128">첼로</label>
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_256" value="256"/>
+                            <label for="lf_instrument_256">콘트라베이스</label>
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_512" value="512"/>
+                            <label for="lf_instrument_512">플롯</label>
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_1024" value="1024"/>
+                            <label for="lf_instrument_1024">클라리넷</label>
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_2048" value="2048"/>
+                            <label for="lf_instrument_2048">오보에</label>
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_4096" value="4096"/>
+                            <label for="lf_instrument_4096">색소폰</label>
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_8192" value="8192"/>
+                            <label for="lf_instrument_8192">트럼펫</label>
+
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_16384" value="16384"/>
+                            <label for="lf_instrument_16384">피아노/키보드</label>
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_32768" value="32768"/>
+                            <label for="lf_instrument_32768">아코디언</label>
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_65536" value="65536"/>
+                            <label for="lf_instrument_65536">드럼</label>
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_131072" value="131072"/>
+                            <label for="lf_instrument_131072">우크렐라</label>
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_262144" value="262144"/>
+                            <label for="lf_instrument_262144">하모니카</label>
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_524288" value="524288"/>
+                            <label for="lf_instrument_524288">국악기(거문고, 꽹가리, 장구 등)</label>
+
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_1048576" value="1048576">
+                            <label for="lf_instrument_1048576" class="label-margin0">
+                                <div class="ui-block-a" style="width:18%;line-height:36px;">
+                                    기타
+                                </div>
+                                <div class="ui-block-b" style="width:82%;">
+                                    <input type="text" name="lf_instrument_memo" id="lf_instrument_memo" value=""  style="padding: 0; height: 34px;" data-enter-reject>
+                                </div>
+                            </label>
+                            <!--
+                            <div>
+                                <input type="checkbox" name="lf_instrument" id="lf_instrument_1048576" value="1048576">
+                                <label for="lf_instrument_1048576" class="label-margin0">
+
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a" style="width:auto; line-height:36px; margin-right:15px"> 기타</div>
+
+                                    </div>
+                                </label>
+
+                                <div class="padding15">
+                                        <input type="text" name="lf_instrument_memo" id="lf_instrument_memo" value="" data-enter-reject>
+                                </div>
+                            </div>
+                            -->
+
+                            <input type="checkbox" name="lf_instrument" id="lf_instrument_2097152" value="2097152"/>
+                            <label for="lf_instrument_2097152">해당없음</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_17" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_19" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_19" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 관심 있는 패션 악세서리를 모두 선택하여 주십시오. (다중응답)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="checkbox" name="lf_like_accessories" id="lf_like_accessories_2" value="2"/>
+                            <label for="lf_like_accessories_2"> 모자</label>
+                            <input type="checkbox" name="lf_like_accessories" id="lf_like_accessories_4" value="4"/>
+                            <label for="lf_like_accessories_4">시계</label>
+                            <input type="checkbox" name="lf_like_accessories" id="lf_like_accessories_8" value="8"/>
+                            <label for="lf_like_accessories_8">귀걸이</label>
+                            <input type="checkbox" name="lf_like_accessories" id="lf_like_accessories_16" value="16"/>
+                            <label for="lf_like_accessories_16">목걸이</label>
+                            <input type="checkbox" name="lf_like_accessories" id="lf_like_accessories_32" value="32"/>
+                            <label for="lf_like_accessories_32">반지</label>
+                            <input type="checkbox" name="lf_like_accessories" id="lf_like_accessories_64" value="64"/>
+                            <label for="lf_like_accessories_64">팔찌</label>
+                            <input type="checkbox" name="lf_like_accessories" id="lf_like_accessories_128" value="128"/>
+                            <label for="lf_like_accessories_128">신발</label>
+                            <input type="checkbox" name="lf_like_accessories" id="lf_like_accessories_256" value="256"/>
+                            <label for="lf_like_accessories_256">구두</label>
+                            <input type="checkbox" name="lf_like_accessories" id="lf_like_accessories_512" value="512"/>
+                            <label for="lf_like_accessories_512">가방</label>
+                            <input type="checkbox" name="lf_like_accessories" id="lf_like_accessories_1024" value="1024"/>
+                            <label for="lf_like_accessories_1024">피어싱</label>
+
+                            <input type="checkbox" name="lf_like_accessories" id="lf_like_accessories_2048" value="2048">
+                            <label for="lf_like_accessories_2048" class="label-margin0">
+                                <div class="ui-block-a" style="width:18%;line-height:36px;">
+                                    기타
+                                </div>
+                                <div class="ui-block-b" style="width:82%;">
+                                    <input type="text" name="lf_like_accessories_memo" id="lf_like_accessories_memo" value=""  style="padding: 0; height: 34px;" data-enter-reject>
+                                </div>
+                            </label>
+                            <!--
+                            <div>
+                                <input type="checkbox" name="lf_like_accessories" id="lf_like_accessories_2048" value="2048">
+                                <label for="lf_like_accessories_2048" class="label-margin0">
+
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a" style="width:auto; line-height:36px; margin-right:15px"> 기타</div>
+
+                                    </div>
+                                </label>
+
+                                <div class="padding15">
+                                        <input type="text" name="lf_like_accessories_memo" id="lf_like_accessories_memo" value="" data-enter-reject>
+                                </div>
+                            </div>
+                            -->
+
+
+                            <input type="checkbox" name="lf_like_accessories" id="lf_like_accessories_4096" value="4096"/>
+                            <label for="lf_like_accessories_4096">해당없음</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_18" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_20" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_20" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서는 명품 패션브랜드 물품을 한 번이라도 구입하신 경험이 있으십니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="lf_masterpiece" id="radio-choice-v-2a" value="Y">
+                            <label for="radio-choice-v-2a">예</label>
+                            <input type="radio" name="lf_masterpiece" id="radio-choice-v-2b" value="N">
+                            <label for="radio-choice-v-2b">아니오</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_19" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_21" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_21" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 구입하셨거나 선호하시는 명품 패션브랜드를 모두 선택하여 주십시오. (다중응답)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="checkbox" name="lf_like_brand" id="brand_2" value="2"/>
+                            <label for="brand_2"> 루이비통(Louis Vuitton)</label>
+                            <input type="checkbox" name="lf_like_brand" id="brand_4" value="4"/>
+                            <label for="brand_4">에르메스(Hermes)</label>
+                            <input type="checkbox" name="lf_like_brand" id="brand_8" value="8"/>
+                            <label for="brand_8">구찌(Gucci)</label>
+                            <input type="checkbox" name="lf_like_brand" id="brand_16" value="16"/>
+                            <label for="brand_16">프라다(PRADA)</label>
+                            <input type="checkbox" name="lf_like_brand" id="brand_32" value="32"/>
+                            <label for="brand_32">로렉스(ROLEX)</label>
+                            <input type="checkbox" name="lf_like_brand" id="brand_64" value="64"/>
+                            <label for="brand_64">샤넬(CHANEL)</label>
+                            <input type="checkbox" name="lf_like_brand" id="brand_128" value="128"/>
+                            <label for="brand_128">까르띠에(Cartier)</label>
+                            <input type="checkbox" name="lf_like_brand" id="brand_256" value="256"/>
+                            <label for="brand_256">버버리(BURBERRY)</label>
+                            <input type="checkbox" name="lf_like_brand" id="brand_512" value="512"/>
+                            <label for="brand_512">펜디(FENDI)</label>
+                            <input type="checkbox" name="lf_like_brand" id="brand_1024" value="1024"/>
+                            <label for="brand_1024">코치(COACH)</label>
+                            <input type="checkbox" name="lf_like_brand" id="brand_2048" value="2048"/>
+                            <label for="brand_2048">디올(Dior)</label>
+                            <input type="checkbox" name="lf_like_brand" id="brand_4096" value="4096"/>
+                            <label for="brand_4096">불가리(Bvlgari)</label>
+                            <input type="checkbox" name="lf_like_brand" id="brand_8192" value="8192"/>
+                            <label for="brand_8192">휴고보스(HUGO BOSS)</label>
+
+                            <input type="checkbox" name="lf_like_brand" id="brand_16384" value="16384"/>
+                            <label for="brand_16384">돌체앤가바나(Dolce & Gabbana)</label>
+                            <input type="checkbox" name="lf_like_brand" id="brand_32768" value="32768"/>
+                            <label for="brand_32768">조르지오알마니(Giorgio Armani)</label>
+                            <input type="checkbox" name="lf_like_brand" id="brand_65536" value="65536"/>
+                            <label for="brand_65536">베르사체(Versace)</label>
+                            <input type="checkbox" name="lf_like_brand" id="brand_131072" value="131072"/>
+                            <label for="brand_131072">페라가모(Ferragamo)</label>
+                            <input type="checkbox" name="lf_like_brand" id="brand_262144" value="262144"/>
+                            <label for="brand_262144">셀린느(CELINE)</label>
+                            <input type="checkbox" name="lf_like_brand" id="brand_524288" value="524288"/>
+                            <label for="brand_524288">입생로랑(Yves Saint Laurent)</label>
+
+                            <input type="checkbox" name="lf_like_brand" id="brand_1048576" value="1048576"/>
+                            <label for="brand_1048576"> 티파니(Tiffany)</label>
+
+                            <input type="checkbox" name="lf_like_brand" id="brand_2097152" value="2097152">
+                            <label for="brand_2097152" class="label-margin0">
+                                <div class="ui-block-a" style="width:18%;line-height:36px;">
+                                    기타
+                                </div>
+                                <div class="ui-block-b" style="width:82%;">
+                                    <input type="text" name="lf_like_brand_memo" id="lf_like_brand_memo" value=""  style="padding: 0; height: 34px;" data-enter-reject>
+                                </div>
+                            </label>
+                            <!--
+                            <div>
+                                <input type="checkbox" name="lf_like_brand" id="brand_2097152" value="2097152">
+                                <label for="brand_2097152" style="border-bottom:0px;" class="label-margin0">
+
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a" style="width:auto; line-height:36px; margin-right:15px"> 기타</div>
+
+                                    </div>
+                                </label>
+
+                                <div class="padding15">
+                                        <input type="text" name="lf_like_brand_memo" id="lf_like_brand_memo" value="" data-enter-reject>
+                                </div>
+                            </div>
+                            -->
+
+
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_20" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_22" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_22" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서는 미용을 위한 성형 경험이 있으십니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="lf_cosmetic_surgery_yn" id="radio-choice-v-2a" value="Y">
+                            <label for="radio-choice-v-2a">예</label>
+                            <input type="radio" name="lf_cosmetic_surgery_yn" id="radio-choice-v-2b" value="N">
+                            <label for="radio-choice-v-2b">아니오</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_21" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_23" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_23" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 미용을 위한 성형 경험이 있으신 부위를 모두 선택하여 주십시오. (다중응답)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="checkbox" name="lf_cosmetic_surgery" id="cosmetic_2" value="2"/>
+                            <label for="cosmetic_2"> 지방흡입</label>
+                            <input type="checkbox" name="lf_cosmetic_surgery" id="cosmetic_4" value="4"/>
+                            <label for="cosmetic_4">눈</label>
+                            <input type="checkbox" name="lf_cosmetic_surgery" id="cosmetic_8" value="8"/>
+                            <label for="cosmetic_8">코</label>
+                            <input type="checkbox" name="lf_cosmetic_surgery" id="cosmetic_16" value="16"/>
+                            <label for="cosmetic_16">가슴</label>
+                            <input type="checkbox" name="lf_cosmetic_surgery" id="cosmetic_32" value="32"/>
+                            <label for="cosmetic_32">턱</label>
+                            <input type="checkbox" name="lf_cosmetic_surgery" id="cosmetic_64" value="64"/>
+                            <label for="cosmetic_64">광대뼈</label>
+                            <input type="checkbox" name="lf_cosmetic_surgery" id="cosmetic_128" value="128"/>
+                            <label for="cosmetic_128">볼</label>
+                            <input type="checkbox" name="lf_cosmetic_surgery" id="cosmetic_256" value="256"/>
+                            <label for="cosmetic_256">이마</label>
+                            <input type="checkbox" name="lf_cosmetic_surgery" id="cosmetic_512" value="512"/>
+                            <label for="cosmetic_512">치아교정</label>
+
+                            <input type="checkbox" name="lf_cosmetic_surgery" id="cosmetic_1024" value="1024">
+                            <label for="cosmetic_1024" class="label-margin0">
+                                <div class="ui-block-a" style="width:18%;line-height:36px;">
+                                    기타
+                                </div>
+                                <div class="ui-block-b" style="width:82%;">
+                                    <input type="text" name="lf_cosmetic_surgery_memo" id="lf_cosmetic_surgery_memo" value=""  style="padding: 0; height: 34px;" data-enter-reject>
+                                </div>
+                            </label>
+                            <!--
+                            <div>
+                                <input type="checkbox" name="lf_cosmetic_surgery" id="cosmetic_1024" value="1024">
+                                <label for="cosmetic_1024" style="border-bottom:0px;" class="label-margin0">
+
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a" style="width:auto; line-height:36px; margin-right:15px"> 기타</div>
+
+                                    </div>
+                                </label>
+
+                                <div class="padding15">
+                                        <input type="text" name="lf_cosmetic_surgery_memo" id="lf_cosmetic_surgery_memo" value="" data-enter-reject>
+                                </div>
+                            </div>
+                            -->
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_22" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_24" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_24" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서는 미용을 위한 다이어트 경험이 있으십니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="lf_diet_yn" id="radio-choice-v-2a" value="Y">
+                            <label for="radio-choice-v-2a">예</label>
+                            <input type="radio" name="lf_diet_yn" id="radio-choice-v-2b" value="N">
+                            <label for="radio-choice-v-2b">아니오</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_23" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_25" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_25" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 시도하신 다이어트 방법을 모두 선택하여 주십시오. (다중응답)</div>
+                <div class="poll_a_list">
+                    <form>
+
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="checkbox" name="lf_diet_try" id="lf_diet_try_2" value="2"/>
+                            <label for="lf_diet_try_2">운동</label>
+                            <input type="checkbox" name="lf_diet_try" id="lf_diet_try_4" value="4"/>
+                            <label for="lf_diet_try_4">식이조절</label>
+                            <input type="checkbox" name="lf_diet_try" id="lf_diet_try_8" value="8"/>
+                            <label for="lf_diet_try_8">수술요법</label>
+                            <input type="checkbox" name="lf_diet_try" id="lf_diet_try_16" value="16"/>
+                            <label for="lf_diet_try_16">다이어트 약품 또는 식품</label>
+
+                            <input type="checkbox" name="lf_diet_try" id="lf_diet_try_32" value="32">
+                            <label for="lf_diet_try_32" class="label-margin0">
+                                <div class="ui-block-a" style="width:18%;line-height:36px;">
+                                    기타
+                                </div>
+                                <div class="ui-block-b" style="width:82%;">
+                                    <input type="text" name="lf_diet_try_memo" id="lf_diet_try_memo" value=""  style="padding: 0; height: 34px;" data-enter-reject>
+                                </div>
+                            </label>
+                            <!--
+                            <div>
+                                <input type="checkbox" name="lf_diet_try" id="lf_diet_try_32" value="32">
+                                <label for="lf_diet_try_32" style="border-bottom:0px;" class="label-margin0">
+
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a" style="width:auto; line-height:36px; margin-right:15px"> 기타</div>
+
+                                    </div>
+                                </label>
+
+                                <div class="padding15">
+                                        <input type="text" name="lf_diet_try_memo" id="lf_diet_try_memo" value="" data-enter-reject>
+                                </div>
+                            </div>
+                            -->
+
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_24" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_26" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_26" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 이용 경험이 있는 미용 관련 서비스를 모두 선택하여 주십시오. (다중응답)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="checkbox" name="lf_beauty_service" id="lf_beauty_service_2" value="2"/>
+                            <label for="lf_beauty_service_2"> 이용 경험이 없다</label>
+                            <input type="checkbox" name="lf_beauty_service" id="lf_beauty_service_4" value="4"/>
+                            <label for="lf_beauty_service_4">헤어</label>
+                            <input type="checkbox" name="lf_beauty_service" id="lf_beauty_service_8" value="8"/>
+                            <label for="lf_beauty_service_8">피부</label>
+                            <input type="checkbox" name="lf_beauty_service" id="lf_beauty_service_16" value="16"/>
+                            <label for="lf_beauty_service_16">메이크업</label>
+                            <input type="checkbox" name="lf_beauty_service" id="lf_beauty_service_32" value="32"/>
+                            <label for="lf_beauty_service_32">네일아트</label>
+                            <input type="checkbox" name="lf_beauty_service" id="lf_beauty_service_64" value="64"/>
+                            <label for="lf_beauty_service_64">마사지</label>
+                            <input type="checkbox" name="lf_beauty_service" id="lf_beauty_service_128" value="128"/>
+                            <label for="lf_beauty_service_128">속눈썹 연장</label>
+                            <input type="checkbox" name="lf_beauty_service" id="lf_beauty_service_256" value="256"/>
+                            <label for="lf_beauty_service_256">문신(눈썹, 아이라인 등)</label>
+                            <input type="checkbox" name="lf_beauty_service" id="lf_beauty_service_512" value="512"/>
+                            <label for="lf_beauty_service_512">반영구화장 시술</label>
+
+                            <input type="checkbox" name="lf_beauty_service" id="beauty_1024" value="1024">
+                            <label for="beauty_1024" class="label-margin0">
+                                <div class="ui-block-a" style="width:18%;line-height:36px;">
+                                    기타
+                                </div>
+                                <div class="ui-block-b" style="width:82%;">
+                                    <input type="text" name="lf_beauty_service_memo" id="lf_beauty_service_memo" value=""  style="padding: 0; height: 34px;" data-enter-reject>
+                                </div>
+                            </label>
+                            <!--
+                            <div>
+                                <input type="checkbox" name="lf_beauty_service" id="beauty_1024" value="1024">
+                                <label for="beauty_1024" style="border-bottom:0px;" class="label-margin0">
+
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a" style="width:auto; line-height:36px; margin-right:15px"> 기타</div>
+
+                                    </div>
+                                </label>
+
+                                <div class="padding15">
+                                        <input type="text" name="lf_beauty_surgery_memo" id="lf_beauty_surgery_memo" value="" data-enter-reject>
+                                </div>
+                            </div>
+                            -->
+
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_25" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_27" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_27" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 사용하는 화장품을 모두 선택하여 주십시오. (다중응답)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="checkbox" name="lf_use_cosmetic" id="lf_use_cosmetic_2" value="2"/>
+                            <label for="lf_use_cosmetic_2"> 사용하지 않는다</label>
+                            <input type="checkbox" name="lf_use_cosmetic" id="lf_use_cosmetic_4" value="4"/>
+                            <label for="lf_use_cosmetic_4">기초화장품(스킨, 로션 등)</label>
+                            <input type="checkbox" name="lf_use_cosmetic" id="lf_use_cosmetic_8" value="8"/>
+                            <label for="lf_use_cosmetic_8">색조화장품(비비크림, 아이쉐도우, 립스틱 등)</label>
+                            <input type="checkbox" name="lf_use_cosmetic" id="lf_use_cosmetic_16" value="16"/>
+                            <label for="lf_use_cosmetic_16">기능성화장품(미백, 주름, 노화방지 등)</label>
+                            <input type="checkbox" name="lf_use_cosmetic" id="lf_use_cosmetic_32" value="32"/>
+                            <label for="lf_use_cosmetic_32">천연화장품</label>
+                            <input type="checkbox" name="lf_use_cosmetic" id="lf_use_cosmetic_64" value="64"/>
+                            <label for="lf_use_cosmetic_64">네일화장품(손톱에센스, 메니큐어 등)</label>
+                            <input type="checkbox" name="lf_use_cosmetic" id="lf_use_cosmetic_128" value="128"/>
+                            <label for="lf_use_cosmetic_128">모발용화장품(왁스,젤, 헤어에센스 등)</label>
+                            <input type="checkbox" name="lf_use_cosmetic" id="lf_use_cosmetic_256" value="256"/>
+                            <label for="lf_use_cosmetic_256">면도용화장품(쉐이빙 크림 등)</label>
+                            <input type="checkbox" name="lf_use_cosmetic" id="lf_use_cosmetic_512" value="512"/>
+                            <label for="lf_use_cosmetic_512">방향용화장품(향수, 샤워코롱 등)</label>
+                            <input type="checkbox" name="lf_use_cosmetic" id="lf_use_cosmetic_1024" value="1024"/>
+                            <label for="lf_use_cosmetic_1024">바디용화장품(바디로션, 오일 등)</label>
+
+
+                            <!--<div>-->
+                                <input type="checkbox" name="lf_use_cosmetic" id="use_cosmetic_2048" value="2048">
+                                <label for="use_cosmetic_2048" style="border-bottom:0px;" class="label-margin0">
+
+                                    <div class="ui-grid-a">
+                                        <div class="ui-block-a" style="width:auto; line-height:36px; margin-right:15px"> 기타 화장품(폼클렌저, 팩 등)</div>
+
+                                    </div>
+                                    <div style="padding: 0px 15px 15px 0px;">
+                                        <input type="text" name="lf_use_cosmetic_etc" id="lf_use_cosmetic_etc" value="" data-enter-reject>
+                                    </div>
+                                </label>
+
+
+                            <!--</div>-->
+
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_26" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#power-complete" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+<style>
+    #power-complete .ui-panel-content-wrap{background-color:white;}
+</style>
+<!-- page complete -->
+<div data-role="page" id="power-complete" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">라이프 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <div class="end_sur_div"><div class="img_div"></div><p>파워패널 설문에 참여해 주셔서 대단히 감사합니다.</p></div>
+        <div class="etc_btn" onclick="location.href='home.html';" data-ajax="false">참여완료</div>
+    </div>
+
+
+</div>
+<!-- /page19 -->
+<script type="text/javascript">
+
+    $('.poll_a_list > form > fieldset > input').on('change',function(){
+        $(this).focus();
+        if($(this).next().find('input').length){
+            $(this).next().find('input').focus();
+        }
+    });
+
+    //<![CDATA[
+    try{
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+        }
+        function alertCallback(){
+        }
+    }
+    catch(e) { }
+    //]]>
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>온패널</title>
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <script type="text/javascript" src="js/header.js"></script>
+</head>
+<body>
+<!-- page begin -->
+<div id="findMemberPwResult_page" data-role="page" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">비밀번호 찾기</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+    </div>
+    <!-- header end -->
+
+    <!-- content begin -->
+    <div data-role="content" class="jqm-content">
+    	<div class="bg_w box_shadow">
+            <div class="box_title">비밀번호를 재설정 하십시오.</div>
+            <div class="padding15">
+                <ul class="form_ul">
+                    <li class="first_li">
+                        <input type="password" name="frm_member_pwd" id="frm_member_pwd" maxlength="20" placeholder="비밀번호 입력"/>
+                    </li>
+                    <li>
+                        <input type="password" name="frm_member_pwd_c" id="frm_member_pwd_c" maxlength="20" placeholder="비밀번호 재입력"/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="find_btns">
+            <a href="javascript:;" id="clickFindAction" class="a_btn_ok">확인</a>
+            <a href="javascript:;" id="clickFindBack" class="a_btn_back">돌아가기</a>
+        </div>
+    </div>
+    <!-- content end -->
+
+    <script src="js/findMemberPwResult.js"></script>
+</div>
+<!-- page end -->
+<script type="text/javascript">
+//<![CDATA[
+try{
+    document.addEventListener("deviceready", onDeviceReady, false);       
+    function onDeviceReady() {           
+    //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+    }       
+    function alertCallback(){
+    }
+}
+catch(e) { }       
+//]]>
+</script>
+</body>
+</html>

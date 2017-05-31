@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>이벤트</title>
+    <script type="text/javascript" src="js/header.js"></script>
+</head>
+<body>
+
+
+<style type="text/css">
+    ul{
+        padding: 0px;
+    }
+    ul, li {
+        list-style: none;
+    }
+    .box_shadow {box-shadow:none !important;}
+    .board_table {
+        width: 96%;
+        height: auto;
+        margin: 15px auto;
+        background: #fff;
+        padding: 10px;
+        box-sizing: border-box;
+        font-family: 'Nanum Gothic', sans-serif;
+    }
+
+    .board_table .t_img img {
+        width: 100%;
+    }
+
+    .board_table ul {
+        width: 100%;
+        border-top: 2px solid #7c7b80;
+    }
+
+    .board_off li {
+        float: left;
+        margin-top: 15px;
+        vertical-align: top;
+        margin-bottom: 30px;
+    }
+
+    .board_off li:first-child {
+        width: 30%;
+        margin-right: 4%;
+    }
+
+    .board_off li:first-child img {
+        width: 100%;
+    }
+
+    .board_off p {
+        font-size: 14px;
+        font-weight: bold;
+        color: #454545;
+        margin: 0 0 10px 0;
+    }
+
+    .board_off p b {
+        display: inline-block;
+        width: 45px;
+        vertical-align: top;
+        color: #718f17;
+    }
+
+    .board_off p span {
+        display: inline-block;
+        width: 70%;
+    }
+
+    .board_off .bt_txt {
+        width: 100%;
+        height: auto;
+        max-height: 68px;
+        font-size: 11px;
+        color: #999;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        padding: 10px 15px;
+        margin: 10px 0 5px;
+        line-height: 16px;
+    }
+
+    .board_off .bt_btn span {
+        display: block;
+        float: left;
+        font-size: 11px;
+        color: #999;
+        padding: 0 0 0 5px;
+        vertical-align: top;
+    }
+
+    .board_off .bt_btn a {
+        display: block;
+        float: right;
+        width: 90px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: #fff !important;
+        background: #2a177b;
+        font-size: 10px;
+    }
+
+    .board_on li {
+        float: left;
+        margin-top: 15px;
+        vertical-align: top;
+        margin-bottom: 30px;
+    }
+
+    .board_on li img {
+        max-width: 100% !important;
+        margin-top: 10px;
+    }
+
+    .board_on p {
+        width: 100%;
+        font-size: 14px;
+        font-weight: bold;
+        color: #454545;
+        margin: 0;
+    }
+
+    .board_on p b {
+        display: inline-block;
+        width: 45px;
+        vertical-align: top;
+        color: #718f17;
+    }
+
+    .board_on p span {
+        display: inline-block;
+        width: 80%;
+    }
+
+    .board_on .bt_txt {
+        width: 100%;
+        height: auto;
+        font-size: 10px;
+        color: #999;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        padding: 20px 15px;
+        margin: 10px 0 5px;
+        line-height: 16px;
+    }
+
+    .board_on .bt_btn span {
+        display: block;
+        float: left;
+        font-size: 10px;
+        color: #999;
+        padding: 0 0 0 5px;
+        vertical-align: top;
+    }
+
+    .board_on .bt_btn a {
+        display: block;
+        float: right;
+        width: 90px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: #fff !important;
+        background: #2a177b;
+        font-size: 10px;
+    }
+</style>
+<style>
+    .ui-btn-inner {
+        padding: 0.8em 20px;
+    }
+
+    .board_off img {
+        max-width: 100% !important;
+    }
+</style>
+<!-- page begin -->
+<div id="event_page" data-role="page" class="wrap">
+    <div class="board_table">
+        <!-- 탑이미지 -->
+        <div class="t_img"><img src="images/m_img/event_top.jpg" align="absmiddle"></div>
+        <!-- //탑이미지 -->
+        <!-- panel begin -->
+        <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a"
+             jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+        <!-- panel end -->
+        <!-- header begin -->
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-transition="none">
+            <h1 class="mainTopLogo">이벤트</h1>
+            <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+            <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+        </div>
+        <!-- header end -->
+        <!-- content begin -->
+        <div id="list" data-role="collapsible-set" data-corners="false" data-theme="c" data-content-theme="d"
+             style="margin:0px;" class="bic_icon bg_w box_shadow ">
+        </div>
+        <!--<div class="ui-grid-solo notice-more">-->
+        <!--<div class="ui-block-a">-->
+        <!--<a href="#" class="more_list"><img src="images/moreList.png"></a>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!-- content end -->
+
+        <script src="js/event.js"></script>
+    </div>
+</div>
+<!-- page end -->
+<script type="text/javascript">
+    //<![CDATA[
+    try {
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+        }
+
+        function alertCallback() {
+        }
+    }
+    catch (e) {
+    }
+
+
+    //]]>
+</script>
+</body>
+</html>

@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>온패널</title>
+    <script src="js/header.js"></script>
+    <script type="text/javascript" src="js/rsea-tool.js"></script>
+    <script src="js/rest.js"></script>
+    <script src="js/common-poll.js"></script>
+    <script src="js/common-power.js"></script>
+    <script src="js/common-power-poll.js"></script>
+    <script src="js/powerPollSm.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            readyPowerPoll();
+
+            $('.top_back_btn').on('click',function (e) {
+                e.preventDefault();
+
+                try{
+                    document.addEventListener('deviceready', function() {
+                        navigator.notification.confirm("파워 설문을 종료하시겠습니까?", function(index) {
+                            if(index == 1) {
+                                location.href = 'powerPanel.html';
+                            }
+                        }, '확인',"확인,취소");
+
+                    }, true);
+                }
+                catch(e) {
+                    if(confirm("퍼스트 설문을 종료하시겠습니까?")) {
+                        location.href = 'powerPanel.html';
+                    }
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+
+<div data-role="page" id="01_01" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">스마트 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서는 스마트폰(갤럭시 노트 등)/태블릿PC(아이패드 등)를 보유하고 계십니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="sm_use_type" id="radio-choice-v-2a" value="SMART">
+                            <label for="radio-choice-v-2a">스마트폰만 이용</label>
+                            <input type="radio" name="sm_use_type" id="radio-choice-v-2b" value="TABLET">
+                            <label for="radio-choice-v-2b">태블릿PC만 이용</label>
+                            <input type="radio" name="sm_use_type" id="radio-choice-v-2c" value="SMART_TABLET">
+                            <label for="radio-choice-v-2c">스마트폰/태블릿PC 둘다 이용</label>
+                            <input type="radio" name="sm_use_type" id="radio-choice-v-2d" value="NOTHING">
+                            <label for="radio-choice-v-2d">아니오</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a"><a href="powerPanel.html" rel="external">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_02" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_02" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">스마트 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서는 스마트패널에 선정되셨습니다.
+                    다음 질문 사항에는 개인적인 내용이 포함되어 있습니다. 계속진행하시겠습니까?
+                </div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="sm_yn" id="radio-choice-v-2a" value="Y">
+                            <label for="radio-choice-v-2a">예</label>
+                            <input type="radio" name="sm_yn" id="radio-choice-v-2b" value="N">
+                            <label for="radio-choice-v-2b">아니오</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_01" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_03" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_03" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">스마트 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서는 IT/전자 기기가 출시되면 얼마 후에 구매하십니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="sm_release_date" id="radio-choice-v-2a" value="1">
+                            <label for="radio-choice-v-2a">출시된 이후 1개월 이내</label>
+                            <input type="radio" name="sm_release_date" id="radio-choice-v-2b" value="3">
+                            <label for="radio-choice-v-2b">출시된 이후 1개월에서 3개월 이내</label>
+                            <input type="radio" name="sm_release_date" id="radio-choice-v-2c" value="4">
+                            <label for="radio-choice-v-2c"> 출시된 이후 3개월 이상 지난 후</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_02" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_04" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_04" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">스마트 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 스마트 기기(스마트폰, 태블릿 PC 등)를 구입 후 사용한 기간은 얼마나 되십니까?<br>(가장 최근에 구입하신 것 기준으로 말씀하여 주십시오)</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="sm_use_date" id="radio-choice-v-2a" value="6">
+                            <label for="radio-choice-v-2a">6개월 미만</label>
+                            <input type="radio" name="sm_use_date" id="radio-choice-v-2b" value="12">
+                            <label for="radio-choice-v-2b">6개월 이상 ~ 1년 미만</label>
+                            <input type="radio" name="sm_use_date" id="radio-choice-v-2c" value="18">
+                            <label for="radio-choice-v-2c">1년 이상 ~ 1년 6개월 미만</label>
+                            <input type="radio" name="sm_use_date" id="radio-choice-v-2d" value="24">
+                            <label for="radio-choice-v-2d">1년 6개월 이상 ~ 2년 미만</label>
+                            <input type="radio" name="sm_use_date" id="radio-choice-v-2e" value="25">
+                            <label for="radio-choice-v-2e">2년 이상</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_03" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_05" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_05" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">스마트 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 사용하시는 스마트 기기(스마트폰, 태블릿 PC 등)로 인하여 A/S서비스센터를 방문하신 경험이 있으십니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="sm_as_yn" id="radio-choice-v-2a" value="Y">
+                            <label for="radio-choice-v-2a">예</label>
+                            <input type="radio" name="sm_as_yn" id="radio-choice-v-2b" value="N">
+                            <label for="radio-choice-v-2b">아니오</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_04" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_06" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_06" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">스마트 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서는 데이터 무제한 요금제를 이용하고 계십니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="sm_datafree_yn" id="radio-choice-v-2a" value="Y">
+                            <label for="radio-choice-v-2a">예</label>
+                            <input type="radio" name="sm_datafree_yn" id="radio-choice-v-2b" value="N">
+                            <label for="radio-choice-v-2b">아니오</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_05" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_07" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_07" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">스마트 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >한달 평균 스마트 기기(스마트폰, 태블릿 PC 등) 사용료(단말기/기기 요금 제외)는 얼마입니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="sm_price" id="radio-choice-v-2a" value="3">
+                            <label for="radio-choice-v-2a">3만원 미만</label>
+                            <input type="radio" name="sm_price" id="radio-choice-v-2b" value="5">
+                            <label for="radio-choice-v-2b">3만원 이상 ~ 5만원 미만</label>
+                            <input type="radio" name="sm_price" id="radio-choice-v-2c" value="7">
+                            <label for="radio-choice-v-2c">5만원 이상 ~ 7만원 미만</label>
+                            <input type="radio" name="sm_price" id="radio-choice-v-2d" value="10">
+                            <label for="radio-choice-v-2d">7만원 이상 ~ 10만원 미만</label>
+                            <input type="radio" name="sm_price" id="radio-choice-v-2e" value="15">
+                            <label for="radio-choice-v-2e">10만원 이상 ~ 15만원 미만</label>
+                            <input type="radio" name="sm_price" id="radio-choice-v-2f" value="16">
+                            <label for="radio-choice-v-2f">15만원 이상</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_06" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_08" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_08" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">스마트 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서 이용하시거나 이용 경험이 있는 어플리케이션을 모두 선택하여 주십시오.</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="checkbox" name="sm_use_app" id="sm_use_app_2" value="2">
+                            <label for="sm_use_app_2">건강/피트니트/의학</label>
+                            <input type="checkbox" name="sm_use_app" id="sm_use_app_4" value="4">
+                            <label for="sm_use_app_4">비즈니스/금융</label>
+                            <input type="checkbox" name="sm_use_app" id="sm_use_app_8" value="8">
+                            <label for="sm_use_app_8">사진 및 비디오</label>
+                            <input type="checkbox" name="sm_use_app" id="sm_use_app_16" value="16">
+                            <label for="sm_use_app_16">생산성/유틸리티/교육/참고</label>
+                            <input type="checkbox" name="sm_use_app" id="sm_use_app_32" value="32">
+                            <label for="sm_use_app_32">소셜네트워킹</label>
+                            <input type="checkbox" name="sm_use_app" id="sm_use_app_64" value="64">
+                            <label for="sm_use_app_64">엔터테인먼트/음악/게임/스포츠/여행</label>
+                            <input type="checkbox" name="sm_use_app" id="sm_use_app_128" value="128">
+                            <label for="sm_use_app_128">뉴스/도서</label>
+                            <input type="checkbox" name="sm_use_app" id="csm_use_app_256" value="256">
+                            <label for="csm_use_app_256">라이프스타일(맛집/쿠폰/날씨정보/네비게이션)</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_07" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_09" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_09" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">스마트 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >현재 어플리케이션의 보유수는 어떻게 되십니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="sm_app_cnt" id="radio-choice-v-2a" value="20">
+                            <label for="radio-choice-v-2a">20개 미만</label>
+                            <input type="radio" name="sm_app_cnt" id="radio-choice-v-2b" value="40">
+                            <label for="radio-choice-v-2b">20개 이상 ~ 40개 미만</label>
+                            <input type="radio" name="sm_app_cnt" id="radio-choice-v-2c" value="60">
+                            <label for="radio-choice-v-2c">40개 이상 ~ 60개 미만</label>
+                            <input type="radio" name="sm_app_cnt" id="radio-choice-v-2d" value="80">
+                            <label for="radio-choice-v-2d">60개 이상 ~ 80개 미만</label>
+                            <input type="radio" name="sm_app_cnt" id="radio-choice-v-2e" value="100">
+                            <label for="radio-choice-v-2e">80개 이상 ~ 100개 미만</label>
+                            <input type="radio" name="sm_app_cnt" id="radio-choice-v-2f" value="101">
+                            <label for="radio-choice-v-2f">100개 이상</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_08" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_10" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_10" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">스마트 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >한달 평균 유료 어플리케이션을 직접 구매하는 비용은 얼마나 되십니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="sm_app_money" id="radio-choice-v-2a" value="0">
+                            <label for="radio-choice-v-2a">유료어플 구매안함</label>
+                            <input type="radio" name="sm_app_money" id="radio-choice-v-2b" value="1">
+                            <label for="radio-choice-v-2b">1만원 미만</label>
+                            <input type="radio" name="sm_app_money" id="radio-choice-v-2c" value="3">
+                            <label for="radio-choice-v-2c">1만원 이상 ~ 3만원 미만</label>
+                            <input type="radio" name="sm_app_money" id="radio-choice-v-2d" value="5">
+                            <label for="radio-choice-v-2d">3만원 이상 ~ 5만원 미만</label>
+                            <input type="radio" name="sm_app_money" id="radio-choice-v-2e" value="10">
+                            <label for="radio-choice-v-2e">5만원 이상 ~ 10만원 미만</label>
+                            <input type="radio" name="sm_app_money" id="radio-choice-v-2f" value="11">
+                            <label for="radio-choice-v-2f">10만원 이상</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_09" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_11" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_11" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">스마트 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서는 타 기관에서 FGI(표적집단면접) 또는 심층 인터뷰에 참가한 경험이 있으십니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="sm_other_fgi_yn" id="radio-choice-v-2a" value="Y">
+                            <label for="radio-choice-v-2a">예</label>
+                            <input type="radio" name="sm_other_fgi_yn" id="radio-choice-v-2b" value="N">
+                            <label for="radio-choice-v-2b">아니오</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_10" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#01_12" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+
+
+<div data-role="page" id="01_12" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">스마트 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <ul data-role="listview" data-theme="c" data-inset="true" style="margin-bottom:30px;">
+            <li style=" background:#FFF; padding:0px; position:relative;">
+                <div class="poll_quest" >귀하께서는 추후에 FGI(표적집단면접) 또는 심층 인터뷰에 참가할 의향이 있으십니까?</div>
+                <div class="poll_a_list">
+                    <form>
+                        <fieldset data-role="controlgroup" class="ui-body-c ui-shadow table-stripe ">
+                            <input type="radio" name="sm_fgi_yn" id="radio-choice-v-2a" value="Y">
+                            <label for="radio-choice-v-2a">예</label>
+                            <input type="radio" name="sm_fgi_yn" id="radio-choice-v-2b" value="N">
+                            <label for="radio-choice-v-2b">아니오</label>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#01_11" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#power-complete" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page -->
+<style>
+    #power-complete .ui-panel-content-wrap{background-color:white;}
+</style>
+<!-- page complete -->
+<div data-role="page" id="power-complete" class="wrap">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">스마트 패널</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <div class="end_sur_div"><div class="img_div"></div><p>파워패널 설문에 참여해 주셔서 대단히 감사합니다.</p></div>
+        <div class="etc_btn" onclick="location.href='home.html';" data-ajax="false">참여완료</div>
+    </div>
+    <!--<div data-role="content" class="jqm-content">-->
+    <!--<div class="poll_quest">파워패널 설문에 참여해 주셔서 대단히 감사합니다.</div>-->
+    <!--<div class="poll_b_list">-->
+
+    <!--</div>-->
+    <!--<fieldset class="ui-grid-a">-->
+    <!--<div class="ui-block-a prev"><a href="#01_12" data-ajax="false">-->
+    <!--<button type="submit" data-theme="c">이전</button>-->
+    <!--</a></div>-->
+    <!--<div class="ui-block-b complete"><a href="powerPanel.html" data-ajax="false">-->
+    <!--<button type="submit" data-theme="b">완료</button>-->
+    <!--</a></div>-->
+    <!--</fieldset>-->
+    <!--</div>-->
+</div>
+<!-- /page19 -->
+<script type="text/javascript">
+    //<![CDATA[
+    try{
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+        }
+        function alertCallback(){
+        }
+    }
+    catch(e) { }
+    //]]>
+</script>
+</body>
+</html>

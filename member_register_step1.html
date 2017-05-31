@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" /> 
+<title>온패널</title>
+<script type="text/javascript" src="js/header.js"></script>
+<script type="text/javascript" src="js/jquery.ba-hashchange.min.js"></script>
+<link href="css/add_css.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<style>
+    .ui-body-c .ui-link,.ui-body-c .ui-link:visited, .ui-body-c .ui-link:hover{color:white !important;}
+</style>
+
+<div class="modal_root" id="modalRegisterAgree">
+    <div class="modal_wrap">
+        <div class="modal_header">
+            <h3>이용약관</h3>
+        </div>
+        <div class="modal_content">
+            <div class="yiyong">
+                <div class="yiyong_com">
+                    <h2>제1장. 총칙</h2>
+                    <h3>제1조. 목적</h3>
+                    <p>이 약관은 ㈜온솔커뮤니케이션(이하 회사)과 패널회원 가입자 간의 서비스 이용조건 및 절차에 관한 사항과 기타 필요 사항을 규정함을 목적으로 합니다.</p>
+                    <h3>제2조 효력의 발생 및 변경</h3>
+                    <p>(1) 약관은 이용자에게 온라인을 통하여 공시함으로써 효력을 발생합니다. </p>
+                    <p>(2) 회사는 영업상 중요 사유 또는 관계 법령에 의한 변경사유가 있을 때, 약관을 변경할 수 있으며, 변경된 약관은 전항과 같은 방법으로 효력을 발생합니다.</p>
+                    <h3>제3조. 약관 외 준칙</h3>
+                    <p>(1) 이 약관에 명시되지 않은 사항은 관계법령의 규정에 따릅니다.</p>
+                </div>
+                <div class="yiyong_com">
+                    <h2>제2장. 패널회원 가입과 서비스 이용</h2>
+                    <h3>제1조. 이용 계약의 성립</h3>
+                    <p>(1) 이용계약은 가입자의 약관내용에 대한 동의와 가입자의 이용 신청에 대한 회사의 이용 승낙으로 성립됩니다.</p>
+                    <p>(2) 이용계약은 가입 희망자가 회사가 요청하는 개인정보를 사실에 근거하여 성실히 제공했다고 인정될 때 성립됩니다.</p>
+                    <h3>제2조 서비스 이용</h3>
+                    <p>(1) 서비스의 이용은 연중무휴, 1일 24시간을 원칙으로 합니다. </p>
+                    <p>(2) 제1항의 이용시간은 정기점검 등의 필요로 인하여 회사가 정한 날 또는 시간은 그러하지 아니합니다.</p>
+                    <p>(3) 일부 서비스 이용 시 고객사가 의뢰한 내용에 적합하지 않다고 인정된 패널회원은 조사참여에 제한 받을 수 있습니다.</p>
+                </div>
+                <div class="yiyong_com">
+                    <h2>제3장. 의무 및 권리</h2>
+                    <h3>제1조 회사의 의무</h3>
+                    <p>(1) 회사는 이 약관에서 정한 바에 따라 계속적, 안정적으로 서비스를 제공할 의무가 있습니다. </p>
+                    <p>(2) 회사는 패널회원의 개인 신상 정보를 본인의 승낙 없이 타인에게 누설, 배포하여서는 아니 됩니다. 다만, 관계법령에 의하여 국가기관 등의 합법적인 요구가 있는 경우에는 그러하지 아니합니다 </p>
+                    <p>(3) 회사는 패널회원으로부터 제기되는 의견이나 불만이 정당하다고 인정할 경우에는 즉시 처리하여야 합니다. 다만, 즉시 처리가 곤란한 경우에는 패널회원에게 그 사유와 처리일정을 통보하여야 합니다.</p>
+                    <h3>제2조 패널회원의 의무</h3>
+                    <p>(1) 패널회원은 주민등록번호와 비밀 번호에 관한 모든 관리의 책임이 있습니다. </p>
+                    <p>(2) 자신의 주민등록번호가 부정하게 사용된 경우, 반드시 회사에 즉시 그 사실을 통보해야 합니다. </p>
+                    <p>(3) 패널회원은 회사가 실시하는 조사에 대하여 성실한 자세로 정확하게 응답하여야 합니다. </p>
+                    <p>(4) 패널회원은 이 약관 및 관계법령에서 규정한 사항을 준수하여야 합니다. </p>
+                    <h3>제 3조 패널회원의 권리</h3>
+                    <p>(1) 패널회원은 언제든지 이 약관에 대한 동의를 철회할 수 있습니다. </p>
+                    <p>(2) 패널회원은 언제든지 자신의 개인정보에 대한 열람을 요구할 수 있으며, 자신의 개인정보에 오류가 있는 경우 그 정정을 요구 할 수 있습니다.</p>
+                </div>
+                <div class="yiyong_com">
+                    <h2>제4장. 계약 변경 및 해지, 서비스 이용제한</h2>
+                    <h3>제 1조 계약 해지</h3>
+                    <p>(1) 패널회원은 개인정보 또는 이용계약 내용을 변경하거나, 이용 계약을 해지 하고자 하는 때에는 패널회원 본인이 회사가 정한 절차를 통해 변경/해지하여야 합니다.</p>
+                    <h3>제2조 이용제한</h3>
+                    <p>(1) 회사는 패널회원이 다음 각 호에 해당하는 사실이 발생했을 경우 사전 통지 또는 공지를 통해 이용 계약을 해지하거나 또는 기간을 정하여 서비스 이용을 중지할 수 있습니다. </p>
+                    <p>1) 회사가 제공하는 자원을 사용하여 공공 질서 및 사회적 통념에 반하는 행위를 하였을 때 </p>
+                    <p>2) 회사가 제공하는 자원을 사용하여 범죄적 행위에 관련된 행위를 하였을 때 </p>
+                    <p>3) 회사가 제공하는 자원을 사용하여 사회적 공익을 저해할 목적으로 서비스 이용을 계획 또는 실행하였을 때</p>
+                    <p>4) 타인의 서비스 주민등록번호 및 비밀 번호를 사용하였을 때</p>
+                    <p>5) 타인의 명예를 손상시키거나 불이익을 주는 행위를 하였을 때</p>
+                    <p>6) 같은 사람이 다른 주민등록번호로 이중 등록을 하였을 때</p>
+                    <p>7) 회사에서 요구하는 개인정보에 대해 허위임이 판명되었을 때</p>
+                    <p>8) 설문조사업무와 관련한 회원통보 후 설문에 3회 이상 불성실 응답한 사실이 판명되었을 때</p>
+                    <p>9) 개인정보의 우편, 전자메일, 전화 등의 모든 연락가능방법으로 연락이 불가할 때</p>
+                    <p>10) 추천적립금을 목적으로 단기간에 비정상적인 방법으로 다수의 패널회원의 추천을 받았을 때</p>
+                    <p>11) 기타 관련법령이나 회사가 정한 이용조건에 위배되는 행위를 하였을 때</p>
+                    <h3>제3조 계약해지와 이용 제한의 절차</h3>
+                    <p>(1) 회사는 약관에 의하여 이용제한을 하고자 하는 경우에는 그 사유, 일시 및 기간을 정하여 공지, 전자우편, 서면 또는 전화 등의 방법에 의하여 해당 패널회원 또는 대리인에게 통지합니다.</p>
+                    <p>(2) 제1항의 규정에 의하여 이용정지의 통지를 받은 패널회원 또는 그 대리인은 그 이용정지의 통지에 대하여 이의가 있을 때에는 이의신청을 할 수 있습니다.</p>
+                    <p>(3) 회사는 제2항의 규정에 의한 이의신청에 대하여 그 확인을 위한 기간까지 이용정지를 일시 연기할 수 있으며, 그 결과를 패널회원 또는 그 대리인에게 통지합니다.</p>
+                    <p>(4) 회사는 이용정지 기간 중에 그 이용정지 사유가 해소된 것이 확인된 경우에는 이용정지조치를 즉시 해제합니다.</p>
+                    <h3>제4조 게시물</h3>
+                    <p>(1) 회사는 회사가 제공하는 서비스의 이용자가 게시하거나 등록하는 내용물이 다음 각 호에 해당된다고 판단되는 경우에 사전 통지 없이 삭제할 수 있습니다. </p>
+                    <p>1) 다른 패널회원 또는 제 3자의 명예를 손상시키는 내용인 경우</p>
+                    <p>2) 국가의 안전을 위태롭게 하는 내용인 경우</p>
+                    <p>3) 공공의 안녕질서 및 미풍양속을 해치는 내용인 경우</p>
+                    <p>4) 국가의 경제질서를 파괴하거나 경제발전에 위해가 되는 내용인 경우</p>
+                    <p>5) 범죄행위 기타 법률에서 금지하는 내용인 경우</p>
+                    <p>6) 광고성 게시물을 무단 게재한 경우</p>
+                    <p>7) 기타 회사에서 정한 규정에 위배되는 경우</p>
+                </div>
+                <div class="yiyong_com">
+                    <h2>제5장. 손해배상</h2>
+                    <h3>제1조 손해배상</h3>
+                    <p>회사는 무료로 제공하는 서비스의 이용과 관련하여 개인정보보호정책에서 정하는 내용에 위반하지 않는 한 어떠한 손해도 책임을 지지 않습니다.</p>
+                    <h3>제2조 면책조항</h3>
+                    <p>1) 회사는 천재지변, 전쟁, 기간통신사업자의 서비스 중지 및 기타 이에 준하는 불가항력으로 인하여 서비스를 제공할 수 없는 경우에는 서비스 제공에 대한 책임이 면제됩니다. </p>
+                    <p>2) 회사는 서비스용 설비의 보수, 교체, 정기점검, 공사 등 부득이한 사유로 발생한 손해에 대한 책임이 면제됩니다. </p>
+                    <p>3) 회사는 회원의 컴퓨터 오류에 의해 손해가 발생한 경우, 또는 회원이 신상정보 및 전자우편 주소를 부실하게 기재하여 손해가 발생한 경우 책임을 지지 않습니다. </p>
+                    <p>4) 회사는 회원이 서비스를 이용하여 기대하는 수익을 얻지 못하거나 상실한 것에 대하여 책임을 지지 않으며, 서비스를 이용하면서 얻은 자료로 인한 손해에 대하여 책임을 지지 않습니다. </p>
+                    <p>5) 회사는 회원이 서비스에 게재한 각종 정보, 자료, 사실의 신뢰도, 정확성 등 내용에 대하여 책임을 지지 않으며, 회원 상호간 및 회원과 제 3자 상호 간에 서비스를 매개로 발생한 분쟁에 대해 개입할 의무가 없고, 이로 인한 손해를 배상할 책임도 없습니다. </p>
+                    <p>6) 회사는 회원의 게시물을 등록 전에 사전심사 하거나 상시적으로 게시물의 내용을 확인 또는 검토하여야 할 의무가 없으며, 그 결과에 대한 책임을 지지 아니합니다.</p>
+                </div>
+                <div class="yiyong_com">
+                    <h2>제6장. 개인 정보 관리</h2>
+                    <h3>제 1조 개인 정보의 수집 및 취급</h3>
+                    <p>(1) 수집된 개인 정보는 회사의 최소 인원만이 취급을 하며 개인 정보가 분실, 도난, 누출, 변조 또는 훼손되지 않도록 안전성 확보를 합니다.</p>
+                    <p>(2) 수집된 개인 정보는 패널 조사 시에만 사용이 되며 제 3자에게 제공하지 않는 것을 원칙으로 합니다. 단, 관련 법률에서 규정한 사항은 예외로 합니다.</p>
+                    <h3>제2조 개인정보의 공개</h3>
+                    <p>(1) 회사는 다음과 같은 경우에 법에서 허용하는 범위 내에서 패널회원의 성명, 전자우편주소 등의 개인정보를 제3자에게 제공할 수 있습니다. </p>
+                    <p>1) 패널회원이 서비스를 이용함에 있어 관련 법률을 위반하여 수사기관이나 기타 정부기관으로부터 정보제공을 요청 받는 경우</p>
+                    <p>2) 패널회원의 법률위반, 본 서비스 약관위반을 포함하여 부정행위 확인 등의 정보보호업무를 위해 필요한 경우</p>
+                    <p>3) 기타 법률에 의해 요구되는 경우</p>
+                </div>
+                <div class="yiyong_com">
+                    <h2>제7장. 정보의 제공 및 관리</h2>
+                    <p>패널회원의 개인 정보는 기초 통계조사자료로만 활용되며, 리서치 및 통계분석의 목적을 위해서만 사용됩니다.</p>
+                    <p>결과적으로 패널회원이 참여하여 제공하는 정보는 조사 및 내부적인 자료로만 사용되며, 기타 제3자에게 제공되지 않습니다.</p>
+                </div>
+                <div class="yiyong_com">
+                    <h2>제8장. 보상 기준</h2>
+                    <h3>제1조 온포인트</h3>
+                    <p>(1) 설문의 응답에 대해 회사는 패널회원에게 보상을 지급하며, 보상 정책은 회사의 사정에 따라 변경될 수 있습니다.</p>
+                    <p>(2) 회사는 설문 전에 해당 설문의 보상을 공지하고 패널회원은 설문에 응답 완료하면 해당 보상금을 온포인트로 전환하여 누적하거나 회사에서 선정한 기부처에 기부할 수 있도록 선택할 수 있습니다.</p>
+                    <p>(3) 회사는 패널회원 본인의 보상 내역을 공지합니다.</p>
+                    <p>(4) 패널회원은 온포인트가 홈페이지에 공지한 일정 기준 이상 누적되었을 때, 아래의 방법 중 하나를 선택하여 지급을 신청할 수 있습니다.</p>
+                    <p>1) 본인 통장으로 현금을 자동이체 하도록 신청</p>
+                    <p>2) 상품권으로 신청</p>
+                    <p>3) 회사에서 선정한 기부처에 기부하도록 신청</p>
+                    <p>(5) 기타 온포인트 지급의 기준 및 내용이 변경될 경우 회사는 이 사실을 공지해야 합니다.</p>
+                    <h3>제2조 경품</h3>
+                    <p>(1) 회사는 설문 전에 해당 설문의 보상으로 온포인트 대신 경품을 제공할 수 있으며, 설문 종료 후 사전에 공지한 추첨일에 무작위 추출법에 의해 경품 대상자를 선발합니다.</p>
+                    <p>(2) 당첨자는 추첨일에 홈페이지 게시판에 공지하며, 개별 통보를 통해 당첨자에게 통지합니다.</p>
+                    <p>(3) 천재지변, 해당 공급업자 및 운송업자의 사유 등의 이유로 지정일에 회사가 지급하지 못하는 경우 회사는 패널회원에게 사유를 공지하고 빠른 시일 내에 지급하도록 합니다.</p>
+                    <h3>제3조 현금 지급</h3>
+                    <p>(1) 현금 지급 시점은 전월 1일부터 말일까지 신청자에 한하여 익월 5일에 지급합니다. </p>
+                    <p>(2) 익월 5일이 공휴일인 경우 그 다음날에 지급하도록 합니다. </p>
+                    <p>(3) 천재지변, 해당은행 사유, 온라인 에러 등의 사유로 지정일에 회사가 지급하지 못하는 경우 회사는 패널회원에게 사유를 공지하고 빠른 시일 내에 지급하도록 합니다.</p>
+                    <h3>제4조 기부</h3>
+                    <p>(1) 패널회원이 기부한 적립금은 익월 5일 회사가 선정한 기부처에 기부됩니다.</p>
+                    <p>(2) 천재지변, 지정 기부처의 사유 등의 이유로 지정일에 회사가 지급하지 못하는 경우 회사는 패널회원에게 사유를 공지하고 빠른 시일 내에 지급하도록 합니다.</p>
+                    <h3>제5조 온라인 문화상품권 지급</h3>
+                    <p>(1) 패널회원이 신청한 온라인 상품권은 전월 1일부터 말일까지 신청자에 한하여 익월 5일에 이메일로 지급합니다.</p>
+                    <p>(2) 익월 5일이 공휴일인 경우 그 다음날에 지급하도록 합니다. </p>
+                    <p>(3) 천재지변, 해당은행 사유, 온라인 에러 등의 사유로 지정일에 회사가 지급하지 못하는 경우 회사는 패널회원에게 사유를 공지하고 빠른 시일 내에 지급하도록 합니다.</p>
+                    <h3>제6조 보상 지급 배제 사유</h3>
+                    <p>회사는 다음의 경우에는 보상을 지급하지 않습니다.</p>
+                    <p>(1) 온포인트가 홈페이지에 공지한 기준 액수에 못 미치는 경우</p>
+                    <p>(2) 패널회원 정보가 허위인 것으로 판명되었을 경우</p>
+                    <p>(3) 패널회원이 지정한 은행계좌 번호 오류, 이메일 주소 오류 등으로 보상을 지급할 수 없는 경우</p>
+                    <p>(4) 설문에 대해 패널회원이 거짓된 응답을 한 것으로 판명되었을 경우</p>
+                    <h3>제7조 온포인트의 소멸</h3>
+                    <p>(1) 패널회원을 탈퇴한 경우 온포인트는 모두 소멸되며 재적립되지 않습니다.</p>
+                    <p>(2) 패널회원 온포인트의 유효기간은 조사 참여일 기준 3년입니다.</p>
+                    <p>(3) 패널회원이 3년간 조사에 참여하지 않을 경우에는 미사용된 온포인트는 자동 소멸됩니다.</p>
+                    <p>단, 조사참여의 기준은 조사완료가 아닌 조사참여시도를 의미하며, 패널기초조사를 포함합니다.</p>
+                </div>
+                <div class="yiyong_com">
+                    <h2>제9장. 관할 법원</h2>
+                    <p>본 약관과 관련된 소송은 ㈜온솔커뮤니케이션의 소재지 관할 법원으로 합니다.</p>
+                    <p>부 칙.</p>
+                    <p>(시행일) 본 약관은 2009년 6월 1일부터 적용됩니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal_button"> <a href="javascript:;" onClick="onsolModal.hide();">확인</a> </div>
+</div>
+
+<div class="modal_root" id="modalPersonAgree">
+    <div class="modal_wrap">
+        <div class="modal_header">
+            <h3>개인정보처리방침</h3>
+        </div>
+        <div class="modal_content">
+            <div class="yiyong">
+                <div class="yiyong_com"><b>(주)온솔커뮤니케이션</b>은 (이하 "회사"는) 고객님의 개인정보를 중요시하며,"정	 보통신망 이용촉진 및 정보보호"에 관한 법률을 준수하고 있습니다.<br>
+                    회사는 개인정보취급방침을 통하여 고객님께서 제공하시는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며, 개인정보보호를 위해 어떠한 조치가 취해지고 있는지 알려드립니다.<br>
+                    회사는 개인정보취급방침을 개정하는 경우 웹사이트 공지사항(또는 개별공지)을 통하여 공지할 것입니다.<br>
+                    ο 본 방침은: 2009 년 6 월 1일부터 시행됩니다.</div>
+                <div class="yiyong_com">
+                    <h2>제1장. 수집하는 개인정보 항목</h2>
+                    <p>회사는 회원가입, 상담, 서비스 신청 등을 위해 아래와 같은 개인정보를 수집하고 있습니다.</p>
+                    <p>ο 수집항목: 이름, 생년월일, 성별, 주민등록번호, 로그인ID, 비밀번호, 자택전화번호, 자택주소, 휴대전화번호, 이메일, 직업, 학력, 결혼여부, 종교, 은행계좌 정보, 기타 설문에 필요한 개인정보</p>
+                    <p>ο 개인정보 수집방법: 홈페이지(회원가입)</p>
+                    <p> 개인정보의 열람,수정,삭제</p>
+                    <p> 패널은 언제든지 등록되어 있는 자신의 개인정보를 열람하거나 수정, 삭제하실 수 있습니다.</p>
+                    <p>개인정보를 열람, 수정하시려면 언제든지 MY PAGE의(회원정보수정)을 클릭하여 직접 열람 또는 수정하실 수 있습니다.</p>
+                    <p> 탈퇴하고자 할 경우에는 회원탈퇴를 클릭하여 개인정보를 삭제하실 수 있습니다</p>
+                </div>
+                <div class="yiyong_com">
+                    <h2>제2장. 개인정보의 수집 및 이용목적</h2>
+                    <h3>제1조. 이용 계약의 성립</h3>
+                    <p>회사는 수집한 개인정보를 다음의 목적을 위해 활용합니다.</p>
+                    <p>ο 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산 콘텐츠 제공</p>
+                    <p>ο 회원 관리: 회원제 서비스 이용에 따른 본인 확인, 가입 의사 확인, 연령 확인, 만14세 미만 아동 개인정보 수집 시 법정대리인 동의여부 확인, 불만처리 등 민원처리, 고지사항 전달</p>
+                    <p>ο 마케팅 및 광고에 활용: 인구통계학적 특성에 따른 서비스 제공 및 광고 게재</p>
+                </div>
+                <div class="yiyong_com">
+                    <h2>제3장. 개인정보 수집 항목 및 보유, 이용기간</h2>
+                    <h3>제1조 회사의 의무</h3>
+                    <p>원칙적으로 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다.</p>
+                    <p>단, 다음의 정보에 대해서는 아래의 이유로 명시한 기간 동안 보존합니다.</p>
+                    <p>보존항목: 이름, 주민등록번호</p>
+                    <p>보존근거: 일정기간 재가입 방지</p>
+                    <p>보존기간: 3개월</p>
+                </div>
+                <div class="yiyong_com">
+                    <h2>제4장. 개인정보의 파기절차 및 방법</h2>
+                    <p>회사는 원칙적으로 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다</p>
+                    <p>파기절차 및 방법은 다음과 같습니다</p>
+                    <p>ο 파기절차</p>
+                    <p>회원님이 회원가입 등을 위해 입력하신 정보는 목적이 달성된 후 별도의 DB로 옮겨져(종이의 경우 별도의 서류함) 내부 방침 및 기타 관련 법령에 의한 정보보호 사유에 따라(보유 및 이용기간 참조) 일정 기간 저장된 후 파기됩니다.</p>
+                    <p>별도 DB로 옮겨진 개인정보는 법률에 의한 경우가 아니고서는 보유 이외의 다른 목적으로 이용되지 않습니다.</p>
+                    <p>ο 파기방법 </p>
+                    <p>- 전자적 파일형태로 저장된 개인정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제합니다.</p>
+                </div>
+                <div class="yiyong_com">
+                    <h2>제5장. 개인정보 제공</h2>
+                    <p>회사는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 단, 아래의 경우는 예외로 합니다</p>
+                    <p>- 이용자들이 사전에 동의한 경우</p>
+                    <p>- 법령의 규정에 의하거나 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우</p>
+                </div>
+                <div class="yiyong_com">
+                    <h2>제6장. 수집한 개인정보의 위탁</h2>
+                    회사는 이용자의 동의 없이 이용자의 정보를 외부 업체에 위탁하지 않습니다. 향후 그러한 필요성이 발생할 경우, 위탁 대상자와 위탁 업무 내용에 대해 이용자에게 통지하고 필요할 경우 사전 동의를 받도록 하겠습니다</div>
+                <div class="yiyong_com">
+                    <h2>제7장. 이용자 및 법정대리인의 권리와 행사방법</h2>
+                    이용자 및 법정대리인은 언제든지 등록되어 있는 자신 혹은 당해 만 14세 미만 아동의 개인정보를 조회하거나 수정할 수 있으며 가입해지를 요청할 수도 있습니다.<br>
+                    이용자 혹은 만 14세 미만 아동의 개인정보 조회/수정을 위해서는 "개인정보변경"(또는 "회원정보수정" 등)을, 가입해지(동의철회)를 위해서는 "회원탈퇴"를 클릭하여 본인 확인 절차를 거치신 후 직접 열람, 정정 또는 탈퇴가 가능합니다. 혹은 개인정보관리책임자에게 서면, 전화 또는 이메일로 연락하시면 지체 없이 조치하겠습니다.<br>
+                    귀하가 개인정보의 오류에 대한 정정을 요청하신 경우에는 정정을 완료하기 전까지 당해 개인정보를 이용 또는 제공하지 않습니다. 또한 잘못된 개인정보를 제3자에게 이미 제공한 경우에는 정정 처리결과를 제3자에게 지체 없이 통지하여 정정이 이루어지도록 하겠습니다.<br>
+                    회사는 이용자 혹은 법정대리인의 요청에 의해 해지 또는 삭제된 개인정보는 "개인정보의 보유 및 이용기간"에 명시된 바에 따라 처리하고 그 외의 용도로 열람 또는 이용할 수 없도록 처리하고 있습니다.</div>
+                <div class="yiyong_com">
+                    <h2>제8장. 개인정보 자동수집 장치의 설치, 운영 및 그 거부에 관한 사항</h2>
+                    회사는 쿠키 등 인터넷 서비스 이용 시 자동 생성되는 개인정보를 수집하는 장치를 운영하지 않습니다.</div>
+                <div class="yiyong_com">
+                    <h2>제9장. 개인정보에 관한 민원서비스</h2>
+                    <p>고객서비스담당 부서: 리서치 팀</p>
+                    <p>전화번호: 02-523-6503</p>
+                    <p>이메일: webmaster@onpanel.co.kr</p>
+                    <p>개인정보관리책임자 성명: 정준원</p>
+                    <p>전화번호: 02-523-6501</p>
+                    <p>이메일: jon@onsolutions.co.kr</p>
+                    <p>이용자는 회사의 서비스를 이용하는 도중 발생하는 모든 개인정보보호 관련 민원을 개인정보관리책임자 혹은 담당부서로 신고하실 수 있습니다. 회사는 이용자들의 신고사항에 대해 신속하게 충분한 답변을 드릴 것입니다.</p>
+                    <p>기타 개인정보침해에 대한 신고나 상담이 필요하신 경우에는 아래 기관에 문의하시기 바랍니다.</p>
+                    <p>1. 개인분쟁조정위원회 (http://www.1336.or.kr/1336)</p>
+                    <p>2. 정보보호마크인증위원회 (http:/www.eprivacy.or.kr/02-580-0533~4)</p>
+                    <p>3. 대검찰청 인터넷범죄수사센터 (http://icic.sppo.go.kr/02-3480-3600)</p>
+                    <p>4. 경찰청 사이버테러대응센터 (http:/www.ctrc.go.kr/02-392-0330)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal_button"> <a href="javascript:;" onclick="onsolModal.hide();">확인</a> </div>
+</div>
+
+<!-- page begin -->
+<div id="signUpUserInfo_page" data-role="page" class="login_container">
+    <!-- panel begin -->
+    <div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+    <!-- panel end -->
+    <!-- header begin -->
+    <div data-role="header" data-position="fixed" data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">회원가입</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+    </div>
+    <!-- header end -->
+
+    <div>
+
+        <input type="hidden" name="check_duplicate_memeber_id" id="check_duplicate_memeber_id" value="N"/>
+        <input type="hidden" name="check_duplicate_email" id="check_duplicate_email" value="N"/>
+        <input type="hidden" name="check_mobile_num" id="check_mobile_num" value="N"/>
+        <input type="hidden" name="mobile_code" id="mobile_code" value=""/>
+
+        <!--내용 시작-->
+        <div class="content" id="step1" style="display:none;">
+            <div class="won"><span class="on"></span><span></span><span></span><span></span></div>
+            <div class="sign_input">
+                <ul>
+                    <li><a href="javascript:;" onclick="onsolModal.show('#modalRegisterAgree');">이용약관<em></em></a></li>
+                    <li><a href="javascript:;" onclick="onsolModal.show('#modalPersonAgree');">개인정보처리방침<em></em></a></li>
+                </ul>
+                <div class="next_btn"><a href="member_register_step1.html#step2" data-ajax="false">동의</a></div>
+            </div>
+        </div>
+        <!--내용 종료-->
+
+        <!--내용 시작-->
+        <div class="content" id="step2" style="display:none;">
+            <div class="won"><span></span><span class="on"></span><span></span><span></span></div>
+            <div class="sign_input">
+                <ul>
+                    <li><input name="frm_member_id" id="frm_member_id" value="" maxlength="20" type="text" placeholder="아이디" data-role="none" /></li>
+                    <li><input name="frm_member_name" id="frm_member_name" value="" maxlength="10" type="text" placeholder="이름" data-role="none" /></li>
+                    <li><input name="frm_email_addr" id="frm_email_addr" value="" maxlength="100" type="text" placeholder="이메일 주소" data-role="none" /></li>
+                </ul>
+                <div class="next_btn"><a href="#step3" class="sign_up_step" data-ajax="false">다음</a></div>
+            </div>
+        </div>
+        <!--내용 종료-->
+
+        <!--내용 시작-->
+        <div class="content" id="step3" style="display:none;">
+            <div class="won"><span></span><span></span><span class="on"></span><span></span></div>
+            <div class="sign_input">
+                <ul>
+                    <li><input type="password" name="frm_member_pw1" id="frm_member_pw1" value="" maxlength="20" placeholder="비밀번호" data-role="none" /></li>
+                    <li><input type="password" name="frm_member_pw2" id="frm_member_pw2" value="" maxlength="20" placeholder="비밀번호 확인" data-role="none" /></li>
+                </ul>
+                <div class="next_btn"><a href="#step4" class="sign_up_step" data-ajax="false">다음</a></div>
+            </div>
+        </div>
+        <!--내용 종료-->
+
+        <!--내용 시작-->
+        <div class="content" id="step4" style="display:none;">
+            <div class="won"><span></span><span></span><span></span><span class="on"></span></div>
+            <div class="sign_input">
+                <ul>
+                    <li><input name="frm_mobile_num" id="frm_mobile_num" value="" maxlength="20" type="number" placeholder="휴대폰" data-role="none" /><span id="clickMobileCode">인증</span></li>
+                    <li><input name="frm_number_auth_code" id="frm_number_auth_code" maxlength="6" type="text" placeholder="인증번호" data-role="none" /></li>
+                    <li><input name="frm_recommend_id" id="frm_recommend_id" maxlength="20" type="text" placeholder="추천인 아이디" data-role="none" /></li>
+                </ul>
+                <div class="next_btn"><a href="javascript:;" class="sign_up_step" data-ajax="false">다음</a></div>
+            </div>
+        </div>
+        <!--내용 종료-->
+
+        <!--내용 시작-->
+        <div class="content" id="step5" style="display:none;">
+            <div class="won"><p class="height_10"></p></div>
+            <div class="sign_input">
+                <!--p><img src="images/sign_end.png" />회원가입을 축하드립니다!<br/>이메일 인증 후 로그인하셔서 퍼스트설문부터 진행해주세요.</p-->
+                <p><img src="images/sign_end.png" />회원가입을 축하드립니다!<br/>로그인 후 퍼스트설문부터 진행해주세요.</p>                
+                <div class="next_btn">
+                    <!--<a href="#" class="width_left">퍼스트설문  참여</a> -->
+                    <a href="loginNew.html" data-ajax="false" class="width_right" style="width:99%;">메인으로</a>
+                </div>
+            </div>
+        </div>
+        <!--내용 종료-->
+    </div>
+</div>
+<script src="js/signUpUserInfo.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+
+function showStep() {
+    var hash = location.hash;
+
+    // Set the page title based on the hash.
+    var step_id =  hash.replace( /^#/, '' );
+
+    $(".content").hide();
+
+    if(!step_id) {
+        $("#step1").show();
+    }
+    else {
+        if(step_id == "step3") {
+            if($("#frm_member_id").val() == "" || $("#frm_member_name").val() == "" || $("#frm_email_addr").val() == "") {
+                location.href = "member_register_step1.html";
+            }
+        }
+        if(step_id == "step4") {
+            if($("#frm_member_pw1").val() == "") {
+                location.href = "member_register_step1.html";
+            }
+        }
+
+        $("#"+step_id).show();
+    }
+}
+
+showStep();
+
+$(window).hashchange( function(){
+    showStep();
+});
+
+try{
+    document.addEventListener("deviceready", onDeviceReady, false);       
+    function onDeviceReady() {           
+    //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+    }       
+    function alertCallback(){
+    }
+}
+catch(e) { }   
+//]]>
+</script>
+</body>
+</html>

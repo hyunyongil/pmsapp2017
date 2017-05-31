@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>온패널</title>
+    <script type="text/javascript" src="js/header.js"></script>
+    <script type="text/javascript" src="js/rsea-tool.js"></script>
+    <script type="text/javascript" src="js/common-poll.js"></script>
+    <script type="text/javascript" src="js/first-poll-data.js"></script>
+    <script type="text/javascript" src="js/firstPoll.js"></script>
+    <script type="text/javascript" src="js/jquery.ba-hashchange.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            readyFirstPoll();
+
+            $('.poll_b_list > form > fieldset > input').on('change',function(){
+            	$(this).focus();
+            	if($(this).next().find('input').length){
+            		$(this).next().find('input').focus();
+            	}
+            })
+
+            $('.top_back_btn').on('click',function (e) {
+                e.preventDefault();
+
+                try{
+                    document.addEventListener('deviceready', function() {
+                        navigator.notification.confirm("퍼스트 설문을 종료하시겠습니까?", function(index) {
+                            if(index == 1) {
+                                location.href = 'home.html';
+                            }
+                        }, '확인',"확인,취소");
+
+                    }, true);
+                }
+                catch(e) {
+                    if(confirm("퍼스트 설문을 종료하시겠습니까?")) {
+                        location.href = 'home.html';
+                    }
+                }
+            });
+        })
+    </script>
+
+</head>
+<body>
+<div data-role="page" id="first0" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="push" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more" data-swipe-close="false" ></div>
+
+	<!-- panel end -->
+	<!-- header begin -->
+    <!--<div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">-->
+        <!--<h1 class="mainTopLogo">퍼스트 설문</h1>-->
+        <!--<a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>-->
+        <!--<a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>-->
+    <!--</div>-->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none" class="first_poll_header">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content">
+        <div  class="poll_quest">퍼스트 설문을 불러오는중입니다.
+        </div>
+    </div>
+
+
+</div>
+<!-- /page0 -->
+
+
+<!-- page1 -->
+<div data-role="page" id="first1" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>1</span> / 19</div>
+        <div class="poll_quest">귀하의 성별은 어떻게 되십니까?</div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="gender" id="gender_M" value="M" />
+                    <label for="gender_M">남성</label>
+                    <input type="radio" name="gender" id="gender_F" value="F" />
+                    <label for="gender_F">여성</label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first2" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page1 -->
+
+
+<!-- page2 -->
+<div data-role="page" id="first2" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>2</span> / 19</div>
+        <div class="poll_quest">귀하의 출생연도는 어떻게 되십니까?
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <div id="birthday_wrap"></div>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first1" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first3" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page2 -->
+
+
+<!-- page3 -->
+<div data-role="page" id="first3" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>3</span> / 19</div>
+        <div  class="poll_quest" >
+            귀하의 거주지역은 어떻게 되십니까?
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="addr" id="addr_SEOUL" value="SEOUL"/>
+                    <label for="addr_SEOUL">서울</label>
+                    <input type="radio" name="addr" id="addr_INCHEON" value="INCHEON"/>
+                    <label for="addr_INCHEON">인천</label>
+                    <input type="radio" name="addr" id="addr_DAEJEON" value="DAEJEON"/>
+                    <label for="addr_DAEJEON">대전</label>
+                    <input type="radio" name="addr" id="addr_DAEGU" value="DAEGU"/>
+                    <label for="addr_DAEGU">대구</label>
+                    <input type="radio" name="addr" id="addr_BUSAN" value="BUSAN"/>
+                    <label for="addr_BUSAN">부산</label>
+                    <input type="radio" name="addr" id="addr_ULSAN" value="ULSAN"/>
+                    <label for="addr_ULSAN">울산</label>
+                    <input type="radio" name="addr" id="addr_GWANGJU" value="GWANGJU"/>
+                    <label for="addr_GWANGJU">광주</label>
+                    <input type="radio" name="addr" id="addr_GYEONGGI" value="GYEONGGI"/>
+                    <label for="addr_GYEONGGI">경기</label>
+                    <input type="radio" name="addr" id="addr_GANGWON" value="GANGWON"/>
+                    <label for="addr_GANGWON">강원</label>
+                    <input type="radio" name="addr" id="addr_CHUNGBUK" value="CHUNGBUK"/>
+                    <label for="addr_CHUNGBUK">충북</label>
+                    <input type="radio" name="addr" id="addr_CHUNGNAM" value="CHUNGNAM"/>
+                    <label for="addr_CHUNGNAM">충남</label>
+                    <input type="radio" name="addr" id="addr_GYEONGBUK" value="GYEONGBUK"/>
+                    <label for="addr_GYEONGBUK">경북</label>
+                    <input type="radio" name="addr" id="addr_GYEONGNAM" value="GYEONGNAM"/>
+                    <label for="addr_GYEONGNAM">경남</label>
+                    <input type="radio" name="addr" id="addr_JEONBUK" value="JEONBUK"/>
+                    <label for="addr_JEONBUK">전북</label>
+                    <input type="radio" name="addr" id="addr_JEONNAM" value="JEONNAM"/>
+                    <label for="addr_JEONNAM">전남</label>
+                    <input type="radio" name="addr" id="addr_JEJU" value="JEJU"/>
+                    <label for="addr_JEJU">제주</label>
+                    <input type="radio" name="addr" id="addr_SEJOING" value="SEJOING"/>
+                    <label for="addr_SEJOING">세종</label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first2" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first4" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page3 -->
+
+<!-- page4 -->
+<div data-role="page" id="first4" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>4</span> / 19</div>
+        <div  class="poll_quest">귀하의 직업은 다음 중 어디에 해당됩니까?
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="job" id="job_FARMING" value="FARMING"/>
+                    <label for="job_FARMING">농/임/어업</label>
+                    <input type="radio" name="job" id="job_CIVIL_SERVANT" value="CIVIL_SERVANT"/>
+                    <label for="job_CIVIL_SERVANT">공무원(공기업포함)</label>
+                    <input type="radio" name="job" id="job_TEACHER" value="TEACHER"/>
+                    <label for="job_TEACHER">교사/학원강사</label>
+                    <input type="radio" name="job" id="job_SPECIAL" value="SPECIAL"/>
+                    <label for="job_SPECIAL">전문직</label>
+                    <input type="radio" name="job" id="job_MANAGERIAL" value="MANAGERIAL"/>
+                    <label for="job_MANAGERIAL">경영직</label>
+                    <input type="radio" name="job" id="job_OFFICE" value="OFFICE"/>
+                    <label for="job_OFFICE">사무직</label>
+                    <input type="radio" name="job" id="job_TECHNIQUE" value="TECHNIQUE"/>
+                    <label for="job_TECHNIQUE">생산/기술/노무직</label>
+                    <input type="radio" name="job" id="job_SERVICE" value="SERVICE"/>
+                    <label for="job_SERVICE">서비스/영업/판매직</label>
+                    <input type="radio" name="job" id="job_SELF" value="SELF"/>
+                    <label for="job_SELF">자영업</label>
+                    <input type="radio" name="job" id="job_FREELANCER" value="FREELANCER"/>
+                    <label for="job_FREELANCER">프리렌서/자유직</label>
+                    <input type="radio" name="job" id="job_HOMEMAKER" value="HOMEMAKER"/>
+                    <label for="job_HOMEMAKER">전업주부</label>
+                    <input type="radio" name="job" id="job_STUDENT" value="STUDENT"/>
+                    <label for="job_STUDENT">학생</label>
+                    <input type="radio" name="job" id="job_UNEMPLOYED" value="UNEMPLOYED"/>
+                    <label for="job_UNEMPLOYED">무직</label>
+                    <input type="radio" name="job" id="job_ETC2" value="ETC"/>
+                    <label for="job_ETC2" class="label-margin0">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a" style="width:30%;line-height:36px;">
+                                기타
+                            </div>
+                            <div class="ui-block-b" style="width:70%;">
+                                <input type="text" name="job_etc" id="job_etc" value="" style="padding: 0; height: 34px;" data-enter-reject>
+                            </div>
+                        </div>
+                    </label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first3" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first5" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page4 -->
+
+
+<!-- page5 -->
+<div data-role="page" id="first5" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>5</span> / 19</div>
+        <div class="poll_quest">귀하께서 근무하고 계신 직장의 업종은 다음 중 어디에 해당됩니까?
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="industry" id="industry_INDUSTRY" value="INDUSTRY"/>
+                    <label for="industry_INDUSTRY">제조업</label>
+                    <input type="radio" name="industry" id="industry_BUILDING" value="BUILDING"/>
+                    <label for="industry_BUILDING">건설업(인테리어 포함)</label>
+                    <input type="radio" name="industry" id="industry_REALESTATE" value="REALESTATE"/>
+                    <label for="industry_REALESTATE">부동산업</label>
+                    <input type="radio" name="industry" id="industry_RENT" value="RENT"/>
+                    <label for="industry_RENT">임대/대여업</label>
+                    <input type="radio" name="industry" id="industry_SALES" value="SALES"/>
+                    <label for="industry_SALES">도매 및 소매업(유통업)</label>
+                    <input type="radio" name="industry" id="industry_RESTAURANT" value="RESTAURANT"/>
+                    <label for="industry_RESTAURANT">음식업/외식업</label>
+                    <input type="radio" name="industry" id="industry_TRANSPORT" value="TRANSPORT"/>
+                    <label for="industry_TRANSPORT">운수/여객/숙박업</label>
+                    <input type="radio" name="industry" id="industry_FREETIME" value="FREETIME"/>
+                    <label for="industry_FREETIME">여가 관련 서비스업</label>
+                    <input type="radio" name="industry" id="industry_BROADCAST" value="BROADCAST"/>
+                    <label for="industry_BROADCAST">방송/언론/출판</label>
+                    <input type="radio" name="industry" id="industry_INFORMATION" value="INFORMATION"/>
+                    <label for="industry_INFORMATION">정보통신</label>
+                    <input type="radio" name="industry" id="industry_FINANCE" value="FINANCE"/>
+                    <label for="industry_FINANCE">금융업</label>
+                    <input type="radio" name="industry" id="industry_STUDY" value="STUDY"/>
+                    <label for="industry_STUDY">교육 서비스업</label>
+                    <input type="radio" name="industry" id="industry_MEDICAL" value="MEDICAL"/>
+                    <label for="industry_MEDICAL">의료/보건/사회복지</label>
+                    <input type="radio" name="industry" id="industry_CONSULTING" value="CONSULTING"/>
+                    <label for="industry_CONSULTING">시장조사/컨설팅/광고대행업</label>
+                    <input type="radio" name="industry" id="industry_ETC2" value="ETC"/>
+                    <label for="industry_ETC2" class="label-margin0">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a" style="width:30%;line-height:36px;">
+                                기타
+                            </div>
+                            <div class="ui-block-b" style="width:70%;">
+                                <input type="text" name="industry_etc" id="industry_etc" value=""  style="padding: 0; height: 34px;" size="10" data-enter-reject>
+                            </div>
+                        </div>
+                    </label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first4" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first6" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page5 -->
+
+
+<!-- page6 -->
+<div data-role="page" id="first6" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>6</span> / 19</div>
+        <div class="poll_quest">귀하의 최종학력은 어떻게 되십니까?
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="edue" id="edue_N" value="N"/>
+                    <label for="edue_N">무학</label>
+                    <input type="radio" name="edue" id="edue_ELEMENTARY_FINISH" value="ELEMENTARY_FINISH"/>
+                    <label for="edue_ELEMENTARY_FINISH">초등학교 졸업</label>
+                    <input type="radio" name="edue" id="edue_MIDDLE_ING" value="MIDDLE_ING"/>
+                    <label for="edue_MIDDLE_ING">중학교 재학</label>
+                    <input type="radio" name="edue" id="edue_MIDDLE_FINISH" value="MIDDLE_FINISH"/>
+                    <label for="edue_MIDDLE_FINISH">중학교 졸업</label>
+                    <input type="radio" name="edue" id="edue_HIGH_ING" value="HIGH_ING"/>
+                    <label for="edue_HIGH_ING">고등학교 재학</label>
+                    <input type="radio" name="edue" id="edue_HIGH_FINISH" value="HIGH_FINISH"/>
+                    <label for="edue_HIGH_FINISH">고등학교 졸업</label>
+                    <input type="radio" name="edue" id="edue_COLLEGE_ING" value="COLLEGE_ING"/>
+                    <label for="edue_COLLEGE_ING">2,3년제 대학 재학</label>
+                    <input type="radio" name="edue" id="edue_COLLEGE_FINISH" value="COLLEGE_FINISH"/>
+                    <label for="edue_COLLEGE_FINISH">2,3년제 대학 졸업</label>
+                    <input type="radio" name="edue" id="edue_UNIVERSITY_ING" value="UNIVERSITY_ING"/>
+                    <label for="edue_UNIVERSITY_ING">대학교 재학</label>
+                    <input type="radio" name="edue" id="edue_UNIVERSITY_FINISH" value="UNIVERSITY_FINISH"/>
+                    <label for="edue_UNIVERSITY_FINISH">대학교 졸업</label>
+                    <input type="radio" name="edue" id="edue_MASTER_COURSE_ING" value="MASTER_COURSE_ING"/>
+                    <label for="edue_MASTER_COURSE_ING">대학원 석사과정 및 이수</label>
+                    <input type="radio" name="edue" id="edue_MASTER_COURSE_FINISH" value="MASTER_COURSE_FINISH"/>
+                    <label for="edue_MASTER_COURSE_FINISH">대학원 석사 졸업</label>
+                    <input type="radio" name="edue" id="edue_DOCTOR_COURSE_ING" value="DOCTOR_COURSE_ING"/>
+                    <label for="edue_DOCTOR_COURSE_ING">대학원 박사과정 및 이수</label>
+                    <input type="radio" name="edue" id="edue_DOCTOR_COURSE_FINISH" value="DOCTOR_COURSE_FINISH"/>
+                    <label for="edue_DOCTOR_COURSE_FINISH">대학원 박사 졸업</label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first5" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first7" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page6 -->
+
+
+<!-- page7 -->
+<div data-role="page" id="first7" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>7</span> / 19</div>
+        <div class="poll_quest">귀하의 결혼여부는 어떻게 되십니까?
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="marriage" id="marriage_SINGLES" value="SINGLES"/>
+                    <label for="marriage_SINGLES">미혼</label>
+                    <input type="radio" name="marriage" id="marriage_MARRY" value="MARRY"/>
+                    <label for="marriage_MARRY">결혼</label>
+                    <input type="radio" name="marriage" id="marriage_DIVORCE" value="DIVORCE"/>
+                    <label for="marriage_DIVORCE">이혼</label>
+                    <input type="radio" name="marriage" id="marriage_BEREAVED" value="BEREAVED"/>
+                    <label for="marriage_BEREAVED">사별</label>
+                    <input type="radio" name="marriage" id="marriage_SEPARATED" value="SEPARATED"/>
+                    <label for="marriage_SEPARATED">별거</label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first6" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first8" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page7 -->
+
+
+<!-- page8 -->
+<div data-role="page" id="first8" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>8</span> / 19</div>
+        <div class="poll_quest">귀하는 몇 명의 자녀가 있습니까?
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="children_cnt" id="children_cnt_0" value="0"/>
+                    <label for="children_cnt_0">자녀없음</label>
+                    <input type="radio" name="children_cnt" id="children_cnt_1" value="1"/>
+                    <label for="children_cnt_1">1명</label>
+                    <input type="radio" name="children_cnt" id="children_cnt_2" value="2"/>
+                    <label for="children_cnt_2">2명</label>
+                    <input type="radio" name="children_cnt" id="children_cnt_3" value="3"/>
+                    <label for="children_cnt_3">3명</label>
+                    <input type="radio" name="children_cnt" id="children_cnt_4" value="4"/>
+                    <label for="children_cnt_4">4명</label>
+                    <input type="radio" name="children_cnt" id="children_cnt_5" value="5"/>
+                    <label for="children_cnt_5">5명</label>
+                    <input type="radio" name="children_cnt" id="children_cnt_6" value="6"/>
+                    <label for="children_cnt_6" class="label-margin0">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a" style="width:18%;line-height:36px;">
+                                기타
+                            </div>
+                            <div class="ui-block-b" style="width:82%;">
+                                <input type="text" name="children_cnt_etc" id="children_cnt_etc" value=""  style="padding: 0; height: 34px;" placeholder="인원을 적어주십시오." data-enter-reject>
+                            </div>
+                        </div>
+                    </label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first7" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first8-1" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page8 -->
+
+
+<!-- page8-1 -->
+<div data-role="page" id="first8-1" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>8</span> / 19</div>
+        <div class="poll_quest">자녀의 출생년도, 성별, 교급을 선택해주십시오.
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="fieldcontain" style="display: none">
+                        <div>
+                            <div class="ui-block-a" style="float:none;margin:0 0 10px 15px;">자녀</div>
+                            <div class="ui-block-b" style="float:none;margin:5px;">
+                            </div>
+                            <div class="ui-block-c" style="float:none;margin:5px;">
+                            </div>
+                            <div class="ui-block-d"  style="float:none;margin:5px;">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first8" data-ajax="false">
+                <button type="submit" data-theme="c" >이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first9" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page8-1 -->
+
+
+<!-- page9 -->
+<div data-role="page" id="first9" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>9</span> / 19</div>
+        <div class="poll_quest">귀하와 같이 거주하고 있는 사람(가족, 친척, 친구, 동료 등 포함)은 몇 명입니까?
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="single_cnt" id="single_cnt_0" value="0"/>
+                    <label for="single_cnt_0">없음</label>
+                    <input type="radio" name="single_cnt" id="single_cnt_1" value="1"/>
+                    <label for="single_cnt_1">1명</label>
+                    <input type="radio" name="single_cnt" id="single_cnt_2" value="2"/>
+                    <label for="single_cnt_2">2명</label>
+                    <input type="radio" name="single_cnt" id="single_cnt_3" value="3"/>
+                    <label for="single_cnt_3">3명</label>
+                    <input type="radio" name="single_cnt" id="single_cnt_4" value="4"/>
+                    <label for="single_cnt_4">4명</label>
+                    <input type="radio" name="single_cnt" id="single_cnt_5" value="5"/>
+                    <label for="single_cnt_5">5명</label>
+                    <input type="radio" name="single_cnt" id="single_cnt_6" value="6"/>
+                    <label for="single_cnt_6" class="label-margin0">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a" style="width:18%;line-height:36px;">
+                                기타
+                            </div>
+                            <div class="ui-block-b" style="width:82%;">
+                                <input type="text" name="single_cnt_etc" id="single_cnt_etc" value=""  style="padding: 0; height: 34px;" placeholder="인원을 적어주십시오." data-enter-reject>
+                            </div>
+                        </div>
+                    </label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first8" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first10" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page9 -->
+
+
+<!-- page10 -->
+<div data-role="page" id="first10" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>10</span> / 19</div>
+        <div class="poll_quest">귀하 또는 배우자, 부모 중 대한민국 국적이 아닌 외국국적(귀화자포함)을 가지고 있었습니까?
+                즉, 다문화가정이십니까?
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="multicultural_yn" id="multi_yn1" value="Y"/>
+                    <label for="multi_yn1">예</label>
+                    <input type="radio" name="multicultural_yn" id="multi_yn2" value="N"/>
+                    <label for="multi_yn2">아니오</label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first9" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first11" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page10 -->
+
+
+<!-- page11 -->
+<div data-role="page" id="first11" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>11</span> / 19</div>
+        <div class="poll_quest">귀하가 거주하고 있는 주택유형은 어떻게 되십니까?
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="house" id="house_SINGLE" value="SINGLE"/>
+                    <label for="house_SINGLE">단독주택</label>
+                    <input type="radio" name="house" id="house_APARTMENT" value="APARTMENT"/>
+                    <label for="house_APARTMENT">아파트</label>
+                    <input type="radio" name="house" id="house_TOWN" value="TOWN"/>
+                    <label for="house_TOWN">연립주택</label>
+                    <input type="radio" name="house" id="house_TENEMENT" value="TENEMENT"/>
+                    <label for="house_TENEMENT">다세대주택</label>
+                    <input type="radio" name="house" id="house_VILLA" value="VILLA"/>
+                    <label for="house_VILLA">빌라</label>
+                    <input type="radio" name="house" id="house_OFFICE" value="OFFICE"/>
+                    <label for="house_OFFICE">오피스텔</label>
+                    <input type="radio" name="house" id="house_ETC" value="ETC"/>
+                    <label for="house_ETC">주택이외의 거처(기숙사/고시원/여관 등)</label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first10" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first12" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page11 -->
+
+
+<!-- page12 -->
+<div data-role="page" id="first12" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>12</span> / 19</div>
+        <div class="poll_quest">귀하가 거주하고 있는 주택의 거주 형태는 무엇입니까?
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="house_type" id="house_type_OWN" value="OWN"/>
+                    <label for="house_type_OWN">자가</label>
+                    <input type="radio" name="house_type" id="house_type_JEONSE" value="JEONSE"/>
+                    <label for="house_type_JEONSE">전세</label>
+                    <input type="radio" name="house_type" id="house_type_GUARANTY_MONEY" value="GUARANTY_MONEY"/>
+                    <label for="house_type_GUARANTY_MONEY">보증금+월세</label>
+                    <input type="radio" name="house_type" id="house_type_MONTHLY_RENT" value="MONTHLY_RENT"/>
+                    <label for="house_type_MONTHLY_RENT">월세</label>
+                    <input type="radio" name="house_type" id="house_type_ETC" value="ETC"/>
+                    <label for="house_type_ETC">기타</label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first11" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first13" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page12 -->
+
+
+<!-- page13 -->
+<div data-role="page" id="first13" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>13</span> / 19</div>
+        <div class="poll_quest">함께 살고 있는 가족 모두의 수입을 합하여 귀하 댁의 가구 월 평균 소득은 총 얼마정도 입니까?
+                (이자소득/부수입/보너스/임대소득 등 모든 소득을 포함해 주십시오. 세금제외)
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="house_money" id="house_money_50" value="50"/>
+                    <label for="house_money_50">50만원 이하</label>
+                    <input type="radio" name="house_money" id="house_money_100" value="100"/>
+                    <label for="house_money_100">51만원~100만원</label>
+                    <input type="radio" name="house_money" id="house_money_150" value="150"/>
+                    <label for="house_money_150">101만원~150만원</label>
+                    <input type="radio" name="house_money" id="house_money_200" value="200"/>
+                    <label for="house_money_200">151만원~200만원</label>
+                    <input type="radio" name="house_money" id="house_money_250" value="250"/>
+                    <label for="house_money_250">201만원~250만원</label>
+                    <input type="radio" name="house_money" id="house_money_300" value="300"/>
+                    <label for="house_money_300">251만원~300만원</label>
+                    <input type="radio" name="house_money" id="house_money_350" value="350"/>
+                    <label for="house_money_350">301만원~350만원</label>
+                    <input type="radio" name="house_money" id="house_money_400" value="400"/>
+                    <label for="house_money_400">351만원~400만원</label>
+                    <input type="radio" name="house_money" id="house_money_450" value="450"/>
+                    <label for="house_money_450">401만원~450만원</label>
+                    <input type="radio" name="house_money" id="house_money_500" value="500"/>
+                    <label for="house_money_500">451만원~500만원</label>
+                    <input type="radio" name="house_money" id="house_money_600" value="600"/>
+                    <label for="house_money_600">501만원~600만원</label>
+                    <input type="radio" name="house_money" id="house_money_700" value="700"/>
+                    <label for="house_money_700">601만원~700만원</label>
+                    <input type="radio" name="house_money" id="house_money_1000" value="1000"/>
+                    <label for="house_money_1000">701만원~1000만원</label>
+                    <input type="radio" name="house_money" id="house_money_1001" value="1001"/>
+                    <label for="house_money_1001">1001만원이상</label>
+                    <input type="radio" name="house_money" id="house_money_0" value="0"/>
+                    <label for="house_money_0">해당없음</label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first12" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first14" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page13 -->
+
+
+<!-- page14 -->
+<div data-role="page" id="first14" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>14</span> / 19</div>
+        <div class="poll_quest">그렇다면 귀하 본인만의 개인 월 평균 소득은 총 얼마 정도 입니까?
+                (이자소득/부수입/보너스/임대소득 등 모든 소득을 포함해 주십시오. 세금제외)
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="my_money" id="my_money_50" value="50"/>
+                    <label for="my_money_50">50만원 이하</label>
+                    <input type="radio" name="my_money" id="my_money_100" value="100"/>
+                    <label for="my_money_100">51만원~100만원</label>
+                    <input type="radio" name="my_money" id="my_money_150" value="150"/>
+                    <label for="my_money_150">101만원~150만원</label>
+                    <input type="radio" name="my_money" id="my_money_200" value="200"/>
+                    <label for="my_money_200">151만원~200만원</label>
+                    <input type="radio" name="my_money" id="my_money_250" value="250"/>
+                    <label for="my_money_250">201만원~250만원</label>
+                    <input type="radio" name="my_money" id="my_money_300" value="300"/>
+                    <label for="my_money_300">251만원~300만원</label>
+                    <input type="radio" name="my_money" id="my_money_350" value="350"/>
+                    <label for="my_money_350">301만원~350만원</label>
+                    <input type="radio" name="my_money" id="my_money_400" value="400"/>
+                    <label for="my_money_400">351만원~400만원</label>
+                    <input type="radio" name="my_money" id="my_money_450" value="450"/>
+                    <label for="my_money_450">401만원~450만원</label>
+                    <input type="radio" name="my_money" id="my_money_500" value="500"/>
+                    <label for="my_money_500">451만원~500만원</label>
+                    <input type="radio" name="my_money" id="my_money_600" value="600"/>
+                    <label for="my_money_600">501만원~600만원</label>
+                    <input type="radio" name="my_money" id="my_money_700" value="700"/>
+                    <label for="my_money_700">601만원~700만원</label>
+                    <input type="radio" name="my_money" id="my_money_1000" value="1000"/>
+                    <label for="my_money_1000">701만원~1000만원</label>
+                    <input type="radio" name="my_money" id="my_money_1001" value="1001"/>
+                    <label for="my_money_1001">1001만원이상</label>
+                    <input type="radio" name="my_money" id="my_money_0" value="0"/>
+                    <label for="my_money_0">해당없음</label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first13" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first15" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page14 -->
+
+
+<!-- page15 -->
+<div data-role="page" id="first15" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>15</span> / 19</div>
+        <div class="poll_quest">귀하께서 현재 재테크하고 있는 방법은 무엇입니까? (복수응답)
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="checkbox" name="financial" id="financial_2" value="2"/>
+                    <label for="financial_2">예/적금</label>
+                    <input type="checkbox" name="financial" id="financial_4" value="4"/>
+                    <label for="financial_4">펀드</label>
+                    <input type="checkbox" name="financial" id="financial_8" value="8"/>
+                    <label for="financial_8">주식</label>
+                    <input type="checkbox" name="financial" id="financial_16" value="16"/>
+                    <label for="financial_16">부동산</label>
+                    <input type="checkbox" name="financial" id="financial_32" value="32"/>
+                    <label for="financial_32">보험</label>
+                    <input type="checkbox" name="financial" id="financial_64" value="64"/>
+                    <label for="financial_64">채권</label>
+                    <input type="checkbox" name="financial" id="financial_128" value="128"/>
+                    <label for="financial_128">선물/옵션</label>
+                    <input type="checkbox" name="financial" id="financial_256" value="256"/>
+                    <label for="financial_256">ETF</label>
+                    <input type="checkbox" name="financial" id="financial_512" value="512"/>
+                    <label for="financial_512">금/은</label>
+                    <input type="checkbox" name="financial" id="financial_1024" value="1024"/>
+                    <label for="financial_1024" class="label-margin0">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a" style="width:30%;line-height:36px;">
+                                기타
+                            </div>
+                            <div class="ui-block-b" style="width:70%;">
+                                <input type="text" name="financial_etc" id="financial_etc" value=""  style="padding: 0; height: 34px;" data-enter-reject>
+                            </div>
+                        </div>
+                    </label>
+                    <input type="checkbox" name="financial" id="financial_2048" value="2048"/>
+                    <label for="financial_2048">해당없음</label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first14" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first16" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page15 -->
+
+
+<!-- page16 -->
+<div data-role="page" id="first16" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>16</span> / 19</div>
+        <div class="poll_quest">귀하의 종교는 어떻게 되십니까?
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="religion" id="religion_N" value="N"/>
+                    <label for="religion_N">종교 없음(무교)</label>
+                    <input type="radio" name="religion" id="religion_PROTESTANT" value="PROTESTANT"/>
+                    <label for="religion_PROTESTANT">개신교</label>
+                    <input type="radio" name="religion" id="religion_CATHOLIC" value="CATHOLIC"/>
+                    <label for="religion_CATHOLIC">천주교</label>
+                    <input type="radio" name="religion" id="religion_ISLAM" value="ISLAM"/>
+                    <label for="religion_ISLAM">이슬람교</label>
+                    <input type="radio" name="religion" id="religion_BUDDHIST" value="BUDDHIST"/>
+                    <label for="religion_BUDDHIST">불교</label>
+                    <input type="radio" name="religion" id="religion_ETC" value="ETC"/>
+                    <label for="religion_ETC" class="label-margin0">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a" style="width:30%;line-height:36px;">
+                                기타
+                            </div>
+                            <div class="ui-block-b" style="width:70%;">
+                                <input type="text" name="religion_etc" id="religion_etc" value=""  style="padding: 0; height: 34px;" data-enter-reject>
+                            </div>
+                        </div>
+                    </label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first15" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first17" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page16 -->
+
+
+<!-- page17 -->
+<div data-role="page" id="first17" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>17</span> / 19</div>
+        <div class="poll_quest">귀하는 자동차 운전을 하십니까?
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="driverlicense" id="driverlicense_DRIVING_Y" value="DRIVING_Y"/>
+                    <label for="driverlicense_DRIVING_Y">면허를 보유하고 운전을 한다.</label>
+                    <input type="radio" name="driverlicense" id="driverlicense_DRIVING_N" value="DRIVING_N"/>
+                    <label for="driverlicense_DRIVING_N">면허를 보유하지만 운전을 하지 않는다.</label>
+                    <input type="radio" name="driverlicense" id="driverlicense_N" value="N"/>
+                    <label for="driverlicense_N">면허를 보유하고 있지 않고 운전을 하지 않는다.</label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first16" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first17-1" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page17 -->
+
+<!-- page17-1 -->
+<div data-role="page" id="first17-1" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>17-1</span> / 19</div>
+        <div class="poll_quest">귀하의 운전경력은 얼마나 되셨습니까?
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="drivingcareer" id="drivingcareer_1" value="1"/>
+                    <label for="drivingcareer_1">1년 미만</label>
+                    <input type="radio" name="drivingcareer" id="drivingcareer_3" value="3"/>
+                    <label for="drivingcareer_3">1년 이상~3년 미만</label>
+                    <input type="radio" name="drivingcareer" id="drivingcareer_5" value="5"/>
+                    <label for="drivingcareer_5">3년 이상~5년 미만</label>
+                    <input type="radio" name="drivingcareer" id="drivingcareer_10" value="10"/>
+                    <label for="drivingcareer_10">5년 이상~10년 미만</label>
+                    <input type="radio" name="drivingcareer" id="drivingcareer_11" value="11"/>
+                    <label for="drivingcareer_11">10년 이상</label>
+                    <input type="radio" name="drivingcareer" id="drivingcareer_0" value="0"/>
+                    <label for="drivingcareer_0">운전경력 없음</label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first17" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first17-2" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page17-1 -->
+
+
+<!-- page17-2 -->
+<div data-role="page" id="first17-2" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>17-2</span> / 19</div>
+        <div class="poll_quest">귀하의 월 평균 운전횟수는 어느 정도입니까?
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="drivingavg" id="drivingavg_0" value="0"/>
+                    <label for="drivingavg_0">0번</label>
+                    <input type="radio" name="drivingavg" id="drivingavg_2" value="2"/>
+                    <label for="drivingavg_2">1~2번</label>
+                    <input type="radio" name="drivingavg" id="drivingavg_4" value="4"/>
+                    <label for="drivingavg_4">3~4번</label>
+                    <input type="radio" name="drivingavg" id="drivingavg_8" value="8"/>
+                    <label for="drivingavg_8">5~8번</label>
+                    <input type="radio" name="drivingavg" id="drivingavg_12" value="12"/>
+                    <label for="drivingavg_12">9번~12번</label>
+                    <input type="radio" name="drivingavg" id="drivingavg_16" value="16"/>
+                    <label for="drivingavg_16">13번~16번</label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first17-1" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first17-3" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+</div>
+<!-- /page17-2 -->
+
+
+<!-- page17-3 -->
+<div data-role="page" id="first17-3" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>17-3</span> / 19</div>
+        <div class="poll_quest">귀하 또는 귀가정에서 보유하고 있는 차량의 대수는 몇 대입니까?
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="carhave" id="carhave_0" value="0"/>
+                    <label for="carhave_0">보유차량없음</label>
+                    <input type="radio" name="carhave" id="carhave_1" value="1"/>
+                    <label for="carhave_1">1대</label>
+                    <input type="radio" name="carhave" id="carhave_2" value="2"/>
+                    <label for="carhave_2">2대</label>
+                    <input type="radio" name="carhave" id="carhave_3" value="3"/>
+                    <label for="carhave_3">3대</label>
+                    <input type="radio" name="carhave" id="carhave_4" value="4"/>
+                    <label for="carhave_4">4대</label>
+                    <input type="radio" name="carhave" id="carhave_5" value="5"/>
+                    <label for="carhave_5">5대</label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first17-2" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first18" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page17-3 -->
+
+
+<!-- page18 -->
+<div data-role="page" id="first18" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>18</span> / 19</div>
+        <div class="poll_quest">귀하는 휴대폰(스마트폰)을 보유하였습니까?
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="smartphone_use" id="smartphone_use_Y" value="Y"/>
+                    <label for="smartphone_use_Y">사용함</label>
+                    <input type="radio" name="smartphone_use" id="smartphone_use_N" value="N"/>
+                    <label for="smartphone_use_N">사용하지 않음</label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first17-3" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first18-1" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page18 -->
+
+
+<!-- page18-1 -->
+<div data-role="page" id="first18-1" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>18-1</span> / 19</div>
+        <div class="poll_quest">귀하의 휴대폰(스마트폰) 보유개수는 몇 개 입니까?
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="radio" name="smartphone_cnt" id="smartphone_cnt_1" value="1"/>
+                    <label for="smartphone_cnt_1">1개</label>
+                    <input type="radio" name="smartphone_cnt" id="smartphone_cnt_2" value="2"/>
+                    <label for="smartphone_cnt_2">2개</label>
+                    <input type="radio" name="smartphone_cnt" id="smartphone_cnt_3" value="3"/>
+                    <label for="smartphone_cnt_3">3개 이상</label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first18" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first18-2" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page18-1 -->
+
+
+<!-- page18-2 -->
+<div data-role="page" id="first18-2" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>18-2</span> / 19</div>
+        <div class="poll_quest">귀하가 보유하고 휴대폰(스마트폰)에 대한 정보를 선택해 주십시오.
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="fieldcontain" style="display: none">
+                        <div class="ui-grid-b">
+                            <div class="ui-block-a phone-title" style="width:19%; padding-top:10px">휴대폰</div>
+                            <div class="ui-block-b" style="width:87%;">
+                                <div class="ui-grid-a">
+                                    <div class="ui-block-a phone-maker" style="width:50%;">
+                                    </div>
+                                    <div class="ui-block-b phone-type" style="width:50%;">
+                                    </div>
+                                </div>
+                                <div class="ui-grid-solo">
+                                    <div class="ui-block-a phone-app" style="width:100%;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first18-1" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first19" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page18-2 -->
+
+
+<!-- page19 -->
+<div data-role="page" id="first19" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+        <div class="first_poll_numbering"><span>19</span> / 19</div>
+        <div class="poll_quest">귀하가 사용하는 SNS(메신져 포함)를 모두 선택해 주십시오. (복수응답)
+        </div>
+        <div class="poll_b_list">
+            <form>
+                <fieldset data-role="controlgroup">
+                    <legend></legend>
+                    <input type="checkbox" name="sns_site" id="sns_site_2" value="2"/>
+                    <label for="sns_site_2">사용하지 않음</label>
+                    <input type="checkbox" name="sns_site" id="sns_site_4" value="4"/>
+                    <label for="sns_site_4">트위터</label>
+                    <input type="checkbox" name="sns_site" id="sns_site_8" value="8"/>
+                    <label for="sns_site_8">페이스북</label>
+                    <input type="checkbox" name="sns_site" id="sns_site_16" value="16"/>
+                    <label for="sns_site_16">유투브</label>
+                    <input type="checkbox" name="sns_site" id="sns_site_32" value="32"/>
+                    <label for="sns_site_32">블로그</label>
+                    <input type="checkbox" name="sns_site" id="sns_site_64" value="64"/>
+                    <label for="sns_site_64">싸이월드</label>
+                    <input type="checkbox" name="sns_site" id="sns_site_128" value="128"/>
+                    <label for="sns_site_128">네이버카페</label>
+                    <input type="checkbox" name="sns_site" id="sns_site_256" value="256"/>
+                    <label for="sns_site_256">다음카페</label>
+                    <input type="checkbox" name="sns_site" id="sns_site_512" value="512"/>
+                    <label for="sns_site_512">카카오스토리</label>
+                    <input type="checkbox" name="sns_site" id="sns_site_1024" value="1024"/>
+                    <label for="sns_site_1024">미투데이</label>
+                    <input type="checkbox" name="sns_site" id="sns_site_2048" value="2048"/>
+                    <label for="sns_site_2048">카카오톡</label>
+                    <input type="checkbox" name="sns_site" id="sns_site_4096" value="4096"/>
+                    <label for="sns_site_4096">마이피플</label>
+                    <input type="checkbox" name="sns_site" id="sns_site_8192" value="8192"/>
+                    <label for="sns_site_8192">LINE</label>
+                    <input type="checkbox" name="sns_site" id="sns_site_16384" value="16384"/>
+                    <label for="sns_site_16384">네이트온UC</label>
+                    <input type="checkbox" name="sns_site" id="sns_site_32768" value="32768"/>
+                    <label for="sns_site_32768" class="label-margin0">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a" style="width:30%;line-height:36px;">
+                                기타
+                            </div>
+                            <div class="ui-block-b" style="width:70%;">
+                                <input type="text" name="sns_site_etc" id="sns_site_etc" value=""  style="padding: 0; height: 34px;" data-enter-reject>
+                            </div>
+                        </div>
+                    </label>
+                </fieldset>
+            </form>
+        </div>
+        <fieldset class="ui-grid-a">
+            <div class="ui-block-a prev"><a href="#first18-2" data-ajax="false">
+                <button type="submit" data-theme="c">이전</button>
+            </a></div>
+            <div class="ui-block-b next"><a href="#first-complete" data-ajax="false">
+                <button type="submit" data-theme="b">다음</button>
+            </a></div>
+        </fieldset>
+    </div>
+
+
+</div>
+<!-- /page19 -->
+<!-- 
+<style>
+    #first-complete .ui-panel-content-wrap{background-color:white;}
+</style>
+-->
+<!-- page complete -->
+<div data-role="page" id="first-complete" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">퍼스트 설문</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+
+    <div data-role="content" class="jqm-content">
+		<div onclick="location.href='home.html';" data-ajax="false"><img src="images/m_img/m_endimg.jpg" align="absmiddle" style="width:100%;margin-top:10px;"></div>
+        <!--<div class="end_sur_div"><div class="img_div"></div><p>퍼스트 설문에 참여해 주셔서 대단히 감사합니다.</p></div>
+        <div class="etc_btn" onclick="location.href='home.html';" data-ajax="false">참여완료</div>-->
+    </div>
+    <!--<div data-role="content" class="jqm-content">-->
+        <!--<div class="poll_quest">퍼스트 설문에 참여해 주셔서 대단히 감사합니다.</div>-->
+        <!--<div class="poll_b_list">-->
+
+        <!--</div>-->
+        <!--<fieldset class="ui-grid-a">-->
+            <!--<div class="ui-block-a prev"><a href="#first19" data-ajax="false">-->
+                <!--<button type="submit" data-theme="c">이전</button>-->
+            <!--</a></div>-->
+            <!--<div class="ui-block-b complete"><a href="javascript:;" onclick="location.href='/home.html'; return false;" data-ajax="false">-->
+                <!--<button type="submit" data-theme="b">완료</button>-->
+            <!--</a></div>-->
+        <!--</fieldset>-->
+    <!--</div>-->
+
+</div>
+<!-- /page19 -->
+<script type="text/javascript">
+//<![CDATA[
+try{
+    document.addEventListener("deviceready", onDeviceReady, false);       
+    function onDeviceReady() {           
+    //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+    }       
+    function alertCallback(){
+    }
+}
+catch(e) { }       
+//]]>
+</script>
+</body>
+</html>

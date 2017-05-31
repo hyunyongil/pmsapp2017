@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>온패널</title>
+    <script type="text/javascript" src="js/headerNotjQueryMobile.js"></script>
+
+    <script src="js/common-poll.js"></script>
+    <script src="js/DOM.js"></script>
+    <script src="js/poll_new.js"></script>
+    <script src="js/onpanel.join.mobile.new.js"></script>
+
+    <!--link href="http://devonpanel.onsolutions.co.kr/page/onmetrics/mobile/design_set/skin/css/default_layout_m.css" rel="stylesheet" type="text/css"/-->
+    <link href="http://page.onsolutions.co.kr/page/onmetrics/mobile/design_set/skin/css/default_layout_m.css" rel="stylesheet" type="text/css"/>
+    <link href="css/survey.css" rel="stylesheet" type="text/css"/>
+
+    <!-- bin/jquery.slider.min.css -->
+	<link rel="stylesheet" href="js/slider/css/jslider.css" type="text/css">
+	<link rel="stylesheet" href="js/slider/css/jslider.blue.css" type="text/css">
+	<link rel="stylesheet" href="js/slider/css/jslider.plastic.css" type="text/css">
+	<link rel="stylesheet" href="js/slider/css/jslider.round.css" type="text/css">
+	<link rel="stylesheet" href="js/slider/css/jslider.round.plastic.css" type="text/css">
+    <!-- end -->
+
+	<!-- bin/jquery.slider.min.js -->
+	<script type="text/javascript" src="js/slider/jshashtable-2.1_src.js"></script>
+	<script type="text/javascript" src="js/slider/jquery.numberformatter-1.2.3.js"></script>
+	<script type="text/javascript" src="js/slider/tmpl.js"></script>
+	<script type="text/javascript" src="js/slider/jquery.dependClass-0.1.js"></script>
+	<script type="text/javascript" src="js/slider/draggable-0.1.js"></script>
+	<script type="text/javascript" src="js/slider/jquery.slider.js"></script>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        var joinSurvey = new Join;
+        var survey = new Object;
+
+
+        $(document).ready(function() {
+
+		    var ua = window.navigator.userAgent;
+			var msie = ua.indexOf("MSIE ");
+
+			if (msie > 0) // If Internet Explorer, return version number
+			{
+				var ms_version = parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)));
+
+				if(ms_version == 9) {
+
+					location.href = "about:Tabs";
+					alert("지원하지 않는 버전입니다.");
+					return false;
+				}
+			}
+
+
+            joinSurvey.surveySeq = gup("surveySeq");
+            joinSurvey.imgUrl = "";
+            survey.imgUrl = "";
+            joinSurvey.cssUrl = "";
+            joinSurvey.isMode = gup("isMode");
+            joinSurvey.limit_type = gup("limit_type");
+//            joinSurvey.surveyLinkId = "";
+
+            joinSurvey.init();
+
+            $(document).on("click","input[type='radio']",function(){
+//                $(".giben_table td").removeClass("buogi_on");
+//                $(this).parents('td').addClass("buogi_on");
+            });
+
+            $(document).on("click","input[type='checkbox']",function(){
+                if($(this).is(":checked")) {
+//                    $(this).parents('td').addClass("buogi_on");
+                }
+                else {
+//                    $(this).parents('td').removeClass("buogi_on");
+                }
+            });
+        });
+
+        function shuffle( array ) {
+            for(var j, x, i = array.length; i; j = parseInt(Math.random() * i), x = array[--i], array[i] = array[j], array[j] = x);
+            return true;
+        }
+
+        function end( array ) {
+            var last_elm, key;
+
+            if (array.constructor === Array){
+                last_elm = array[(array.length-1)];
+            } else {
+                for (key in array){
+                    last_elm = array[key];
+                }
+            }
+
+            return last_elm;
+        }
+        //]]>
+    </script>
+</head>
+<body>
+<style>
+    body{-webkit-text-size-adjust:none;}
+    .m_cover_template1{display:none;}
+    .m_template1{display:none;}
+    .fieldset_open_wrap .buogi_div{padding: 15px 5px 5px 10px;}
+    .buogi_div_rank_wrap.buogi_div2 input[type="checkbox"]{display:none;}
+    .SliderSingle{display:none;}
+    div.layout-slider{margin:20px 0;}
+    .ui-block-b{display:inline-block !important;}
+    .ui-block-c{display:inline-block !important;}
+    #pollJoinEnd{display:none;}
+    div.no_bg{display:none;}
+</style>
+
+<div class="ui-header ui-bar-a ui-header-fixed ui-panel-content-fixed-toolbar ui-panel-animate ui-panel-content-fixed-toolbar-closed">
+    <h1 class="mainTopLogo ui-title">설문참여</h1>
+    <a href="#" onclick="joinSurvey.gotoBack();return false;"  class="ui-btn-left top_back_btn"><span class="ui-btn-inner"><span class="ui-btn-text"></span><span class="ui-icon ui-icon-back ui-icon-shadow">&nbsp;</span></span></a>
+</div>
+
+<!--m_cover_template1-->
+<div class="m_template_wrapper" id="pollJoinCover"></div>
+<div class="m_template1 m_template_wrapper" id="pollJoin"></div>
+<div class="m_end" id="pollJoinEnd"></div>
+
+
+<!--<div class="layout-slider">-->
+    <!--<input id="SliderSingle" type="slider" name="price" value="0" />-->
+<!--</div>-->
+
+<!--<div class="document_append"></div><br /><br /><br />-->
+<!--<div class="document_append3"></div><br /><br /><br />-->
+<!--<div class="document_append5"></div><br /><br /><br />-->
+
+<script type="text/javascript" charset="utf-8">
+//    $(document).ready(function() {
+////        $(".SliderSingle").slider();
+//
+//        setTimeout(function(){
+//            $(".SliderSingle").slider();
+//        },300);
+//    });
+
+//$(".document_append3").append(
+//        $('<input class="SliderSingle3" type="slider" name="price" value="1" />')
+//);
+//$(".document_append5").append(
+//        $('<input class="SliderSingle5" type="slider" name="price" value="2" data-from="-5" data-to="5" data-step="1" data-dimension="&nbsp;" />')
+//);
+//
+//$(document).ready(function() {
+//    $(".document_append").append(
+//        $('<input class="SliderSingle2" type="slider" name="price" value="-1" />')
+//                .slider({
+//               from: -3
+//               , to: 3
+//               , step: 1
+//               , dimension: '&nbsp;'
+//              })
+//    );
+//
+//    $(".SliderSingle3").slider({
+//        from: -3
+//        , to: 3
+//        , step: 1
+//        , dimension: '&nbsp;'
+//    });
+//
+//    $(".SliderSingle5").slider();
+//});
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+try{
+    document.addEventListener("deviceready", onDeviceReady, false);       
+    function onDeviceReady() {           
+    //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+    }       
+    function alertCallback(){
+    }
+}
+catch(e) { }       
+//]]>
+</script>
+</body>
+</html>
+
+

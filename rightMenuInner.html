@@ -1,0 +1,116 @@
+<div class="right_panel ">
+    <div class="user_info">
+        <div class="levels"></div>
+        <div class="info_t_box"><b id="my_info_name_right" data-myinfo-name></b></div>
+        <div class="info_i_box ">
+            <a id="logout" href="#" data-ajax="false"><img src="images/m_img/m_tm_ico1.png"></a>
+            <a href="myPageMain.html" data-ajax="false"><img src="images/m_img/m_tm_ico2.png"></a>
+            <a href="myConfig.html" data-ajax="false"><img src="images/m_img/m_tm_ico3.png"></a>
+            <a href="#" data-ajax="false" id="menuclick"><img src="images/m_img/m_tm_ico4.png"></a>
+        </div>
+    </div>
+    <div class="menu_list">
+        <ul>
+            <li><a href="home.html" data-ajax="false"><span class="menu_icon menu_icon1" aria-hidden="true"></span>홈</a>
+            </li>
+            <li class="wbg"><a href="firstPoll.html" data-ajax="false"><span class="menu_icon menu_icon2"
+                                                                             aria-hidden="true"></span>퍼스트설문</a></li>
+            <li class="wbg"><a href="poll.html" data-ajax="false"><span class="menu_icon menu_icon3"
+                                                                        aria-hidden="true"></span>설문참여</a></li>
+            <li><a href="onpoll.html" data-ajax="false"><span class="menu_icon menu_icon4" aria-hidden="true"></span>온폴</a>
+            </li>
+            <li><a href="powerPanel.html" data-ajax="false"><span class="menu_icon menu_icon5"
+                                                                  aria-hidden="true"></span>파워패널</a></li>
+            <li class="wbg"><a href="notice.html" data-ajax="false"><span class="menu_icon menu_icon6"
+                                                                          aria-hidden="true"></span>공지사항</a></li>
+            <li class="wbg"><a href="event.html" data-ajax="false"><span class="menu_icon menu_icon7"
+                                                                         aria-hidden="true"></span>이벤트</a></li>
+            <li><a href="pointMallItemList.html" data-ajax="false"><span class="menu_icon menu_icon8"
+                                                                         aria-hidden="true"></span>온포인트몰</a></li>
+        </ul>
+    </div>
+
+    <div class="menu_copy">
+        <p>
+            <a href="userInfoTerms.html" data-ajax="false">개인정보 처리방침</a>
+            <a href="serviceTerms.html" data-ajax="false">이용약관</a>
+            <a href="contact.html" data-ajax="false">문의하기</a>
+        </p>
+        (C) <b>ONSOL</b> COMMUNICATION. ALL RIGHTS RESERVED
+    </div>
+</div>
+
+<script type="text/javascript">
+    //<![CDATA[
+
+    $(document).ready(function () {
+        /*$("#menuclick").click(function(){
+         $('html, body').css('overflowY', 'scroll');
+         });*/
+        var my_level = COMMON.storage.get("my_level");
+        var level_type = '';
+        if (my_level == 1) {
+            level_type = 'b';
+        } else if (my_level == 2) {
+            level_type = 's';
+        } else if (my_level == 3) {
+            level_type = 'g';
+        } else if (my_level == 4) {
+            level_type = 'p';
+        }
+        $(".levels").addClass("lev_" + level_type);
+        $("#my_info_name_right").text(COMMON.storage.get("my_info_name") + "님");
+        getSurveyCount(surveyCountCallBack);
+        $("#logout").on('click', function (event, ui) {
+            try {
+                document.addEventListener('deviceready', function () {
+                    navigator.notification.confirm("로그아웃을 하시겠습니까?", function (index) {
+                        if (index == 1) {
+                            event.preventDefault();
+
+                            COMMON.token.clear();
+
+                            location.href = "loginNew.html";
+                        }
+                    }, '알림', "확인,취소");
+
+                }, true);
+            }
+            catch (e) {
+
+                if (confirm("로그아웃을 하시겠습니까?")) {
+                    event.preventDefault();
+
+                    COMMON.token.clear();
+
+                    location.href = "loginNew.html";
+                }
+            }
+            //jms.page.startActivity('index.html');
+        });
+    });
+
+    $("[data-role='page']").on('pageshow', function () {
+        $("[data-myinfo-name]").text(COMMON.storage.get("my_info_name") + "님");
+        $("[data-myinfo-cnt]").text(COMMON.storage.get("my_survey_cnt"));
+    });
+
+    function surveyCountCallBack(cnt) {
+        if (cnt) {
+            COMMON.storage.put("my_survey_cnt", cnt);
+        }
+        $("#my_survey_cnt_right").text(COMMON.storage.get("my_survey_cnt"));
+    }
+
+    //]]>
+</script>
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+    <filter id="blur">
+
+        <feGaussianBlur stdDeviation="6"/>
+
+    </filter>
+
+</svg>

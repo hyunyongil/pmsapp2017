@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>온패널</title>
+    <script type="text/javascript" src="js/header.js"></script>
+</head>
+<body>
+
+<!-- page begin -->
+<div id="myPageActivity_page" data-role="page" class="wrap">
+    <!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">마이페이지</h1>
+        <a href="#" data-icon="back" class="ui-btn-left top_back_btn" data-rel="back"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <!-- content begin -->
+    <div data-role="content" class="jqm-content" style="padding:0px;">
+        <div jms-data-role="load" jms-data-page="myPageNavBar.html" jms-data-value="activity"></div>
+
+        <div style="padding:15px;">
+            <div data-role="controlgroup" style="margin-bottom:30px;">
+                <a href="#" data-role="button">현재 <b style="color:red" class="name"></b> 회원님에게 적립된 온포인트입니다.</a>
+            </div>
+
+            <ul data-role="listview" data-inset="true" style="margin-bottom:30px;">
+                <li data-role="list-divider">포인트금액</li>
+                <li style=" background:#FFF; padding:0px; position:relative;">
+                    <table class="tableStyle01 ui-corner-all" cellpadding="0" cellspacing="0">
+                        <tbody>
+                        <tr>
+                            <th>현재 포인트</th>
+                            <td><span><img src="images/my_p_icon.png" width="31" height="24" style=" margin-right:5px;"></span><span class="point" style="position:relative; top:-4px;"></span></td>
+                            <th style="border-left:1px solid #CCC; width: 110px;">총적립 포인트</th>
+                            <td><span><img src="images/my_p_icon.png" width="31" height="24" style=" margin-right:5px;"></span><span class="total_point" style="position:relative; top:-4px;"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>총 사용 적립</th>
+                            <td colspan="3"><span><img src="images/my_p_icon.png" width="31" height="24" style=" margin-right:5px;"></span><span class="use_point"
+                                                                                                                                                    style="position:relative; top:-4px;"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="box_bottom_right"><span class="box_bottom_left"></span></div>
+                </li>
+            </ul>
+            <ul data-role="listview" data-inset="true" style="margin-bottom:30px;">
+                <li data-role="list-divider" data-theme="d">퍼스트 설문 참여현황</li>
+                <li style=" background:#FFF; padding:0px; position:relative;">
+                    <table class="tableStyle01 ui-corner-all" cellpadding="0" cellspacing="0">
+                        <tbody>
+                        <tr class="first_poll">
+                            <th class="title">퍼스트설문</th>
+                            <td class="content"></td>
+                            <td class="update" width="90" style="display: none"><a href="#" data-role="button" data-mini="true" data-inline="true">업데이트</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="box_bottom_right"><span class="box_bottom_left"></span></div>
+                </li>
+            </ul>
+            <ul data-role="listview" data-inset="true" style="margin-bottom:30px;">
+                <li data-role="list-divider" data-theme="d">파워패널 참여현황</li>
+                <li style=" background:#FFF; padding:0px; position:relative;">
+                    <table class="powerpannel tableStyle01 ui-corner-all" cellpadding="0" cellspacing="0">
+                        <tbody>
+                        <tr id="power_housewife" powerpannel_type="2">
+                            <th>주부패널</th>
+                            <td class="content"></td>
+                            <td class="update" width="90" style="display: none"><a href="#" data-role="button" data-mini="true" data-inline="true">업데이트</a></td>
+                        </tr>
+                        <tr id="power_smart" powerpannel_type="4">
+                            <th>스마트패널</th>
+                            <td class="content"></td>
+                            <td class="update" width="90" style="display: none"><a href="#" data-role="button" data-mini="true" data-inline="true">업데이트</a></td>
+                        </tr>
+                        <tr id="power_specialty" powerpannel_type="8">
+                            <th>전문패널</th>
+                            <td class="content"></td>
+                            <td class="update" width="90" style="display: none"><a href="#" data-role="button" data-mini="true" data-inline="true">업데이트</a></td>
+                        </tr>
+                        <tr id="power_single" powerpannel_type="16">
+                            <th>1인가구패널</th>
+                            <td class="content"></td>
+                            <td class="update" width="90" style="display: none"><a href="#" data-role="button" data-mini="true" data-inline="true">업데이트</a></td>
+                        </tr>
+                        <tr id="power_multicultural" powerpannel_type="32">
+                            <th>다문화패널</th>
+                            <td class="content"></td>
+                            <td class="update" width="90" style="display: none"><a href="#" data-role="button" data-mini="true" data-inline="true">업데이트</a></td>
+                        </tr>
+                        <tr id="power_civilservant" powerpannel_type="64">
+                            <th>공무원패널</th>
+                            <td class="content"></td>
+                            <td class="update" width="90" style="display: none"><a href="#" data-role="button" data-mini="true" data-inline="true">업데이트</a></td>
+                        </tr>
+                        <tr id="power_car" powerpannel_type="128">
+                            <th>자동차패널</th>
+                            <td class="content"></td>
+                            <td class="update" width="90" style="display: none"><a href="#" data-role="button" data-mini="true" data-inline="true">업데이트</a></td>
+                        </tr>
+                        <tr id="power_young" powerpannel_type="256">
+                            <th>청소년패널</th>
+                            <td class="content"></td>
+                            <td class="update" width="90" style="display: none"><a href="#" data-role="button" data-mini="true" data-inline="true">업데이트</a></td>
+                        </tr>
+                        <tr id="power_life" powerpannel_type="512">
+                            <th>라이프패널</th>
+                            <td class="content"></td>
+                            <td class="update" width="90" style="display: none"><a href="#" data-role="button" data-mini="true" data-inline="true">업데이트</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="box_bottom_right"><span class="box_bottom_left"></span></div>
+                </li>
+            </ul>
+            <div>
+                회원님의 퍼스트&파워패널 설문 최근 갱신일입니다.<br>
+                퍼스트설문 수정은 언제든지 가능하며, 온패널에서는 <b style="color:#F30">6개월마다 회원님의 업데이트</b>를 권장하고있습니다.
+            </div>
+        </div>
+    </div>
+    <!-- content end -->
+
+    <!-- footer begin -->
+    <div data-role="footer" data-position="fixed" jms-data-role="load" jms-data-page="footer.html" jms-data-value="my_page"></div>
+    <!-- footer end -->
+
+    <script src="js/myPageActivity.js"></script>
+</div>
+<!-- page end -->
+<script type="text/javascript">
+//<![CDATA[
+try{
+    document.addEventListener("deviceready", onDeviceReady, false);       
+    function onDeviceReady() {           
+    //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+    }       
+    function alertCallback(){
+    }
+}
+catch(e) { }       
+//]]>
+</script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,width=device-width">
+    <title>온패널</title>
+
+    <script src="js/header.js"></script>
+    <script src="js/pollList.js"></script>
+    <script>
+        readyPoll();
+    </script>
+    <link href="css/add_css.css" rel="stylesheet">
+</head>
+<body>
+
+<div data-role="page" id="poll_list" class="wrap">
+	<!-- panel begin -->
+	<div data-role="panel" id="rightpanel1" data-position="right" data-display="overlay" data-theme="a" jms-data-role="load" jms-data-page="rightMenuInner.html" jms-data-value="more"></div>
+	<!-- panel end -->
+	<!-- header begin -->
+    <div data-role="header" data-position="fixed"  data-tap-toggle="false" data-transition="none">
+        <h1 class="mainTopLogo">온폴</h1>
+        <a href="home.html" data-icon="back" class="ui-btn-left top_back_btn"  data-ajax="false"></a>
+        <a href="#rightpanel1" data-icon="back" class="ui-btn-right top_menu_btn"></a>
+    </div>
+    <!-- header end -->
+    <div data-role="content" class="jqm-content" style="padding:0;">
+        <div data-role="navbar">
+            <ul class="topNavbar">
+                <li><a href="#" class="ui-btn-active" id="poll_survey_ing">온폴참여</a></li>
+                <li><a href="#" class="end_list" id="poll_survey_end">온폴 리포트</a></li>
+            </ul>
+        </div>
+        <!-- /navbar -->
+
+        <div class="poll-list padding15"  style="margin:0;">
+        	
+            <div class="onpoll_list">
+            	
+                <div class="etc_group">
+                	<div class="left_point">2P</div>
+                    <div class="right_category">일상/여가/외식</div>
+                </div>
+            	<div class="title_name">스팸어플 중 가장 생각하는 어플은?</div>
+                <div class="title_content">
+                	<p>나날이 늘어가는 보이스피싱 전화와 문자!<br>현재 출시된 두개 어플 중 가장 좋다고 생각하는 스팸어플은 무엇입니까?</p>
+                    <div><img src="images/test1.jpg"></div>
+                </div>
+                <div class="etc_data">
+                	<div class="left_user">1,000</div>
+                    <div class="right_data">2016.08.25~2016.09.03</div>
+                </div>
+                
+                <div class="onpoll_survey">
+                	<div class="survey_title"><span>01</span>두개의 어플 중 사용량이 더 많다고 생각되는 어플은?</div>
+                    <ul class="img_have">
+                    	<li class="on_background">
+                        	<div class="survey_img"><img src="images/test1.jpg"></div>
+                            <div class="survey_text"><span class="radio_div on"></span>보이스피싱피해방지</div>
+                        </li>
+                        <li>
+                        	<div class="survey_img"><img src="images/test1.jpg"></div>
+                            <div class="survey_text"><span class="radio_div"></span>보이스피싱피해방지</div>
+                        </li>
+                        <li>
+                        	<div class="survey_img"></div>
+                            <div class="survey_text"><span class="radio_div"></span>보이스피싱피해방지</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="onpoll_survey">
+                	<div class="survey_title"><span>02</span>두개의 어플 중 사용량이 더 많다고 생각되는 어플은?</div>
+                    <ul class="img_no">
+                    	<li>
+                            <div class="checkbox_layer">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>
+                                    <td valign="middle">1</td>
+                                  </tr>
+                                </table>
+                            </div>
+                            <div class="survey_text"><span class="checkbox_div"></span>보이스피싱피해방지</div>
+                        </li>
+                        <li>
+                            <div class="survey_text"><span class="checkbox_div"></span>보이스피싱피해방지</div>
+                        </li>
+                        <li>
+                            <div class="checkbox_layer">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>
+                                    <td valign="middle">2</td>
+                                  </tr>
+                                </table>
+                            </div>
+                            <div class="survey_text"><span class="checkbox_div"></span>보이스피싱피해방지</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="onpoll_btn"><a href="#">참여하기</a><a href="#">결과보기</a></div>
+                
+            </div>
+            
+            <div class="onpoll_list">
+            	
+                <div class="etc_group">
+                	<div class="left_point">2P</div>
+                    <div class="right_category">일상/여가/외식</div>
+                </div>
+            	<div class="title_name">스팸어플 중 가장 좋다고 생각하는 어플은?</div>
+                <div class="title_content">
+                	<p>나날이 늘어가는 보이스피싱 전화와 문자!<br>현재 출시된 두개 어플 중 가장 좋다고 생각하는 스팸어플은 무엇입니까?</p>
+                    <div><img src="images/test1.jpg"></div>
+                </div>
+                <div class="etc_data">
+                	<div class="left_user">1,000</div>
+                    <div class="right_data">2016.08.25~2016.09.03</div>
+                </div>
+                
+                <div class="onpoll_survey">
+                	<div class="survey_title"><span>01</span>두개의 어플 중 사용량이 더 많다고 생각되는 어플은?</div>
+                    <ul class="chanban">
+                    	<li>
+                        	<div class="up_img_div"></div>
+                            <div class="survey_text"><span class="radio_div"></span>찬성</div>
+                        </li>
+                        <li class="on_background">
+                        	<div class="up_down_div"></div>
+                            <div class="survey_text"><span class="radio_div on"></span>반대</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="onpoll_survey">
+                	<div class="survey_title"><span>02</span>두개의 어플 중 사용량이 더 많다고 생각되는 어플은?</div>
+                    <ul class="img_no">
+                    	<li class="on_background">
+                            <div class="survey_text"><span class="checkbox_div on"></span>보이스피싱피해방지</div>
+                        </li>
+                        <li class="on_background">
+                            <div class="survey_text"><span class="checkbox_div on"></span>보이스피싱피해방지</div>
+                        </li>
+                        <li>
+                            <div class="survey_text"><span class="checkbox_div"></span>보이스피싱피해방지</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!--<div class="onpoll_btn"><a href="#">참여하기</a><a href="#">결과보기</a></div>-->
+                <div class="onpoll_btn2"><a href="#">결과보기</a></div>
+                
+            </div>
+            
+            
+        </div>
+        
+    </div>
+
+</div>
+<!-- /page -->
+
+<script type="text/javascript">
+//<![CDATA[
+try{
+    document.addEventListener("deviceready", onDeviceReady, false);       
+    function onDeviceReady() {           
+    //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+    }       
+    function alertCallback(){
+    }
+}
+catch(e) { }       
+//]]>
+</script>
+</body>
+</html>
