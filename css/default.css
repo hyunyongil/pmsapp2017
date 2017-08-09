@@ -1,8 +1,15 @@
 @import url(nanumbarungothic.css);
 
+.login {width:100%; height:100%; background:url('../images/pmslogin_bg.jpg') no-repeat 0 0/100% 100%; box-sizing:border-box; position:relative; font-size:11px; box-sizing:border-box; margin:0; padding-top:30%; text-align:center;}
+
+.login p { font-size:60px; color:#fff; margin:auto; text-align:center;}
+.login span {display:block; font-size:18px; color:#fff; margin:5px auto 25px auto; text-align:center;}
+.login div{width:60%; margin:auto; margin-bottom:5px;}
+.login div input {width:100%; height:55px; border-radius:3px; border:1px solid rgba(255,255,255,.5); background: rgba(255,255,255,.05); text-align:center; color:#fff;}
+.login a {display:block; width:60%; height:60px; line-height:60px; font-size:15px; margin:10px auto; background:#fff; color:#0b3667; font-weight:bold; text-decoration:none; border-radius:3px; border:1px solid #fff;}
+
 .clear { clear: both }
 a { text-decoration: none }
-
 
 input:focus,
 select:focus,
@@ -156,8 +163,6 @@ button:focus {
 .form_ul li .form_text { padding: 9px 0; display: block}
 .form_ul li input.ui-input-text, .form_ul li textarea.ui-input-text { padding: 8px 0 }
 
-#member_name{padding:10px; background-color:#f2f2f2; display:block;}
-#member_id{padding:10px; display:block; text-align:center;font-weight:bold; font-size:20px; color:#04398A}
 
 
 .bic_icon .ui-btn-icon-left .ui-icon { left: 10px; margin-top: -11px !important;}
