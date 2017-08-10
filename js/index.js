@@ -77,7 +77,7 @@ $(document).one('pageinit', '#index_page', function () {
                 location.href = 'home.html';
                 //jms.page.startActivity('home.html');
             } else {
-                location.href = 'loginNew.html';
+                location.href = 'pmslogin.html';
             }
         };
 
@@ -128,7 +128,7 @@ $(document).one('pageinit', '#index_page', function () {
 
 
             if(COMMON.token.get() == "" || typeof COMMON.token.get() == "undefined" || COMMON.token.get() == null || COMMON.token.get() == "null") {
-                location.href = 'login.html';
+                location.href = 'pmslogin.html';
                 return false;
             }
 

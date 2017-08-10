@@ -89,16 +89,12 @@ $(document).one('pageinit', '#login_page', function () {
                 COMMON.storage.put("my_info_name",data.result.name);
 
 
-                console.log('data.result: '+data.result);
-                console.log('data.result.survey_cnt: '+data.result.survey_cnt);
+                console.log('data.result: '+result);
 
-                COMMON.storage.put("my_level",data.result.member_level);
-                COMMON.storage.put("my_survey_cnt",data.result.survey_cnt);
-                COMMON.storage.put("my_info_id",data.result.member_id);
 
 
                 //jms.page.startActivity('home.html');
-                location.href = 'home.html';
+                location.href = 'main_list.html';
             } else {
                 alertLayer(ONPANEL.Ajax.Result.getMessage(data));
                 //$('#loginFailDialog .ui-title').html(ONPANEL.Ajax.Result.getMessage(data));
