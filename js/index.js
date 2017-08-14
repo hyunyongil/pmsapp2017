@@ -74,7 +74,7 @@ $(document).one('pageinit', '#index_page', function () {
             console.log("TEST:"+JSON.stringify(data));
 
             if (ONPANEL.Ajax.Result.isSucess(data)) {
-                location.href = 'home.html';
+                location.href = 'main_list.html';
                 //jms.page.startActivity('home.html');
             } else {
                 location.href = 'pmslogin.html';

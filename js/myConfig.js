@@ -254,7 +254,14 @@ $(document).one('pageinit', '#myConfig_page', function () {
 
             page.view.logout.on('click', function (event, ui) {
                 try{
-					document.addEventListener('deviceready', function() {
+                    if(confirm("로그아웃을 하시겠습니까?")) {
+                        event.preventDefault();
+
+                        COMMON.token.clear();
+
+                        location.href = "pmslogin.html";
+                    }
+					/*document.addEventListener('deviceready', function() {
                         navigator.notification.confirm("로그아웃을 하시겠습니까?", function(index) {
                             if(index == 1) {
 								event.preventDefault();
@@ -265,7 +272,7 @@ $(document).one('pageinit', '#myConfig_page', function () {
                             }
                         }, '확인',"확인,취소");
 
-                    }, true);
+                    }, true);*/
                 }
                 catch(e) {
 					if(confirm("로그아웃을 하시겠습니까?")) {
@@ -273,7 +280,7 @@ $(document).one('pageinit', '#myConfig_page', function () {
 
 						COMMON.token.clear();
 
-						location.href = "loginNew.html";
+						location.href = "pmslogin.html";
                     }
                 }
                 //jms.page.startActivity('index.html');

@@ -503,8 +503,8 @@ a.ui-link-inherit {
 	text-decoration: none!important
 }
 .ui-btn-active {
-	border: 1px solid #39598d;
-	background: #39598d;
+	border: 1px solid #419641;
+	background: #0f5a1f;
 	font-weight: 700;
 	color: #fff;
 	cursor: pointer;

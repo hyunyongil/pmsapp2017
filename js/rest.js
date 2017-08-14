@@ -7,22 +7,13 @@
 ///////////////////////////////////////
 CONSTANTS.MEMBER = {};
 CONSTANTS.MEMBER.LOGIN = '/api/member/login';
-CONSTANTS.MEMBER.INFO = '/api/member/info';
-CONSTANTS.MEMBER.EDIT = '/api/mypage/edit';
-CONSTANTS.MEMBER.AUTH = '/api/member/mobile_auth';
-CONSTANTS.MEMBER.AUTH_CONFIRM = '/api/member/mobile_auth_confirm';
-CONSTANTS.MEMBER.FIND_ID = '/api/member/find_id';
-CONSTANTS.MEMBER.FIND_PW = '/api/member/find_pw';
-CONSTANTS.MEMBER.CHECK_ID = '/api/member/member_id_chk';
-CONSTANTS.MEMBER.CHECK_EMAIL = '/api/member/email_addr_chk';
-CONSTANTS.MEMBER.CHECK_MOBILE_CODE = '/api/member/mobile_auth_code';
-CONSTANTS.MEMBER.FIND_MOBILE_CODE = '/api/member/mobile_find_code';
-CONSTANTS.MEMBER.FIND_PWD_NEW = '/api/member/find_pw_new';
-CONSTANTS.MEMBER.FIND_ID_NEW = '/api/member/find_id_new';
-CONSTANTS.MEMBER.CHANGE_PWD = '/api/member/change_pwd';
-CONSTANTS.MEMBER.REGISTER = '/api/member/registerSimple';
-CONSTANTS.MEMBER.UPDATELASTLOGIN = '/api/member/updateMemberLastLogin';
-CONSTANTS.MEMBER.OUT = '/api/member/out';
+
+CONSTANTS.PMS = {};
+CONSTANTS.PMS.MAIN = '/api/pms/mainList';
+CONSTANTS.PMS.MAKE = '/api/pms/makeTop';
+CONSTANTS.PMS.MAINVEW = '/api/pms/mainView';
+
+
 
 CONSTANTS.FIRST_SURVEY = {};
 CONSTANTS.FIRST_SURVEY.INFO = '/api/first_survey/info';
