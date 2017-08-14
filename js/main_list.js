@@ -149,7 +149,7 @@ function appendMainList(content, data) {
         }
         htmlArr.push('<tr>');
         htmlArr.push('<td> <a data-ajax="false" href="main_view.html?pms_num='+survey.num+'" class="'+cssval+' mumu"><p>'+mode+'</p>'+survey.code+'</a></td>');
-        htmlArr.push('<td>기간 : <b>'+survey.opDate1+'~'+survey.opDate2+'</b><br>사업명 : <b>'+survey.businessName+'</b>');
+        htmlArr.push('<td>기간 : <b>'+survey.opDate1.replace(/-/g,'.')+'~'+survey.opDate2.replace(/-/g,'.')+'</b><br>사업명 : <b>'+survey.businessName+'</b>');
         htmlArr.push('<td><img src="images/btn_listview.jpg" style="cursor: pointer;" class="mumu" onclick="location.href=\'main_view.html?pms_num='+survey.num+'\'"></td>');
         htmlArr.push('</tr>');
     }

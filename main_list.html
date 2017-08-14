@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+    <title>한국청소년활동진흥원</title>
+    <script type="text/javascript" src="js/header.js"></script>
+    <script src="js/main_list.js"></script>
+    <link href="css/default.css" rel="stylesheet" type="text/css"/>
+    <script>
+        readyMain();
+    </script>
+</head>
+<body>
+
+
+<div id="main_list" data-role="page" class="contant">
+    <ul class="c_title">
+        <li>
+            KYWA
+            <span>모바일 설문조사 통합관리 시스템</span>
+        </li>
+        <li>
+				<span>
+					국립청소년 해양센터<br><b id="my_info_name"></b> 지도자님
+				</span>
+            <a id="logout" href="#" data-ajax="false">로그아웃</a>
+        </li>
+        <div class="clear"></div>
+    </ul>
+    <ul class="c_menu topNavbars">
+        <li style="cursor: pointer;" id="main_click_all" class="main_click_all ui-btn-active">전체 <span class="main_all"></span></li>
+        <li style="cursor: pointer;" id="main_click_d" class="main_click_d" >대기 <span class="main_d"></span></li>
+        <li style="cursor: pointer;" id="main_click_i" class="main_click_i">진행 <span class="main_i"></span></li>
+        <li style="cursor: pointer;" id="main_click_e" class="main_click_e">완료 <span class="main_e"></span></li>
+        <div class="clear"></div>
+    </ul>
+    <div class="main-list" style="margin:0;" type="list">
+
+    </div>
+
+    <div class="main-more ui-grid-solo" style="display:none;">
+        <div class="ui-block-a"><a href="#" class="more_list"><img src="images/moreList.png"></a></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //<![CDATA[
+    var name = COMMON.storage.get("my_info_name");
+    $("#my_info_name").html(name);
+    $('#logout').click(function(){
+        try{
+            if(confirm("로그아웃을 하시겠습니까?")) {
+                event.preventDefault();
+
+                COMMON.token.clear();
+
+                location.href = "pmslogin.html";
+            }
+        }
+        catch(e) {
+            document.addEventListener('deviceready', function() {
+                navigator.notification.confirm("로그아웃을 하시겠습니까?", function(index) {
+                    if(index == 1) {
+                        event.preventDefault();
+
+                        COMMON.token.clear();
+
+                        location.href = "loginNew.html";
+                    }
+                }, '확인',"확인,취소");
+
+            }, true);
+        }
+    });
+    try {
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+        }
+
+        function alertCallback() {
+        }
+    }
+    catch (e) {
+    }
+    //]]>
+</script>
+</body>
+</html>
+
+</body>
+</html>

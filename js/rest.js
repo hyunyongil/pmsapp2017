@@ -12,6 +12,9 @@ CONSTANTS.PMS = {};
 CONSTANTS.PMS.MAIN = '/api/pms/mainList';
 CONSTANTS.PMS.MAKE = '/api/pms/makeTop';
 CONSTANTS.PMS.MAINVEW = '/api/pms/mainView';
+CONSTANTS.PMS.UPDATETYPE = '/api/pms/updateType';
+CONSTANTS.PMS.UPDATEPCNT = '/api/pms/updatePcnt';
+CONSTANTS.PMS.DELETETYPE = '/api/pms/deleteType';
 
 
 
@@ -125,7 +128,17 @@ ONPANEL.Ajax.Result.getData = function (data) {
 ONPANEL.Ajax.Result.getMessage = function (data) {
     return data.resultMsg;
 }
-
+ONPANEL.Ajax.Result.LoadingShow = function () {
+    $.mobile.loading("show", {
+        text: "처리중..",
+        textVisible: true,
+        theme: "pms",
+        html: ""
+    });
+}
+ONPANEL.Ajax.Result.LoadingHide = function () {
+    $.mobile.loading("hide");
+}
 ONPANEL.Ajax.Request = new (function () {
 
     /**

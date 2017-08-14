@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+    <title>한국청소년활동진흥원</title>
+    <script type="text/javascript" src="js/header.js"></script>
+    <script src="js/main_edit.js"></script>
+    <link href="css/default.css" rel="stylesheet" type="text/css"/>
+    <script>
+        readyMainView();
+    </script>
+</head>
+<body>
+
+<div class="contant bg_content">
+    <div class="sc_title">
+        <a href="javascript:history.back();" data-ajax="false"><img src="images/btn_back.jpg">조사편집</a>
+    </div>
+    <ul class="c_menu_tab">
+        <li class="on">설문대상 수정</li>
+        <li class="menuUrl">프로그램 수정</li>
+        <div class="clear"></div>
+    </ul>
+
+    <div class="daesang_list">
+        <div class="list_group list_group1" style="display: none;">
+            <div class="left_img"><img src="images/img3.png"></div>
+            <div class="text_group">
+                <span>청소년&성인</span>
+                <p><font id="pcnt1"></font><em>명</em></p>
+            </div>
+            <div class="btn_group">
+                <a href="javascript:;"  data-ajax="false" class="edit_group1"><img src="images/btn_edit.png"><span>수정</span></a>
+                <a href="javascript:;"  data-ajax="false" class="del_group1"><img src="images/btn_del.png"><span>삭제</span></a>
+            </div>
+        </div>
+        <div class="list_group list_group2" style="display: none;">
+            <div class="left_img"><img src="images/img2.png"></div>
+            <div class="text_group">
+                <span>인술교사</span>
+                <p><font id="pcnt2"></font><em>명</em></p>
+            </div>
+            <div class="btn_group">
+                <a href="#"  data-ajax="false" class="edit_group2"><img src="images/btn_edit.png"><span>수정</span></a>
+                <a href="#"  data-ajax="false" class="del_group2"><img src="images/btn_del.png"><span>삭제</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="sc_btn2">
+        <a href="#">설문대상 추가하기</a>
+        <a href="#">뒤로가기</a>
+    </div>-->
+</div>
+
+<script type="text/javascript">
+    //<![CDATA[
+    // var name = COMMON.storage.get("my_info_name");
+    //$("#my_info_name").html(name);
+    /* $('#logout').click(function(){
+     try{
+     if(confirm("로그아웃을 하시겠습니까?")) {
+     event.preventDefault();
+
+     COMMON.token.clear();
+
+     location.href = "pmslogin.html";
+     }
+     }
+     catch(e) {
+     document.addEventListener('deviceready', function() {
+     navigator.notification.confirm("로그아웃을 하시겠습니까?", function(index) {
+     if(index == 1) {
+     event.preventDefault();
+
+     COMMON.token.clear();
+
+     location.href = "loginNew.html";
+     }
+     }, '확인',"확인,취소");
+
+     }, true);
+     }
+     });*/
+    try {
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+        }
+
+        function alertCallback() {
+        }
+    }
+    catch (e) {
+    }
+    //]]>
+</script>
+</body>
+</html>

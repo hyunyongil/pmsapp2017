@@ -16,6 +16,17 @@
 <body>
 
 <div class="contant">
+
+    <div class="layer_pop_pro_add" id="layer_pop_pro_add" style="margin-top:-200px;display: none;">
+        <div class="title_name">설문지 미리보기</div>
+        <div class="pop_btn">
+            <span><a href="#" data-ajax="false" class="openUrl1">청소년</a> </span>
+            <span><a href="#" data-ajax="false" class="openUrl2">성인</a> </span>
+            <span><a href="#" data-ajax="false" class="openUrl3">인솔교사</a> </span>
+        </div>
+        <div class="pop_btn"><span id="pop_close">닫기</span></div>
+    </div>
+    <div class="layer_pop_bg" style="display: none;"></div>
     <div class="sc_title">
         <a href="javascript:history.back();" data-ajax="false"><img src="images/btn_back.jpg">참여대상 확인</a>
         <a href="main_list.html" data-ajax="false" class="btn_home"><img src="images/btn_home.png"></a>
@@ -26,7 +37,6 @@
         <tr>
             <th><span>사업구분</span></th>
             <td id="v_businessType">
-                학교단체
             </td>
         </tr>
         <tr>
@@ -42,28 +52,23 @@
         <tr>
             <th><span class="th_line2">운영기간</span></th>
             <td id="v_opDate">
-                시작 : 2017.09.09<br>
-                마감 : 2017.09.09
             </td>
         </tr>
         <tr>
             <th><span class="th_line3">설문대상</span></th>
             <td id="v_pcnt">
-                청소년 : 100명<br>
-                인솔교사 : 100명<br>
-                성인 : 100명
             </td>
         </tr>
         <tr>
             <th><span class="th_line3">프로그램</span></th>
             <td id="v_program">
-                없음
+
             </td>
         </tr>
         <tr>
             <th><span>추가질문</span></th>
             <td id="v_question">
-                없음
+
             </td>
         </tr>
         <tr>
@@ -82,10 +87,10 @@
     </table>
 
     <ul class="sc_btn">
-        <li><img src="images/btn_slist_bot01.png"> 조사편집</li>
-        <li><img src="images/btn_slist_bot2.png"> 설문지 미리보기</li>
-        <li><img src="images/btn_slist_bot3.png"> 조사시작</li>
-        <li><img src="images/btn_slist_bot4.png"> 참여현황</li>
+        <li id="viewbutton1" data-ajax="false"><img src="images/btn_slist_bot01.png"> 조사편집</li>
+        <li id="viewbutton2" data-ajax="false"><img src="images/btn_slist_bot2.png"> 설문지 미리보기</li>
+        <li id="viewbutton3" data-ajax="false"><img src="images/btn_slist_bot3.png"> <span></span></li>
+        <li id="viewbutton4" data-ajax="false"><img src="images/btn_slist_bot4.png"> 참여현황</li>
         <div class="clear"></div>
     </ul>
 </div>
