@@ -26,6 +26,17 @@ function readyMainView() {
                 changeSurveyType(CONSTANTS.PMS.UPDATEPCNT, changeType2, gup("pms_num"), 2, $('#textval2').val());
             }
         });
+        $(".edit_group3").bind('click', function () {
+            if ($(this).find('span').html() == '수정') {
+                $(this).find('span').empty();
+                $(this).find('span').append('저장');
+                var tempVal = $('#pcnt3').html();
+                $('#pcnt3').empty();
+                $('#pcnt3').append('<input type="text" style="width:60px;width:60px;height:30px;vertical-align: top;" id="textval3" value="' + tempVal + '">');
+            } else {
+                changeSurveyType(CONSTANTS.PMS.UPDATEPCNT, changeType3, gup("pms_num"), 3, $('#textval3').val());
+            }
+        });
         $(".del_group1").bind('click', function () {
             if ($(".list_group").length == 1) {
                 alertLayer('설문대상은 적어도 한개는 있어야합니다.');
@@ -46,6 +57,26 @@ function readyMainView() {
                 deleteSurveyType(CONSTANTS.PMS.DELETETYPE, gup("pms_num"), 2);
                 $('.list_group2').remove();
             }
+        });
+
+        $(".del_group3").bind('click', function () {
+            if ($(".list_group").length == 1) {
+                alertLayer('설문대상은 적어도 한개는 있어야합니다.');
+                return false;
+            }
+            if (confirm("삭제 하시겠습니까?")) {
+                deleteSurveyType(CONSTANTS.PMS.DELETETYPE, gup("pms_num"), 3);
+                $('.list_group3').remove();
+            }
+        });
+        $("#viewbutton2").click(function () {
+
+            $(".layer_pop_bg").show();
+            $("#layer_pop_pro_add").show();
+        });
+        $("#pop_close").click(function () {
+            $(".layer_pop_bg").hide();
+            $("#layer_pop_pro_add").hide();
         });
     });
     getSurvey(CONSTANTS.PMS.MAINVEW, appendMakeViewList, gup("pms_num"));
@@ -83,6 +114,7 @@ function deleteSurveyType(url, num, type) {
         function (data) {
             if (ONPANEL.Ajax.Result.isSucess(data)) {
                 ONPANEL.Ajax.Result.LoadingHide();
+                location.reload();
             }
         },
         null,
@@ -119,33 +151,66 @@ function changeType2(data) {
     $('.edit_group2').find('span').empty();
     $('.edit_group2').find('span').append('수정');
 }
+function changeType3(data) {
+    var type = $('#textval3').val();
+    $("#pcnt3").empty();
+    $("#pcnt3").append(type);
+    $('.edit_group3').find('span').empty();
+    $('.edit_group3').find('span').append('수정');
+}
 function appendMakeViewList(data) {
     if (data.mainview_data.length == 0) {
         alertLayer('해당된 내용이 없습니다.');
         return false;
     }
+    var maindata = data.mainview_data[0];
     var questiondata = data.mainview_data[1];
     var v_pcnt1 = $('#pcnt1');
     v_pcnt1.empty();
     var v_pcnt2 = $('#pcnt2');
     v_pcnt2.empty();
+    var v_pcnt3 = $('#pcnt3');
+    v_pcnt3.empty();
     //추가하기
+    var key1=0;
+    var key2=0;
+    var key3=0;
     if (questiondata.length >= 1) {
         var pcnt = questiondata[0].set_name;
         var pcnt2 = questiondata[1].set_name;
+        var pcnt3 = questiondata[2].set_name;
         if (pcnt == 'pcnt1' && questiondata[0].set_value > 0) {
             $(".list_group1").show();
             if ($(".edit_group1").find('span').html() == '수정') {
                 v_pcnt1.append(questiondata[0].set_value);
             }
+            key1 = 1;
         }
         if (pcnt2 == 'pcnt2' && questiondata[1].set_value > 0) {
             $(".list_group2").show();
             if ($(".edit_group2").find('span').html() == '수정') {
                 v_pcnt2.append(questiondata[1].set_value);
             }
+            key2 = 1;
+        }
+        if (pcnt3 == 'pcnt3' && questiondata[2].set_value > 0) {
+            $(".list_group3").show();
+            if ($(".edit_group3").find('span').html() == '수정') {
+                v_pcnt3.append(questiondata[2].set_value);
+            }
+            key3 = 1;
         }
     }
-    var href='program_edit.html?pms_num='+gup('pms_num');
+    var href='program_edit.html?pms_num='+gup('pms_num')+'&type='+maindata.businessType;
     $(".menuUrl").attr('onclick', "location.href='" + href + "'").removeAttr('href');
+    var html = '';
+    if(key1 == 0){
+        html += '<span>청소년</span>';
+    }else if(key2 == 0){
+        html += '<span>인솔교사</span>';
+    }else if(key3 == 0){
+        html += '<span>성인</span>';
+    }
+    $(".pop_tab").empty();
+    $(".pop_tab").append(html);
 }

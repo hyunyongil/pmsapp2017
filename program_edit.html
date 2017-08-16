@@ -15,11 +15,24 @@
 </head>
 <body>
 
-
-<div class="contant bg_content">
+<div id="program_list" data-role="page" class="contant bg_content">
+    <div class="layer_pop_pro_add" id="layer_pop_pro_add" style="margin-top:-200px;display: none;">
+        <div class="title_name">[<span id="programType"></span>] 프로그램 추가</div>
+       <div class="pop_content">
+           <!--<div class="pop_tab">
+              <span class="on">학교단체</span>
+              <span>취약계층</span>
+              <span>특성화캠프</span>
+              <span>가족</span>
+          </div>-->
+            <div class="search_group"><input name="input_class" type="text" class="input_class"><a href="#" class="input_search">확인</a></div>
+        </div>
+        <div class="pop_btn"><span id="pop_close">닫기</span></div>
+    </div>
+    <div class="layer_pop_bg" style="display: none;"></div>
     <div class="sc_title">
-        <a href=""><img src="images/btn_back.jpg">조사편집</a>
-        <a href="#" class="btn_home"><img src="images/btn_home.png"></a>
+        <a href="javascript:history.back();" data-ajax="false"><img src="images/btn_back.jpg">조사편집</a>
+        <a href="main_list.html" data-ajax="false" class="btn_home"><img src="images/btn_home.png"></a>
     </div>
     <ul class="c_menu_tab">
         <li class="menuUrl">설문대상 수정</li>
@@ -28,48 +41,21 @@
     </ul>
 
     <div class="daesang_list2">
-        <h1><img src="images/img_list.png">전체 12개</h1>
-        <div class="list_group">
-            <img src="images/img4.png">도미노
-            <div class="btn_group">
-                <a href="#"><img src="images/btn_edit.png">수정</a>
-                <a href="#"><img src="images/btn_del.png">삭제</a>
+        <h1>
+            <div style="float: left;padding-top: 25px;"><img src="images/img_list.png">전체 <font id="programct">0</font>개</div>
+            <div class="sc_btn2" style="float:right;">
+                <a href="javascript:;" style="width: 120px;" id="viewbutton2">프로그램 추가하기</a>
             </div>
+        </h1>
+        <div class="clear"></div>
+        <div class="program-list" style="margin:0;" type="list">
+
         </div>
-        <div class="list_group">
-            <img src="images/img4.png">고무보트
-            <div class="btn_group">
-                <a href="#"><img src="images/btn_edit.png">수정</a>
-                <a href="#"><img src="images/btn_del.png">삭제</a>
-            </div>
-        </div>
-        <div class="list_group">
-            <img src="images/img4.png">뱃놀이
-            <div class="btn_group">
-                <a href="#"><img src="images/btn_edit.png">수정</a>
-                <a href="#"><img src="images/btn_del.png">삭제</a>
-            </div>
-        </div>
-        <div class="list_group">
-            <img src="images/img4.png">장기자랑
-            <div class="btn_group">
-                <a href="#"><img src="images/btn_edit.png">수정</a>
-                <a href="#"><img src="images/btn_del.png">삭제</a>
-            </div>
-        </div>
-        <div class="list_group">
-            <img src="images/img4.png">도미노
-            <div class="btn_group">
-                <a href="#"><img src="images/btn_edit.png">수정</a>
-                <a href="#"><img src="images/btn_del.png">삭제</a>
-            </div>
+        <div class="program-more ui-grid-solo" style="display:none;">
+            <div class="ui-block-a"><a href="#" class="more_list"><img src="images/moreList.png"></a></div>
         </div>
     </div>
 
-    <div class="sc_btn2">
-        <a href="#">프로그램 추가하기</a>
-        <a href="#">뒤로가기</a>
-    </div>
 </div>
 
 

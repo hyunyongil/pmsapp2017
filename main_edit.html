@@ -16,6 +16,17 @@
 <body>
 
 <div class="contant bg_content">
+    <div class="layer_pop_pro_add" id="layer_pop_pro_add" style="margin-top:-200px;display: none;">
+        <div class="title_name">설문대상 추가</div>
+        <div class="pop_content">
+            <div class="pop_tab">
+           </div>
+            <input name="input_class" type="text" class="input_class" style="width: 60px;" placeholder="명">
+            <div class="search_group"> <a href="#" class="input_search">확인</a></div>
+        </div>
+        <div class="pop_btn"><span id="pop_close">닫기</span></div>
+    </div>
+    <div class="layer_pop_bg" style="display: none;"></div>
     <div class="sc_title">
         <a href="javascript:history.back();" data-ajax="false"><img src="images/btn_back.jpg">조사편집</a>
     </div>
@@ -27,9 +38,9 @@
 
     <div class="daesang_list">
         <div class="list_group list_group1" style="display: none;">
-            <div class="left_img"><img src="images/img3.png"></div>
+            <div class="left_img"><img src="images/img1.png"></div>
             <div class="text_group">
-                <span>청소년&성인</span>
+                <span>청소년</span>
                 <p><font id="pcnt1"></font><em>명</em></p>
             </div>
             <div class="btn_group">
@@ -48,12 +59,23 @@
                 <a href="#"  data-ajax="false" class="del_group2"><img src="images/btn_del.png"><span>삭제</span></a>
             </div>
         </div>
+        <div class="list_group list_group3" style="display: none;">
+            <div class="left_img"><img src="images/img3.png"></div>
+            <div class="text_group">
+                <span>성인</span>
+                <p><font id="pcnt3"></font><em>명</em></p>
+            </div>
+            <div class="btn_group">
+                <a href="#"  data-ajax="false" class="edit_group3"><img src="images/btn_edit.png"><span>수정</span></a>
+                <a href="#"  data-ajax="false" class="del_group3"><img src="images/btn_del.png"><span>삭제</span></a>
+            </div>
+        </div>
     </div>
 
-    <!--<div class="sc_btn2">
-        <a href="#">설문대상 추가하기</a>
-        <a href="#">뒤로가기</a>
-    </div>-->
+    <div class="sc_btn2">
+        <a href="#" class="addType" id="viewbutton2">설문대상 추가하기</a>
+        <a href="javascript:history.back();" data-ajax="false">뒤로가기</a>
+    </div>
 </div>
 
 <script type="text/javascript">

@@ -21,11 +21,13 @@ function bindMainList(num) {
 
         onsolMoreList.init(function(){
             var data = $('.main-more').data();
+
             if($.isEmptyObject(data)) {
                 $('.main-more').data({url: CONSTANTS.PMS.MAIN, page: 0});
                 var data = $('.main-more').data();
             }
             var now_page = parseInt(data.page) + 1;
+
             if(now_page > 1) {
                 if(onsolMoreList.scroll_mode == false){
                     return false;
@@ -88,7 +90,7 @@ function getSurvey(url, page, callback, num) {
     var param = {
         num : num,
         page: page,
-        list_cnt:6
+        list_cnt:10
     };
 
     ONPANEL.Ajax.Request.invokePostByJSON(

@@ -15,6 +15,10 @@ CONSTANTS.PMS.MAINVEW = '/api/pms/mainView';
 CONSTANTS.PMS.UPDATETYPE = '/api/pms/updateType';
 CONSTANTS.PMS.UPDATEPCNT = '/api/pms/updatePcnt';
 CONSTANTS.PMS.DELETETYPE = '/api/pms/deleteType';
+CONSTANTS.PMS.PROGRAMLIST = '/api/pms/programList';
+CONSTANTS.PMS.ADDPROGRAM = '/api/pms/addProgram';
+CONSTANTS.PMS.UPDATEPROGRAM = '/api/pms/updateProgram';
+CONSTANTS.PMS.DELETEPROGRAM = '/api/pms/deleteProgram';
 
 
 

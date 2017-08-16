@@ -13,6 +13,9 @@ function readyMainView() {
             $("#layer_pop_pro_add").hide();
         });
         $("#viewbutton3").click(function(){
+            if(!confirm('상태를 변경하시겠습니까?')){
+                return false;
+            }
             var type = '';
             if($(this).find('span').html() == '조사시작'){
                 type = 'I';
@@ -99,17 +102,21 @@ function appendMakeViewList(data) {
     if(questiondata.length >= 1) {
         var pcnt = questiondata[0].set_name;
         var pcnt2 = questiondata[1].set_name;
+        var pcnt3 = questiondata[2].set_name;
         if (pcnt == 'pcnt1' && questiondata[0].set_value > 0) {
-            v_pcnt.append('청소년&성인: ' + questiondata[0].set_value + '명<br/>');
+            v_pcnt.append('청소년: ' + questiondata[0].set_value + '명<br/>');
         }
         if (pcnt2 == 'pcnt2' && questiondata[1].set_value > 0) {
-            v_pcnt.append('인솔교사: ' + questiondata[1].set_value + '명');
+            v_pcnt.append('인솔교사: ' + questiondata[1].set_value + '명<br/>');
+        }
+        if (pcnt3 == 'pcnt3' && questiondata[2].set_value > 0) {
+            v_pcnt.append('성인: ' + questiondata[2].set_value + '명');
         }
     }
 
-    if(questiondata.length > 2) {
+    if(questiondata.length != 3) {
         var numth = 1;
-        var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;">청소년&성인:</div>';
+        var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;">청소년:</div>';
         v_question.append(typeVal);
         for (var i = 0; i < questiondata.length - 1; i++) {
             if(questiondata[i].set_name == 'questionpop1_write1'){
@@ -150,6 +157,27 @@ function appendMakeViewList(data) {
                 numth++;
             }
         }
+        var numth = 1;
+        var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">성인:</div>';
+        v_question.append(typeVal);
+        for (var i = 0; i < questiondata.length - 1; i++) {
+            if(questiondata[i].set_name == 'questionpop3_write1'){
+                v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
+                numth++;
+            }else if(questiondata[i].set_name == 'questionpop3_write2'){
+                v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
+                numth++;
+            }else if(questiondata[i].set_name == 'questionpop3_write3'){
+                v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
+                numth++;
+            }else if(questiondata[i].set_name == 'questionpop3_write4'){
+                v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
+                numth++;
+            }else if(questiondata[i].set_name == 'questionpop3_write5'){
+                v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
+                numth++;
+            }
+        }
     }else{
         v_question.append('없음');
     }
@@ -164,8 +192,8 @@ function appendMakeViewList(data) {
     v_password.append(viewdata.password);
     //버튼 설정
     $(".openUrl1").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/survey/t/"+viewdata.num+"/1/','_system')"});
-    $(".openUrl2").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/survey/t/"+viewdata.num+"/2/','_system')"});
-    $(".openUrl3").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/survey/i/"+viewdata.num+"/','_system')"});
+    $(".openUrl2").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/survey/i/"+viewdata.num+"/','_system')"});
+    $(".openUrl3").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/survey/t/"+viewdata.num+"/2/','_system')"});
     var type = '';
     if(viewdata.modeType == 'D'){
         type = '조사시작';
