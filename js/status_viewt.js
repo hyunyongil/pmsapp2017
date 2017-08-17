@@ -102,7 +102,7 @@ function bindMoreEvent() {
     });
 }
 function appendSurvey(data) {
-    var surveyList = $('.survey-list');
+    var surveyList = $('.list_table_ok > tbody:last-child');
     if (data.page == 1) {
         surveyList.empty();
     }
@@ -127,18 +127,9 @@ function appendSurveyList(content, data) {
     }
     if(data.survey_ct.length > 0){
         $(".padding_group").show();
+    }else{
+        $(".list_table_title").hide();
     }
-    htmlArr.push('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list_table">');
-    htmlArr.push('<thead>');
-    htmlArr.push('<tr>');
-    htmlArr.push('<th>학교명(소속)</th>');
-    htmlArr.push('<th>성별</th>');
-    htmlArr.push('<th>교급</th>');
-    htmlArr.push('<th>학년</th>');
-    htmlArr.push('</tr>');
-    htmlArr.push('</thead>');
-    htmlArr.push('<tbody>');
-
     for (var i = 0; i < data.survey_data.length; i++) {
         var survey = data.survey_data[i].muid;
         var survey_detail = data.survey_detail_data[survey];
@@ -165,10 +156,6 @@ function appendSurveyList(content, data) {
         htmlArr.push('         </td>');
         htmlArr.push('</tr>');
     }
-
-    htmlArr.push('<tbody>');
-    htmlArr.push('</table>');
-
     var nowjoinct = data.survey_ct.length;
     var totaljoinct = data.survey_join_ct[0].set_value;
     $(".graph_div span").empty();

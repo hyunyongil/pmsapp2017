@@ -102,7 +102,7 @@ function bindMoreEvent() {
     });
 }
 function appendSurvey(data) {
-    var surveyList = $('.survey-list');
+    var surveyList = $('.list_table_ok > tbody:last-child');
     if (data.page == 1) {
         surveyList.empty();
     }
@@ -127,6 +127,8 @@ function appendSurveyList(content, data) {
     }
     if(data.survey_ct.length > 0){
         $(".padding_group").show();
+    }else{
+        $(".list_table_title").hide();
     }
     htmlArr.push('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list_table">');
     htmlArr.push('<thead>');
