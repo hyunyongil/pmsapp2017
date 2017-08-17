@@ -38,7 +38,7 @@ function readyMainView() {
             }
         });
         $(document).on('click', '.list_group .program_delete', function () {
-            if (confirm("삭제 하시겠습니까?")) {
+            if (confirm("삭제하시겠습니까?")) {
                 var programNum = $(this).parents('.list_group').find('.programNum').html();
                 deleteProgram(CONSTANTS.PMS.DELETEPROGRAM, programNum);
                 $(this).parents('.list_group').remove();

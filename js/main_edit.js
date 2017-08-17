@@ -10,7 +10,7 @@ function readyMainView() {
                 $(this).find('span').append('저장');
                 var tempVal = $('#pcnt1').html();
                 $('#pcnt1').empty();
-                $('#pcnt1').append('<input type="text" style="width:60px;height:30px;vertical-align: top;font-size: 16px;" id="textval1" value="' + tempVal + '">');
+                $('#pcnt1').append('<input type="number"  style="width:60px;height:30px;vertical-align: top;font-size: 16px;"   id="textval1" value="' + tempVal + '">');
             } else {
                 changeSurveyType(CONSTANTS.PMS.UPDATEPCNT, changeType1, gup("pms_num"), 1, $('#textval1').val());
             }
@@ -21,7 +21,7 @@ function readyMainView() {
                 $(this).find('span').append('저장');
                 var tempVal = $('#pcnt2').html();
                 $('#pcnt2').empty();
-                $('#pcnt2').append('<input type="text" style="width:60px;width:60px;height:30px;vertical-align: top;" id="textval2" value="' + tempVal + '">');
+                $('#pcnt2').append('<input type="number" style="width:60px;width:60px;height:30px;vertical-align: top;" id="textval2" value="' + tempVal + '">');
             } else {
                 changeSurveyType(CONSTANTS.PMS.UPDATEPCNT, changeType2, gup("pms_num"), 2, $('#textval2').val());
             }
@@ -32,17 +32,23 @@ function readyMainView() {
                 $(this).find('span').append('저장');
                 var tempVal = $('#pcnt3').html();
                 $('#pcnt3').empty();
-                $('#pcnt3').append('<input type="text" style="width:60px;width:60px;height:30px;vertical-align: top;" id="textval3" value="' + tempVal + '">');
+                $('#pcnt3').append('<input type="number" style="width:60px;width:60px;height:30px;vertical-align: top;" id="textval3" value="' + tempVal + '">');
             } else {
                 changeSurveyType(CONSTANTS.PMS.UPDATEPCNT, changeType3, gup("pms_num"), 3, $('#textval3').val());
             }
         });
         $(".del_group1").bind('click', function () {
-            if ($(".list_group").length == 1) {
+            var dis = 0;
+            $(".list_group").each(function () {
+                if($(this).css("display") == 'block'){
+                    dis++;
+                }
+            });
+            if (dis == 1) {
                 alertLayer('설문대상은 적어도 한개는 있어야합니다.');
                 return false;
             }
-            if (confirm("삭제 하시겠습니까?")) {
+            if (confirm("삭제하시겠습니까?")) {
                 deleteSurveyType(CONSTANTS.PMS.DELETETYPE, gup("pms_num"), 1);
                 $('.list_group1').remove();
             }
@@ -53,7 +59,7 @@ function readyMainView() {
                 alertLayer('설문대상은 적어도 한개는 있어야합니다.');
                 return false;
             }
-            if (confirm("삭제 하시겠습니까?")) {
+            if (confirm("삭제하시겠습니까?")) {
                 deleteSurveyType(CONSTANTS.PMS.DELETETYPE, gup("pms_num"), 2);
                 $('.list_group2').remove();
             }
@@ -64,19 +70,59 @@ function readyMainView() {
                 alertLayer('설문대상은 적어도 한개는 있어야합니다.');
                 return false;
             }
-            if (confirm("삭제 하시겠습니까?")) {
+            if (confirm("삭제하시겠습니까?")) {
                 deleteSurveyType(CONSTANTS.PMS.DELETETYPE, gup("pms_num"), 3);
                 $('.list_group3').remove();
             }
         });
         $("#viewbutton2").click(function () {
-
+            var dis = 0;
+            $(".list_group").each(function () {
+                if($(this).css("display") != 'block'){
+                    dis = 1;
+                }
+            });
+            if(dis == 0){
+                alertLayer('설문대상을 모두 추가하였습니다.');
+                return false;
+            }
             $(".layer_pop_bg").show();
             $("#layer_pop_pro_add").show();
         });
         $("#pop_close").click(function () {
             $(".layer_pop_bg").hide();
             $("#layer_pop_pro_add").hide();
+        });
+
+        $(".input_search").bind('click', function () {
+            if ($(".input_class").val() == '') {
+                alertLayer('인원수를 입력해주세요.');
+                $(".input_class").focus();
+                return false;
+            }
+            var keys = 0;
+            var type = 0;
+            $(".pop_tab span").each(function () {
+                if($(this).hasClass('on')){
+                    keys = 1;
+                    if($(this).html() == '청소년'){
+                        type = 1;
+                    }else if($(this).html() == '인솔교사'){
+                        type = 2;
+                    }else if($(this).html() == '성인'){
+                        type = 3;
+                    }
+                }
+            });
+            if(keys != 1){
+                alertLayer('설문대상을 선택해주세요.');
+                return false;
+            }
+            addSurveyType(CONSTANTS.PMS.ADDTYPE, gup("pms_num"), type, $(".input_class").val());
+        });
+        $(document).on('click', '.pop_tab span', function () {
+            $(".pop_tab span").removeClass('on');
+            $(this).addClass('on');
         });
     });
     getSurvey(CONSTANTS.PMS.MAINVEW, appendMakeViewList, gup("pms_num"));
@@ -96,6 +142,26 @@ function changeSurveyType(url, callback, num, type, val) {
             if (ONPANEL.Ajax.Result.isSucess(data)) {
                 ONPANEL.Ajax.Result.LoadingHide();
                 callback(ONPANEL.Ajax.Result.getData(data));
+            }
+        },
+        null,
+        true);
+}
+
+function addSurveyType(url, num, type, val) {
+    var param = {
+        num: num
+        , type: type
+        , val: val
+    };
+    ONPANEL.Ajax.Result.LoadingShow();
+    ONPANEL.Ajax.Request.invokePostByJSON(
+        url,
+        param,
+        function (data) {
+            if (ONPANEL.Ajax.Result.isSucess(data)) {
+                ONPANEL.Ajax.Result.LoadingHide();
+                location.reload();
             }
         },
         null,
@@ -186,6 +252,7 @@ function appendMakeViewList(data) {
             }
             key1 = 1;
         }
+
         if (pcnt2 == 'pcnt2' && questiondata[1].set_value > 0) {
             $(".list_group2").show();
             if ($(".edit_group2").find('span').html() == '수정') {
@@ -193,6 +260,7 @@ function appendMakeViewList(data) {
             }
             key2 = 1;
         }
+
         if (pcnt3 == 'pcnt3' && questiondata[2].set_value > 0) {
             $(".list_group3").show();
             if ($(".edit_group3").find('span').html() == '수정') {
@@ -204,11 +272,14 @@ function appendMakeViewList(data) {
     var href='program_edit.html?pms_num='+gup('pms_num')+'&type='+maindata.businessType;
     $(".menuUrl").attr('onclick', "location.href='" + href + "'").removeAttr('href');
     var html = '';
+
     if(key1 == 0){
         html += '<span>청소년</span>';
-    }else if(key2 == 0){
+    }
+    if(key2 == 0){
         html += '<span>인솔교사</span>';
-    }else if(key3 == 0){
+    }
+    if(key3 == 0){
         html += '<span>성인</span>';
     }
     $(".pop_tab").empty();

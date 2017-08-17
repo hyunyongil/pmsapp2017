@@ -102,7 +102,12 @@ function appendMakeViewList(data) {
     if(questiondata.length >= 1) {
         var pcnt = questiondata[0].set_name;
         var pcnt2 = questiondata[1].set_name;
-        var pcnt3 = questiondata[2].set_name;
+        var pcnt3 = '';
+        try{
+            var pcnt3 = questiondata[2].set_name;
+        }catch (e){
+
+        }
         if (pcnt == 'pcnt1' && questiondata[0].set_value > 0) {
             v_pcnt.append('청소년: ' + questiondata[0].set_value + '명<br/>');
         }
@@ -204,7 +209,9 @@ function appendMakeViewList(data) {
     }
     $("#viewbutton3 span").append(type);
     var href='main_edit.html?pms_num='+gup('pms_num');
+    var href_status='status_viewt.html?pms_num='+gup('pms_num');
     $("#viewbutton1").attr('onclick', "location.href='" + href + "'").removeAttr('href');
+    $("#viewbutton4").attr('onclick', "location.href='" + href_status + "'").removeAttr('href');
 }
 function changeType(data){
     var type = '';
