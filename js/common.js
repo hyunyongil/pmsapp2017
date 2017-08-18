@@ -773,7 +773,7 @@ if (!COMMON) {
 
             console.log("TEST:"+JSON.stringify(param));
 
-            param.invoke('21'+param.url,
+            param.invoke(param.url,
                 param.param,
                 function(data) {
                     JMSUtil.Browser.stopLoadingBar();
