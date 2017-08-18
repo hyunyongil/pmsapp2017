@@ -773,7 +773,7 @@ if (!COMMON) {
 
             console.log("TEST:"+JSON.stringify(param));
 
-            param.invoke(param.url,
+            param.invoke('21'+param.url,
                 param.param,
                 function(data) {
                     JMSUtil.Browser.stopLoadingBar();
@@ -786,6 +786,9 @@ if (!COMMON) {
                         errorFn(error);
                     } else {
                         console.log("TEST:"+JSON.stringify(error));
+                        alertLayer(error.readyState);
+                        alertLayer(error.responseText);
+                        alertLayer(error.status);
                         alertLayer(error.statusText);
                         alertLayer("네트워크 오류가 발생하였습니다.");
                     }
