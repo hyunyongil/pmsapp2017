@@ -31,7 +31,6 @@ $(document).one('pageinit', '#login_page', function () {
         // ////////////////////////////
         pri.doRequest = function (callback, args) {
             var reqSetting = COMMON.util.makeReqParam(args);
-
             COMMON.plugin.doRequest(reqSetting, callback);
         };
 
@@ -204,7 +203,7 @@ $(document).one('pageinit', '#login_page', function () {
                 'app_type' : app_type
             };
 
-            console.log(JSON.stringify(args));
+            console.log('reqSetting:'+JSON.stringify(args));
             this.doRequest(page.view.loginCallback, args);
         };
 

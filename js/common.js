@@ -786,7 +786,7 @@ if (!COMMON) {
                         errorFn(error);
                     } else {
                         console.log("TEST:"+JSON.stringify(error));
-                        // alertLayer(error);
+                        alertLayer(error.statusText);
                         alertLayer("네트워크 오류가 발생하였습니다.");
                     }
 
