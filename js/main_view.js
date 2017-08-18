@@ -196,9 +196,9 @@ function appendMakeViewList(data) {
     }
     v_password.append(viewdata.password);
     //버튼 설정
-    $(".openUrl1").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/survey/t/"+viewdata.num+"/1/','_system')"});
-    $(".openUrl2").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/survey/i/"+viewdata.num+"/','_system')"});
-    $(".openUrl3").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/survey/t/"+viewdata.num+"/2/','_system')"});
+    $(".openUrl1").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/survey/t/"+viewdata.num+"/1/?mode=test','_system')"});
+    $(".openUrl2").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/survey/i/"+viewdata.num+"/?mode=test','_system')"});
+    $(".openUrl3").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/survey/t/"+viewdata.num+"/2/?mode=test','_system')"});
     var type = '';
     if(viewdata.modeType == 'D'){
         type = '조사시작';

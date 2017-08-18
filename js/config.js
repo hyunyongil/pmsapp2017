@@ -1,7 +1,9 @@
 APP_VERSION = '1.0.7';
+CONNECTION_AJ_URL = 'http://loconsol.onsolutions.co.kr';//로컬
+CONNECTION_URL = 'http://loconsol.onsolutions.co.kr';//로컬
 
-CONNECTION_AJ_URL = 'http://loconsol.onsolutions.co.kr';//개발서버
-CONNECTION_URL = 'http://loconsol.onsolutions.co.kr';//개발서버
+CONNECTION_AJ_URL = 'http://devonsol.onsolutions.co.kr';//개발서버
+CONNECTION_URL = 'http://devonsol.onsolutions.co.kr';//개발서버
 
 
 //CONNECTION_AJ_URL = 'https://onpanel.co.kr';//REAL서버
