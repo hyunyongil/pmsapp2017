@@ -13,9 +13,8 @@ FILES_URL_DOMAIN = 'files.onsolutions.co.kr';
 FILES_URL = 'http://' + FILES_URL_DOMAIN;
 
 document.addEventListener("deviceready", function () {
-    checkVersion();
-    updateMemberLastLogin();
-    document.addEventListener("resume", checkVersion, false);
+   // checkVersion();
+   // document.addEventListener("resume", checkVersion, false);
 });
 function checkVersion() {
     ONPANEL.Ajax.Request.invokePostByJSON(
