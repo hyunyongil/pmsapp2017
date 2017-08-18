@@ -189,7 +189,7 @@ ONPANEL.Ajax.Request = new (function () {
             }
 
             console.log("TEST:"+JSON.stringify(body));
-alertLayer(CONNECTION_AJ_URL + url);
+
             $.ajax({
                 async: true,
                 crossDomain: true,
