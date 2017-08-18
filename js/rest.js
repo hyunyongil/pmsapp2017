@@ -187,7 +187,8 @@ ONPANEL.Ajax.Request = new (function () {
             if (useToken) {
                 body.token = COMMON.token.get();
             }
-
+alertLayer(useToken);
+            alertLayer(body.token);
             console.log("TEST:"+JSON.stringify(body));
 
             $.ajax({
