@@ -128,6 +128,8 @@ function bindMoreEvent() {
 }
 //메인 리스트
 function appendMainList(content, data) {
+    var href = 'main_list.html';
+    $("#mainClick").attr('onclick', "location.href='" + href + "'").removeAttr('href');
     var htmlArr = []
         ;
     htmlArr.push('<table class="c_table">');
