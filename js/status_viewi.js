@@ -116,7 +116,7 @@ function appendSurveyList(content, data) {
     $(".viewi").attr('onclick', "location.href='" + href + "'").removeAttr('href');
     var href = 'status_views.html?pms_num=' + gup('pms_num');
     $(".views").attr('onclick', "location.href='" + href + "'").removeAttr('href');
-
+    ONPANEL.Ajax.Result.LoadingHide();
     var htmlArr = []
         ;
     if (data.survey_data.length == 0 && data.page <= 1) {
@@ -195,7 +195,7 @@ function appendSurveyList(content, data) {
     $(".graph_num").empty();
     $(".graph_num").append(parseInt(nowjoinct / totaljoinct * 100) + '%');
     $(".graph_num").css('width', parseInt(nowjoinct / totaljoinct * 100) + '%');
-    ONPANEL.Ajax.Result.LoadingHide();
+
     if(data.survey_ct.length > 0) {
         content.append(htmlArr.join(""));
     }
