@@ -75,7 +75,7 @@ function getSurvey(url, page, callback, num, type) {
         num: num,
         type: type,
         page: page,
-        list_cnt: 20
+        list_cnt: 100
     };
     ONPANEL.Ajax.Result.LoadingShow();
     ONPANEL.Ajax.Request.invokePostByJSON(

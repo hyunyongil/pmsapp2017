@@ -90,7 +90,7 @@ function getSurvey(url, page, callback, num) {
     var param = {
         num : num,
         page: page,
-        list_cnt:10
+        list_cnt:100
     };
 
     ONPANEL.Ajax.Request.invokePostByJSON(
