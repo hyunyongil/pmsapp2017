@@ -137,7 +137,7 @@ ONPANEL.Ajax.Result.getMessage = function (data) {
 }
 ONPANEL.Ajax.Result.LoadingShow = function () {
     $.mobile.loading("show", {
-        text: "처리중..",
+        text: "",
         textVisible: true,
         theme: "pms",
         html: ""
