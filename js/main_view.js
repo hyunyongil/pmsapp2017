@@ -194,6 +194,7 @@ function appendMakeViewList(data) {
             v_program.append((i + 1) + '. ' + program[i] + '<br/>');
         }
     }
+    v_manage.append(viewdata.write_id);
     v_password.append(viewdata.password);
     //버튼 설정
     $(".openUrl1").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/survey/t/"+viewdata.num+"/1/?mode=test','_system')"});
