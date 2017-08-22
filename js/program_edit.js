@@ -26,7 +26,7 @@ function readyMainView() {
                 $(this).find('span').empty();
                 $(this).find('span').append('저장');
                 programNameObj.empty();
-                programNameObj.append('<input type="text" style="width:160px;height:25px;vertical-align: top;font-size: 12px;" class="textval" value="' + programName + '">');
+                programNameObj.append('<textarea rows="3" cols="17" class="textval">'+ programName +'</textarea>');
             } else {
                 var programName = $(this).parents('.list_group').find('.textval').val();
                 if(programName == ''){
@@ -182,10 +182,54 @@ function appendProgram(data) {
 function appendProgramList(content, data) {
     var href = 'main_edit.html?pms_num=' + gup('pms_num');
     $(".menuUrl").attr('onclick', "location.href='" + href + "'").removeAttr('href');
+    var getPname = decodeURI(gup('type'));
     $("#programType").empty();
-    $("#programType").append(decodeURI(gup('type')));
+    $("#programType").append(getPname);
+    $("#pname").empty();
+    $("#pname").append('['+getPname+']');
+    $('.topNavbars li').removeClass('ui-btn-active');
+    if(getPname == '학교단체'){
+        $('.topNavbars li:eq(0)').addClass('ui-btn-active');
+    }else if(getPname == '취약계층'){
+        $('.topNavbars li:eq(1)').addClass('ui-btn-active');
+    }else if(getPname == '특성화캠프'){
+        $('.topNavbars li:eq(2)').addClass('ui-btn-active');
+    }else if(getPname == '가족캠프'){
+        $('.topNavbars li:eq(3)').addClass('ui-btn-active');
+    }else if(getPname == '전문연수'){
+        $('.topNavbars li:eq(4)').addClass('ui-btn-active');
+    }else if(getPname == '기타'){
+        $('.topNavbars li:eq(5)').addClass('ui-btn-active');
+    }
+    $('.topNavbars li').each(function (index) {
+        var href = 'program_edit.html?pms_num=' + gup('pms_num')+'&type=';
+        if(index == 0){
+            href += '학교단체';
+            $(this).attr('onclick', "location.href='" + href + "'").removeAttr('href');
+        }else if(index == 1){
+            href += '취약계층';
+            $(this).attr('onclick', "location.href='" + href + "'").removeAttr('href');
+        }else if(index == 2){
+            href += '특성화캠프';
+            $(this).attr('onclick', "location.href='" + href + "'").removeAttr('href');
+        }else if(index == 3){
+            href += '가족캠프';
+            $(this).attr('onclick', "location.href='" + href + "'").removeAttr('href');
+        }else if(index == 4){
+            href += '전문연수';
+            $(this).attr('onclick', "location.href='" + href + "'").removeAttr('href');
+        }else if(index == 5){
+            href += '기타';
+            $(this).attr('onclick', "location.href='" + href + "'").removeAttr('href');
+        }
+    });
     var htmlArr = []
         ;
+    if (data.program_ct.length == 0) {
+        $(".program-list").empty();
+        $(".program-list").append('추가된 프로그램이 없습니다.');
+        return false;
+    }
     if (data.program_data.length == 0) {
         //alertLayer('해당하는 내용이 없습니다.');
         return false;
@@ -193,7 +237,7 @@ function appendProgramList(content, data) {
     for (var i = 0; i < data.program_data.length; i++) {
         var program = data.program_data[i];
         htmlArr.push('<div class="list_group">');
-        htmlArr.push('           <img src="images/img4.png"><font class="programName">' + program.name + '</font><font class="programNum" style="display: none;">' + program.program_num + '</font>');
+        htmlArr.push('           <img src="images/img4.png" class="program_list_icon"><span class="programName">' + program.name + '</span><font class="programNum" style="display: none;">' + program.program_num + '</font>');
         htmlArr.push('            <div class="btn_group">');
         htmlArr.push('                      <a href="#" class="program_edit"><img src="images/btn_edit.png"><span>수정</span></a>');
         htmlArr.push('                      <a href="#" class="program_delete"><img src="images/btn_del.png">삭제</a>');
