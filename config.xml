@@ -11,6 +11,7 @@
     <plugin name="cordova-plugin-whitelist" version="1" />
     <plugin name="cordova-plugin-device" />
     <plugin name="cordova-plugin-dialogs" />
+    <plugin name="cordova-plugin-splashscreen" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
