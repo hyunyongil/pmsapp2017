@@ -1099,7 +1099,7 @@ function validationCheckPassword(passwd1, passwd2) {
 function alertLayer(con) {
 
     try{
-        navigator.notification.alert(con, alertCallback, "PMS", "확인");
+        navigator.notification.alert(con, alertCallback, "알림", "확인");
     }
     catch(e) {
         alert(con);
