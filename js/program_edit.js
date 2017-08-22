@@ -22,9 +22,11 @@ function readyMainView() {
         $(document).on('click', '.list_group .program_edit', function () {
             var programNameObj = $(this).parents('.list_group').find('.programName');
             var programName = programNameObj.html();
-            if ($(this).find('span').html() == '수정') {
-                $(this).find('span').empty();
-                $(this).find('span').append('저장');
+            if ($(this).find('.program_e').html() == '수정') {
+                $(this).find('.program_e').empty();
+                $(this).find('.program_e').append('저장');
+                $(this).parents('.btn_group').find('.program_d').empty();
+                $(this).parents('.btn_group').find('.program_d').append('취소');
                 programNameObj.empty();
                 programNameObj.append('<textarea rows="3" cols="17" class="textval">'+ programName +'</textarea>');
             } else {
@@ -38,10 +40,21 @@ function readyMainView() {
             }
         });
         $(document).on('click', '.list_group .program_delete', function () {
-            if (confirm("삭제하시겠습니까?")) {
-                var programNum = $(this).parents('.list_group').find('.programNum').html();
-                deleteProgram(CONSTANTS.PMS.DELETEPROGRAM, programNum);
-                $(this).parents('.list_group').remove();
+            if($(this).find('.program_d').html() == '삭제') {
+                if (confirm("삭제하시겠습니까?")) {
+                    var programNum = $(this).parents('.list_group').find('.programNum').html();
+                    deleteProgram(CONSTANTS.PMS.DELETEPROGRAM, programNum);
+                    $(this).parents('.list_group').remove();
+                }
+            }else{
+                $(this).parents('.btn_group').find('.program_e').empty();
+                $(this).parents('.btn_group').find('.program_e').append('수정');
+                $(this).parents('.btn_group').find('.program_d').empty();
+                $(this).parents('.btn_group').find('.program_d').append('삭제');
+                var programNameObj = $(this).parents('.list_group').find('.textval');
+                var programName = programNameObj.val();
+                $(this).parents('.list_group').find('.programName').empty();
+                $(this).parents('.list_group').find('.programName').append(programName);
             }
         });
     });
@@ -59,6 +72,8 @@ function deleteProgram(url, num) {
         function (data) {
             if (ONPANEL.Ajax.Result.isSucess(data)) {
                 ONPANEL.Ajax.Result.LoadingHide();
+                alertLayer('삭제되었습니다.');
+                location.reload();
             }
         },
         null,
@@ -239,8 +254,8 @@ function appendProgramList(content, data) {
         htmlArr.push('<div class="list_group">');
         htmlArr.push('           <img src="images/img4.png" class="program_list_icon"><span class="programName">' + program.name + '</span><font class="programNum" style="display: none;">' + program.program_num + '</font>');
         htmlArr.push('            <div class="btn_group">');
-        htmlArr.push('                      <a href="#" class="program_edit"><img src="images/btn_edit.png"><span>수정</span></a>');
-        htmlArr.push('                      <a href="#" class="program_delete"><img src="images/btn_del.png">삭제</a>');
+        htmlArr.push('                      <a href="#" class="program_edit"><img src="images/btn_edit.png"><span class="program_e">수정</span></a>');
+        htmlArr.push('                      <a href="#" class="program_delete"><img src="images/btn_del.png"><span class="program_d">삭제</span></a>');
         htmlArr.push('            </div>');
         htmlArr.push('</div>');
     }
