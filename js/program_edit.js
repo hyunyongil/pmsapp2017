@@ -24,6 +24,9 @@ function readyMainView() {
                 alertLayer('프로그램이 존재하지 않습니다.');
                 return false;
             }
+            if(!confirm('['+$(this).html()+']'+' 프로그램을 추가하시겠습니까?')){
+                return false;
+            }
             var allName = '';
             $('.program-list .list_group .programName').each(function (index) {
                 allName += $(this).html() + '|';

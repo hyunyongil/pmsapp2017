@@ -200,7 +200,7 @@ body, html{width:100%; height:100%; margin:0; padding:0;}
 .layer_pop_pro_add .pop_content .pop_tab span:first-child{margin-left:0;}
 .layer_pop_pro_add .pop_content .pop_tab .on{background-color:#0485e0; border:1px solid #0485e0; color:#ffffff;}
 
-.layer_pop_pro_add .pop_content ul{padding:5px 25px 0px 25px;overflow: auto;height:300px;}
+.layer_pop_pro_add .pop_content ul{padding:5px 25px 0px 25px;overflow: auto;height:280px;}
 .layer_pop_pro_add .pop_content ul li{border-bottom:1px solid #e1e3e4; height:46px; line-height:46px; font-size:17px; color:#5d5d5d; cursor:pointer;}
 .layer_pop_pro_add .pop_content ul li:first-child{border-top:0;}
 
