@@ -311,6 +311,8 @@ function appendProgramList(content, data) {
         //alertLayer('해당하는 내용이 없습니다.');
         return false;
     }
+
+    var allName = '';
     for (var i = 0; i < data.program_data.length; i++) {
         var program = data.program_data[i];
         htmlArr.push('<div class="list_group">');
@@ -320,13 +322,10 @@ function appendProgramList(content, data) {
         htmlArr.push('                      <a href="#" class="program_delete"><img src="images/btn_del.png"><span class="program_d">삭제</span></a>');
         htmlArr.push('            </div>');
         htmlArr.push('</div>');
+        allName += program;
     }
 
     for (var i = 0; i < data.program_show_data.length; i++) {
-        var allName = '';
-        $('.program-list .list_group .programName').each(function (index) {
-            allName += $(this).html() + '|';
-        });
         var program = data.program_show_data[i];
         if (allName.indexOf(program.name) < 0 && allName != '') {
             htmlArrShowProgram.push('<li class="programAdd">' + program.name + '</li>');
