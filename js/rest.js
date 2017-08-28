@@ -18,6 +18,7 @@ CONSTANTS.PMS.UPDATEPCNT = '/api/pms/updatePcnt';
 CONSTANTS.PMS.DELETETYPE = '/api/pms/deleteType';
 CONSTANTS.PMS.PROGRAMLIST = '/api/pms/programList';
 CONSTANTS.PMS.ADDPROGRAM = '/api/pms/addProgram';
+CONSTANTS.PMS.SEARCHPROGRAM = '/api/pms/searchProgram';
 CONSTANTS.PMS.UPDATEPROGRAM = '/api/pms/updateProgram';
 CONSTANTS.PMS.DELETEPROGRAM = '/api/pms/deleteProgram';
 CONSTANTS.PMS.STATUSVIEW = '/api/pms/statusView';

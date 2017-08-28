@@ -17,7 +17,18 @@ function readyMainView() {
                 alertLayer('프로그램을 입력해주세요');
                 return false;
             }
-            addProgram(CONSTANTS.PMS.ADDPROGRAM, gup("type"), $('.input_class').val());
+            searchProgram(CONSTANTS.PMS.SEARCHPROGRAM, gup("type"), $('.input_class').val());
+        });
+        $(document).on('click', '.programAdd', function () {
+            if ($(this).html() == '') {
+                alertLayer('프로그램이 존재하지 않습니다.');
+                return false;
+            }
+            var allName = '';
+            $('.program-list .list_group .programName').each(function (index) {
+                allName += $(this).html() + '|';
+            });
+            addProgram(CONSTANTS.PMS.ADDPROGRAM, gup("type"), $(this).html(), allName, gup("pms_num"));
         });
         $(document).on('click', '.list_group .program_edit', function () {
             var programNameObj = $(this).parents('.list_group').find('.programName');
@@ -28,10 +39,10 @@ function readyMainView() {
                 $(this).parents('.btn_group').find('.program_d').empty();
                 $(this).parents('.btn_group').find('.program_d').append('취소');
                 programNameObj.empty();
-                programNameObj.append('<textarea rows="3" cols="17" class="textval">'+ programName +'</textarea>');
+                programNameObj.append('<textarea rows="3" cols="17" class="textval">' + programName + '</textarea>');
             } else {
                 var programName = $(this).parents('.list_group').find('.textval').val();
-                if(programName == ''){
+                if (programName == '') {
                     alertLayer('프로그램을 입력해주세요');
                     return false;
                 }
@@ -40,13 +51,21 @@ function readyMainView() {
             }
         });
         $(document).on('click', '.list_group .program_delete', function () {
-            if($(this).find('.program_d').html() == '삭제') {
+            if ($(this).find('.program_d').html() == '삭제') {
                 if (confirm("삭제하시겠습니까?")) {
-                    var programNum = $(this).parents('.list_group').find('.programNum').html();
-                    deleteProgram(CONSTANTS.PMS.DELETEPROGRAM, programNum);
+                    if ($('.program-list').find('.list_group').length == 1) {
+                        alertLayer('최소 한개의 프로그램은 존재해야합니다.');
+                        return false;
+                    }
+                    var programNum = $(this).parents('.list_group').find('.programName').html();
+                    var allName = '';
+                    $('.program-list .list_group .programName').each(function (index) {
+                        allName += $(this).html() + '|';
+                    });
+                    deleteProgram(CONSTANTS.PMS.DELETEPROGRAM, programNum, allName, gup("pms_num"));
                     $(this).parents('.list_group').remove();
                 }
-            }else{
+            } else {
                 $(this).parents('.btn_group').find('.program_e').empty();
                 $(this).parents('.btn_group').find('.program_e').append('수정');
                 $(this).parents('.btn_group').find('.program_d').empty();
@@ -61,9 +80,11 @@ function readyMainView() {
     bindProgramList();
 }
 
-function deleteProgram(url, num) {
+function deleteProgram(url, name, allName, num) {
     var param = {
-        num: num
+        name: name
+        , allName: allName
+        , num: num
     };
     ONPANEL.Ajax.Result.LoadingShow();
     ONPANEL.Ajax.Request.invokePostByJSON(
@@ -80,6 +101,43 @@ function deleteProgram(url, num) {
         true);
 }
 
+function searchProgram(url, type, val) {
+    var param = {
+        val: val
+        , type: type
+    };
+    ONPANEL.Ajax.Result.LoadingShow();
+    ONPANEL.Ajax.Request.invokePostByJSON(
+        url,
+        param,
+        function (data) {
+            if (ONPANEL.Ajax.Result.isSucess(data)) {
+                ONPANEL.Ajax.Result.LoadingHide();
+                var htmlArrSearchProgram = []
+                    ;
+                if (data.result.program_search_data.length == 0) {
+                    htmlArrSearchProgram.push('<li>검색한 프로그램이 존재하지 않습니다.</li>');
+                } else {
+                    for (var i = 0; i < data.result.program_search_data.length; i++) {
+                        var allName = '';
+                        $('.program-list .list_group .programName').each(function (index) {
+                            allName += $(this).html() + '|';
+                        });
+                        var program = data.result.program_search_data[i];
+                        if (allName.indexOf(program.name) < 0 && allName != '') {
+                            htmlArrSearchProgram.push('<li class="programAdd">' + program.name + '</li>');
+                        }
+                    }
+                }
+                $(".showProgram").empty();
+                $(".showProgram").append(htmlArrSearchProgram.join(""));
+            }
+        },
+        null,
+        true);
+}
+
+
 function updateProgram(url, num, val, type) {
     var param = {
         num: num
@@ -95,7 +153,7 @@ function updateProgram(url, num, val, type) {
                 ONPANEL.Ajax.Result.LoadingHide();
                 alertLayer('수정되었습니다.');
                 location.reload();
-            }else{
+            } else {
                 ONPANEL.Ajax.Result.LoadingHide();
                 alertLayer(data.resultMsg);
                 return false;
@@ -128,10 +186,12 @@ function bindProgramList() {
     });
 }
 
-function addProgram(url, type, val) {
+function addProgram(url, type, val, allName, num) {
     var param = {
         type: type
         , val: val
+        , allName: allName
+        , num: num
     };
     ONPANEL.Ajax.Result.LoadingShow();
     ONPANEL.Ajax.Request.invokePostByJSON(
@@ -201,44 +261,46 @@ function appendProgramList(content, data) {
     $("#programType").empty();
     $("#programType").append(getPname);
     $("#pname").empty();
-    $("#pname").append('['+getPname+']');
+    $("#pname").append('[' + getPname + ']');
     $('.topNavbars li').removeClass('ui-btn-active');
-    if(getPname == '학교단체'){
+    if (getPname == '학교단체') {
         $('.topNavbars li:eq(0)').addClass('ui-btn-active');
-    }else if(getPname == '취약계층'){
+    } else if (getPname == '취약계층') {
         $('.topNavbars li:eq(1)').addClass('ui-btn-active');
-    }else if(getPname == '특성화캠프'){
+    } else if (getPname == '특성화캠프') {
         $('.topNavbars li:eq(2)').addClass('ui-btn-active');
-    }else if(getPname == '가족캠프'){
+    } else if (getPname == '가족캠프') {
         $('.topNavbars li:eq(3)').addClass('ui-btn-active');
-    }else if(getPname == '전문연수'){
+    } else if (getPname == '전문연수') {
         $('.topNavbars li:eq(4)').addClass('ui-btn-active');
-    }else if(getPname == '기타'){
+    } else if (getPname == '기타') {
         $('.topNavbars li:eq(5)').addClass('ui-btn-active');
     }
     $('.topNavbars li').each(function (index) {
-        var href = 'program_edit.html?pms_num=' + gup('pms_num')+'&type=';
-        if(index == 0){
+        var href = 'program_edit.html?pms_num=' + gup('pms_num') + '&type=';
+        if (index == 0) {
             href += '학교단체';
             $(this).attr('onclick', "location.href='" + href + "'").removeAttr('href');
-        }else if(index == 1){
+        } else if (index == 1) {
             href += '취약계층';
             $(this).attr('onclick', "location.href='" + href + "'").removeAttr('href');
-        }else if(index == 2){
+        } else if (index == 2) {
             href += '특성화캠프';
             $(this).attr('onclick', "location.href='" + href + "'").removeAttr('href');
-        }else if(index == 3){
+        } else if (index == 3) {
             href += '가족캠프';
             $(this).attr('onclick', "location.href='" + href + "'").removeAttr('href');
-        }else if(index == 4){
+        } else if (index == 4) {
             href += '전문연수';
             $(this).attr('onclick', "location.href='" + href + "'").removeAttr('href');
-        }else if(index == 5){
+        } else if (index == 5) {
             href += '기타';
             $(this).attr('onclick', "location.href='" + href + "'").removeAttr('href');
         }
     });
     var htmlArr = []
+        ;
+    var htmlArrShowProgram = []
         ;
     if (data.program_ct.length == 0) {
         $(".program-list").empty();
@@ -252,14 +314,28 @@ function appendProgramList(content, data) {
     for (var i = 0; i < data.program_data.length; i++) {
         var program = data.program_data[i];
         htmlArr.push('<div class="list_group">');
-        htmlArr.push('           <img src="images/img4.png" class="program_list_icon"><span class="programName">' + program.name + '</span><font class="programNum" style="display: none;">' + program.program_num + '</font>');
+        htmlArr.push('           <img src="images/img4.png" class="program_list_icon"><span class="programName">' + program + '</span>');
         htmlArr.push('            <div class="btn_group">');
-        htmlArr.push('                      <a href="#" class="program_edit"><img src="images/btn_edit.png"><span class="program_e">수정</span></a>');
+        //htmlArr.push('                      <a href="#" class="program_edit"><img src="images/btn_edit.png"><span class="program_e">수정</span></a>');
         htmlArr.push('                      <a href="#" class="program_delete"><img src="images/btn_del.png"><span class="program_d">삭제</span></a>');
         htmlArr.push('            </div>');
         htmlArr.push('</div>');
     }
+
+    for (var i = 0; i < data.program_show_data.length; i++) {
+        var allName = '';
+        $('.program-list .list_group .programName').each(function (index) {
+            allName += $(this).html() + '|';
+        });
+        var program = data.program_show_data[i];
+        if (allName.indexOf(program.name) < 0 && allName != '') {
+            htmlArrShowProgram.push('<li class="programAdd">' + program.name + '</li>');
+        }
+    }
+    $(".showProgram").empty();
+    $(".showProgram").append(htmlArrShowProgram.join(""));
     $("#programct").empty();
-    $("#programct").append(data.program_ct.length);
+    $("#programct").append(data.program_ct);
+    content.empty();
     content.append(htmlArr.join(""));
 }
