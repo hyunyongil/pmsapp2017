@@ -73,7 +73,7 @@ function appendMakeViewList(data) {
         return false;
     }
     var viewdata = data.mainview_data[0];
-    var questiondata = data.mainview_data[1];
+    var questiondata = data.question_data;
     var v_businessType = $('#v_businessType');
     v_businessType.empty();
     var v_code = $('#v_code');
@@ -119,24 +119,25 @@ function appendMakeViewList(data) {
         }
     }
 
-    if(questiondata.length != 3) {
+    if(questiondata.length > 3) {
         var numth = 1;
         var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;">청소년:</div>';
         v_question.append(typeVal);
         for (var i = 0; i < questiondata.length - 1; i++) {
-            if(questiondata[i].set_name == 'questionpop1_write1'){
+            alertLayer(questiondata[i].set_name)
+            if(questiondata[i].set_name == 'questionpop1_write1_question1'){
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
-            }else if(questiondata[i].set_name == 'questionpop1_write2'){
+            }else if(questiondata[i].set_name == 'questionpop1_write2_question1'){
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
-            }else if(questiondata[i].set_name == 'questionpop1_write3'){
+            }else if(questiondata[i].set_name == 'questionpop1_write3_question1'){
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
-            }else if(questiondata[i].set_name == 'questionpop1_write4'){
+            }else if(questiondata[i].set_name == 'questionpop1_write4_question1'){
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
-            }else if(questiondata[i].set_name == 'questionpop1_write5'){
+            }else if(questiondata[i].set_name == 'questionpop1_write5_question1'){
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
             }
@@ -145,19 +146,19 @@ function appendMakeViewList(data) {
         var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">인솔교사:</div>';
         v_question.append(typeVal);
         for (var i = 0; i < questiondata.length - 1; i++) {
-            if(questiondata[i].set_name == 'questionpop2_write1'){
+            if(questiondata[i].set_name == 'questionpop2_write1_question1'){
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
-            }else if(questiondata[i].set_name == 'questionpop2_write2'){
+            }else if(questiondata[i].set_name == 'questionpop2_write2_question1'){
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
-            }else if(questiondata[i].set_name == 'questionpop2_write3'){
+            }else if(questiondata[i].set_name == 'questionpop2_write3_question1'){
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
-            }else if(questiondata[i].set_name == 'questionpop2_write4'){
+            }else if(questiondata[i].set_name == 'questionpop2_write4_question1'){
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
-            }else if(questiondata[i].set_name == 'questionpop2_write5'){
+            }else if(questiondata[i].set_name == 'questionpop2_write5_question1'){
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
             }
@@ -166,19 +167,19 @@ function appendMakeViewList(data) {
         var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">성인:</div>';
         v_question.append(typeVal);
         for (var i = 0; i < questiondata.length - 1; i++) {
-            if(questiondata[i].set_name == 'questionpop3_write1'){
+            if(questiondata[i].set_name == 'questionpop3_write1_question1'){
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
-            }else if(questiondata[i].set_name == 'questionpop3_write2'){
+            }else if(questiondata[i].set_name == 'questionpop3_write2_question1'){
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
-            }else if(questiondata[i].set_name == 'questionpop3_write3'){
+            }else if(questiondata[i].set_name == 'questionpop3_write3_question1'){
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
-            }else if(questiondata[i].set_name == 'questionpop3_write4'){
+            }else if(questiondata[i].set_name == 'questionpop3_write4_question1'){
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
-            }else if(questiondata[i].set_name == 'questionpop3_write5'){
+            }else if(questiondata[i].set_name == 'questionpop3_write5_question1'){
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
             }
