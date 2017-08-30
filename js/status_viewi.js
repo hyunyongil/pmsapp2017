@@ -121,7 +121,7 @@ function appendSurveyList(content, data) {
         ;
     if (data.survey_data.length == 0 && data.page <= 1) {
         $(".graph_div").empty();
-        $(".graph_div").append('참여대상이 아니거나 참여한 인원이 없습니다.');
+        $(".graph_div").append('참여한 인원이 없습니다.');
         $(".padding_group").show();
         return false;
     }
