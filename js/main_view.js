@@ -124,7 +124,6 @@ function appendMakeViewList(data) {
         var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;">청소년:</div>';
         v_question.append(typeVal);
         for (var i = 0; i < questiondata.length - 1; i++) {
-            alertLayer(questiondata[i].set_name)
             if(questiondata[i].set_name == 'questionpop1_write1_question1'){
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
