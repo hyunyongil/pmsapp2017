@@ -130,16 +130,6 @@ function appendSurveyList(content, data) {
     }else{
         $(".list_table_title").hide();
     }
-    htmlArr.push('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list_table">');
-    htmlArr.push('<thead>');
-    htmlArr.push('<tr>');
-    htmlArr.push('<th>소속(학교)</th>');
-    htmlArr.push('<th>소속(학년)</th>');
-    htmlArr.push('<th>교급</th>');
-    htmlArr.push('<th>지역</th>');
-    htmlArr.push('</tr>');
-    htmlArr.push('</thead>');
-    htmlArr.push('<tbody>');
 
     for (var i = 0; i < data.survey_data.length; i++) {
         var survey = data.survey_data[i].muid;
@@ -184,9 +174,6 @@ function appendSurveyList(content, data) {
         htmlArr.push('</tr>');
     }
 
-
-    htmlArr.push('<tbody>');
-    htmlArr.push('</table>');
 
     var nowjoinct = data.survey_ct.length;
     var totaljoinct = data.survey_join_ct[0].set_value;
