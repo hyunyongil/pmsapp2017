@@ -230,7 +230,7 @@ function appendMakeViewList(data) {
         return false;
     }
     var maindata = data.mainview_data[0];
-    var questiondata = data.mainview_data[1];
+    var questiondata = data.question_data;
     var v_pcnt1 = $('#pcnt1');
     v_pcnt1.empty();
     var v_pcnt2 = $('#pcnt2');
