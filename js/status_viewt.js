@@ -161,8 +161,8 @@ function appendSurveyList(content, data) {
     $(".graph_div span").empty();
     $(".graph_div span").append('(' + nowjoinct + '/' + totaljoinct + ')');
     $(".graph_num").empty();
-    $(".graph_num").append(parseInt(nowjoinct / totaljoinct * 100) + '%');
-    $(".graph_num").css('width', parseInt(nowjoinct / totaljoinct * 100) + '%');
+    $(".graph_num").append((nowjoinct / totaljoinct * 100).toFixed(1) + '%');
+    $(".graph_num").css('width', (nowjoinct / totaljoinct * 100).toFixed(1) + '%');
 
     if(data.survey_ct.length > 0) {
         content.append(htmlArr.join(""));
