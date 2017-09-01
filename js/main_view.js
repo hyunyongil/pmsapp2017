@@ -13,16 +13,22 @@ function readyMainView() {
             $("#layer_pop_pro_add").hide();
         });
         $("#viewbutton3").click(function(){
-            if(!confirm('상태를 변경하시겠습니까?')){
-                return false;
-            }
             var type = '';
             if($(this).find('span').html() == '조사시작'){
+                if(!confirm('조사를 시작하시겠습니까?')){
+                    return false;
+                }
                 type = 'I';
             }else if($(this).find('span').html() == '조사진행중'){
+                if(!confirm('조사를 종료하시겠습니까?')){
+                    return false;
+                }
                 type = 'E';
             }else if($(this).find('span').html() == '조사완료'){
-                type = 'D';
+                if(!confirm('조사를 재시작하시겠습니까?')){
+                    return false;
+                }
+                type = 'I';
             }
             changeSurveyType(CONSTANTS.PMS.UPDATETYPE, changeType, gup("pms_num"),type);
         });
@@ -221,7 +227,7 @@ function changeType(data){
     }else if($('#viewbutton3').find('span').html() == '조사진행중'){
         type = '조사완료';
     }else if($('#viewbutton3').find('span').html() == '조사완료'){
-        type = '조사시작';
+        type = '조사진행중';
     }
     $("#viewbutton3 span").empty();
     $("#viewbutton3 span").append(type);
