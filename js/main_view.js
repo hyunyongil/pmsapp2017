@@ -19,16 +19,13 @@ function readyMainView() {
                     return false;
                 }
                 type = 'I';
-            }else if($(this).find('span').html() == '조사진행중'){
-                if(!confirm('조사를 종료하시겠습니까?')){
+            }else if($(this).find('span').html() == '조사마감'){
+                if(!confirm('조사를 마감하시겠습니까?')){
                     return false;
                 }
                 type = 'E';
             }else if($(this).find('span').html() == '조사완료'){
-                if(!confirm('조사를 재시작하시겠습니까?')){
-                    return false;
-                }
-                type = 'I';
+                return false;
             }
             changeSurveyType(CONSTANTS.PMS.UPDATETYPE, changeType, gup("pms_num"),type);
         });
@@ -210,7 +207,7 @@ function appendMakeViewList(data) {
     if(viewdata.modeType == 'D'){
         type = '조사시작';
     }else if(viewdata.modeType == 'I'){
-        type = '조사진행중';
+        type = '조사마감';
     }else if(viewdata.modeType == 'E'){
         type = '조사완료';
     }
@@ -223,11 +220,9 @@ function appendMakeViewList(data) {
 function changeType(data){
     var type = '';
     if($('#viewbutton3').find('span').html() == '조사시작'){
-        type = '조사진행중';
-    }else if($('#viewbutton3').find('span').html() == '조사진행중'){
+        type = '조사마감';
+    }else if($('#viewbutton3').find('span').html() == '조사마감'){
         type = '조사완료';
-    }else if($('#viewbutton3').find('span').html() == '조사완료'){
-        type = '조사진행중';
     }
     $("#viewbutton3 span").empty();
     $("#viewbutton3 span").append(type);
