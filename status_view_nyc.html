@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+    <title>한국청소년활동진흥원</title>
+    <script type="text/javascript" src="js/header.js"></script>
+    <script src="js/status_viewnyc.js"></script>
+    <link href="css/default.css" rel="stylesheet" type="text/css"/>
+    <script>
+        readyMainView();
+    </script>
+</head>
+<body>
+
+<div id="survey_list" data-role="page" class="contant bg_content">
+    <div class="sc_title">
+        <a href="javascript:history.back();" data-ajax="false"><img src="images/btn_back.jpg">참여대상 확인</a>
+        <a href="main_list.html" data-ajax="false" class="btn_home"><img src="images/btn_home.png"></a>
+    </div>
+    <ul class="c_menu_tab c_menu_tab2">
+
+        <div class="clear"></div>
+    </ul>
+
+    <div class="padding_group" style="display: none;">
+        <div class="graph_div">
+            <div class="graph_box">
+                <div class="graph_num" style="width:0%;">0%</div>
+            </div>
+            <span></span>
+        </div>
+        <div class="table_div">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list_table list_table_title">
+                <colgroup>
+                    <col width="*"/>
+                    <col style="width:15%;"/>
+                    <col style="width:15%;"/>
+                    <col style="width:15%;"/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th id="title1"></th>
+                    <th id="title2"></th>
+                    <th id="title3"></th>
+                    <th id="title4"></th>
+                </tr>
+                </tbody>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list_table list_table_ok"  type="list">
+                <colgroup>
+                    <col width="*"/>
+                    <col style="width:15%;"/>
+                    <col style="width:15%;"/>
+                    <col style="width:15%;"/>
+                </colgroup>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="survey-more ui-grid-solo" style="display:none;">
+                <div class="ui-block-a"><a href="#" class="more_list"><img src="images/moreList.png"></a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    // var name = COMMON.storage.get("my_info_name");
+    //$("#my_info_name").html(name);
+    /* $('#logout').click(function(){
+     try{
+     if(confirm("로그아웃을 하시겠습니까?")) {
+     event.preventDefault();
+
+     COMMON.token.clear();
+
+     location.href = "pmslogin.html";
+     }
+     }
+     catch(e) {
+     document.addEventListener('deviceready', function() {
+     navigator.notification.confirm("로그아웃을 하시겠습니까?", function(index) {
+     if(index == 1) {
+     event.preventDefault();
+
+     COMMON.token.clear();
+
+     location.href = "loginNew.html";
+     }
+     }, '확인',"확인,취소");
+
+     }, true);
+     }
+     });*/
+    try {
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            //       navigator.notification.alert("알림메시지 입니다.", alertCallback, "알림", "확인");       
+        }
+
+        function alertCallback() {
+        }
+    }
+    catch (e) {
+    }
+    //]]>
+</script>
+</body>
+</html>

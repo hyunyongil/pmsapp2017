@@ -24,7 +24,7 @@
         </li>
         <li>
 				<span>
-					국립청소년 해양센터<br><b id="my_info_name"></b> 지도자님
+					<font id="department"></font><br><b id="my_info_name"></b> 지도자님
 				</span>
             <a id="logout" href="#" data-ajax="false">로그아웃</a>
         </li>
@@ -49,6 +49,8 @@
 <script type="text/javascript">
     //<![CDATA[
     var name = COMMON.storage.get("my_info_name");
+    var department = COMMON.storage.get("department");
+    $("#department").html(department);
     $("#my_info_name").html(name);
     $('#logout').click(function(){
         try{

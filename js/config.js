@@ -1,10 +1,10 @@
 APP_VERSION = '1.0.7';
 //keytool -genkey -v -keystore pms.keystore -alias pms -keyalg RSA -keysize 2048 -validity 10000 =onsol123
-//CONNECTION_AJ_URL = 'http://loconsol.onsolutions.co.kr';//로컬
-//CONNECTION_URL = 'http://loconsol.onsolutions.co.kr';//로컬
+CONNECTION_AJ_URL = 'http://loconsol.onsolutions.co.kr';//로컬
+CONNECTION_URL = 'http://loconsol.onsolutions.co.kr';//로컬
 
-CONNECTION_AJ_URL = 'http://devonsol.onsolutions.co.kr';//개발서버
-CONNECTION_URL = 'http://devonsol.onsolutions.co.kr';//개발서버
+//CONNECTION_AJ_URL = 'http://devonsol.onsolutions.co.kr';//개발서버
+//CONNECTION_URL = 'http://devonsol.onsolutions.co.kr';//개발서버
 
 
 //CONNECTION_AJ_URL = 'http://onsolutions.co.kr';//REAL서버

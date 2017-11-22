@@ -86,7 +86,7 @@ $(document).one('pageinit', '#login_page', function () {
                 page.controller.saveKeepLoginInfo(pri.keepLogin.val());
 
                 COMMON.storage.put("my_info_name",data.result.name);
-
+                COMMON.storage.put("department",data.result.department);
 
                 console.log('data.result: '+result);
 

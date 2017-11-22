@@ -13,17 +13,28 @@ CONSTANTS.PMS.MAIN = '/api/pms/mainList';
 CONSTANTS.PMS.MAKE = '/api/pms/makeTop';
 CONSTANTS.PMS.MAINVEW = '/api/pms/mainView';
 CONSTANTS.PMS.ADDTYPE = '/api/pms/addType';
+CONSTANTS.PMS.ADDTYPENYC = '/api/pms/addTypeNyc';
 CONSTANTS.PMS.UPDATETYPE = '/api/pms/updateType';
 CONSTANTS.PMS.UPDATEPCNT = '/api/pms/updatePcnt';
 CONSTANTS.PMS.DELETETYPE = '/api/pms/deleteType';
+CONSTANTS.PMS.DELETETYPENYC = '/api/pms/deleteTypeNyc';
+CONSTANTS.PMS.KANGLIST = '/api/pms/kangList';
+CONSTANTS.PMS.ADDKANG = '/api/pms/addKang';
+CONSTANTS.PMS.DELETEKANG = '/api/pms/deleteKang';
+
+CONSTANTS.PMS.GUALIST = '/api/pms/guaList';
+CONSTANTS.PMS.ADDGUA = '/api/pms/addGua';
+CONSTANTS.PMS.DELETEGUA = '/api/pms/deleteGua';
+CONSTANTS.PMS.SEARCHKANG = '/api/pms/searchKang';
 CONSTANTS.PMS.PROGRAMLIST = '/api/pms/programList';
 CONSTANTS.PMS.ADDPROGRAM = '/api/pms/addProgram';
 CONSTANTS.PMS.SEARCHPROGRAM = '/api/pms/searchProgram';
 CONSTANTS.PMS.UPDATEPROGRAM = '/api/pms/updateProgram';
 CONSTANTS.PMS.DELETEPROGRAM = '/api/pms/deleteProgram';
 CONSTANTS.PMS.STATUSVIEW = '/api/pms/statusView';
+CONSTANTS.PMS.STATUSVIEWNYC = '/api/pms/statusViewNyc';
 CONSTANTS.PMS.STATUSDELETE = '/api/pms/statusDelete';
-
+CONSTANTS.PMS.STATUSDELETENYC = '/api/pms/statusDeleteNyc';
 
 
 CONSTANTS.FIRST_SURVEY = {};
