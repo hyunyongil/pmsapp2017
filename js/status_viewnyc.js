@@ -176,6 +176,8 @@ function appendSurveyList(content, data) {
             } else if (survey_detail[6].select_num == 6) {
                 classval = '청소년단체';
             } else if (survey_detail[6].select_num == 7) {
+                classval = '진흥센터';
+            } else if (survey_detail[6].select_num == 8) {
                 classval = '기타';
             }
 
@@ -241,6 +243,8 @@ function appendSurveyList(content, data) {
             } else if (survey_detail[4].select_num == 6) {
                 classval = '청소년단체';
             } else if (survey_detail[4].select_num == 7) {
+                classval = '진흥센터';
+            } else if (survey_detail[4].select_num == 8) {
                 classval = '기타';
             }
 
