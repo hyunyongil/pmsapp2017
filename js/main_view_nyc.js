@@ -143,12 +143,12 @@ function appendMakeViewList(data) {
             v_pcnt.append('종합설문지: ' + questiondata[5].set_value + '명');
         }
     }
-
+    var keych = 0;
     if(questiondata.length > 3) {
         if(kang[0]) {
             var numth = 1;
             var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;">' + kang[0] + ':</div>';
-            v_question.append(typeVal);
+            v_question.prepend(typeVal);
             for (var i = 0; i < questiondata.length - 1; i++) {
                 if (questiondata[i].set_name == 'questionpop1_write1_question1') {
                     v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
@@ -167,11 +167,14 @@ function appendMakeViewList(data) {
                     numth++;
                 }
             }
+            if(numth > 1){
+                keych = 1;
+            }
         }
         if(kang[1]) {
             var numth = 1;
             var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">' + kang[1] + ':</div>';
-            v_question.append(typeVal);
+            v_question.prepend(typeVal);
             for (var i = 0; i < questiondata.length - 1; i++) {
                 if (questiondata[i].set_name == 'questionpop2_write1_question1') {
                     v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
@@ -190,11 +193,14 @@ function appendMakeViewList(data) {
                     numth++;
                 }
             }
+            if(numth > 1){
+                keych = 1;
+            }
         }
         if(kang[2]) {
             var numth = 1;
             var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">' + kang[2] + ':</div>';
-            v_question.append(typeVal);
+            v_question.prepend(typeVal);
             for (var i = 0; i < questiondata.length - 1; i++) {
                 if (questiondata[i].set_name == 'questionpop3_write1_question1') {
                     v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
@@ -213,11 +219,14 @@ function appendMakeViewList(data) {
                     numth++;
                 }
             }
+            if(numth > 1){
+                keych = 1;
+            }
         }
         if(kang[3]) {
             var numth = 1;
             var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">' + kang[3] + ':</div>';
-            v_question.append(typeVal);
+            v_question.prepend(typeVal);
             for (var i = 0; i < questiondata.length - 1; i++) {
                 if (questiondata[i].set_name == 'questionpop4_write1_question1') {
                     v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
@@ -236,11 +245,14 @@ function appendMakeViewList(data) {
                     numth++;
                 }
             }
+            if(numth > 1){
+                keych = 1;
+            }
         }
         if(kang[4]) {
             var numth = 1;
             var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">' + kang[4] + ':</div>';
-            v_question.append(typeVal);
+            v_question.prepend(typeVal);
             for (var i = 0; i < questiondata.length - 1; i++) {
                 if (questiondata[i].set_name == 'questionpop5_write1_question1') {
                     v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
@@ -258,6 +270,9 @@ function appendMakeViewList(data) {
                     v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                     numth++;
                 }
+            }
+            if(numth > 1){
+                keych = 1;
             }
         }
         var numth = 1;
@@ -281,7 +296,14 @@ function appendMakeViewList(data) {
                 numth++;
             }
         }
+        if(numth > 1){
+            keych = 1;
+        }
     }else{
+        v_question.append('없음');
+    }
+    if(keych == 0){
+        v_question.empty();
         v_question.append('없음');
     }
 

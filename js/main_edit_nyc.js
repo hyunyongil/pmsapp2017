@@ -197,6 +197,7 @@ function changeSurveyType(url, callback, num, type, val) {
             if (ONPANEL.Ajax.Result.isSucess(data)) {
                 ONPANEL.Ajax.Result.LoadingHide();
                 callback(ONPANEL.Ajax.Result.getData(data));
+                location.reload();
             }
         },
         null,
