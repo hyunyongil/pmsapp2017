@@ -143,7 +143,7 @@ function appendMakeViewList(data) {
             v_pcnt.append('강의평가 - ' + kang[3] + ': ' + questiondata[3].set_value + '명<br/>');
         }
         if (pcnt5 == 'pcnt5' && questiondata[4].set_value > 0) {
-            v_pcnt.append('강의평가 - ' + kang[4] + ': ' + questiondata[3].set_value + '명<br/>');
+            v_pcnt.append('강의평가 - ' + kang[4] + ': ' + questiondata[4].set_value + '명<br/>');
         }
         if (pcnt100 == 'pcnt100' && questiondata[5].set_value > 0) {
             v_pcnt.append('종합만족도: ' + questiondata[5].set_value + '명');
