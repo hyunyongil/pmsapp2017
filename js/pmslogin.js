@@ -87,7 +87,7 @@ $(document).one('pageinit', '#login_page', function () {
 
                 COMMON.storage.put("my_info_name",data.result.name);
                 COMMON.storage.put("department",data.result.department);
-
+                COMMON.storage.put("my_info_id",data.result.member_id);
                 console.log('data.result: '+result);
 
 

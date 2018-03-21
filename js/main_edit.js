@@ -37,6 +37,17 @@ function readyMainView() {
                 changeSurveyType(CONSTANTS.PMS.UPDATEPCNT, changeType3, gup("pms_num"), 3, $('#textval3').val());
             }
         });
+        $(".edit_group4").bind('click', function () {
+            if ($(this).find('span').html() == '수정') {
+                $(this).find('span').empty();
+                $(this).find('span').append('저장');
+                var tempVal = $('#pcnt4').html();
+                $('#pcnt4').empty();
+                $('#pcnt4').append('<input type="number" style="width:60px;width:60px;height:30px;vertical-align: top;" id="textval4" value="' + tempVal + '">');
+            } else {
+                changeSurveyType(CONSTANTS.PMS.UPDATEPCNT, changeType4, gup("pms_num"), 4, $('#textval4').val());
+            }
+        });
         $(".del_group1").bind('click', function () {
             var dis = 0;
             $(".list_group").each(function () {
@@ -75,6 +86,19 @@ function readyMainView() {
                 $('.list_group3').remove();
             }
         });
+
+        $(".del_group4").bind('click', function () {
+            if ($(".list_group").length == 1) {
+                alertLayer('설문대상은 적어도 한개는 있어야합니다.');
+                return false;
+            }
+            if (confirm("삭제하시겠습니까?")) {
+                deleteSurveyType(CONSTANTS.PMS.DELETETYPE, gup("pms_num"), 4);
+                $('.list_group4').remove();
+            }
+        });
+
+
         $("#viewbutton2").click(function () {
             var dis = 0;
             $(".list_group").each(function () {
@@ -105,12 +129,14 @@ function readyMainView() {
             $(".pop_tab span").each(function () {
                 if($(this).hasClass('on')){
                     keys = 1;
-                    if($(this).html() == '청소년'){
+                    if($(this).html() == '청소년-만족도'){
                         type = 1;
-                    }else if($(this).html() == '인솔교사'){
+                    }else if($(this).html() == '인술교사-만족도'){
                         type = 2;
-                    }else if($(this).html() == '성인'){
+                    }else if($(this).html() == '성인-만족도'){
                         type = 3;
+                    }else if($(this).html() == '효과성(사전+사후)'){
+                        type = 4;
                     }
                 }
             });
@@ -224,6 +250,13 @@ function changeType3(data) {
     $('.edit_group3').find('span').empty();
     $('.edit_group3').find('span').append('수정');
 }
+function changeType4(data) {
+    var type = $('#textval4').val();
+    $("#pcnt4").empty();
+    $("#pcnt4").append(type);
+    $('.edit_group4').find('span').empty();
+    $('.edit_group4').find('span').append('수정');
+}
 function appendMakeViewList(data) {
     if (data.mainview_data.length == 0) {
         alertLayer('해당된 내용이 없습니다.');
@@ -237,14 +270,18 @@ function appendMakeViewList(data) {
     v_pcnt2.empty();
     var v_pcnt3 = $('#pcnt3');
     v_pcnt3.empty();
+    var v_pcnt4 = $('#pcnt4');
+    v_pcnt4.empty();
     //추가하기
     var key1=0;
     var key2=0;
     var key3=0;
+    var key4=0;
     if (questiondata.length >= 1) {
         var pcnt = questiondata[0].set_name;
         var pcnt2 = questiondata[1].set_name;
         var pcnt3 = questiondata[2].set_name;
+        var pcnt4 = questiondata[3].set_name;
         if (pcnt == 'pcnt1' && questiondata[0].set_value > 0) {
             $(".list_group1").show();
             if ($(".edit_group1").find('span').html() == '수정') {
@@ -268,19 +305,30 @@ function appendMakeViewList(data) {
             }
             key3 = 1;
         }
+
+        if (pcnt4 == 'pcnt4' && questiondata[3].set_value > 0) {
+            $(".list_group4").show();
+            if ($(".edit_group4").find('span').html() == '수정') {
+                v_pcnt4.append(questiondata[3].set_value);
+            }
+            key4 = 1;
+        }
     }
     var href='program_edit.html?pms_num='+gup('pms_num')+'&type='+maindata.businessType;
     $(".menuUrl").attr('onclick', "location.href='" + href + "'").removeAttr('href');
     var html = '';
 
     if(key1 == 0){
-        html += '<span>청소년</span>';
+        html += '<span>청소년-만족도</span>';
     }
     if(key2 == 0){
-        html += '<span>인솔교사</span>';
+        html += '<span>인솔교사-만족도</span>';
     }
     if(key3 == 0){
-        html += '<span>성인</span>';
+        html += '<span>성인-만족도</span>';
+    }
+    if(key4 == 0){
+        html += '<span>효과성(사전+사후)</span>';
     }
     $(".pop_tab").empty();
     $(".pop_tab").append(html);

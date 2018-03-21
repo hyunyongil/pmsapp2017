@@ -233,6 +233,14 @@ function appendProgramList(content, data) {
     $("#pname").empty();
     $("#pname").append('[' + getPname + ']');
 
+    if(getPname != '보수교육'){
+        $(".menuUrl2").hide();
+    }else{
+        $(".menuUrl2").show();
+        $(".menuUrl").css("width","33%");
+        $(".menuUrl1").css("width","33%");
+        $(".menuUrl2").css("width","33%");
+    }
     var htmlArr = []
         ;
     var htmlArrShowProgram = []

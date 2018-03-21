@@ -315,6 +315,14 @@ function appendMakeViewList(data) {
     v_daesang_list.empty();
     var kang = maindata.kang.slice(0, -1);
     kang = kang.split('|');
+    if(maindata.businessType != '보수교육'){
+        $(".menuUrl2").hide();
+    }else{
+        $(".menuUrl2").show();
+        $(".menuUrl").css("width","33%");
+        $(".menuUrl1").css("width","33%");
+        $(".menuUrl2").css("width","33%");
+    }
     for (var i = 0; i < kang.length; i++) {
        var k = i+1;
        var html_deasang = '<div class="list_group list_group'+k+'" style="display: none;"> <div class="left_img"><img src="images/img1.png"></div> <div class="text_group"> <span>'+kang[i]+'</span> <p><font id="pcnt'+k+'"></font><em>명</em></p></div><div class="btn_group"> <a href="javascript:;"  data-ajax="false" class="edit_group'+k+'"><img src="images/btn_edit.png"><span>수정</span></a> <a href="javascript:;"  data-ajax="false" class="del_group'+k+'"><img src="images/btn_del.png"><span>삭제</span></a> </div></div>';

@@ -3,31 +3,31 @@
  */
 
 function readyMainView() {
-    $( document ).ready(function() {
-        $("#viewbutton2").click(function(){
+    $(document).ready(function () {
+        $("#viewbutton2").click(function () {
             $(".layer_pop_bg").show();
             $("#layer_pop_pro_add").show();
         });
-        $("#pop_close").click(function(){
+        $("#pop_close").click(function () {
             $(".layer_pop_bg").hide();
             $("#layer_pop_pro_add").hide();
         });
-        $("#viewbutton3").click(function(){
+        $("#viewbutton3").click(function () {
             var type = '';
-            if($(this).find('span').html() == '조사시작'){
-                if(!confirm('조사를 시작하시겠습니까?')){
+            if ($(this).find('span').html() == '조사시작') {
+                if (!confirm('조사를 시작하시겠습니까?')) {
                     return false;
                 }
                 type = 'I';
-            }else if($(this).find('span').html() == '조사마감'){
-                if(!confirm('조사를 마감하시겠습니까?')){
+            } else if ($(this).find('span').html() == '조사마감') {
+                if (!confirm('조사를 마감하시겠습니까?')) {
                     return false;
                 }
                 type = 'E';
-            }else if($(this).find('span').html() == '조사완료'){
+            } else if ($(this).find('span').html() == '조사완료') {
                 return false;
             }
-            changeSurveyType(CONSTANTS.PMS.UPDATETYPE, changeType, gup("pms_num"),type);
+            changeSurveyType(CONSTANTS.PMS.UPDATETYPE, changeType, gup("pms_num"), type);
         });
     });
 
@@ -37,7 +37,7 @@ function readyMainView() {
 function changeSurveyType(url, callback, num, type) {
     var param = {
         num: num
-        ,type: type
+        , type: type
     };
     ONPANEL.Ajax.Result.LoadingShow();
     ONPANEL.Ajax.Request.invokePostByJSON(
@@ -85,6 +85,8 @@ function appendMakeViewList(data) {
     v_businessName.empty();
     var v_opDate = $('#v_opDate');
     v_opDate.empty();
+    var v_endDate = $('#v_endDate');
+    v_endDate.empty();
     var v_pcnt = $('#v_pcnt');
     v_pcnt.empty();
     var v_kang = $('#v_kang');
@@ -99,55 +101,59 @@ function appendMakeViewList(data) {
     v_manage.empty();
     var kang = viewdata.kang.slice(0, -1);
     kang = kang.split('|');
-    var gua = viewdata.gua.slice(0, -1);
-    gua = gua.split('|');
+    if (viewdata.businessType == '보수교육') {
+        var gua = viewdata.gua.slice(0, -1);
+        gua = gua.split('|');
+    }
     var password = viewdata.password.slice(0, -1);
     password = password.split('|');
     //추가하기
     v_businessType.append(viewdata.businessType);
     v_code.append(viewdata.code);
     v_businessName.append(viewdata.businessName);
-    var opdate = '시작 : ' + viewdata.opDate1.replace(/-/g,'.') + '<br>    마감 : ' + viewdata.opDate2.replace(/-/g,'.');
+    var opdate = '시작 : ' + viewdata.opDate1.replace(/-/g, '.') + '<br>    마감 : ' + viewdata.opDate2.replace(/-/g, '.');
     v_opDate.append(opdate);
-    if(questiondata.length >= 1) {
+    var endDate = viewdata.endDate.replace(/-/g, '.') + ' (' + viewdata.endTime + ')';
+    v_endDate.append(endDate);
+    if (questiondata.length >= 1) {
         var pcnt = questiondata[0].set_name;
         var pcnt2 = questiondata[1].set_name;
         var pcnt3 = '';
         var pcnt4 = '';
         var pcnt5 = '';
         var pcnt100 = '';
-        try{
+        try {
             var pcnt3 = questiondata[2].set_name;
             var pcnt4 = questiondata[3].set_name;
             var pcnt5 = questiondata[4].set_name;
             var pcnt100 = questiondata[5].set_name;
-        }catch (e){
+        } catch (e) {
 
         }
         if (pcnt == 'pcnt1' && questiondata[0].set_value > 0) {
-            v_pcnt.append(kang[0]+': ' + questiondata[0].set_value + '명<br/>');
+            v_pcnt.append('강의평가 - ' + kang[0] + ': ' + questiondata[0].set_value + '명<br/>');
         }
         if (pcnt2 == 'pcnt2' && questiondata[1].set_value > 0) {
-            v_pcnt.append(kang[1]+': ' + questiondata[1].set_value + '명<br/>');
+            v_pcnt.append('강의평가 - ' + kang[1] + ': ' + questiondata[1].set_value + '명<br/>');
         }
         if (pcnt3 == 'pcnt3' && questiondata[2].set_value > 0) {
-            v_pcnt.append(kang[2]+': ' + questiondata[2].set_value + '명<br/>');
+            v_pcnt.append('강의평가 - ' + kang[2] + ': ' + questiondata[2].set_value + '명<br/>');
         }
         if (pcnt4 == 'pcnt4' && questiondata[3].set_value > 0) {
-            v_pcnt.append(kang[3]+': ' + questiondata[3].set_value + '명<br/>');
+            v_pcnt.append('강의평가 - ' + kang[3] + ': ' + questiondata[3].set_value + '명<br/>');
         }
         if (pcnt5 == 'pcnt5' && questiondata[4].set_value > 0) {
-            v_pcnt.append(kang[4]+': ' + questiondata[3].set_value + '명<br/>');
+            v_pcnt.append('강의평가 - ' + kang[4] + ': ' + questiondata[3].set_value + '명<br/>');
         }
         if (pcnt100 == 'pcnt100' && questiondata[5].set_value > 0) {
-            v_pcnt.append('종합설문지: ' + questiondata[5].set_value + '명');
+            v_pcnt.append('종합만족도: ' + questiondata[5].set_value + '명');
         }
     }
     var keych = 0;
-    if(questiondata.length > 3) {
-        if(kang[0]) {
+    if (questiondata.length > 3) {
+        if (kang[0]) {
             var numth = 1;
-            var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;">' + kang[0] + ':</div>';
+            var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;">강의평가 - ' + kang[0] + ':</div>';
             v_question.prepend(typeVal);
             for (var i = 0; i < questiondata.length - 1; i++) {
                 if (questiondata[i].set_name == 'questionpop1_write1_question1') {
@@ -167,13 +173,13 @@ function appendMakeViewList(data) {
                     numth++;
                 }
             }
-            if(numth > 1){
+            if (numth > 1) {
                 keych = 1;
             }
         }
-        if(kang[1]) {
+        if (kang[1]) {
             var numth = 1;
-            var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">' + kang[1] + ':</div>';
+            var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">강의평가 - ' + kang[1] + ':</div>';
             v_question.prepend(typeVal);
             for (var i = 0; i < questiondata.length - 1; i++) {
                 if (questiondata[i].set_name == 'questionpop2_write1_question1') {
@@ -193,13 +199,13 @@ function appendMakeViewList(data) {
                     numth++;
                 }
             }
-            if(numth > 1){
+            if (numth > 1) {
                 keych = 1;
             }
         }
-        if(kang[2]) {
+        if (kang[2]) {
             var numth = 1;
-            var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">' + kang[2] + ':</div>';
+            var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">강의평가 - ' + kang[2] + ':</div>';
             v_question.prepend(typeVal);
             for (var i = 0; i < questiondata.length - 1; i++) {
                 if (questiondata[i].set_name == 'questionpop3_write1_question1') {
@@ -219,13 +225,13 @@ function appendMakeViewList(data) {
                     numth++;
                 }
             }
-            if(numth > 1){
+            if (numth > 1) {
                 keych = 1;
             }
         }
-        if(kang[3]) {
+        if (kang[3]) {
             var numth = 1;
-            var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">' + kang[3] + ':</div>';
+            var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">강의평가 - ' + kang[3] + ':</div>';
             v_question.prepend(typeVal);
             for (var i = 0; i < questiondata.length - 1; i++) {
                 if (questiondata[i].set_name == 'questionpop4_write1_question1') {
@@ -245,13 +251,13 @@ function appendMakeViewList(data) {
                     numth++;
                 }
             }
-            if(numth > 1){
+            if (numth > 1) {
                 keych = 1;
             }
         }
-        if(kang[4]) {
+        if (kang[4]) {
             var numth = 1;
-            var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">' + kang[4] + ':</div>';
+            var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">강의평가 - ' + kang[4] + ':</div>';
             v_question.prepend(typeVal);
             for (var i = 0; i < questiondata.length - 1; i++) {
                 if (questiondata[i].set_name == 'questionpop5_write1_question1') {
@@ -271,111 +277,234 @@ function appendMakeViewList(data) {
                     numth++;
                 }
             }
-            if(numth > 1){
+            if (numth > 1) {
                 keych = 1;
             }
         }
         var numth = 1;
-        var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">종합설문지:</div>';
+        var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">종합만족도:</div>';
         v_question.append(typeVal);
         for (var i = 0; i < questiondata.length - 1; i++) {
-            if(questiondata[i].set_name == 'questionpop100_write1_question1'){
+            if (questiondata[i].set_name == 'questionpop100_write1_question1') {
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
-            }else if(questiondata[i].set_name == 'questionpop100_write2_question1'){
+            } else if (questiondata[i].set_name == 'questionpop100_write2_question1') {
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
-            }else if(questiondata[i].set_name == 'questionpop100_write3_question1'){
+            } else if (questiondata[i].set_name == 'questionpop100_write3_question1') {
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
-            }else if(questiondata[i].set_name == 'questionpop100_write4_question1'){
+            } else if (questiondata[i].set_name == 'questionpop100_write4_question1') {
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
-            }else if(questiondata[i].set_name == 'questionpop100_write5_question1'){
+            } else if (questiondata[i].set_name == 'questionpop100_write5_question1') {
                 v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
                 numth++;
             }
         }
-        if(numth > 1){
+        if (numth > 1) {
             keych = 1;
         }
-    }else{
+    } else {
         v_question.append('없음');
     }
-    if(keych == 0){
+    if (keych == 0) {
         v_question.empty();
         v_question.append('없음');
     }
-
-    if(viewdata.gua == ''){
-        v_gua.append('없음');
-    }else{
-        for (var i = 0; i < gua.length; i++) {
-            v_gua.append((i + 1) + '. ' + gua[i] + '<br/>');
+    if (viewdata.businessType == '보수교육') {
+        if (viewdata.gua == '') {
+            v_gua.append('없음');
+        } else {
+            for (var i = 0; i < gua.length; i++) {
+                v_gua.append((i + 1) + '. ' + gua[i] + '<br/>');
+            }
         }
+    } else {
+        $("#bosu").hide();
     }
-
-    if(viewdata.kang == ''){
+    if (viewdata.kang == '') {
         v_kang.append('없음');
-    }else{
+    } else {
         for (var i = 0; i < kang.length; i++) {
             v_kang.append((i + 1) + '. ' + kang[i] + '<br/>');
         }
     }
 
-    if(viewdata.password == ''){
+    if (viewdata.password == '') {
         v_kang.append('없음');
-    }else{
+    } else {
         for (var i = 0; i < password.length; i++) {
-            v_password.append((i + 1) + '. ' + kang[i] + ': '+password[i]+'<br/>');
+            v_password.append('강의평가 – ' + kang[i] + ': ' + password[i] + '<br/>');
         }
-        v_password.append('종합설문지: '+viewdata.password_a+'<br/>');
+        v_password.append('종합만족도: ' + viewdata.password_a + '<br/>');
     }
-    
+
     for (var i = 0; i < kang.length; i++) {
-        $("#menu_pop").append('<span><a href="#" data-ajax="false" class="openUrl'+(i+1)+'">'+kang[i]+'</a> </span>');
+        $("#menu_pop").append('<span><a href="#" data-ajax="false" class="openUrl' + (i + 1) + '">강의평가 – ' + kang[i] + '</a> </span>');
     }
-    $("#menu_pop").append('<span><a href="#" data-ajax="false" class="openUrl100">종합설문지</a> </span>');
-    v_manage.append(viewdata.write_id);
+    $("#menu_pop").append('<span><a href="#" data-ajax="false" class="openUrl100">종합만족도</a> </span>');
+    v_manage.append(viewdata.manage_name + ' / ' + viewdata.manage_tel + ' / ' + viewdata.manage_email);
+
 
     //버튼 설정
-    $(".openUrl1").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/nyc/b/"+viewdata.num+"/1/?mode=test','_system')"});
-    $(".openUrl2").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/nyc/b/"+viewdata.num+"/2/?mode=test','_system')"});
-    $(".openUrl3").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/nyc/b/"+viewdata.num+"/3/?mode=test','_system')"});
-    $(".openUrl4").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/nyc/b/"+viewdata.num+"/4/?mode=test','_system')"});
-    $(".openUrl5").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/nyc/b/"+viewdata.num+"/5/?mode=test','_system')"});
-    $(".openUrl100").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/nyc/a/"+viewdata.num+"/?mode=test','_system')"});
+    if (viewdata.businessType == '전문연수') {
+        $(".openUrl1").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b1/" + viewdata.num + "/1/?mode=test','_system')"
+        });
+        $(".openUrl2").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b1/" + viewdata.num + "/2/?mode=test','_system')"
+        });
+        $(".openUrl3").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b1/" + viewdata.num + "/3/?mode=test','_system')"
+        });
+        $(".openUrl4").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b1/" + viewdata.num + "/4/?mode=test','_system')"
+        });
+        $(".openUrl5").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b1/" + viewdata.num + "/5/?mode=test','_system')"
+        });
+        $(".openUrl100").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/a1/" + viewdata.num + "/100/?mode=test','_system')"
+        });
+    }else if (viewdata.businessType == '직무연수') {
+        $(".openUrl1").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b2/" + viewdata.num + "/1/?mode=test','_system')"
+        });
+        $(".openUrl2").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b2/" + viewdata.num + "/2/?mode=test','_system')"
+        });
+        $(".openUrl3").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b2/" + viewdata.num + "/3/?mode=test','_system')"
+        });
+        $(".openUrl4").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b2/" + viewdata.num + "/4/?mode=test','_system')"
+        });
+        $(".openUrl5").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b2/" + viewdata.num + "/5/?mode=test','_system')"
+        });
+        $(".openUrl100").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/a2/" + viewdata.num + "/100/?mode=test','_system')"
+        });
+    }else if (viewdata.businessType == '자격연수') {
+        $(".openUrl1").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/1?status="+viewdata.yeonsu_yn+"&mode=test','_system')"
+        });
+        $(".openUrl2").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/2?status="+viewdata.yeonsu_yn+"&mode=test','_system')"
+        });
+        $(".openUrl3").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/3?status="+viewdata.yeonsu_yn+"&mode=test','_system')"
+        });
+        $(".openUrl4").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/4?status="+viewdata.yeonsu_yn+"&mode=test','_system')"
+        });
+        $(".openUrl5").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/5?status="+viewdata.yeonsu_yn+"&mode=test','_system')"
+        });
+        $(".openUrl100").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/a3/" + viewdata.num + "/100?status="+viewdata.yeonsu_yn+"&mode=test','_system')"
+        });
+    }else if (viewdata.businessType == '위탁연수') {
+        $(".openUrl1").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b4/" + viewdata.num + "/1/?mode=test','_system')"
+        });
+        $(".openUrl2").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b4/" + viewdata.num + "/2/?mode=test','_system')"
+        });
+        $(".openUrl3").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b4/" + viewdata.num + "/3/?mode=test','_system')"
+        });
+        $(".openUrl4").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b4/" + viewdata.num + "/4/?mode=test','_system')"
+        });
+        $(".openUrl5").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b4/" + viewdata.num + "/5/?mode=test','_system')"
+        });
+        $(".openUrl100").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/a4/" + viewdata.num + "/100/?mode=test','_system')"
+        });
+    }else if (viewdata.businessType == '보수교육') {
+        $(".openUrl1").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b5/" + viewdata.num + "/1/?mode=test','_system')"
+        });
+        $(".openUrl2").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b5/" + viewdata.num + "/2/?mode=test','_system')"
+        });
+        $(".openUrl3").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b5/" + viewdata.num + "/3/?mode=test','_system')"
+        });
+        $(".openUrl4").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b5/" + viewdata.num + "/4/?mode=test','_system')"
+        });
+        $(".openUrl5").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b5/" + viewdata.num + "/5/?mode=test','_system')"
+        });
+        $(".openUrl100").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/a5/" + viewdata.num + "/100/?mode=test','_system')"
+        });
+    }
     var type = '';
-    if(viewdata.modeType == 'D'){
+    if (viewdata.modeType == 'D') {
         type = '조사시작';
-    }else if(viewdata.modeType == 'I'){
+    } else if (viewdata.modeType == 'I') {
         type = '조사마감';
-    }else if(viewdata.modeType == 'E'){
+    } else if (viewdata.modeType == 'E') {
         type = '조사완료';
     }
     $("#viewbutton3 span").append(type);
-    var href='main_edit_nyc.html?pms_num='+gup('pms_num');
-    var href_status='status_view_nyc.html?pms_num='+gup('pms_num');
+    var href = 'main_edit_nyc.html?pms_num=' + gup('pms_num');
+    var href_status = 'status_view_nyc.html?pms_num=' + gup('pms_num');
     $("#viewbutton1").attr('onclick', "location.href='" + href + "'").removeAttr('href');
     $("#viewbutton4").attr('onclick', "location.href='" + href_status + "'").removeAttr('href');
 }
-function changeType(data){
+function changeType(data) {
     var type = '';
-    if($('#viewbutton3').find('span').html() == '조사시작'){
+    if ($('#viewbutton3').find('span').html() == '조사시작') {
         type = '조사마감';
-    }else if($('#viewbutton3').find('span').html() == '조사마감'){
+    } else if ($('#viewbutton3').find('span').html() == '조사마감') {
         type = '조사완료';
     }
     $("#viewbutton3 span").empty();
     $("#viewbutton3 span").append(type);
 }
-function returnType(num){
+function returnType(num) {
     var textVal = '단일선택';
-    if(num == 1){
+    if (num == 1) {
         textVal = '단일선택';
-    }else if(num == 2){
+    } else if (num == 2) {
         textVal = '다중선택';
-    }else if(num == 3){
+    } else if (num == 3) {
         textVal = '주관식';
     }
     return textVal;
