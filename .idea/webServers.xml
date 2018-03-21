@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b1f5d57d-9531-413f-94e0-0e2fed75fc4e" name="청소년225" url="http://221.143.42.225">
+        <fileTransfer host="221.143.42.225" port="22" rootFolder="/home/kywa/nginx_www/www_kywa" accessType="SFTP" password="dfc1dfd3dfdddfcbdf8bdfeadf89" username="kywa">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="ba5659a7-3205-441d-8611-06a3a930e494" name="청소년226" url="http://221.143.42.226">
+        <fileTransfer host="221.143.42.226" port="22" rootFolder="/home/kywa/nginx_www/www_kywa" accessType="SFTP" password="dfc1dfd3dfdddfcbdf8bdfeadf89" username="kywa">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
