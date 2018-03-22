@@ -162,7 +162,7 @@ function appendSurveyList(content, data) {
         for (var i = 0; i < data.survey_data.length; i++) {
             var survey = data.survey_data[i].muid;
             var survey_detail = data.survey_detail_data[survey];
-            var status = survey_detail[0].select_text.slice(0, -2);
+            var status = survey_detail[0].select_text.slice(0, -1);
 
             var level = '1급';
             if (survey_detail[1].select_num == 1) {
@@ -194,7 +194,7 @@ function appendSurveyList(content, data) {
             } else if (survey_detail[3].select_num == 7) {
                 classval = '기타';
             }
-            if(status == '응시생') {
+            if(status == '응시') {
                 var years = '1년 미만';
                 if (survey_detail[4].select_num == 1) {
                     years = '1년 미만';
@@ -292,6 +292,7 @@ function appendSurveyList(content, data) {
                 } else if (survey_detail[7].select_num == 10) {
                     addr = '제주';
                 }
+                status = status.slice(0, -1);
             }
             htmlArr.push('<tr id="' + (i + 1) + '" class="survey_tr">');
             htmlArr.push('            <td style="text-align: center;padding-right: 10px;">' + status + '</td>');
@@ -321,7 +322,7 @@ function appendSurveyList(content, data) {
         for (var i = 0; i < data.survey_data.length; i++) {
             var survey = data.survey_data[i].muid;
             var survey_detail = data.survey_detail_data[survey];
-            var status = survey_detail[0].select_text.slice(0, -2);
+            var status = survey_detail[0].select_text.slice(0, -1);
             var sexval = '남';
             if (survey_detail[3].select_num == 2) {
                 sexval = '여';
@@ -380,6 +381,7 @@ function appendSurveyList(content, data) {
                 } else if (survey_detail[7].select_num == 5) {
                     years = '10년 이상';
                 }
+                status = status.slice(0, -1);
             }
 
             htmlArr.push('<tr id="' + (i + 1) + '" class="survey_tr">');
