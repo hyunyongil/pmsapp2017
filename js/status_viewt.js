@@ -14,9 +14,13 @@ function readyMainView() {
 
         $(document).on('click', '.deleteNum', function () {
             if (confirm("해당 데이터를 삭제하시겠습니까?")) {
-                deleteStatus(CONSTANTS.PMS.STATUSDELETE, $(this).attr('id'), 1);
+                deleteStatus(CONSTANTS.PMS.STATUSDELETE, $(this).attr('id'), gup("type"));
             }
         });
+        $(".viewon").each(function(){
+            $(this).removeClass("on");
+        });
+        $(".c_menu_tab2 .viewon").eq(gup("type")-1).addClass("on");
     });
     bindSurveyList();
 }
@@ -44,7 +48,7 @@ function deleteStatus(url, muid, type) {
 
 function bindSurveyList() {
     $(document).on('pageinit', '#survey_list', function () {
-        getSurvey(CONSTANTS.PMS.STATUSVIEW, 1, appendSurvey, gup("pms_num"), 1);
+        getSurvey(CONSTANTS.PMS.STATUSVIEW, 1, appendSurvey, gup("pms_num"), gup("type"));
         bindMoreEvent();
 
         onsolMoreList.init(function () {
@@ -59,7 +63,7 @@ function bindSurveyList() {
                 if (onsolMoreList.scroll_mode == false) {
                     return false;
                 }
-                getSurvey(data.url, parseInt(data.page) + 1, appendSurvey, gup("pms_num"), 1);
+                getSurvey(data.url, parseInt(data.page) + 1, appendSurvey, gup("pms_num"), gup("type"));
             }
         });
     });
@@ -110,12 +114,16 @@ function appendSurvey(data) {
 }
 
 function appendSurveyList(content, data) {
-    var href = 'status_viewt.html?pms_num=' + gup('pms_num');
+    var href = 'status_viewt.html?pms_num=' + gup('pms_num')+'&type=1';
     $(".viewt").attr('onclick', "location.href='" + href + "'").removeAttr('href');
-    var href = 'status_viewi.html?pms_num=' + gup('pms_num');
+    var href = 'status_viewt.html?pms_num=' + gup('pms_num')+'&type=2';
     $(".viewi").attr('onclick', "location.href='" + href + "'").removeAttr('href');
-    var href = 'status_views.html?pms_num=' + gup('pms_num');
+    var href = 'status_viewt.html?pms_num=' + gup('pms_num')+'&type=3';
     $(".views").attr('onclick', "location.href='" + href + "'").removeAttr('href');
+    var href = 'status_viewe.html?pms_num=' + gup('pms_num')+'&type=4';
+    $(".viewe1").attr('onclick', "location.href='" + href + "'").removeAttr('href');
+    var href = 'status_viewe.html?pms_num=' + gup('pms_num')+'&type=5';
+    $(".viewe2").attr('onclick', "location.href='" + href + "'").removeAttr('href');
     ONPANEL.Ajax.Result.LoadingHide();
     var htmlArr = []
         ;

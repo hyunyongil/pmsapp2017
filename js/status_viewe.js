@@ -14,9 +14,13 @@ function readyMainView() {
 
         $(document).on('click', '.deleteNum', function () {
             if (confirm("해당 데이터를 삭제하시겠습니까?")) {
-                deleteStatus(CONSTANTS.PMS.STATUSDELETE, $(this).attr('id'), 3);
+                deleteStatus(CONSTANTS.PMS.STATUSDELETE, $(this).attr('id'), gup("type"));
             }
         });
+        $(".viewon").each(function(){
+            $(this).removeClass("on");
+        });
+        $(".c_menu_tab2 .viewon").eq(gup("type")-1).addClass("on");
     });
     bindSurveyList();
 }
@@ -44,7 +48,7 @@ function deleteStatus(url, muid, type) {
 
 function bindSurveyList() {
     $(document).on('pageinit', '#survey_list', function () {
-        getSurvey(CONSTANTS.PMS.STATUSVIEW, 1, appendSurvey, gup("pms_num"), 3);
+        getSurvey(CONSTANTS.PMS.STATUSVIEW, 1, appendSurvey, gup("pms_num"), gup("type"));
         bindMoreEvent();
 
         onsolMoreList.init(function () {
@@ -59,7 +63,7 @@ function bindSurveyList() {
                 if (onsolMoreList.scroll_mode == false) {
                     return false;
                 }
-                getSurvey(data.url, parseInt(data.page) + 1, appendSurvey, gup("pms_num"), 3);
+                getSurvey(data.url, parseInt(data.page) + 1, appendSurvey, gup("pms_num"), gup("type"));
             }
         });
     });
@@ -110,12 +114,16 @@ function appendSurvey(data) {
 }
 
 function appendSurveyList(content, data) {
-    var href = 'status_viewt.html?pms_num=' + gup('pms_num');
+    var href = 'status_viewt.html?pms_num=' + gup('pms_num')+'&type=1';
     $(".viewt").attr('onclick', "location.href='" + href + "'").removeAttr('href');
-    var href = 'status_viewi.html?pms_num=' + gup('pms_num');
+    var href = 'status_viewt.html?pms_num=' + gup('pms_num')+'&type=2';
     $(".viewi").attr('onclick', "location.href='" + href + "'").removeAttr('href');
-    var href = 'status_views.html?pms_num=' + gup('pms_num');
+    var href = 'status_viewt.html?pms_num=' + gup('pms_num')+'&type=3';
     $(".views").attr('onclick', "location.href='" + href + "'").removeAttr('href');
+    var href = 'status_viewe.html?pms_num=' + gup('pms_num')+'&type=4';
+    $(".viewe1").attr('onclick', "location.href='" + href + "'").removeAttr('href');
+    var href = 'status_viewe.html?pms_num=' + gup('pms_num')+'&type=5';
+    $(".viewe2").attr('onclick', "location.href='" + href + "'").removeAttr('href');
     ONPANEL.Ajax.Result.LoadingHide();
     var htmlArr = []
         ;
@@ -130,27 +138,74 @@ function appendSurveyList(content, data) {
     }else{
         $(".list_table_title").hide();
     }
-
     for (var i = 0; i < data.survey_data.length; i++) {
+
         var survey = data.survey_data[i].muid;
         var survey_detail = data.survey_detail_data[survey];
-        var sexval = '남';
-        if (survey_detail[3].select_num == 2) {
-            sexval = '여';
+
+        var member_id = COMMON.storage.get("my_info_id");
+        var schoolval = '-';
+        var hakval = '-';
+        var banval = '-';
+        var benval = '-';
+        var sexval = '-';
+        var nameval = '-';
+        if(member_id == 'nyc' || member_id == 'pnyc') {
+            schoolval = survey_detail[1].select_text.slice(0, -1);
+            hakval = survey_detail[2].select_text.slice(0, -1);
+            banval = survey_detail[3].select_text.slice(0, -1);
+            benval = survey_detail[4].select_text.slice(0, -1);
+            sexval = '남';
+            if (survey_detail[5].select_num == 2) {
+                sexval = '여';
+            }
+            nameval = survey_detail[6].select_text.slice(0, -1);
+        }else if(member_id == 'nysc'){
+            schoolval = survey_detail[1].select_text.slice(0, -1);
+            hakval = survey_detail[2].select_text.slice(0, -1);
+            nameval = survey_detail[3].select_text.slice(0, -1);
+        }else if(member_id == 'nyoc'){
+            schoolval = survey_detail[4].select_text.slice(0, -1);
+            sexval = '남';
+            if (survey_detail[6].select_num == 2) {
+                sexval = '여';
+            }
+            hakval = survey_detail[7].select_text.slice(0, -1);
+            banval = survey_detail[8].select_text.slice(0, -1);
+            benval = survey_detail[9].select_text.slice(0, -1);
+        }else if(member_id == 'nysc'){
+            schoolval = survey_detail[4].select_text.slice(0, -1);
+            sexval = '남';
+            if (survey_detail[6].select_num == 2) {
+                sexval = '여';
+            }
+            hakval = survey_detail[7].select_text.slice(0, -1);
+            banval = survey_detail[8].select_text.slice(0, -1);
+            benval = survey_detail[9].select_text.slice(0, -1);
+            nameval = survey_detail[10].select_text.slice(0, -1);
+        }else if(member_id == 'nyac'){
+            schoolval = survey_detail[1].select_text.slice(0, -1);
+            hakval = survey_detail[2].select_text.slice(0, -1);
+            banval = survey_detail[3].select_text.slice(0, -1);
+            benval = survey_detail[4].select_text.slice(0, -1);
+            nameval = survey_detail[5].select_text.slice(0, -1);
         }
 
         htmlArr.push('<tr id="' + (i + 1) + '" class="survey_tr">');
-        htmlArr.push('           <td>' + survey_detail[2].select_text.slice(0, -1) + '</td>');
-        htmlArr.push('            <td>' + sexval + '</td>');
+        htmlArr.push('           <td>' + schoolval+ '</td>');
+        htmlArr.push('            <td>' + hakval + '</td>');
+        htmlArr.push('                     <td>' + banval + '</td>');
+        htmlArr.push('                     <td>' + benval + '</td>');
+        htmlArr.push('                     <td>' + sexval + '</td>');
+        htmlArr.push('                     <td>' + nameval + '</td>');
         htmlArr.push('</tr>');
 
         htmlArr.push('<tr class="survery_content" id="content' + (i + 1) + '" style="display: none;">');
-        htmlArr.push('         <td colspan="3" class="on_content">');
+        htmlArr.push('         <td colspan="6" class="on_content">');
         htmlArr.push('           <div><img src="images/img5.png">설문완료 : ' + survey_detail[2].regDate + '<a href="#" class="deleteNum" id="' + survey_detail[2].muid + '"><img src="images/btn_del.png">삭제</a></div>');
         htmlArr.push('         </td>');
         htmlArr.push('</tr>');
     }
-
     var nowjoinct = data.survey_ct.length;
     var totaljoinct = data.survey_join_ct[0].set_value;
     $(".graph_div span").empty();
@@ -158,6 +213,7 @@ function appendSurveyList(content, data) {
     $(".graph_num").empty();
     $(".graph_num").append((nowjoinct / totaljoinct * 100).toFixed(1) + '%');
     $(".graph_num").css('width', (nowjoinct / totaljoinct * 100).toFixed(1) + '%');
+
     if(data.survey_ct.length > 0) {
         content.append(htmlArr.join(""));
     }

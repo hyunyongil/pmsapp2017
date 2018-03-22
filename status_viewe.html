@@ -7,7 +7,7 @@
           content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
     <title>한국청소년활동진흥원</title>
     <script type="text/javascript" src="js/header.js"></script>
-    <script src="js/status_views.js"></script>
+    <script src="js/status_viewe.js"></script>
     <link href="css/default.css" rel="stylesheet" type="text/css"/>
     <script>
         readyMainView();
@@ -21,9 +21,11 @@
         <a href="main_list.html" data-ajax="false" class="btn_home"><img src="images/btn_home.png"></a>
     </div>
     <ul class="c_menu_tab c_menu_tab2">
-        <li class="viewt">청소년</li>
-        <li class="viewi">인솔교사</li>
-        <li class="views on">성인</li>
+        <li class="viewon viewt">청소년(만족도)</li>
+        <li class="viewon viewi">인솔교사(만족도)</li>
+        <li class="viewon views">성인(만족도)</li>
+        <li class="viewon viewe1 on">효과성-사전</li>
+        <li class="viewon viewe2">효과성-사후</li>
         <div class="clear"></div>
     </ul>
 
@@ -38,19 +40,31 @@
             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list_table list_table_title">
                 <colgroup>
                     <col width="*"/>
+                    <col style="width:10%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:10%;"/>
                     <col style="width:15%;"/>
+                    <col style="width:20%;"/>
                 </colgroup>
                 <tbody>
                 <tr>
-                    <th>학교명(소속)</th>
+                    <th>학교</th>
+                    <th>학년</th>
+                    <th>반</th>
+                    <th>번호</th>
                     <th>성별</th>
+                    <th>이름</th>
                 </tr>
                 </tbody>
             </table>
             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="list_table list_table_ok"  type="list">
                 <colgroup>
                     <col width="*"/>
+                    <col style="width:10%;"/>
+                    <col style="width:10%;"/>
+                    <col style="width:10%;"/>
                     <col style="width:15%;"/>
+                    <col style="width:20%;"/>
                 </colgroup>
                 <tbody>
                 </tbody>

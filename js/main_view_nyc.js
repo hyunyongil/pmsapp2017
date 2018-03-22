@@ -345,10 +345,10 @@ function appendMakeViewList(data) {
     }
     $("#menu_pop").append('<span><a href="#" data-ajax="false" class="openUrl100">종합만족도</a> </span>');
     v_manage.append(viewdata.manage_name + ' / ' + viewdata.manage_tel + ' / ' + viewdata.manage_email);
-
-
+    var href_status = '';
     //버튼 설정
     if (viewdata.businessType == '전문연수') {
+        href_status = 'status_view_yeonsu_type1.html?pms_num=' + gup('pms_num')+'&btype=1';
         $(".openUrl1").attr({
             "href": "#",
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b1/" + viewdata.num + "/1/?mode=test','_system')"
@@ -374,6 +374,7 @@ function appendMakeViewList(data) {
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/a1/" + viewdata.num + "/100/?mode=test','_system')"
         });
     }else if (viewdata.businessType == '직무연수') {
+        href_status = 'status_view_yeonsu_type1.html?pms_num=' + gup('pms_num')+'&btype=2';
         $(".openUrl1").attr({
             "href": "#",
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b2/" + viewdata.num + "/1/?mode=test','_system')"
@@ -399,6 +400,7 @@ function appendMakeViewList(data) {
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/a2/" + viewdata.num + "/100/?mode=test','_system')"
         });
     }else if (viewdata.businessType == '자격연수') {
+        href_status = 'status_view_yeonsu_type2.html?pms_num=' + gup('pms_num')+'&btype=3';
         $(".openUrl1").attr({
             "href": "#",
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/1?status="+viewdata.yeonsu_yn+"&mode=test','_system')"
@@ -424,6 +426,7 @@ function appendMakeViewList(data) {
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/a3/" + viewdata.num + "/100?status="+viewdata.yeonsu_yn+"&mode=test','_system')"
         });
     }else if (viewdata.businessType == '위탁연수') {
+        href_status = 'status_view_yeonsu_type1.html?pms_num=' + gup('pms_num')+'&btype=4';
         $(".openUrl1").attr({
             "href": "#",
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b4/" + viewdata.num + "/1/?mode=test','_system')"
@@ -449,6 +452,7 @@ function appendMakeViewList(data) {
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/a4/" + viewdata.num + "/100/?mode=test','_system')"
         });
     }else if (viewdata.businessType == '보수교육') {
+        href_status = 'status_view_yeonsu_type3.html?pms_num=' + gup('pms_num')+'&btype=5';
         $(".openUrl1").attr({
             "href": "#",
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b5/" + viewdata.num + "/1/?mode=test','_system')"
@@ -484,7 +488,6 @@ function appendMakeViewList(data) {
     }
     $("#viewbutton3 span").append(type);
     var href = 'main_edit_nyc.html?pms_num=' + gup('pms_num');
-    var href_status = 'status_view_nyc.html?pms_num=' + gup('pms_num');
     $("#viewbutton1").attr('onclick', "location.href='" + href + "'").removeAttr('href');
     $("#viewbutton4").attr('onclick', "location.href='" + href_status + "'").removeAttr('href');
 }

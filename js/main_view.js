@@ -270,7 +270,7 @@ function appendMakeViewList(data) {
     }
     $("#viewbutton3 span").append(type);
     var href='main_edit.html?pms_num='+gup('pms_num');
-    var href_status='status_viewt.html?pms_num='+gup('pms_num');
+    var href_status='status_viewt.html?pms_num='+gup('pms_num')+'&type=1';
     $("#viewbutton1").attr('onclick', "location.href='" + href + "'").removeAttr('href');
     $("#viewbutton4").attr('onclick', "location.href='" + href_status + "'").removeAttr('href');
 }

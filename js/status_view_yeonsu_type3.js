@@ -14,17 +14,18 @@ function readyMainView() {
 
         $(document).on('click', '.deleteNum', function () {
             if (confirm("해당 데이터를 삭제하시겠습니까?")) {
-                deleteStatus(CONSTANTS.PMS.STATUSDELETENYC, $(this).attr('id'), 1);
+                deleteStatus(CONSTANTS.PMS.STATUSDELETENYC, $(this).attr('id'), 1, gup("btype"));
             }
         });
     });
     bindSurveyList();
 }
 
-function deleteStatus(url, muid, type) {
+function deleteStatus(url, muid, type, btype) {
     var param = {
         muid: muid
         , type: type
+        , btype: btype
     };
     ONPANEL.Ajax.Result.LoadingShow();
     ONPANEL.Ajax.Request.invokePostByJSON(
@@ -44,7 +45,7 @@ function deleteStatus(url, muid, type) {
 
 function bindSurveyList() {
     $(document).on('pageinit', '#survey_list', function () {
-        getSurvey(CONSTANTS.PMS.STATUSVIEWNYC, 1, appendSurvey, gup("pms_num"), gup("type"));
+        getSurvey(CONSTANTS.PMS.STATUSVIEWNYC, 1, appendSurvey, gup("pms_num"), gup("type"), gup("btype"), gup("numth"));
         bindMoreEvent();
 
         onsolMoreList.init(function () {
@@ -59,14 +60,14 @@ function bindSurveyList() {
                 if (onsolMoreList.scroll_mode == false) {
                     return false;
                 }
-                getSurvey(data.url, parseInt(data.page) + 1, appendSurvey, gup("pms_num"), gup("type"));
+                getSurvey(data.url, parseInt(data.page) + 1, appendSurvey, gup("pms_num"), gup("type"), gup("btype"), gup("numth"));
             }
         });
     });
 }
 
 
-function getSurvey(url, page, callback, num, type) {
+function getSurvey(url, page, callback, num, type, btype, numth) {
     if (!page)
         page = 1;
     $('.survey-more').data({url: url, page: page});
@@ -74,6 +75,8 @@ function getSurvey(url, page, callback, num, type) {
     var param = {
         num: num,
         type: type,
+        btype: btype,
+        numth: numth,
         page: page,
         list_cnt: 100
     };
@@ -98,7 +101,7 @@ function getSurvey(url, page, callback, num, type) {
 function bindMoreEvent() {
     $('.survey-more').bind('click', function () {
         var data = $(this).data();
-        getSurvey(data.url, parseInt(data.page) + 1, appendSurvey, gup("pms_num"), gup("type"));
+        getSurvey(data.url, parseInt(data.page) + 1, appendSurvey, gup("pms_num"), gup("type"), gup("btype"), gup("numth"));
     });
 }
 function appendSurvey(data) {
@@ -110,36 +113,29 @@ function appendSurvey(data) {
 }
 
 function appendSurveyList(content, data) {
-    var href = 'status_viewt.html?pms_num=' + gup('pms_num');
-    $(".viewt").attr('onclick', "location.href='" + href + "'").removeAttr('href');
-    var href = 'status_viewi.html?pms_num=' + gup('pms_num');
-    $(".viewi").attr('onclick', "location.href='" + href + "'").removeAttr('href');
-    var href = 'status_views.html?pms_num=' + gup('pms_num');
-    $(".views").attr('onclick', "location.href='" + href + "'").removeAttr('href');
     ONPANEL.Ajax.Result.LoadingHide();
     var viewdata = data.program_data[0];
     var kang = viewdata.kang.slice(0, -1);
     kang = kang.split('|');
     var v_tab = $('.c_menu_tab2');
     v_tab.empty();
-    var widt = 100 / (kang.length+1);
-    for (var i = 0; i < kang.length; i++) {
-        var classon = "";
-        if(gup('type') == '' && i == 0){
-          classon = "class='on'";
-        }
-        if(gup('type') == (i+1)){
-           classon = "class='on'";
-        }
-        var urls = "status_view_nyc.html?pms_num="+ gup('pms_num')+'&type='+(i+1);
-        v_tab.append('<li style="width:'+widt+'%" onclick="javascript:location.href=\''+urls+'\'" '+classon+'>' + kang[i].substring(0,5) + '</li>');
-    }
+    var widt = 100 / (kang.length + 1);
     var classon = "";
-    if(gup('type') == 100){
+    if (gup('numth') == 100 || gup('numth') == '') {
         classon = "class='on'";
     }
-    var urls = "status_view_nyc.html?pms_num="+ gup('pms_num')+'&type=100';
-    v_tab.append('<li style="width:'+widt+'%" onclick="javascript:location.href=\''+urls+'\'" '+classon+'>종합설문지</li>');
+    var urls = "status_view_yeonsu_type3.html?pms_num=" + gup('pms_num') + '&type=100&numth=100' + '&btype=' + gup('btype');
+    v_tab.append('<li style="width:' + widt + '%" onclick="javascript:location.href=\'' + urls + '\'" ' + classon + '>종합만족도</li>');
+
+    for (var i = 0; i < kang.length; i++) {
+        var classon = "";
+        if (gup('numth') == (i + 1)) {
+            classon = "class='on'";
+        }
+        var urls = "status_view_yeonsu_type3.html?pms_num=" + gup('pms_num') + '&numth=' + (i + 1) + '&type=' + kang[i] + '&btype=' + gup('btype');
+        v_tab.append('<li style="width:' + widt + '%" onclick="javascript:location.href=\'' + urls + '\'" ' + classon + '>' + kang[i].substring(0, 5) + '</li>');
+    }
+
     var htmlArr = []
         ;
     if (data.survey_data.length == 0 && data.page <= 1) {
@@ -148,37 +144,23 @@ function appendSurveyList(content, data) {
         $(".padding_group").show();
         return false;
     }
-    if(data.survey_ct.length > 0){
+    if (data.survey_ct.length > 0) {
         $(".padding_group").show();
-    }else{
+    } else {
         $(".list_table_title").hide();
     }
-    
-    if(gup('type') == 100){
+
+    if (gup('numth') == 100 || gup('numth') == '') {
+        $("#title1").html('성별');
+        $("#title2").html('급수');
+        $("#title3").html('종사경력');
+        $("#title4").html('소속기관');
         for (var i = 0; i < data.survey_data.length; i++) {
             var survey = data.survey_data[i].muid;
             var survey_detail = data.survey_detail_data[survey];
             var sexval = '남';
             if (survey_detail[0].select_num == 2) {
                 sexval = '여';
-            }
-            var classval = '청소년수련관';
-            if (survey_detail[6].select_num == 1) {
-                classval = '청소년수련관';
-            } else if (survey_detail[6].select_num == 2) {
-                classval = '청소년수련원';
-            } else if (survey_detail[6].select_num == 3) {
-                classval = '청소년문화의집';
-            } else if (survey_detail[6].select_num == 4) {
-                classval = '유스호스텔';
-            } else if (survey_detail[6].select_num == 5) {
-                classval = '특화시설';
-            } else if (survey_detail[6].select_num == 6) {
-                classval = '청소년단체';
-            } else if (survey_detail[6].select_num == 7) {
-                classval = '진흥센터';
-            } else if (survey_detail[6].select_num == 8) {
-                classval = '기타';
             }
 
             var level = '1급';
@@ -204,11 +186,33 @@ function appendSurveyList(content, data) {
             } else if (survey_detail[4].select_num == 6) {
                 years = '15년이상';
             }
+
+            var classval = '청소년수련관';
+            if (survey_detail[6].select_num == 1) {
+                classval = '청소년수련관';
+            } else if (survey_detail[6].select_num == 2) {
+                classval = '청소년수련원';
+            } else if (survey_detail[6].select_num == 3) {
+                classval = '청소년문화의집';
+            } else if (survey_detail[6].select_num == 4) {
+                classval = '유스호스텔';
+            } else if (survey_detail[6].select_num == 5) {
+                classval = '특화시설';
+            } else if (survey_detail[6].select_num == 6) {
+                classval = '청소년단체';
+            } else if (survey_detail[6].select_num == 7) {
+                classval = '진흥센터';
+            } else if (survey_detail[6].select_num == 8) {
+                classval = '기타';
+            }
+
             htmlArr.push('<tr id="' + (i + 1) + '" class="survey_tr">');
-            htmlArr.push('           <td>' + classval + '</td>');
-            htmlArr.push('            <td>' + sexval + '</td>');
+            htmlArr.push('            <td style="text-align: center;padding-right: 10px;">' + sexval + '</td>');
             htmlArr.push('                     <td>' + level + '</td>');
             htmlArr.push('                     <td>' + years + '</td>');
+            htmlArr.push('           <td>' + classval + '</td>');
+
+
             htmlArr.push('</tr>');
 
             htmlArr.push('<tr class="survery_content" id="content' + (i + 1) + '" style="display: none;">');
@@ -217,9 +221,9 @@ function appendSurveyList(content, data) {
             htmlArr.push('         </td>');
             htmlArr.push('</tr>');
         }
-    }else{
-        $("#title1").html('소속기관');
-        $("#title2").html('성별');
+    } else {
+        $("#title1").html('성별');
+        $("#title2").html('소속기관');
         $("#title3").html('급수');
         $("#title4").html('종사경력');
         for (var i = 0; i < data.survey_data.length; i++) {
@@ -273,8 +277,8 @@ function appendSurveyList(content, data) {
             }
 
             htmlArr.push('<tr id="' + (i + 1) + '" class="survey_tr">');
+            htmlArr.push('            <td style="text-align: center;padding-right: 10px;">' + sexval + '</td>');
             htmlArr.push('           <td>' + classval + '</td>');
-            htmlArr.push('            <td>' + sexval + '</td>');
             htmlArr.push('                     <td>' + level + '</td>');
             htmlArr.push('                     <td>' + years + '</td>');
             htmlArr.push('</tr>');
@@ -295,7 +299,7 @@ function appendSurveyList(content, data) {
     $(".graph_num").append((nowjoinct / totaljoinct * 100).toFixed(1) + '%');
     $(".graph_num").css('width', (nowjoinct / totaljoinct * 100).toFixed(1) + '%');
 
-    if(data.survey_ct.length > 0) {
+    if (data.survey_ct.length > 0) {
         content.append(htmlArr.join(""));
     }
 }
