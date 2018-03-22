@@ -133,7 +133,7 @@ function appendSurveyList(content, data) {
             classon = "class='on'";
         }
         var urls = "status_view_yeonsu_type1.html?pms_num=" + gup('pms_num') + '&numth=' + (i + 1) + '&type=' + kang[i] + '&btype=' + gup('btype');
-        v_tab.append('<li style="width:' + widt + '%" onclick="javascript:location.href=\'' + urls + '\'" ' + classon + '>' + kang[i].substring(0, 5) + '</li>');
+        v_tab.append('<li style="width:' + widt + '%" onclick="javascript:location.href=\'' + urls + '\'" ' + classon + '>' + kang[i].substring(0, 6) + '</li>');
     }
 
     var htmlArr = []
