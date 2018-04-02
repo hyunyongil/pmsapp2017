@@ -173,15 +173,6 @@ function appendSurveyList(content, data) {
             hakval = survey_detail[7].select_text.slice(0, -1);
             banval = survey_detail[8].select_text.slice(0, -1);
             benval = survey_detail[9].select_text.slice(0, -1);
-        }else if(member_id == 'nysc'){
-            schoolval = survey_detail[4].select_text.slice(0, -1);
-            sexval = '남';
-            if (survey_detail[6].select_num == 2) {
-                sexval = '여';
-            }
-            hakval = survey_detail[7].select_text.slice(0, -1);
-            banval = survey_detail[8].select_text.slice(0, -1);
-            benval = survey_detail[9].select_text.slice(0, -1);
             nameval = survey_detail[10].select_text.slice(0, -1);
         }else if(member_id == 'nyac'){
             schoolval = survey_detail[1].select_text.slice(0, -1);
