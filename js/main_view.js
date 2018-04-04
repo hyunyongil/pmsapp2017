@@ -200,7 +200,7 @@ function appendMakeViewList(data) {
             }
         }
         var numth = 1;
-        var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">효과성:</div>';
+        var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">효과성(사전+사후):</div>';
         v_question.append(typeVal);
         for (var i = 0; i < questiondata.length - 1; i++) {
             if(questiondata[i].set_name == 'questionpop4_write1_question1'){
