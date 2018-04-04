@@ -126,7 +126,8 @@ function appendSurveyList(content, data) {
     }
     var urls = "status_view_yeonsu_type2.html?pms_num=" + gup('pms_num') + '&type=100&numth=100' + '&btype=' + gup('btype');
     v_tab.append('<li style="width:' + widt + '%" onclick="javascript:location.href=\'' + urls + '\'" ' + classon + '>종합만족도</li>');
-
+    var href =  'main_view_nyc.html?pms_num='+ gup('pms_num');
+    $(".btn_view").attr('onclick', "location.href='" + href + "'").removeAttr('href');
     for (var i = 0; i < kang.length; i++) {
         var classon = "";
         if (gup('numth') == (i + 1)) {

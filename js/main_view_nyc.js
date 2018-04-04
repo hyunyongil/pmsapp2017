@@ -324,24 +324,31 @@ function appendMakeViewList(data) {
         $("#bosu").hide();
     }
     if (viewdata.kang == '') {
+        v_kang.empty();
         v_kang.append('없음');
-    } else {
+    }else{
         for (var i = 0; i < kang.length; i++) {
             v_kang.append((i + 1) + '. ' + kang[i] + '<br/>');
         }
     }
 
     if (viewdata.password == '') {
-        v_kang.append('없음');
+        if(viewdata.password_a == ''){
+            v_password.empty();
+            v_password.append('없음');
+        }else{
+            v_password.append('종합만족도: ' + viewdata.password_a);
+        }
     } else {
         for (var i = 0; i < password.length; i++) {
             v_password.append('강의평가 – ' + kang[i] + ': ' + password[i] + '<br/>');
         }
         v_password.append('종합만족도: ' + viewdata.password_a + '<br/>');
     }
-
-    for (var i = 0; i < kang.length; i++) {
-        $("#menu_pop").append('<span><a href="#" data-ajax="false" class="openUrl' + (i + 1) + '">강의평가 – ' + kang[i] + '</a> </span>');
+    if (viewdata.kang != '') {
+        for (var i = 0; i < kang.length; i++) {
+            $("#menu_pop").append('<span><a href="#" data-ajax="false" class="openUrl' + (i + 1) + '">강의평가 – ' + kang[i] + '</a> </span>');
+        }
     }
     $("#menu_pop").append('<span><a href="#" data-ajax="false" class="openUrl100">종합만족도</a> </span>');
     v_manage.append(viewdata.manage_name + ' / ' + viewdata.manage_tel + ' / ' + viewdata.manage_email);
@@ -488,7 +495,11 @@ function appendMakeViewList(data) {
     }
     $("#viewbutton3 span").append(type);
     var href = 'main_edit_nyc.html?pms_num=' + gup('pms_num');
-    $("#viewbutton1").attr('onclick', "location.href='" + href + "'").removeAttr('href');
+    if(viewdata.modeType == 'E'){
+        $("#viewbutton1").attr('onclick', "alertLayer('해당설문이 완료되어 편집할수없습니다.');").removeAttr('href');
+    }else{
+        $("#viewbutton1").attr('onclick', "location.href='" + href + "'").removeAttr('href');
+    }
     $("#viewbutton4").attr('onclick', "location.href='" + href_status + "'").removeAttr('href');
 }
 function changeType(data) {

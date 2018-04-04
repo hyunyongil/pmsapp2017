@@ -124,6 +124,8 @@ function appendSurveyList(content, data) {
     $(".viewe1").attr('onclick', "location.href='" + href + "'").removeAttr('href');
     var href = 'status_viewe.html?pms_num=' + gup('pms_num')+'&type=5';
     $(".viewe2").attr('onclick', "location.href='" + href + "'").removeAttr('href');
+    var href =  'main_view.html?pms_num='+ gup('pms_num');
+    $(".btn_view").attr('onclick', "location.href='" + href + "'").removeAttr('href');
     ONPANEL.Ajax.Result.LoadingHide();
     var htmlArr = []
         ;

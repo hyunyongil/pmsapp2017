@@ -154,7 +154,8 @@ function appendMainList(content, data) {
         htmlArr.push('<tr>');
         htmlArr.push('<td> <a data-ajax="false" href="main_view.html?pms_num='+survey.num+'" class="'+cssval+' mumu"><p>'+mode+'</p>'+survey.code+'</a></td>');
         htmlArr.push('<td>기간 : <b>'+survey.opDate1.replace(/-/g,'.')+'~'+survey.opDate2.replace(/-/g,'.')+'</b><br>사업명 : <b>'+survey.businessName+'</b>');
-        if(survey.trainingCenter.indexOf('중앙연수센터') > -1){
+
+        if(survey.trainingCenter.indexOf('중앙연수센터') > -1 || survey.businessType == '전문연수'){
             htmlArr.push('<td><img src="images/btn_listview.jpg" style="cursor: pointer;" class="mumu" onclick="location.href=\'main_view_nyc.html?pms_num='+survey.num+'\'"></td>');
         }else{
             htmlArr.push('<td><img src="images/btn_listview.jpg" style="cursor: pointer;" class="mumu" onclick="location.href=\'main_view.html?pms_num='+survey.num+'\'"></td>');
