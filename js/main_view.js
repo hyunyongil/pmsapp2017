@@ -232,10 +232,10 @@ function appendMakeViewList(data) {
         }
     }
     var password = viewdata.password.split('|');
+    var deasang = viewdata.deasang.split('|');
     if(viewdata.password == ''){
         v_password.append('없음');
     }else{
-        var deasang = viewdata.deasang.split('|');
         for (var i = 0; i < deasang.length; i++) {
             var type_text = '';
             if(deasang[i] == 4){
@@ -257,9 +257,34 @@ function appendMakeViewList(data) {
     }
     v_manage.append(viewdata.manage_name + ' / '+ viewdata.manage_tel + ' / ' + viewdata.manage_email);
     //버튼 설정
-    $(".openUrl1").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/nyoc/t/"+viewdata.num+"/1/?mode=test','_system')"});
-    $(".openUrl2").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/nyoc/t/"+viewdata.num+"/2/?mode=test','_system')"});
-    $(".openUrl3").attr({"href": "#", "onclick": "window.open('"+CONNECTION_URL+"/pms/nyoc/t/"+viewdata.num+"/3/?mode=test','_system')"});
+
+    if( viewdata.deasang.indexOf(1) >= 0 ) {
+        $(".openUrl1").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/nyoc/t/" + viewdata.num + "/1/?mode=test','_system')"
+        });
+    }else{
+        $(".openUrl1").parents('span').hide();
+    }
+
+    if( viewdata.deasang.indexOf(2) >= 0 ) {
+        $(".openUrl2").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/nyoc/t/" + viewdata.num + "/2/?mode=test','_system')"
+        });
+    }else{
+        $(".openUrl2").parents('span').hide();
+    }
+
+    if( viewdata.deasang.indexOf(3) >= 0 ) {
+        $(".openUrl3").attr({
+            "href": "#",
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/nyoc/t/" + viewdata.num + "/3/?mode=test','_system')"
+        });
+    }else{
+        $(".openUrl3").parents('span').hide();
+    }
+
     //핸드폰에서만 실행가능
     if( viewdata.effectEndDate != '' ) {
         var member_id = COMMON.storage.get("my_info_id");
@@ -271,6 +296,9 @@ function appendMakeViewList(data) {
             "href": "#",
             "onclick": "window.open('" + CONNECTION_URL + "/pms/effect/" + member_id + "/" + viewdata.num + "/2/?mode=test','_system')"
         });
+    }else{
+        $(".openUrl4").parents('span').hide();
+        $(".openUrl5").parents('span').hide();
     }
     var type = '';
     if(viewdata.modeType == 'D'){
