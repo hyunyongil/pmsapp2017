@@ -155,7 +155,7 @@ function appendSurveyList(content, data) {
             classval = '고';
         }
         htmlArr.push('<tr id="' + (i + 1) + '" class="survey_tr">');
-        htmlArr.push('           <td>' + survey_detail[2].select_text.slice(0, -1) + '</td>');
+        htmlArr.push('           <td>' + survey_detail[2].select_text + '</td>');
         htmlArr.push('            <td>' + sexval + '</td>');
         htmlArr.push('                     <td>' + classval + '</td>');
         htmlArr.push('                     <td>' + survey_detail[5].select_num + '</td>');

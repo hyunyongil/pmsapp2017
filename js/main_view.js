@@ -236,23 +236,39 @@ function appendMakeViewList(data) {
     if(viewdata.password == ''){
         v_password.append('없음');
     }else{
-        for (var i = 0; i < deasang.length; i++) {
-            var type_text = '';
-            if(deasang[i] == 4){
-                type_text = '효과성(사전)';
-                v_password.append(type_text + ': ' + password[0] + '<br/>');
-                type_text = '효과성(사후)';
-                v_password.append(type_text + ': ' + password[1] + '<br/>');
-            }else if(deasang[i] == 1){
-                type_text = '만족도(청소년)';
-                v_password.append(type_text + ': ' + password[(deasang.length-3)] + '<br/>');
-            }else if(deasang[i] == 2){
+
+        var type_text = '';
+        if(viewdata.deasang.indexOf(1) >= 0){
+            type_text = '만족도(청소년)';
+            v_password.append(type_text + ': ' + password[0] + '<br/>');
+        }
+        if(viewdata.deasang.indexOf(2) >= 0){
+            if(viewdata.deasang.indexOf(1) >= 0){
                 type_text = '만족도(인솔교사)';
-                v_password.append(type_text + ': ' + password[(deasang.length-2)] + '<br/>');
-            }else if(deasang[i] == 3){
-                type_text = '만족도(성인)';
-                v_password.append(type_text + ': ' + password[(deasang.length-1)] + '<br/>');
+                v_password.append(type_text + ': ' + password[1] + '<br/>');
+            }else{
+                type_text = '만족도(인솔교사)';
+                v_password.append(type_text + ': ' + password[0] + '<br/>');
             }
+        }
+
+        if(viewdata.deasang.indexOf(3) >= 0){
+            if(viewdata.deasang.indexOf(1) >= 0 && viewdata.deasang.indexOf(2) >= 0){
+                type_text = '만족도(성인)';
+                v_password.append(type_text + ': ' + password[2] + '<br/>');
+            }else if(viewdata.deasang.indexOf(1) >= 0 || viewdata.deasang.indexOf(2) >= 0){
+                type_text = '만족도(성인)';
+                v_password.append(type_text + ': ' + password[1] + '<br/>');
+            }else{
+                type_text = '만족도(성인)';
+                v_password.append(type_text + ': ' + password[0] + '<br/>');
+            }
+        }
+        if(viewdata.deasang.indexOf(4) >= 0){
+            type_text = '효과성(사전)';
+            v_password.append(type_text + ': ' + password[deasang.length-1] + '<br/>');
+            type_text = '효과성(사후)';
+            v_password.append(type_text + ': ' + password[deasang.length] + '<br/>');
         }
     }
     v_manage.append(viewdata.manage_name + ' / '+ viewdata.manage_tel + ' / ' + viewdata.manage_email);
