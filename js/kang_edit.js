@@ -12,17 +12,17 @@ function readyMainView() {
             $("#layer_pop_pro_add").hide();
         });
         $(".input_search").click(function () {
-            if($(".input_class").val() == ''){
+            if ($(".input_class").val() == '') {
                 alertLayer('강의명을 입력해주세요.');
                 return false;
             }
-            $(".program-list .list_group").each(function(){
-                 if($(this).find('.programName').html() == $(".input_class").val()){
-                     alertLayer('강의명이 중복되었습니다.');
-                     return false;
-                 }
+            $(".program-list .list_group").each(function () {
+                if ($(this).find('.programName').html() == $(".input_class").val()) {
+                    alertLayer('강의명이 중복되었습니다.');
+                    return false;
+                }
             });
-            addProgram(CONSTANTS.PMS.ADDKANG, $(".input_class").val());
+            addProgram(CONSTANTS.PMS.ADDKANG, $(".input_class").val(), gup("type"));
         });
         $(document).on('click', '.list_group .program_delete', function () {
             if ($(this).find('.program_d').html() == '삭제') {
@@ -51,7 +51,7 @@ function readyMainView() {
 
 function deleteProgram(url, num) {
     var param = {
-       num: num
+        num: num
     };
     ONPANEL.Ajax.Result.LoadingShow();
     ONPANEL.Ajax.Request.invokePostByJSON(
@@ -155,17 +155,18 @@ function bindProgramList() {
     });
 }
 
-function addProgram(url, val) {
+function addProgram(url, val, type) {
     var param = {
-        val: val
+        val: val,
+        type: type
     };
     ONPANEL.Ajax.Result.LoadingShow();
     ONPANEL.Ajax.Request.invokePostByJSON(
         url,
         param,
         function (data) {
+            ONPANEL.Ajax.Result.LoadingHide();
             if (ONPANEL.Ajax.Result.isSucess(data)) {
-                ONPANEL.Ajax.Result.LoadingHide();
                 location.reload();
                 alertLayer('추가되었습니다.');
             } else {
@@ -223,9 +224,9 @@ function appendProgram(data) {
 function appendProgramList(content, data) {
     var href = 'main_edit_nyc.html?pms_num=' + gup('pms_num');
     $(".menuUrl").attr('onclick', "location.href='" + href + "'").removeAttr('href');
-    var href = 'kang_edit.html?pms_num=' + gup('pms_num')+'&type='+ gup('type');
+    var href = 'kang_edit.html?pms_num=' + gup('pms_num') + '&type=' + gup('type');
     $(".menuUrl1").attr('onclick', "location.href='" + href + "'").removeAttr('href');
-    var href = 'gua_edit.html?pms_num=' + gup('pms_num')+'&type='+ gup('type');
+    var href = 'gua_edit.html?pms_num=' + gup('pms_num') + '&type=' + gup('type');
     $(".menuUrl2").attr('onclick', "location.href='" + href + "'").removeAttr('href');
     var getPname = decodeURI(gup('type'));
     $("#programType").empty();
@@ -233,13 +234,13 @@ function appendProgramList(content, data) {
     $("#pname").empty();
     $("#pname").append('[' + getPname + ']');
 
-    if(getPname != '보수교육'){
+    if (getPname != '보수교육') {
         $(".menuUrl2").hide();
-    }else{
+    } else {
         $(".menuUrl2").show();
-        $(".menuUrl").css("width","33%");
-        $(".menuUrl1").css("width","33%");
-        $(".menuUrl2").css("width","33%");
+        $(".menuUrl").css("width", "33%");
+        $(".menuUrl1").css("width", "33%");
+        $(".menuUrl2").css("width", "33%");
     }
     var htmlArr = []
         ;

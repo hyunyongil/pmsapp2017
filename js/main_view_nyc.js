@@ -115,203 +115,37 @@ function appendMakeViewList(data) {
     v_opDate.append(opdate);
     var endDate = viewdata.endDate.replace(/-/g, '.') + ' (' + viewdata.endTime + ')';
     v_endDate.append(endDate);
-    if (questiondata.length >= 1) {
-        var pcnt = questiondata[0].set_name;
-        var pcnt2 = questiondata[1].set_name;
-        var pcnt3 = '';
-        var pcnt4 = '';
-        var pcnt5 = '';
-        var pcnt100 = '';
-        try {
-            var pcnt3 = questiondata[2].set_name;
-            var pcnt4 = questiondata[3].set_name;
-            var pcnt5 = questiondata[4].set_name;
-            var pcnt100 = questiondata[5].set_name;
-        } catch (e) {
 
-        }
-        if (pcnt == 'pcnt1' && questiondata[0].set_value > 0) {
-            v_pcnt.append('강의평가 - ' + kang[0] + ': ' + questiondata[0].set_value + '명<br/>');
-        }
-        if (pcnt2 == 'pcnt2' && questiondata[1].set_value > 0) {
-            v_pcnt.append('강의평가 - ' + kang[1] + ': ' + questiondata[1].set_value + '명<br/>');
-        }
-        if (pcnt3 == 'pcnt3' && questiondata[2].set_value > 0) {
-            v_pcnt.append('강의평가 - ' + kang[2] + ': ' + questiondata[2].set_value + '명<br/>');
-        }
-        if (pcnt4 == 'pcnt4' && questiondata[3].set_value > 0) {
-            v_pcnt.append('강의평가 - ' + kang[3] + ': ' + questiondata[3].set_value + '명<br/>');
-        }
-        if (pcnt5 == 'pcnt5' && questiondata[4].set_value > 0) {
-            v_pcnt.append('강의평가 - ' + kang[4] + ': ' + questiondata[4].set_value + '명<br/>');
-        }
-        if (pcnt100 == 'pcnt100' && questiondata[5].set_value > 0) {
-            v_pcnt.append('종합만족도: ' + questiondata[5].set_value + '명');
-        }
+    //설문 종류 및 대상 설정
+    for (var i = 0; i < kang.length; i++) {
+        v_pcnt.append('강의평가 - ' + kang[i] + ': ' + questiondata[i].set_value + '명<br/>');
     }
-    var keych = 0;
-    if (questiondata.length > 3) {
-        if (kang[0]) {
-            var numth = 1;
-            var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;">강의평가 - ' + kang[0] + ':</div>';
-            v_question.prepend(typeVal);
-            for (var i = 0; i < questiondata.length - 1; i++) {
-                if (questiondata[i].set_name == 'questionpop1_write1_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop1_write2_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop1_write3_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop1_write4_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop1_write5_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
+    v_pcnt.append('종합만족도: ' + questiondata[50].set_value + '명');
+    
+    //추가질문
+    var questiondata_q = questiondata;
+    questiondata_q = questiondata_q.slice(51);
+    console.log(questiondata_q);
+    if(questiondata_q.length > 0){
+        for (var i=0;i<questiondata_q.length;i++){
+            var questiondata_title = questiondata_q[i].set_name.split('_');
+            var questiondata_data1 = questiondata_title[0].replace('questionpop','');
+            if(questiondata_title[2] == 'question1' && parseInt(questiondata_data1) != 100) {
+                if(kang[questiondata_data1-1] != undefined) {
+                    var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;">강의평가 - ' + kang[questiondata_data1 - 1] + ':</div>';
+                    v_question.append(typeVal);
+                    v_question.append(questiondata_q[i].set_value + '<br/>');
                 }
-            }
-            if (numth > 1) {
-                keych = 1;
-            }
-        }
-        if (kang[1]) {
-            var numth = 1;
-            var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">강의평가 - ' + kang[1] + ':</div>';
-            v_question.prepend(typeVal);
-            for (var i = 0; i < questiondata.length - 1; i++) {
-                if (questiondata[i].set_name == 'questionpop2_write1_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop2_write2_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop2_write3_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop2_write4_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop2_write5_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                }
-            }
-            if (numth > 1) {
-                keych = 1;
+            }else if(questiondata_title[2] == 'question1' && questiondata_data1 == '100'){
+                var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">종합만족도:</div>';
+                v_question.append(questiondata_q[i].set_value);
             }
         }
-        if (kang[2]) {
-            var numth = 1;
-            var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">강의평가 - ' + kang[2] + ':</div>';
-            v_question.prepend(typeVal);
-            for (var i = 0; i < questiondata.length - 1; i++) {
-                if (questiondata[i].set_name == 'questionpop3_write1_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop3_write2_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop3_write3_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop3_write4_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop3_write5_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                }
-            }
-            if (numth > 1) {
-                keych = 1;
-            }
-        }
-        if (kang[3]) {
-            var numth = 1;
-            var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">강의평가 - ' + kang[3] + ':</div>';
-            v_question.prepend(typeVal);
-            for (var i = 0; i < questiondata.length - 1; i++) {
-                if (questiondata[i].set_name == 'questionpop4_write1_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop4_write2_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop4_write3_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop4_write4_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop4_write5_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                }
-            }
-            if (numth > 1) {
-                keych = 1;
-            }
-        }
-        if (kang[4]) {
-            var numth = 1;
-            var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">강의평가 - ' + kang[4] + ':</div>';
-            v_question.prepend(typeVal);
-            for (var i = 0; i < questiondata.length - 1; i++) {
-                if (questiondata[i].set_name == 'questionpop5_write1_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop5_write2_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop5_write3_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop5_write4_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                } else if (questiondata[i].set_name == 'questionpop5_write5_question1') {
-                    v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                    numth++;
-                }
-            }
-            if (numth > 1) {
-                keych = 1;
-            }
-        }
-        var numth = 1;
-        var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">종합만족도:</div>';
-        v_question.append(typeVal);
-        for (var i = 0; i < questiondata.length - 1; i++) {
-            if (questiondata[i].set_name == 'questionpop100_write1_question1') {
-                v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                numth++;
-            } else if (questiondata[i].set_name == 'questionpop100_write2_question1') {
-                v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                numth++;
-            } else if (questiondata[i].set_name == 'questionpop100_write3_question1') {
-                v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                numth++;
-            } else if (questiondata[i].set_name == 'questionpop100_write4_question1') {
-                v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                numth++;
-            } else if (questiondata[i].set_name == 'questionpop100_write5_question1') {
-                v_question.append((numth) + '. ' + questiondata[i].set_value + '<br/>');
-                numth++;
-            }
-        }
-        if (numth > 1) {
-            keych = 1;
-        }
-    } else {
-        v_question.append('없음');
-    }
-    if (keych == 0) {
+    }else{
         v_question.empty();
         v_question.append('없음');
     }
+
     if (viewdata.businessType == '보수교육') {
         if (viewdata.gua == '') {
             v_gua.append('없음');
@@ -326,17 +160,17 @@ function appendMakeViewList(data) {
     if (viewdata.kang == '') {
         v_kang.empty();
         v_kang.append('없음');
-    }else{
+    } else {
         for (var i = 0; i < kang.length; i++) {
             v_kang.append((i + 1) + '. ' + kang[i] + '<br/>');
         }
     }
 
     if (viewdata.password == '') {
-        if(viewdata.password_a == ''){
+        if (viewdata.password_a == '') {
             v_password.empty();
             v_password.append('없음');
-        }else{
+        } else {
             v_password.append('종합만족도: ' + viewdata.password_a);
         }
     } else {
@@ -355,7 +189,7 @@ function appendMakeViewList(data) {
     var href_status = '';
     //버튼 설정
     if (viewdata.businessType == '전문연수') {
-        href_status = 'status_view_yeonsu_type1.html?pms_num=' + gup('pms_num')+'&btype=1';
+        href_status = 'status_view_yeonsu_type1.html?pms_num=' + gup('pms_num') + '&btype=1';
         $(".openUrl1").attr({
             "href": "#",
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b1/" + viewdata.num + "/1/?mode=test','_system')"
@@ -380,8 +214,8 @@ function appendMakeViewList(data) {
             "href": "#",
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/a1/" + viewdata.num + "/100/?mode=test','_system')"
         });
-    }else if (viewdata.businessType == '직무연수') {
-        href_status = 'status_view_yeonsu_type1.html?pms_num=' + gup('pms_num')+'&btype=2';
+    } else if (viewdata.businessType == '직무연수') {
+        href_status = 'status_view_yeonsu_type1.html?pms_num=' + gup('pms_num') + '&btype=2';
         $(".openUrl1").attr({
             "href": "#",
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b2/" + viewdata.num + "/1/?mode=test','_system')"
@@ -406,34 +240,34 @@ function appendMakeViewList(data) {
             "href": "#",
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/a2/" + viewdata.num + "/100/?mode=test','_system')"
         });
-    }else if (viewdata.businessType == '자격연수') {
-        href_status = 'status_view_yeonsu_type2.html?pms_num=' + gup('pms_num')+'&btype=3';
+    } else if (viewdata.businessType == '자격연수') {
+        href_status = 'status_view_yeonsu_type2.html?pms_num=' + gup('pms_num') + '&btype=3';
         $(".openUrl1").attr({
             "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/1?status="+viewdata.yeonsu_yn+"&mode=test','_system')"
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/1?status=" + viewdata.yeonsu_yn + "&mode=test','_system')"
         });
         $(".openUrl2").attr({
             "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/2?status="+viewdata.yeonsu_yn+"&mode=test','_system')"
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/2?status=" + viewdata.yeonsu_yn + "&mode=test','_system')"
         });
         $(".openUrl3").attr({
             "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/3?status="+viewdata.yeonsu_yn+"&mode=test','_system')"
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/3?status=" + viewdata.yeonsu_yn + "&mode=test','_system')"
         });
         $(".openUrl4").attr({
             "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/4?status="+viewdata.yeonsu_yn+"&mode=test','_system')"
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/4?status=" + viewdata.yeonsu_yn + "&mode=test','_system')"
         });
         $(".openUrl5").attr({
             "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/5?status="+viewdata.yeonsu_yn+"&mode=test','_system')"
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/5?status=" + viewdata.yeonsu_yn + "&mode=test','_system')"
         });
         $(".openUrl100").attr({
             "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/a3/" + viewdata.num + "/100?status="+viewdata.yeonsu_yn+"&mode=test','_system')"
+            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/a3/" + viewdata.num + "/100?status=" + viewdata.yeonsu_yn + "&mode=test','_system')"
         });
-    }else if (viewdata.businessType == '위탁연수') {
-        href_status = 'status_view_yeonsu_type1.html?pms_num=' + gup('pms_num')+'&btype=4';
+    } else if (viewdata.businessType == '위탁연수') {
+        href_status = 'status_view_yeonsu_type1.html?pms_num=' + gup('pms_num') + '&btype=4';
         $(".openUrl1").attr({
             "href": "#",
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b4/" + viewdata.num + "/1/?mode=test','_system')"
@@ -458,8 +292,8 @@ function appendMakeViewList(data) {
             "href": "#",
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/a4/" + viewdata.num + "/100/?mode=test','_system')"
         });
-    }else if (viewdata.businessType == '보수교육') {
-        href_status = 'status_view_yeonsu_type3.html?pms_num=' + gup('pms_num')+'&btype=5';
+    } else if (viewdata.businessType == '보수교육') {
+        href_status = 'status_view_yeonsu_type3.html?pms_num=' + gup('pms_num') + '&btype=5';
         $(".openUrl1").attr({
             "href": "#",
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b5/" + viewdata.num + "/1/?mode=test','_system')"
@@ -495,9 +329,9 @@ function appendMakeViewList(data) {
     }
     $("#viewbutton3 span").append(type);
     var href = 'main_edit_nyc.html?pms_num=' + gup('pms_num');
-    if(viewdata.modeType == 'E'){
+    if (viewdata.modeType == 'E') {
         $("#viewbutton1").attr('onclick', "alertLayer('해당설문이 완료되어 편집할수없습니다.');").removeAttr('href');
-    }else{
+    } else {
         $("#viewbutton1").attr('onclick', "location.href='" + href + "'").removeAttr('href');
     }
     $("#viewbutton4").attr('onclick', "location.href='" + href_status + "'").removeAttr('href');
