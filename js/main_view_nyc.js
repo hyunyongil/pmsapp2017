@@ -121,27 +121,27 @@ function appendMakeViewList(data) {
         v_pcnt.append('강의평가 - ' + kang[i] + ': ' + questiondata[i].set_value + '명<br/>');
     }
     v_pcnt.append('종합만족도: ' + questiondata[50].set_value + '명');
-    
+
     //추가질문
     var questiondata_q = questiondata;
     questiondata_q = questiondata_q.slice(51);
     console.log(questiondata_q);
-    if(questiondata_q.length > 0){
-        for (var i=0;i<questiondata_q.length;i++){
+    if (questiondata_q.length > 0) {
+        for (var i = 0; i < questiondata_q.length; i++) {
             var questiondata_title = questiondata_q[i].set_name.split('_');
-            var questiondata_data1 = questiondata_title[0].replace('questionpop','');
-            if(questiondata_title[2] == 'question1' && parseInt(questiondata_data1) != 100) {
-                if(kang[questiondata_data1-1] != undefined) {
+            var questiondata_data1 = questiondata_title[0].replace('questionpop', '');
+            if (questiondata_title[2] == 'question1' && parseInt(questiondata_data1) != 100) {
+                if (kang[questiondata_data1 - 1] != undefined) {
                     var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;">강의평가 - ' + kang[questiondata_data1 - 1] + ':</div>';
                     v_question.append(typeVal);
                     v_question.append(questiondata_q[i].set_value + '<br/>');
                 }
-            }else if(questiondata_title[2] == 'question1' && questiondata_data1 == '100'){
+            } else if (questiondata_title[2] == 'question1' && questiondata_data1 == '100') {
                 var typeVal = '<div style="margin-bottom: 5px;border-bottom: 1px solid #333;font-weight: bold;margin-top: 10px;">종합만족도:</div>';
                 v_question.append(questiondata_q[i].set_value);
             }
         }
-    }else{
+    } else {
         v_question.empty();
         v_question.append('없음');
     }
@@ -190,130 +190,65 @@ function appendMakeViewList(data) {
     //버튼 설정
     if (viewdata.businessType == '전문연수') {
         href_status = 'status_view_yeonsu_type1.html?pms_num=' + gup('pms_num') + '&btype=1';
-        $(".openUrl1").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b1/" + viewdata.num + "/1/?mode=test','_system')"
-        });
-        $(".openUrl2").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b1/" + viewdata.num + "/2/?mode=test','_system')"
-        });
-        $(".openUrl3").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b1/" + viewdata.num + "/3/?mode=test','_system')"
-        });
-        $(".openUrl4").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b1/" + viewdata.num + "/4/?mode=test','_system')"
-        });
-        $(".openUrl5").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b1/" + viewdata.num + "/5/?mode=test','_system')"
-        });
+        for (var i = 0; i < kang.length; i++) {
+            var k = i + 1;
+            $(".openUrl"+k).attr({
+                "href": "#",
+                "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b1/" + viewdata.num + "/"+k+"/?mode=test','_system')"
+            });
+        }
         $(".openUrl100").attr({
             "href": "#",
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/a1/" + viewdata.num + "/100/?mode=test','_system')"
         });
     } else if (viewdata.businessType == '직무연수') {
         href_status = 'status_view_yeonsu_type1.html?pms_num=' + gup('pms_num') + '&btype=2';
-        $(".openUrl1").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b2/" + viewdata.num + "/1/?mode=test','_system')"
-        });
-        $(".openUrl2").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b2/" + viewdata.num + "/2/?mode=test','_system')"
-        });
-        $(".openUrl3").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b2/" + viewdata.num + "/3/?mode=test','_system')"
-        });
-        $(".openUrl4").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b2/" + viewdata.num + "/4/?mode=test','_system')"
-        });
-        $(".openUrl5").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b2/" + viewdata.num + "/5/?mode=test','_system')"
-        });
+        for (var i = 0; i < kang.length; i++) {
+            var k = i + 1;
+            $(".openUrl"+k).attr({
+                "href": "#",
+                "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b2/" + viewdata.num + "/"+k+"/?mode=test','_system')"
+            });
+        }
         $(".openUrl100").attr({
             "href": "#",
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/a2/" + viewdata.num + "/100/?mode=test','_system')"
         });
     } else if (viewdata.businessType == '자격연수') {
         href_status = 'status_view_yeonsu_type2.html?pms_num=' + gup('pms_num') + '&btype=3';
-        $(".openUrl1").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/1?status=" + viewdata.yeonsu_yn + "&mode=test','_system')"
-        });
-        $(".openUrl2").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/2?status=" + viewdata.yeonsu_yn + "&mode=test','_system')"
-        });
-        $(".openUrl3").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/3?status=" + viewdata.yeonsu_yn + "&mode=test','_system')"
-        });
-        $(".openUrl4").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/4?status=" + viewdata.yeonsu_yn + "&mode=test','_system')"
-        });
-        $(".openUrl5").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/5?status=" + viewdata.yeonsu_yn + "&mode=test','_system')"
-        });
+        for (var i = 0; i < kang.length; i++) {
+            var k = i + 1;
+            $(".openUrl"+k).attr({
+                "href": "#",
+                "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b3/" + viewdata.num + "/"+k+"/?mode=test','_system')"
+            });
+        }
         $(".openUrl100").attr({
             "href": "#",
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/a3/" + viewdata.num + "/100?status=" + viewdata.yeonsu_yn + "&mode=test','_system')"
         });
     } else if (viewdata.businessType == '위탁연수') {
         href_status = 'status_view_yeonsu_type1.html?pms_num=' + gup('pms_num') + '&btype=4';
-        $(".openUrl1").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b4/" + viewdata.num + "/1/?mode=test','_system')"
-        });
-        $(".openUrl2").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b4/" + viewdata.num + "/2/?mode=test','_system')"
-        });
-        $(".openUrl3").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b4/" + viewdata.num + "/3/?mode=test','_system')"
-        });
-        $(".openUrl4").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b4/" + viewdata.num + "/4/?mode=test','_system')"
-        });
-        $(".openUrl5").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b4/" + viewdata.num + "/5/?mode=test','_system')"
-        });
+        for (var i = 0; i < kang.length; i++) {
+            var k = i + 1;
+            $(".openUrl"+k).attr({
+                "href": "#",
+                "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b4/" + viewdata.num + "/"+k+"/?mode=test','_system')"
+            });
+        }
         $(".openUrl100").attr({
             "href": "#",
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/a4/" + viewdata.num + "/100/?mode=test','_system')"
         });
     } else if (viewdata.businessType == '보수교육') {
         href_status = 'status_view_yeonsu_type3.html?pms_num=' + gup('pms_num') + '&btype=5';
-        $(".openUrl1").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b5/" + viewdata.num + "/1/?mode=test','_system')"
-        });
-        $(".openUrl2").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b5/" + viewdata.num + "/2/?mode=test','_system')"
-        });
-        $(".openUrl3").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b5/" + viewdata.num + "/3/?mode=test','_system')"
-        });
-        $(".openUrl4").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b5/" + viewdata.num + "/4/?mode=test','_system')"
-        });
-        $(".openUrl5").attr({
-            "href": "#",
-            "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b5/" + viewdata.num + "/5/?mode=test','_system')"
-        });
+        for (var i = 0; i < kang.length; i++) {
+            var k = i + 1;
+            $(".openUrl"+k).attr({
+                "href": "#",
+                "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/b5/" + viewdata.num + "/"+k+"/?mode=test','_system')"
+            });
+        }
         $(".openUrl100").attr({
             "href": "#",
             "onclick": "window.open('" + CONNECTION_URL + "/pms/yeonsu/a5/" + viewdata.num + "/100/?mode=test','_system')"
