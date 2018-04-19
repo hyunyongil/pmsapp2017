@@ -8,6 +8,7 @@ function readyMainView() {
         $(document).on('click', '.edit_group', function () {
             var karr = $(this).attr('id').split('_');
             var k = karr[1];
+
             if ($(this).find('span').html() == '수정') {
                 $(this).find('span').empty();
                 $(this).find('span').append('저장');
@@ -70,10 +71,7 @@ function readyMainView() {
                     dis++;
                 }
             });
-            if($(".daesang_list .list_group").length > 6){
-                alertLayer('설문대상을 모두 추가하였습니다.');
-                return false;
-            }
+
             $(".layer_pop_bg").show();
             $("#layer_pop_pro_add").show();
         });
@@ -223,7 +221,7 @@ function appendMakeViewList(data) {
         $(".menuUrl2").css("width","33%");
     }
     for (var i = 0; i < kang.length; i++) {
-       var k = i+1;
+       var k = daesang[i];
         if(questiondata[daesang[i]-1].set_value > 0) {
             var html_deasang = '<div class="list_group list_group' + k + '" style="display: none;"> <div class="left_img"><img src="images/img1.png"></div> <div class="text_group"> <span>' + kang[i] + '</span> <p><font id="pcnt' + k + '"></font><em>명</em></p></div><div class="btn_group"> <a href="javascript:;"  id="edit_' + k + '" data-ajax="false" class="edit_group edit_group' + k + '"><img src="images/btn_edit.png"><span>수정</span></a> <a href="javascript:;" id="del_' + k + '" data-ajax="false" class="del_group del_group' + k + '"><img src="images/btn_del.png"><span>삭제</span></a> </div></div>';
             v_daesang_list.append(html_deasang);
@@ -250,7 +248,7 @@ function appendMakeViewList(data) {
     //추가하기
     if (kang.length > 0) {
         for (var i = 0; i < kang.length; i++) {
-            var k = i+1;
+            var k = daesang[i];
             $(".list_group"+k).show();
             if ($(".edit_group"+k).find('span').html() == '수정') {
                 $("#pcnt"+k).append(questiondata[daesang[i]-1].set_value);
