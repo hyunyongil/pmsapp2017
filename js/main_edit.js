@@ -3,6 +3,8 @@
  */
 
 function readyMainView() {
+    var keys = 0;
+    var type = 0;
     $(document).ready(function () {
         $(".edit_group1").bind('click', function () {
             if ($(this).find('span').html() == '수정') {
@@ -124,18 +126,17 @@ function readyMainView() {
                 $(".input_class").focus();
                 return false;
             }
-            var keys = 0;
-            var type = 0;
+
             $(".pop_tab span").each(function () {
                 if($(this).hasClass('on')){
                     keys = 1;
-                    if($(this).html() == '청소년-만족도'){
+                    if($(this).text() == '청소년-만족도'){
                         type = 1;
-                    }else if($(this).html() == '인술교사-만족도'){
+                    }else if($(this).text() == '인솔교사-만족도'){
                         type = 2;
-                    }else if($(this).html() == '성인-만족도'){
+                    }else if($(this).text() == '성인-만족도'){
                         type = 3;
-                    }else if($(this).html() == '효과성(사전+사후)'){
+                    }else if($(this).text() == '효과성(사전+사후)'){
                         type = 4;
                     }
                 }
@@ -319,16 +320,16 @@ function appendMakeViewList(data) {
     var html = '';
 
     if(key1 == 0){
-        html += '<span>청소년-만족도</span>';
+        html += '<span style="width:auto;">청소년-만족도</span>';
     }
     if(key2 == 0){
-        html += '<span>인솔교사-만족도</span>';
+        html += '<span style="width:auto;">인솔교사-만족도</span>';
     }
     if(key3 == 0){
-        html += '<span>성인-만족도</span>';
+        html += '<span style="width:auto;">성인-만족도</span>';
     }
     if(key4 == 0){
-        html += '<span>효과성(사전+사후)</span>';
+        html += '<span style="width:auto;">효과성(사전+사후)</span>';
     }
     $(".pop_tab").empty();
     $(".pop_tab").append(html);

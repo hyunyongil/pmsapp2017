@@ -255,13 +255,13 @@
 	font-weight: 700
 }
 .ui-body-c .ui-link:visited {
-	color: #2489ce
+	#color: #2489ce
 }
 .ui-body-c .ui-link:hover {
-	color: #2489ce
+	#color: #2489ce
 }
 .ui-body-c .ui-link:active {
-	color: #2489ce
+	#color: #2489ce
 }
 .ui-btn-up-c {
 	border: 1px solid #d5d5d5;
