@@ -125,11 +125,11 @@ function appendSurveyList(content, data) {
         classon = "class='on'";
     }
     var classon101 = "";
-    if (gup('numth') == 101 || gup('numth') == '') {
+    if (gup('numth') == 101) {
         classon101 = "class='on'";
     }
     var classon102 = "";
-    if (gup('numth') == 102 || gup('numth') == '') {
+    if (gup('numth') == 102) {
         classon102 = "class='on'";
     }
     var urls = "status_view_yeonsu_type3.html?pms_num=" + gup('pms_num') + '&type=100&numth=100' + '&btype=' + gup('btype');
