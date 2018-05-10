@@ -120,6 +120,12 @@ function appendMakeViewList(data) {
     for (var i = 0; i < kang.length; i++) {
         v_pcnt.append('강의평가 - ' + kang[i] + ': ' + questiondata[i].set_value + '명<br/>');
     }
+    if(viewdata.password_bosuct_3 > 0){
+        v_pcnt.append('문화교류: ' + viewdata.password_bosuct_3 + '명<br/>');
+    }
+    if(viewdata.password_bosuct_4 > 0){
+        v_pcnt.append('강사모니터링: ' + viewdata.password_bosuct_4 + '명<br/>');
+    }
     v_pcnt.append('종합만족도: ' + questiondata[50].set_value + '명');
 
     //추가질문
@@ -167,6 +173,12 @@ function appendMakeViewList(data) {
     }
 
     if (viewdata.password == '') {
+        if(viewdata.password_bosuct_3 > 0){
+            v_password.append('문화교류: ' + viewdata.password_bosu3 + '<br/>');
+        }
+        if(viewdata.password_bosuct_4 > 0){
+            v_password.append('강사모니터링: ' + viewdata.password_bosu4 + '<br/>');
+        }
         if (viewdata.password_a == '') {
             v_password.empty();
             v_password.append('없음');
@@ -176,6 +188,12 @@ function appendMakeViewList(data) {
     } else {
         for (var i = 0; i < password.length; i++) {
             v_password.append('강의평가 – ' + kang[i] + ': ' + password[i] + '<br/>');
+        }
+        if(viewdata.password_bosuct_3 > 0){
+            v_password.append('문화교류: ' + viewdata.password_bosu3 + '<br/>');
+        }
+        if(viewdata.password_bosuct_4 > 0){
+            v_password.append('강사모니터링: ' + viewdata.password_bosu4 + '<br/>');
         }
         v_password.append('종합만족도: ' + viewdata.password_a + '<br/>');
     }

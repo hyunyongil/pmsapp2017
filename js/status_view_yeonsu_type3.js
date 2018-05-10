@@ -119,13 +119,25 @@ function appendSurveyList(content, data) {
     kang = kang.split('|');
     var v_tab = $('.c_menu_tab2');
     v_tab.empty();
-    var widt = 100 / (kang.length + 1);
+    var widt = 100 / (kang.length + 3);
     var classon = "";
     if (gup('numth') == 100 || gup('numth') == '') {
         classon = "class='on'";
     }
+    var classon101 = "";
+    if (gup('numth') == 101 || gup('numth') == '') {
+        classon101 = "class='on'";
+    }
+    var classon102 = "";
+    if (gup('numth') == 102 || gup('numth') == '') {
+        classon102 = "class='on'";
+    }
     var urls = "status_view_yeonsu_type3.html?pms_num=" + gup('pms_num') + '&type=100&numth=100' + '&btype=' + gup('btype');
     v_tab.append('<li style="width:' + widt + '%" onclick="javascript:location.href=\'' + urls + '\'" ' + classon + '>종합만족도</li>');
+    var urls = "status_view_yeonsu_type3.html?pms_num=" + gup('pms_num') + '&type=101&numth=101' + '&btype=' + gup('btype');
+    v_tab.append('<li style="width:' + widt + '%" onclick="javascript:location.href=\'' + urls + '\'" ' + classon101 + '>문화교류</li>');
+    var urls = "status_view_yeonsu_type3.html?pms_num=" + gup('pms_num') + '&type=102&numth=102' + '&btype=' + gup('btype');
+    v_tab.append('<li style="width:' + widt + '%" onclick="javascript:location.href=\'' + urls + '\'" ' + classon102 + '>강사모니터링</li>');
     var href =  'main_view_nyc.html?pms_num='+ gup('pms_num');
     $(".btn_view").attr('onclick', "location.href='" + href + "'").removeAttr('href');
     for (var i = 0; i < kang.length; i++) {
@@ -216,6 +228,107 @@ function appendSurveyList(content, data) {
 
             htmlArr.push('</tr>');
 
+            htmlArr.push('<tr class="survery_content" id="content' + (i + 1) + '" style="display: none;">');
+            htmlArr.push('         <td colspan="5" class="on_content">');
+            htmlArr.push('           <div><img src="images/img5.png">설문완료 : ' + survey_detail[2].regDate + '<a href="#" class="deleteNum" id="' + survey_detail[2].muid + '"><img src="images/btn_del.png">삭제</a></div>');
+            htmlArr.push('         </td>');
+            htmlArr.push('</tr>');
+        }
+    }else if (gup('numth') == 101) {
+        //문화교류
+        $("#title1").html('성별');
+        $("#title2").html('급수');
+        $("#title3").html('종사경력');
+        $("#title4").html('소속기관');
+        for (var i = 0; i < data.survey_data.length; i++) {
+            var survey = data.survey_data[i].muid;
+            var survey_detail = data.survey_detail_data[survey];
+            var sexval = '남';
+            if (survey_detail[0].select_num == 2) {
+                sexval = '여';
+            }
+
+            var level = '1급';
+            if (survey_detail[2].select_num == 1) {
+                level = '1급';
+            } else if (survey_detail[2].select_num == 2) {
+                level = '2급';
+            } else if (survey_detail[2].select_num == 3) {
+                level = '3급';
+            }
+
+            var years = '1년미만';
+            if (survey_detail[3].select_num == 1) {
+                years = '1년미만';
+            } else if (survey_detail[3].select_num == 2) {
+                years = '1~3년 미만';
+            } else if (survey_detail[3].select_num == 3) {
+                years = '3~6년 미만';
+            } else if (survey_detail[3].select_num == 4) {
+                years = '6~10년 미만';
+            } else if (survey_detail[3].select_num == 5) {
+                years = '10~15년 미만';
+            } else if (survey_detail[3].select_num == 6) {
+                years = '15년 이상';
+            }
+
+            var classval = '청소년수련관';
+            if (survey_detail[1].select_num == 1) {
+                classval = '청소년수련관';
+            } else if (survey_detail[1].select_num == 2) {
+                classval = '청소년수련원';
+            } else if (survey_detail[1].select_num == 3) {
+                classval = '청소년문화의집';
+            } else if (survey_detail[1].select_num == 4) {
+                classval = '유스호스텔';
+            } else if (survey_detail[1].select_num == 5) {
+                classval = '특화시설';
+            } else if (survey_detail[1].select_num == 6) {
+                classval = '청소년단체';
+            } else if (survey_detail[1].select_num == 7) {
+                classval = '진흥센터';
+            } else if (survey_detail[1].select_num == 8) {
+                classval = '기타';
+            }
+
+            htmlArr.push('<tr id="' + (i + 1) + '" class="survey_tr">');
+            htmlArr.push('            <td style="text-align: center;padding-right: 10px;">' + sexval + '</td>');
+            htmlArr.push('                     <td>' + level + '</td>');
+            htmlArr.push('                     <td>' + years + '</td>');
+            htmlArr.push('           <td>' + classval + '</td>');
+
+
+            htmlArr.push('</tr>');
+
+            htmlArr.push('<tr class="survery_content" id="content' + (i + 1) + '" style="display: none;">');
+            htmlArr.push('         <td colspan="5" class="on_content">');
+            htmlArr.push('           <div><img src="images/img5.png">설문완료 : ' + survey_detail[2].regDate + '<a href="#" class="deleteNum" id="' + survey_detail[2].muid + '"><img src="images/btn_del.png">삭제</a></div>');
+            htmlArr.push('         </td>');
+            htmlArr.push('</tr>');
+        }
+    }else if (gup('numth') == 102) {
+        //문화교류
+        $("#title1").html('일시');
+        $("#title2").html('강의명');
+        $("#title3").html('강사명');
+        $("#title4").html('평가자');
+        for (var i = 0; i < data.survey_data.length; i++) {
+            var survey = data.survey_data[i].muid;
+            var survey_detail = data.survey_detail_data[survey];
+            var sexval = survey_detail[0].select_text.slice(0, -1);
+            var level =  survey_detail[1].select_text.slice(0, -1);
+            var years = survey_detail[2].select_text.slice(0, -1);
+            var classval = survey_detail[3].select_text.slice(0, -1);
+
+
+            htmlArr.push('<tr id="' + (i + 1) + '" class="survey_tr">');
+            htmlArr.push('            <td style="text-align: center;padding-right: 10px;">' + sexval + '</td>');
+            htmlArr.push('                     <td>' + level + '</td>');
+            htmlArr.push('                     <td>' + years + '</td>');
+            htmlArr.push('           <td>' + classval + '</td>');
+
+
+            htmlArr.push('</tr>');
             htmlArr.push('<tr class="survery_content" id="content' + (i + 1) + '" style="display: none;">');
             htmlArr.push('         <td colspan="5" class="on_content">');
             htmlArr.push('           <div><img src="images/img5.png">설문완료 : ' + survey_detail[2].regDate + '<a href="#" class="deleteNum" id="' + survey_detail[2].muid + '"><img src="images/btn_del.png">삭제</a></div>');

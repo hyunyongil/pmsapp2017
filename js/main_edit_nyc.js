@@ -34,6 +34,32 @@ function readyMainView() {
             }
         });
 
+        $(document).on('click', '.edit_group101', function () {
+            if ($(this).find('span').html() == '수정') {
+                $(this).find('span').empty();
+                $(this).find('span').append('저장');
+                var tempVal = $('#pcnt101').html();
+                $('#pcnt101').empty();
+                $('#pcnt101').append('<input type="number" style="width:60px;width:60px;height:30px;vertical-align: top;" id="textval101" value="' + tempVal + '">');
+            } else {
+                var textval = $('#textval101').val();
+                changeSurveyType(CONSTANTS.PMS.UPDATEPCNT, changeType101, gup("pms_num"), 101, textval);
+            }
+        });
+
+        $(document).on('click', '.edit_group102', function () {
+            if ($(this).find('span').html() == '수정') {
+                $(this).find('span').empty();
+                $(this).find('span').append('저장');
+                var tempVal = $('#pcnt102').html();
+                $('#pcnt102').empty();
+                $('#pcnt102').append('<input type="number" style="width:60px;width:60px;height:30px;vertical-align: top;" id="textval102" value="' + tempVal + '">');
+            } else {
+                var textval = $('#textval102').val();
+                changeSurveyType(CONSTANTS.PMS.UPDATEPCNT, changeType101, gup("pms_num"), 102, textval);
+            }
+        });
+
         $(document).on('click', '.del_group', function () {
             var dis = 0;
             $(".list_group").each(function () {
@@ -197,6 +223,24 @@ function changeType100() {
     $('.edit_group100').find('span').empty();
     $('.edit_group100').find('span').append('수정');
 }
+
+
+function changeType101() {
+    var type = $('#textval101').val();
+    $("#pcnt101").empty();
+    $("#pcnt101").append(type);
+    $('.edit_group101').find('span').empty();
+    $('.edit_group101').find('span').append('수정');
+}
+
+
+function changeType102() {
+    var type = $('#textval102').val();
+    $("#pcnt102").empty();
+    $("#pcnt102").append(type);
+    $('.edit_group102').find('span').empty();
+    $('.edit_group102').find('span').append('수정');
+}
 function appendMakeViewList(data) {
     if (data.mainview_data.length == 0) {
         alertLayer('해당된 내용이 없습니다.');
@@ -227,7 +271,15 @@ function appendMakeViewList(data) {
             v_daesang_list.append(html_deasang);
         }
     }
-    var html_deasang = '<div class="list_group list_group100" style="display: none;"> <div class="left_img"><img src="images/img1.png"></div> <div class="text_group"> <span>종합설문지</span> <p><font id="pcnt100"></font><em>명</em></p></div><div class="btn_group"> <a href="javascript:;"  data-ajax="false" class="edit_group100"><img src="images/btn_edit.png"><span>수정</span></a> <!--<a href="javascript:;"  data-ajax="false" class="del_group100"><img src="images/btn_del.png"><span>삭제</span></a> --></div></div>';
+    if(maindata.password_bosuct_3 > 0 ) {
+        var html_deasang = '<div class="list_group list_group101"> <div class="left_img"><img src="images/img1.png"></div> <div class="text_group"> <span>문화교류</span> <p><font id="pcnt101"></font><em>명</em></p></div><div class="btn_group"> <a href="javascript:;"  data-ajax="false" class="edit_group101"><img src="images/btn_edit.png"><span>수정</span></a> <!--<a href="javascript:;"  data-ajax="false" class="del_group100"><img src="images/btn_del.png"><span>삭제</span></a> --></div></div>';
+        v_daesang_list.append(html_deasang);
+    }
+    if(maindata.password_bosuct_4 > 0 ) {
+        var html_deasang = '<div class="list_group list_group102"> <div class="left_img"><img src="images/img1.png"></div> <div class="text_group"> <span>강사모니터링</span> <p><font id="pcnt102"></font><em>명</em></p></div><div class="btn_group"> <a href="javascript:;"  data-ajax="false" class="edit_group102"><img src="images/btn_edit.png"><span>수정</span></a> <!--<a href="javascript:;"  data-ajax="false" class="del_group100"><img src="images/btn_del.png"><span>삭제</span></a> --></div></div>';
+        v_daesang_list.append(html_deasang);
+    }
+    var html_deasang = '<div class="list_group list_group100" style="display: none;"> <div class="left_img"><img src="images/img2.png"></div> <div class="text_group"> <span>종합설문지</span> <p><font id="pcnt100"></font><em>명</em></p></div><div class="btn_group"> <a href="javascript:;"  data-ajax="false" class="edit_group100"><img src="images/btn_edit.png"><span>수정</span></a> <!--<a href="javascript:;"  data-ajax="false" class="del_group100"><img src="images/btn_del.png"><span>삭제</span></a> --></div></div>';
     v_daesang_list.append(html_deasang);
 
 
@@ -259,6 +311,12 @@ function appendMakeViewList(data) {
         if ($(".edit_group100").find('span').html() == '수정') {
             v_pcnt100.append(questiondata[50].set_value);
         }
+    }
+    if(maindata.password_bosuct_3 > 0 ) {
+        $('#pcnt101').append(maindata.password_bosuct_3);
+    }
+    if(maindata.password_bosuct_4 > 0 ) {
+        $('#pcnt102').append(maindata.password_bosuct_4);
     }
     var href = 'main_edit_nyc.html?pms_num=' + gup('pms_num');
     $(".menuUrl").attr('onclick', "location.href='" + href + "'").removeAttr('href');
