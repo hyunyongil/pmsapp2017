@@ -19,7 +19,7 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <preference name="orientation" value="portrait" />
-    <platform name="android">
+    <platform name="android">ㅂ
         <allow-intent href="market:*" />
     </platform>
     <platform name="android">
