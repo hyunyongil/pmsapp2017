@@ -249,7 +249,7 @@ function getSurveyCount(callback) {
     );
 }
 
-updateMemberLastLogin();
+//updateMemberLastLogin();
 function updateMemberLastLogin(){
 	var member_id = COMMON.storage.get("my_info_id");
 	if(member_id){
