@@ -27,6 +27,6 @@
         <icon density="hdpi" src="www/res/icon/android/hdpi.png" />
         <icon density="xhdpi" src="www/res/icon/android/xhdpi.png" />
     </platform>
-    <preference name="phonegap-version" value="cli-8.0.0" />
+    <preference name='phonegap-version' value='cli-7.1.0' />
     <engine name="android" spec="~6.0.0" />
 </widget>
