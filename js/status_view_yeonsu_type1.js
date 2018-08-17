@@ -136,7 +136,15 @@ function appendSurveyList(content, data) {
         var urls = "status_view_yeonsu_type1.html?pms_num=" + gup('pms_num') + '&numth=' + (i + 1) + '&type=' + kang[i] + '&btype=' + gup('btype');
         v_tab.append('<li style="width:' + widt + '%" onclick="javascript:location.href=\'' + urls + '\'" ' + classon + '>' + kang[i].substring(0, 6) + '</li>');
     }
-
+    if(gup('type') == 100){
+        $(".title_ok").html('종합만족도');
+    }else if(gup('type') == 101){
+        $(".title_ok").html('문화교류');
+    }else if(gup('type') == 102){
+        $(".title_ok").html('강사모니터링');
+    }else{
+        $(".title_ok").html(decodeURI(gup('type')));
+    }
     var htmlArr = []
         ;
     if (data.survey_data.length == 0 && data.page <= 1) {

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="b1f5d57d-9531-413f-94e0-0e2fed75fc4e" name="청소년225" url="http://221.143.42.225">
+      <webServer id="abf9f84e-1de0-4bbf-9659-165c4d8ff92e" name="청소년_225" url="http://221.143.42.225">
         <fileTransfer host="221.143.42.225" port="8090" rootFolder="/home/kywa/nginx_www/www_kywa" accessType="SFTP" password="dfc1dfd3dfdddfcbdf8bdfeadf89" username="kywa">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
@@ -10,7 +10,7 @@
           <option name="port" value="8090" />
         </fileTransfer>
       </webServer>
-      <webServer id="ba5659a7-3205-441d-8611-06a3a930e494" name="청소년226" url="http://221.143.42.226">
+      <webServer id="789200f4-12f4-4379-989c-e1af5afbab56" name="청소년_226" url="http://221.143.42.226">
         <fileTransfer host="221.143.42.226" port="8090" rootFolder="/home/kywa/nginx_www/www_kywa" accessType="SFTP" password="dfc1dfd3dfdddfcbdf8bdfeadf89" username="kywa">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />

@@ -16,6 +16,7 @@ CONSTANTS.PMS.ADDTYPE = '/api/pms/addType';
 CONSTANTS.PMS.ADDTYPENYC = '/api/pms/addTypeNyc';
 CONSTANTS.PMS.UPDATETYPE = '/api/pms/updateType';
 CONSTANTS.PMS.UPDATEPCNT = '/api/pms/updatePcnt';
+CONSTANTS.PMS.UPDATEPMSKANG = '/api/pms/updatePmsKang';
 CONSTANTS.PMS.DELETETYPE = '/api/pms/deleteType';
 CONSTANTS.PMS.DELETETYPENYC = '/api/pms/deleteTypeNyc';
 CONSTANTS.PMS.KANGLIST = '/api/pms/kangList';
