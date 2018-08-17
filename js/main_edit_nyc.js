@@ -320,7 +320,6 @@ function appendMakeViewList(data) {
     var html_deasang = '<div class="list_group list_group100" style="display: none;"> <div class="left_img"><img src="images/img2.png"></div> <div class="text_group"> <span>종합설문지</span> <p><font id="pcnt100"></font><em>명</em></p></div><div class="btn_group"> <a href="javascript:;"  data-ajax="false" class="edit_group100"><img src="images/btn_edit.png"><span>수정</span></a> <!--<a href="javascript:;"  data-ajax="false" class="del_group100"><img src="images/btn_del.png"><span>삭제</span></a> --></div></div>';
     v_daesang_list.append(html_deasang);
 
-
     var v_add_list = $('#add_list');
     v_add_list.empty();
     v_add_list.append('<select id="kang_select" style="height:30px;width:90%;"></select>');
