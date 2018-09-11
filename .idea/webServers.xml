@@ -18,7 +18,7 @@
           <option name="port" value="8090" />
         </fileTransfer>
       </webServer>
-      <webServer id="b30c8322-4d4e-472d-8397-561d0b247c56" name="청소년_onsol" url="http://115.68.27.142">
+      <webServer id="b30c8322-4d4e-472d-8397-561d0b247c56" name="[온패널]" url="http://115.68.27.142">
         <fileTransfer host="115.68.27.142" port="22" rootFolder="/home/shop1" accessType="SFTP" password="dfd3dfc5dfc4dfcddf8bdfeadf89" username="shop1">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />

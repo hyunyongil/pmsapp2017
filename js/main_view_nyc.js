@@ -99,6 +99,8 @@ function appendMakeViewList(data) {
     v_password.empty();
     var v_manage = $('#v_manage');
     v_manage.empty();
+    var v_onsol = $('#v_onsol');
+    v_onsol.empty();
     var kang = viewdata.kang.slice(0, -1);
     kang = kang.split('|');
     if (viewdata.businessType == '보수교육') {
@@ -203,7 +205,17 @@ function appendMakeViewList(data) {
         }
     }
     $("#menu_pop").append('<span><a href="#" data-ajax="false" class="openUrl100">종합만족도</a> </span>');
-    v_manage.append(viewdata.manage_name + ' / ' + viewdata.manage_tel + ' / ' + viewdata.manage_email);
+    if(viewdata.manage_name == null && viewdata.manage_tel == null && viewdata.manage_email == null ){
+        v_manage.append('-');
+    }else{
+        v_manage.append(viewdata.manage_name + ' / '+ viewdata.manage_tel + ' / ' + viewdata.manage_email);
+    }
+
+    if(viewdata.onsol_name == null && viewdata.onsol_tel == null && viewdata.onsol_email == null ){
+        v_onsol.append('-');
+    }else{
+        v_onsol.append(viewdata.onsol_name + ' / '+ viewdata.onsol_tel + ' / ' + viewdata.onsol_email);
+    }
     var href_status = '';
     //버튼 설정
     if (viewdata.businessType == '전문연수') {

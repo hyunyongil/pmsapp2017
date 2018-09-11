@@ -2,6 +2,13 @@
 <project version="4">
   <component name="PublishConfigData" serverName="청소년_225">
     <serverData>
+      <paths name="[온패널]">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="청소년_225">
         <serverdata>
           <mappings>
@@ -10,13 +17,6 @@
         </serverdata>
       </paths>
       <paths name="청소년_226">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="청소년_onsol">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />

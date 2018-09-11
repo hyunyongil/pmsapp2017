@@ -97,7 +97,8 @@ function appendMakeViewList(data) {
     v_password.empty();
     var v_manage = $('#v_manage');
     v_manage.empty();
-
+    var v_onsol = $('#v_onsol');
+    v_onsol.empty();
     //추가하기
     v_businessType.append(viewdata.businessType);
     v_code.append(viewdata.code);
@@ -271,7 +272,17 @@ function appendMakeViewList(data) {
             v_password.append(type_text + ': ' + password[deasang.length] + '<br/>');
         }
     }
-    v_manage.append(viewdata.manage_name + ' / '+ viewdata.manage_tel + ' / ' + viewdata.manage_email);
+    if(viewdata.manage_name == null && viewdata.manage_tel == null && viewdata.manage_email == null ){
+        v_manage.append('-');
+    }else{
+        v_manage.append(viewdata.manage_name + ' / '+ viewdata.manage_tel + ' / ' + viewdata.manage_email);
+    }
+
+    if(viewdata.onsol_name == null && viewdata.onsol_tel == null && viewdata.onsol_email == null ){
+        v_onsol.append('-');
+    }else{
+        v_onsol.append(viewdata.onsol_name + ' / '+ viewdata.onsol_tel + ' / ' + viewdata.onsol_email);
+    }
     //버튼 설정
 
     if( viewdata.deasang.indexOf(1) >= 0 ) {
