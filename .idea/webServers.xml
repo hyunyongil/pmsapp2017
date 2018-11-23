@@ -26,6 +26,14 @@
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
+      <webServer id="227aa9e8-6912-47c6-98e5-787b4832e5b7" name="온패널" url="http://221.143.42.196">
+        <fileTransfer host="221.143.42.196" port="21" password="dfc5dfc4dfc5dfc4dfdadfcbdfc4dfcfdfc6df98df8bdfeadf89" username="onpanel2">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

@@ -17,7 +17,6 @@
     </style>
 </head>
 <body>
-
 <div class="contant bg_content">
     <div class="layer_pop_pro_add" id="layer_pop_pro_add" style="margin-top:-200px;display: none;">
         <div class="title_name">설문대상 추가</div>
@@ -49,7 +48,6 @@
         <li class="menuUrl">프로그램 수정</li>
         <div class="clear"></div>
     </ul>
-
     <div class="daesang_list">
         <div class="list_group list_group1" style="display: none;">
             <div class="left_img"><img src="images/img1.png"></div>
@@ -102,36 +100,8 @@
         <a href="javascript:history.back();" data-ajax="false">뒤로가기</a>
     </div>
 </div>
-
 <script type="text/javascript">
     //<![CDATA[
-    // var name = COMMON.storage.get("my_info_name");
-    //$("#my_info_name").html(name);
-    /* $('#logout').click(function(){
-     try{
-     if(confirm("로그아웃을 하시겠습니까?")) {
-     event.preventDefault();
-
-     COMMON.token.clear();
-
-     location.href = "pmslogin.html";
-     }
-     }
-     catch(e) {
-     document.addEventListener('deviceready', function() {
-     navigator.notification.confirm("로그아웃을 하시겠습니까?", function(index) {
-     if(index == 1) {
-     event.preventDefault();
-
-     COMMON.token.clear();
-
-     location.href = "loginNew.html";
-     }
-     }, '확인',"확인,취소");
-
-     }, true);
-     }
-     });*/
     try {
         document.addEventListener("deviceready", onDeviceReady, false);
         function onDeviceReady() {
